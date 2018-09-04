@@ -1,0 +1,50 @@
+.bg-gradient-danger {
+    background: linear-gradient(to right, #ffbf96, #fe7096);
+}
+.bg-gradient-primary {
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(to right, #e7ebf0, #868e96);
+}
+
+.bg-gradient-success {
+    background: linear-gradient(to right, #84d9d2, #07cdae);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(to right, #90caf9, #047edf 99%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(to right, #f6e384, #ffd500);
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(to right, #ffbf96, #fe7096);
+}
+
+.bg-gradient-light {
+    background: linear-gradient(to bottom, #f4f4f4, #e4e4e9);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(89deg, #5e7188, #3e4b5b);
+}
+.card-img-absolute {
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 100%;
+}
+#currentTime {
+    letter-spacing:3px;
+    font-family:Source Sans Pro;
+    font-size:50px;
+    color: #fff;
+}
+#currentDate{
+    color:#fff;
+    font-size:15px;
+}
