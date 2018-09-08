@@ -5,7 +5,7 @@ if(isset($_POST['show'])){
 <table id="dispatchtable" class="table table-hover table-condensed nowrap" width="100%">
     <thead>
         <tr>
-            <th>Service No</th>
+            <th>Service Number</th>
             <th>Date and Time</th>
             <th>Dispatched For</th>
             <th>Driver</th>
