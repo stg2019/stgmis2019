@@ -127,7 +127,7 @@ require 'require/logincheck.php';
                                         </div>
                                         <div class="form-group">
                                             <label >Call Location</label>
-                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['call_location']; ?>" id="ucall_location<?php echo $fetch['dispatch_id']; ?>" name="ucall_location" placeholder="Enter Call Location" required/>
+                                            <input type="text" class="form-control input-sm call_location" value="<?php echo $fetch['call_location']; ?>" id="ucall_location<?php echo $fetch['dispatch_id']; ?>" name="ucall_location" placeholder="Enter Call Location" required/>
                                         </div>
                                         <div class="form-group">
                                             <label >Mass Casualty</label>
@@ -209,7 +209,7 @@ require 'require/logincheck.php';
         </script>
         <script>
             var placesAutocomplete = places({
-                container: document.querySelector('#call_location')
+                container: document.querySelector('.call_location')
             });
         </script>
     </body>

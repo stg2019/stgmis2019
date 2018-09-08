@@ -29,6 +29,7 @@
                         <i class="fa fa-database fa-fw"></i> Transactions <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="calllogs.php">Call Logs</a></li>
                         <li><a href="dispatchment.php">Dispatchment</a></li>
                         <li><a href="assessmentlist.php">Assessment</a></li>
                         <li><a href="requesttransport.php">Request for Transport</a></li>

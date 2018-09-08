@@ -53,7 +53,8 @@
                             <input type="text" class="form-control input-lg" placeholder="Enter ID Number" required />
                         </div>
                         <div class="login-buttons">
-                            <button type="submit" class="btn btn-success btn-block btn-lg">TIME OUT</button>
+                            <button type="submit" class="btn btn-success btn-block btn-sm">TIME OUT</button>
+                            <button type="submit" class="btn btn-success btn-block btn-sm">TIME OUT</button>
                         </div>
                     </form>
                 </div>

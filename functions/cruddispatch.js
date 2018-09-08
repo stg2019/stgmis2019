@@ -5,7 +5,7 @@ $(document).ready(function(){
     $(document).on('click', '#addnew', function(){
         if ($('#service_no').val()=="" || $('#date_time_call').val()=="" || $('#ambulance').val()=="" || $('#dispatched_for').val()=="" || $('#call_location').val()=="" || $('#moi_noi').val()=="" || $('#patients_on_scene').val()=="" || $('#on_board_tl').val()=="" || $('#ems').val()=="" || $('#driver').val()=="" || $('#care_in_progress').val()=="" || $('#mass_casualty').val()==""){
             $('#modallabel').slideDown();
-            $('#checkfield').text('All fields are required!');
+            $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
             setTimeout(function() {
                 $('#modallabel').fadeOut('slow');
             }, 3500);
@@ -24,36 +24,38 @@ $(document).ready(function(){
             $care_in_progress=$('#care_in_progress').val();
             $mass_casualty=$('#mass_casualty').val();
 
-            $.ajax({
-                type: "POST",
-                url: "action/adddispatch.php",
-                cache:false,
-                async:false,
-                data: {
-                    service_no : $service_no,
-                    date_time_call : $date_time_call,
-                    ambulance : $ambulance,
-                    dispatched_for : $dispatched_for,
-                    call_location : $call_location,
-                    moi_noi : $moi_noi,
-                    patients_on_scene : $patients_on_scene,
-                    on_board_tl : $on_board_tl,
-                    ems : $ems,
-                    driver : $driver,
-                    care_in_progress : $care_in_progress,
-                    mass_casualty : $mass_casualty,
-                    add: 1,
-                },
-                success: function(){
-                    $('.adddispatchment').modal('hide');
-                    $('#alert').slideDown();
-                    $('#alerttext').text('Dispatch Added Successfully!');
-                    setTimeout(function() {
-                        $('#alert').fadeOut('slow');
-                    }, 1500);
-                    showDispatch();
-                }
-            });
+            if(confirm('Are you sure you want to add this dispatchment record?')){
+                $.ajax({
+                    type: "POST",
+                    url: "action/adddispatch.php",
+                    cache:false,
+                    async:false,
+                    data: {
+                        service_no : $service_no,
+                        date_time_call : $date_time_call,
+                        ambulance : $ambulance,
+                        dispatched_for : $dispatched_for,
+                        call_location : $call_location,
+                        moi_noi : $moi_noi,
+                        patients_on_scene : $patients_on_scene,
+                        on_board_tl : $on_board_tl,
+                        ems : $ems,
+                        driver : $driver,
+                        care_in_progress : $care_in_progress,
+                        mass_casualty : $mass_casualty,
+                        add: 1,
+                    },
+                    success: function(){
+                        $('.adddispatchment').modal('hide');
+                        $('#alert').slideDown();
+                        $('#alerttext').html('<span class="fa fa-check"></span> Refusal for Treatment Added Successfully!');
+                        setTimeout(function() {
+                            $('#alert').fadeOut('slow');
+                        }, 1500);
+                        showDispatch();
+                    }
+                });
+            }
             $('form').trigger('reset');
         }
 
@@ -109,29 +111,29 @@ $(document).ready(function(){
     });
 
     //delete dispatch
-//    $(document).on('click', '#delete_dispatch', function(){
-//        $dispatch_id=$(this).val();
-      //  $('#delete_dispatch'+$dispatch_id).modal('hide');
+    //    $(document).on('click', '#delete_dispatch', function(){
+    //        $dispatch_id=$(this).val();
+    //  $('#delete_dispatch'+$dispatch_id).modal('hide');
     //    $('body').removeClass('modal-open');
-  //      $('.modal-backdrop').remove();
-//        $.ajax({
-        //    type: "POST",
-         //   url: "action/deletedispatch.php",
-        //    data: {
-          //      dispatch_id: $dispatch_id,
-        //        del: 1,
-        //    },
-        //    success: function(){
-        //        $('.delete_dispatch').modal('hide');
-        //        $('#alert').slideDown();
-            //    $('#alerttext').text('Dispatch Record Deleted Successfully');
-          //      setTimeout(function() {
-        //            $('#alert').fadeOut('slow');
-        //        }, 1500);
-      //          showDispatch();
+    //      $('.modal-backdrop').remove();
+    //        $.ajax({
+    //    type: "POST",
+    //   url: "action/deletedispatch.php",
+    //    data: {
+    //      dispatch_id: $dispatch_id,
+    //        del: 1,
+    //    },
+    //    success: function(){
+    //        $('.delete_dispatch').modal('hide');
+    //        $('#alert').slideDown();
+    //    $('#alerttext').text('Dispatch Record Deleted Successfully');
+    //      setTimeout(function() {
+    //            $('#alert').fadeOut('slow');
+    //        }, 1500);
+    //          showDispatch();
     //        }
-  //      });
-//    });
+    //      });
+    //    });
 
 });
 

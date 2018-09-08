@@ -15,6 +15,7 @@
         <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
         <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <script src="assets/plugins/pace/pace.min.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body class="pace-top bg-white">
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -44,26 +45,20 @@
                                 <center><span id="checkfield"></span></center>
                             </div>
                             <div class="form-group m-b-15">
-                                <input type="text" class="form-control input-lg" placeholder="Username" name="username" required />
+                                <input type="text" class="form-control input-lg" placeholder="Username" id="username" name="username" required />
                             </div>
+                            <div id="uname_response"></div>
                             <div class="form-group m-b-15">
                                 <input type="password" class="form-control input-lg" placeholder="Password" name="password" required />
                             </div>
-                            <div class="checkbox m-b-30">
-                                <label>
-                                    <input type="checkbox" /> Remember Me
-                                </label>
-                            </div>
                             <div class="login-buttons">
-                                <button type="submit" class="btn btn-info btn-block btn-lg" name="login">Sign me in</button>
+                                <button type="submit" class="btn btn-info btn-block btn-lg" id="login" name="login">Sign me in</button>
                             </div>
-                            <div class="m-t-20 m-b-40 p-b-40 text-inverse">
-
-                            </div>
-
+                            <hr>
+                            <div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div>
                             <hr />
                             <p class="text-center">
-                                &copy; Three Propis All Rights Reserved 2019
+                                &copy; Safetech Guardians All Rights Reserved 2019
                             </p>
                         </form>
                     </div>
@@ -71,6 +66,7 @@
             </div>
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="functions/checklogin.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
