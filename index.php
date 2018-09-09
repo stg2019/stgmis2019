@@ -35,7 +35,7 @@
                 <div class="right-content">
                     <div class="login-header">
                         <div class="brand">
-                            NDRRMO
+                            DRRMO
                             <small>Management Information System</small>
                         </div>
                     </div>
@@ -51,12 +51,13 @@
                             <div class="form-group m-b-15">
                                 <input type="password" class="form-control input-lg" placeholder="Password" name="password" required />
                             </div>
+                            <div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div>
+                            <hr>
                             <div class="login-buttons">
                                 <button type="submit" class="btn btn-info btn-block btn-lg" id="login" name="login">Sign me in</button>
                             </div>
+
                             <hr>
-                            <div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div>
-                            <hr />
                             <p class="text-center">
                                 &copy; Safetech Guardians All Rights Reserved 2019
                             </p>

@@ -4,8 +4,14 @@ session_start();
 <html>
     <head>
         <title>NDRRMO | Bacolod City</title>
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/ndrrmo/logo.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/ndrrmo/logo.png">
+        <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
     </head>
+    <body>
+        <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    </body>
 </html>
 
 <?php
@@ -45,14 +51,19 @@ if(ISSET($_POST['login'])){
             }
             if ($user_role == 'Administrator') {
                 $_SESSION['user_id'] = $fetch['user_id'];
-                echo '<meta http-equiv="refresh" content="1;url=../admin/admindashboard.html">';
+                echo '<meta http-equiv="refresh" content="1;url=../admin/admindashboard.php">';
                 echo '<i>Logging in...</i>';
             }
 
         }
+
+        else{
+            echo "<script>alert('Account does not exist in database! ')</script>";
+            echo "<script>window.location = '../index.php'</script>";
+        }
     }
     else{
-        echo "<script>alert('Account does not exist in database! ')</script>";
+        echo "<script>alert('Verify you are not a robot! ')</script>";
         echo "<script>window.location = '../index.php'</script>";
     }
 }

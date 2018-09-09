@@ -40,21 +40,29 @@
                     <div class="icon">
                         <i class="fa fa-clock-o"></i>
                     </div>
+                    <center>
+                        <div id="modallabel" class="alert alert-danger" style="display:none;">
+                            <center><span id="checkfield"></span></center>
+                        </div>
+                        <div id="alert" class="alert alert-success" style="display:none;">
+                            <center><span id="alerttext"></span></center>
+                        </div>
+                    </center>
                 </div>
+
                 <!-- end brand -->
                 <div class="login-content">
-                    <form action="index.html" method="POST" class="margin-bottom-0">
+                    <form>
                         <center>
                             <span id="currentTime"></span> <br>
                             <span id="currentDate"><?php echo date('l, M d, Y')?></span>
                         </center>
                         <br />
                         <div class="form-group m-b-20">
-                            <input type="text" class="form-control input-lg" placeholder="Enter ID Number" required />
+                            <input type="text" class="form-control input-lg" id="emt_id_number" name="emt_id_number" placeholder="Enter ID Number" required />
                         </div>
-                        <div class="login-buttons">
-                            <button type="submit" class="btn btn-success btn-block btn-sm">TIME OUT</button>
-                            <button type="submit" class="btn btn-success btn-block btn-sm">TIME OUT</button>
+                        <div class="login-button">
+                            <button type="button" id="timeinout" class="btn btn-success btn-block btn-lg">TIME OUT</button>
                         </div>
                     </form>
                 </div>
@@ -71,6 +79,7 @@
 
         <!-- ================== BEGIN BASE JS ================== -->
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="functions/timeinout.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
