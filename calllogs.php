@@ -37,7 +37,12 @@ require 'require/logincheck.php';
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li class="active">Dispachment</li>
                 </ol>
-                <h1 class="page-header hidden-print">Assessment</h1>
+
+
+                <h1 class="page-header"><a href="#addcall" class="btn btn-md btn-success" data-toggle="modal">New Call Log</a></h1>
+                <div id="alert" class="alert alert-success" style="display:none;">
+                    <center><span id="alerttext"></span></center>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-info" >
@@ -45,7 +50,7 @@ require 'require/logincheck.php';
                                 <h4 class="panel-title">List of Dispatchment</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="assessmentlistTable"></div>
+                                <div id="dispatchTable"></div>
                             </div>
                         </div>
                     </div>
@@ -53,11 +58,13 @@ require 'require/logincheck.php';
             </div>
             <?php require 'require/sidepanel.php'?>
 
+            <?php require 'modals/addcall.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/showassessmentlist.js"></script>
+        <script type="text/javascript" src="functions/cruddispatch.js"></script>
+        <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -104,6 +111,11 @@ require 'require/logincheck.php';
             ga('create', 'UA-53034621-1', 'auto');
             ga('send', 'pageview');
 
+        </script>
+        <script>
+            var placesAutocomplete = places({
+                container: document.querySelector('#call_location')
+            });
         </script>
     </body>
 </html>

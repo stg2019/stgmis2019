@@ -62,7 +62,8 @@
                             <input type="text" class="form-control input-lg" id="emt_id_number" name="emt_id_number" placeholder="Enter ID Number" required />
                         </div>
                         <div class="login-button">
-                            <button type="button" id="timeinout" class="btn btn-success btn-block btn-lg">TIME OUT</button>
+                            <button type="button" id="timeinout" class="btn btn-success btn-block btn-sm">TIME IN</button>
+                            <button type="button" id="timeinout" class="btn btn-warning btn-block btn-sm">TIME OUT</button>
                         </div>
                     </form>
                 </div>

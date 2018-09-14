@@ -3,7 +3,7 @@
 			<div class="container-fluid">
 				<!-- begin mobile sidebar expand / collapse button -->
 				<div class="navbar-header">
-					<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>
+					<a href="index.html" class="navbar-brand"> DRRMO MIS</a>
 					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -86,7 +86,7 @@
 							<img src="../assets/img/user-13.jpg" alt="" /> 
 							<span class="hidden-xs">Adam Schwartz</span> <b class="caret"></b>
 						</a>
-						<ul class="dropdown-menu animated fadeInLeft">
+						<ul class="dropdown-menu animated fadeInDown">
 							<li class="arrow"></li>
 							<li><a href="javascript:;">Edit Profile</a></li>
 							<li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>

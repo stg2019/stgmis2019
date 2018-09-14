@@ -36,7 +36,7 @@ if(ISSET($_POST['login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $query = $conn->query("SELECT * FROM `users` WHERE BINARY `username` = '$username' && BINARY `password` = '$password'") or die(mysqli_error());
+        $query = $conn->query("SELECT * FROM `users` WHERE BINARY `username` = '$username' && BINARY `password` = '$password' && `status` = 1") or die(mysqli_error());
         $fetch = $query->fetch_array();
         $valid = $query->num_rows;
         $user_role = $fetch['user_role'];

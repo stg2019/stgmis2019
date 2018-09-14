@@ -2,7 +2,7 @@
 
 date_default_timezone_set('Asia/Manila');
 
-$time = date('H:i:s A',strtotime("02:00:00 PM"));
+$time = date('H:i:s A',strtotime("09:00:00 PM"));
 $cutoff = 0;
 if($time > date('H:i:s A')){
     $cutoff++;

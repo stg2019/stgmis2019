@@ -9,7 +9,7 @@
                 </div>
                 <div class="info">
                     Sean Ngu
-                    <small>Front end developer</small>
+                    <small>Office Administrator</small>
                 </div>
             </li>
         </ul>
@@ -41,7 +41,7 @@
                     <li><a href="#">Request for Transport</a></li>
                     <li><a href="#">Refusal of Treatment</a></li>
                     <li><a href="#">Daily Time Record</a></li>
-                    <li><a href="#">Inventory</a></li>
+                    <li><a href="inventory.php">Inventory</a></li>
                 </ul>
             </li>
             <li class="has-sub">
@@ -65,9 +65,9 @@
                     <span>System Maintenance</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">User Management</a></li>
-                    <li><a href="#">System Backup</a></li>
+                    <li><a href="myaccount.php">My Account</a></li>
+                    <li><a href="usermanagement.php">User Management</a></li>
+                    <li><a href="systembackup.php">System Backup</a></li>
                     <li><a href="#">User's Activity Log</a></li>
                 </ul>
             </li>
