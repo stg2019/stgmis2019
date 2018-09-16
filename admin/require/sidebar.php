@@ -5,11 +5,11 @@
         <ul class="nav">
             <li class="nav-profile">
                 <div class="image">
-                    <a href="javascript:;"><img src="assets/img/user-13.jpg" alt="" /></a>
+                    <a href="javascript:;"><img src="../assets/img/ndrrmo/logo.png" alt="" /></a>
                 </div>
                 <div class="info">
-                    Sean Ngu
-                    <small>Office Administrator</small>
+                    <span class="hidden-xs"><?php echo $find['complete_name']?></span>
+                    <small><?php echo $find['user_role']?></small>
                 </div>
             </li>
         </ul>
@@ -24,7 +24,7 @@
                     <span>Data Entry</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="#">EMT Account</a></li>
+                    <li><a href="emtaccount.php">EMT Account</a></li>
                     <li><a href="#">Patient Master File</a></li>
                     <li><a href="#">Medical Supplies</a></li>
                 </ul>
