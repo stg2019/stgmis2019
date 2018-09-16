@@ -36,11 +36,11 @@ require 'require/logincheck.php';
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="#">Transactions</a></li>
-                    <li><a href="requesttransport.php">Request for Transport</a></li>
-                    <li class="active">Edit Request for Transport</li>
+                    <li><a href="calllogs.php">Call Logs</a></li>
+                    <li class="active">Edit Call Log</li>
                 </ol>
                 <h1 class="page-header">               
-                    <button type = "button" class = "btn btn-md btn-success update_refusal_treatment" value="<?php echo $_GET['refusal_treatment_id']; ?>">Save Changes</button>
+                    <button type = "button" class = "btn btn-md btn-success update_calllog" value="<?php echo $_GET['call_id']; ?>">Save Changes</button>
                     <a href="#" onclick="goBack()" class="btn btn-md btn-white ">Back</a>
                 </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
@@ -56,60 +56,39 @@ require 'require/logincheck.php';
                     <div class="col-md-8">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">Edit Refusal for Treatment</h4>
+                                <h4 class="panel-title">Edit Call Log</h4>
                                 <?php
-                                $query = $conn->query("SELECT * FROM `refusal_treatment` WHERE `refusal_treatment_id` = '$_GET[refusal_treatment_id]'") or die(mysqli_error());
+                                $query = $conn->query("SELECT * FROM `call_logs` WHERE `call_id` = '$_GET[call_id]'") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
                                 ?>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label class="alert alert-warning"  style="text-align:justify;"><small>I hereby express my <strong>refusal to [treatment] or [transportation to a hospital]</strong> and I acknowledged that my refusal entails full knowledge of the risk and consequence as explained by the EMS crew. I hereby release the EMS crew of DRRMO Bacolod from any liability that may occur as a result of my refusal.</small></label>
-                                        <div class="form-group">
-                                            <label >Signed</label>
-                                            <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="usigned<?php echo $fetch['refusal_treatment_id']; ?>" name="signed">
-                                                <option value="<?php echo $fetch['signed']; ?>"><?php echo $fetch['signed']; ?></option>
-                                                <?php
-                                                require 'require/dbconnection.php';
-                                                $query2 = $conn->query("SELECT * FROM `patient`") or die(mysqli_error());
-
-                                                while($fetch2 = $query2->fetch_array()){
-                                                ?>
-                                                <option value="<?php echo $fetch2['patient_name'];?>"><?php echo $fetch2['patient_name']?></option>
-                                                <?php
-                                                }
-                                                ?> 
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label >Witness 1</label>
-                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['witness1']; ?>" id="uwitness1<?php echo $fetch['refusal_treatment_id']; ?>" name="witness1" placeholder="Enter Witness 1 Name" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label >Witness 2</label>
-                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['witness2']; ?>" id="uwitness2<?php echo $fetch['refusal_treatment_id']; ?>" name="witness2" placeholder="Enter Witness 2 Name" required/>
-                                        </div>
                                         <div class="form-group ">
-                                            <label >Date of Incident</label>
+                                            <label >Date and Time of Call</label>
                                             <div class="input-group date" id="datetimepicker1">
-                                                <input type="text" value="<?php echo $fetch['date_incident']; ?>" id="udate_incident<?php echo $fetch['refusal_treatment_id']; ?>" name="date_incident" class="form-control input-sm" />
+                                                <input type="text" value="<?php echo $fetch['date_time_call']; ?>" id="udate_time_call<?php echo $fetch['call_id']; ?>" name="date_time_call" class="form-control input-sm" />
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
                                             </div>
-                                        </div><hr>
-                                        <div class="form-group">
-                                            <label >Statements</label>
-                                            <textarea class="form-control" rows="6"  id="statements<?php echo $fetch['refusal_treatment_id']; ?>" name="statements"><?php echo $fetch['statements']; ?></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label >Attachment: (legal documents etc.)</label>
-                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['attachment']; ?>" id="uattachment<?php echo $fetch['refusal_treatment_id']; ?>" name="attachment" placeholder="Enter Attachment" required/>
+                                            <label >Complete Address</label>
+                                            <input type="text" class="form-control input-sm complete_address" value="<?php echo $fetch['complete_address']; ?>" id="ucomplete_address<?php echo $fetch['call_id']; ?>" name="complete_address" placeholder="Enter Complete Address" required/>
                                         </div>
                                         <div class="form-group">
-                                            <label >Prepared By</label>
-                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['prepared_by']; ?>" id="uprepared_by<?php echo $fetch['refusal_treatment_id']; ?>" name="prepared_by" placeholder="Enter Name" required/>
+                                            <label >Emergency Details / Complaint</label>
+                                            <textarea class="form-control" rows="3" id="uemergency<?php echo $fetch['call_id']; ?>" name="emergency"><?php echo $fetch['emergency']?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Name of Caller</label>
+                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['caller_name']; ?>" id="ucaller_name<?php echo $fetch['call_id']; ?>" name="caller_name" placeholder="Enter Name of Caller" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Contact Number of Caller</label>
+                                            <input type="text" class="form-control input-sm" value="<?php echo $fetch['contact_no']; ?>" id="ucontact_no<?php echo $fetch['call_id']; ?>" name="contact_no" placeholder="Enter Contact Number of Caller" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +111,7 @@ require 'require/logincheck.php';
 
 
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/crudrefusaltreatment.js"></script>
+        <script type="text/javascript" src="functions/crudcalllogs.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -183,7 +162,7 @@ require 'require/logincheck.php';
         </script>
         <script>
             var placesAutocomplete = places({
-                container: document.querySelector('.address')
+                container: document.querySelector('.complete_address')
             });
         </script>
         <script>

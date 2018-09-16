@@ -39,8 +39,8 @@ require 'require/logincheck.php';
                     <li class="active">Patient Assessment</li>
                 </ol>
                 <h1 class="page-header">        
-                    <button type = "button" class = "btn btn-md btn-success add_assessment" value="<?php echo $_GET['patient_id']; ?>">Save Record</button>
-                    <a href="#" onclick="goBack()" class="btn btn-md btn-white ">Back</a>
+                    <button type = "button" class = "btn btn-sm btn-success add_assessment" value="<?php echo $_GET['patient_id']; ?>">Save Record</button>
+                    <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
                 </h1>
                 <center>
                     <div id="alert" class="alert alert-success" style="display:none;">

@@ -34,7 +34,6 @@
                         <li><a href="assessmentlist.php">Assessment</a></li>
                         <li><a href="requesttransport.php">Request for Transport</a></li>
                         <li><a href="refusaltreatment.php">Refusal of Treatment</a></li>
-                        <li><a href="timeinout.php">Daily Time Record</a></li>
                         <li><a href="responsivemap.php">Inventory</a></li>
                     </ul>
                 </li>

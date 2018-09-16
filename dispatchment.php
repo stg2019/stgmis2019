@@ -39,7 +39,7 @@ require 'require/logincheck.php';
                 </ol>
 
 
-                <h1 class="page-header"><a href="#adddispatchment" class="btn btn-md btn-success" data-toggle="modal">New Dispatchment</a></h1>
+                <h1 class="page-header"><a href="#adddispatchment" class="btn btn-sm btn-success" data-toggle="modal">New Dispatchment</a></h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>

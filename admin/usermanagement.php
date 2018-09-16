@@ -9,8 +9,8 @@ function getstatus($status){
         return "Active";
     }
 }
-                 
-           
+
+
 ?>
 <html lang="en">
     <!--<![endif]-->
@@ -57,7 +57,7 @@ function getstatus($status){
             <!-- begin #sidebar -->
             <?php require 'require/sidebar.php'?>
             <!-- end #sidebar -->
-           
+
             <!-- begin #content -->
             <div id="content" class="content">
                 <!-- begin breadcrumb -->
@@ -69,86 +69,86 @@ function getstatus($status){
                 <!-- begin page-header -->
                 <h1 class="page-header">User Management</h1>
                 <!-- end page-header -->
-                
+
                 <!-- begin row -->
-               
-             
-                    <div class="col-md-12">
-                         <div class="row">
-                <div class="panel panel-info">
-<!--
-                     <div class="panel-heading ">
-                                <h4 class="panel-title">User Management</h4>
-                            </div>
+
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="panel panel-info">
+                            <!--
+<div class="panel-heading ">
+<h4 class="panel-title">User Management</h4>
+</div>
 -->
-                    <div class="panel-body">
-                        <button id="btn_delete" name="btn_delete" class="btn btn-primary">Delete</button>
-                        <button id="btn_activate" name="btn_activate" class="btn btn-primary">Activate</button>
-                        <button id="btn_deactivate" name="btn_deactivate" class="btn btn-primary">Deactivate</button>
-                        </div>    
+                            <div class="panel-body">
+                                <button id="btn_delete" name="btn_delete" class="btn btn-primary">Delete</button>
+                                <button id="btn_activate" name="btn_activate" class="btn btn-primary">Activate</button>
+                                <button id="btn_deactivate" name="btn_deactivate" class="btn btn-primary">Deactivate</button>
+                            </div>    
+                        </div>
                     </div>
-                </div>
-                
-                <div class="row">
+
+                    <div class="row">
                         <div class="panel panel-info" >
                             <div class="panel-body">
-                              
-    <table id="" class="table table-hover table-condensed nowrap dataTables-wrapper">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>User Role</th>
-             <th>Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
+
+                                <table id="" class="table table-hover table-condensed nowrap dataTables-wrapper">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>User Role</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
     require 'require/dbconnection.php';  
-           //  require '../modals/managepassword.php';
-    $query = $conn->query("select * from `users`") or die(mysqli_error());
-    while($fetch = $query->fetch_array()){
-        ?>                                      
-        <tr>
-            <td><input type="checkbox" name="user_id[]" class="delete_user" value="<?php echo $fetch["user_id"]; ?>" /></td>
-            <td><?php echo $fetch['username']?></td>
-            <td><?php echo $fetch['password']?></td>
-            <td><?php echo $fetch['user_role']?></td>
-            <td><?php echo getstatus($fetch['status'])?></td>
-            <td>
-                <a href="#edit_user<?php echo $fetch['user_id']; ?>" data-target="#edit_user<?php echo $fetch['user_id']; ?>" data-toggle="modal" class="btn btn-sm btn-success "><span class="fa fa-key"></span> Manage Password</a>
-            </td>
-        </tr>   
-        <?php
-    }
-    $conn->close();
-           
-        ?>
-    </tbody>
-</table>                   
-        
+            //  require '../modals/managepassword.php';
+            $query = $conn->query("select * from `users`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><input type="checkbox" name="user_id[]" class="delete_user" value="<?php echo $fetch["user_id"]; ?>" /></td>
+                                            <td><?php echo $fetch['username']?></td>
+                                            <td><?php echo $fetch['password']?></td>
+                                            <td><?php echo $fetch['user_role']?></td>
+                                            <td><?php echo getstatus($fetch['status'])?></td>
+                                            <td>
+                                                <a href="#edit_user<?php echo $fetch['user_id']; ?>" data-target="#edit_user<?php echo $fetch['user_id']; ?>" data-toggle="modal" class="btn btn-sm btn-success "><span class="fa fa-key"></span> Manage Password</a>
+                                            </td>
+                                        </tr>   
+                                        <?php
+            }
+            $conn->close();
+
+                                        ?>
+                                    </tbody>
+                                </table>                   
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                
+
                 <!-- end row -->
             </div>
             <!-- end #content -->
-            
-   
-   
-           <?php
-                    require 'require/dbconnection.php';  
-                    $query = $conn->query("select * from `users`") or die(mysqli_error());           
-                    while($fetch = $query ->fetch_array()){
-                     ?>    
+
+
+
+            <?php
+            require 'require/dbconnection.php';  
+            $query = $conn->query("select * from `users`") or die(mysqli_error());           
+            while($fetch = $query ->fetch_array()){
+            ?>    
             <?php require '../modals/edituser.php';?>
-            
+
             <?php } ?>
-            
+
             <!-- begin theme-panel -->
             <?php require '../require/sidepanel.php'?>
             <!-- end theme-panel -->
@@ -164,7 +164,7 @@ function getstatus($status){
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-         
+
         <!--[if lt IE 9]>
 <script src="../assets/crossbrowserjs/html5shiv.js"></script>
 <script src="../assets/crossbrowserjs/respond.min.js"></script>
@@ -203,6 +203,6 @@ function getstatus($status){
             ga('send', 'pageview');
 
         </script>
-      
+
     </body>
 </html>

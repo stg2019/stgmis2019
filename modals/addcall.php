@@ -17,7 +17,7 @@
                             <div class="form-group ">
                                 <label >Date and Time of Call</label>
                                 <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" id="date_incident" name="date_incident" class="form-control input-sm" />
+                                    <input type="text" id="date_time_call" name="date_time_call" class="form-control input-sm" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -25,19 +25,19 @@
                             </div>
                             <div class="form-group">
                                 <label >Complete Address</label>
-                                <input type="text" class="form-control input-sm" id="signed" name="signed" placeholder="Enter Complete Address" required/>
+                                <input type="text" class="form-control input-sm" id="complete_address" name="complete_address" placeholder="Enter Complete Address" required/>
                             </div>
                             <div class="form-group">
                                 <label >Emergency Details / Complaint</label>
-                                <textarea class="form-control" rows="3" id="statements" name="statements"></textarea>
+                                <textarea class="form-control" rows="3" id="emergency" name="emergency"></textarea>
                             </div>
                             <div class="form-group">
                                 <label >Name of Caller</label>
-                                <input type="text" class="form-control input-sm" id="witness2" name="witness2" placeholder="Enter Name of Caller" required/>
+                                <input type="text" class="form-control input-sm" id="caller_name" name="caller_name" placeholder="Enter Name of Caller" required/>
                             </div>
                             <div class="form-group">
                                 <label >Contact Number of Caller</label>
-                                <input type="text" class="form-control input-sm" id="witness2" name="witness2" placeholder="Enter Contact Number of Caller" required/>
+                                <input type="text" class="form-control input-sm" id="contact_no" name="contact_no" placeholder="Enter Contact Number of Caller" required/>
                             </div>
                         </div>
                     </div>

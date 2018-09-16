@@ -25,7 +25,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['driver']?></td>
             <td><?php echo $fetch['call_location']?></td>
             <td>
-                <a href="viewdetails.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-white">Assess</a>
+                <a href="viewdetails.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-success">Assess</a>
             </td>
         </tr>
         <?php

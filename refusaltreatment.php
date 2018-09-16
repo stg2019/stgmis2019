@@ -38,7 +38,7 @@ require 'require/logincheck.php';
                     <li><a href="dispatchment.php">Dispatchment</a></li>
                     <li class="active">Dispachment Overview</li>
                 </ol>
-                <h1 class="page-header"><a href="#addrefusal" class="btn btn-md btn-success" data-toggle="modal">New Refusal</a></h1>
+                <h1 class="page-header"><a href="#addrefusal" class="btn btn-sm btn-success" data-toggle="modal">New Refusal</a></h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>

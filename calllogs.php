@@ -35,11 +35,14 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li class="active">Dispachment</li>
+                    <li><a href="#">Transasctions</a></li>
+                    <li class="active">Call Logs</li>
                 </ol>
 
 
-                <h1 class="page-header"><a href="#addcall" class="btn btn-md btn-success" data-toggle="modal">New Call Log</a></h1>
+                <h1 class="page-header"><a href="#addcall" class="btn btn-sm btn-success" data-toggle="modal">New Call Log</a>
+                    <a href="dispatchment.php" class="btn btn-sm btn-primary">Go to Dispatchment</a>
+                </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -47,10 +50,10 @@ require 'require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Call Logs</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="dispatchTable"></div>
+                                <div id="calllogsTable"></div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +66,7 @@ require 'require/logincheck.php';
 
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/cruddispatch.js"></script>
+        <script type="text/javascript" src="functions/crudcalllogs.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -114,7 +117,7 @@ require 'require/logincheck.php';
         </script>
         <script>
             var placesAutocomplete = places({
-                container: document.querySelector('#call_location')
+                container: document.querySelector('#complete_address')
             });
         </script>
     </body>

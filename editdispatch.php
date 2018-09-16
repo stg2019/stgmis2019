@@ -37,8 +37,8 @@ require 'require/logincheck.php';
                     <li class="active">Users</li>
                 </ol>
                 <h1 class="page-header">               
-                    <button type = "button" class = "btn btn-md btn-success update_dispatch" value="<?php echo $_GET['dispatch_id']; ?>">Save Changes</button>
-                    <a href="dispatchment.php" class="btn btn-md btn-white ">Back</a>
+                    <button type = "button" class = "btn btn-sm btn-success update_dispatch" value="<?php echo $_GET['dispatch_id']; ?>">Save Changes</button>
+                    <a href="dispatchment.php" class="btn btn-sm btn-white ">Back</a>
                 </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>

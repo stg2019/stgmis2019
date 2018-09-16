@@ -14,10 +14,22 @@
                 <form id="dispatchform">
                     <div class="row">
                         <div class="col-md-12">
-                           <label class="alert alert-warning"  style="text-align:justify;"><small>I hereby express my <strong>refusal to [treatment] or [transportation to a hospital]</strong> and I acknowledged that my refusal entails full knowledge of the risk and consequence as explained by the EMS crew. I hereby release the EMS crew of DRRMO Bacolod from any liability that may occur as a result of my refusal.</small></label>
+                            <label class="alert alert-warning"  style="text-align:justify;"><small>I hereby express my <strong>refusal to [treatment] or [transportation to a hospital]</strong> and I acknowledged that my refusal entails full knowledge of the risk and consequence as explained by the EMS crew. I hereby release the EMS crew of DRRMO Bacolod from any liability that may occur as a result of my refusal.</small></label>
                             <div class="form-group">
                                 <label >Signed</label>
-                                <input type="text" class="form-control input-sm" id="signed" name="signed" placeholder="Enter Patient Name" required/>
+                                <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="signed" name="signed">
+                                    <option value="#">Select</option>
+                                    <?php
+                                    require 'require/dbconnection.php';
+                                    $query = $conn->query("SELECT * FROM `patient`") or die(mysqli_error());
+
+                                    while($fetch = $query->fetch_array()){
+                                    ?>
+                                    <option value="<?php echo $fetch['patient_name'];?>"><?php echo $fetch['patient_name']?></option>
+                                    <?php
+                                    }
+                                    ?> 
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label >Witness 1</label>
