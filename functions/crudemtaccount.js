@@ -2,6 +2,32 @@
 $(document).ready(function(){
     showEMTAccount();
     //add call log
+
+    $("#username").keyup(function(){
+        var username = $("#username").val().trim();
+        if(username != ''){
+            $("#uname_response").show();
+
+            $.ajax({
+                url: '../action/checkusername.php',
+                type: 'post',
+                data: {username:username},
+                success: function(response){
+                    if(response > 0){
+                        $("#uname_response").html("<span class='label label-danger'>Username already exist in database</span>");
+                        $("#addnew").attr("disabled", true); 
+
+                    }else{
+                        $("#uname_response").html("");
+                        $("#addnew").attr("disabled", false); 
+                    }
+                }
+            });
+        }else{
+            $("#uname_response").hide();
+        }
+    });
+
     $(document).on('click', '#addnew', function(){
         if ($('#complete_name').val()=="" || $('#username').val()=="" || $('#password').val()==""){
             $('#modallabel').slideDown();

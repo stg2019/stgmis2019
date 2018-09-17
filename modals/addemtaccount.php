@@ -18,6 +18,7 @@
                                 <label >Complete Name</label>
                                 <input type="text" class="form-control input-sm" id="complete_name" name="complete_name" placeholder="Enter Complete Name" required/>
                             </div>
+                            <div id="uname_response"></div>
                             <div class="form-group">
                                 <label >Username</label>
                                 <input type="text" class="form-control input-sm" id="username" name="username" placeholder="Enter Username" required/>
