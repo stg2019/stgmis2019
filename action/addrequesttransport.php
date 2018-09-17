@@ -20,11 +20,14 @@ if(isset($_POST['add'])){
     $sat = $_POST['sat'];
     $requesting_approval = $_POST['requesting_approval'];
     $approval = $_POST['approval'];
+    date_default_timezone_set('Asia/Manila');
+    $date_created=date("F j, Y");
+
 
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rr', '$pr', '$sat', '$requesting_approval', '$approval')") or die(mysqli_error());
+    $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rr', '$pr', '$sat', '$requesting_approval', '$approval', '$date_created')") or die(mysqli_error());
     $conn->close();
 }a
 ?>

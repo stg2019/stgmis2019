@@ -68,14 +68,14 @@ require 'require/logincheck.php';
                     mapTypeControl: true,
                     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
                 }
-            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-            // To add the marker to the map, use the 'map' property
-            marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                title:"Hello World!"
-            });
+                // To add the marker to the map, use the 'map' property
+                marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title:"Hello World!"
+                });
             }
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
@@ -182,10 +182,11 @@ require 'require/logincheck.php';
                                                 <small>REQUESTING APPROVAL</small>
                                                 <?php echo $fetch['requesting_approval']?>
                                             </div>
+                                            <div class="sub-price">
+                                                <small>APPROVAL</small>
+                                                <?php echo $fetch['approval']?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="invoice-price-right">
-                                        <small>APPROVAL</small> <?php echo $fetch['approval']?>
                                     </div>
                                 </div>
                             </div>

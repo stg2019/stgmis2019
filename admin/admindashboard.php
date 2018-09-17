@@ -35,6 +35,7 @@ require '../require/logincheck.php';
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../functions/shownotifications.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>

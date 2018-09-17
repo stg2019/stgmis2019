@@ -16,13 +16,78 @@
         $find = $query->fetch_array();
         ?>
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <form class="navbar-form full-width">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter keyword" />
-                        <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <?php
+                    date_default_timezone_set('Asia/Manila');
+                    $date_today = date('F j, Y');
+                    $query2 = $conn->query("SELECT COUNT(*) as total FROM `request_transport` WHERE `date_created` = '$date_today'") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+                    ?>
+                    <i class="fa fa-map-marker"></i>
+                    <span class="label"><?php echo $fetch2['total']?></span>
+                </a>
+                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                    <li class="dropdown-header">Request for Transport (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `request_transport` where `date_created` = '$date_today' limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                    ?>
+
+                    <li class="media">
+                        <a href="javascript:;">
+                            <div class="media-left"><i class="fa fa-map-marker media-object bg-red"></i></div>
+                            <div class="media-body">
+                                <h6 class="media-heading"><?php echo $fetch3['patient_name']?></h6>
+                                <p><?php echo $fetch3['address']?></p>
+                                <div class="text-muted f-s-11"><?php echo $fetch3['date_time']?></div>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                        }
+
+                    ?>
+                    <li class="dropdown-footer text-center">
+                        <a href="javascript:;">View more</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <?php
+                    $query2 = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `date_created` = '$date_today'") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+                    ?>
+                    <i class="fa fa-ambulance"></i>
+                    <span class="label"><?php echo $fetch2['total']?></span>
+                </a>
+                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                    <li class="dropdown-header">Dispatchment (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `dispatch` where `date_created` = '$date_today' limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                    ?>
+
+                    <li class="media">
+                        <a href="javascript:;">
+                            <div class="media-left"><i class="fa fa-ambulance media-object bg-red"></i></div>
+                            <div class="media-body">
+                                <h6 class="media-heading"><?php echo $fetch3['dispatched_for']?></h6>
+                                <p><?php echo $fetch3['call_location']?></p>
+                                <div class="text-muted f-s-11"><?php echo $fetch3['ambulance']. '|' .$fetch3['date_time_call']?></div>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                        }
+
+                    ?>
+                    <li class="dropdown-footer text-center">
+                        <a href="javascript:;">View more</a>
+                    </li>
+                </ul>
             </li>
             <li class="dropdown">
                 <?php
@@ -32,8 +97,8 @@
                 $fetch2 = $query2->fetch_array();
                 ?>
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-                    <i class="fa fa-bell-o"></i>
-                        <div class="badgeuser"></div>
+                    <i class="fa fa-group"></i>
+                    <div class="badgeuser"></div>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
                     <div class="notificationnewuser"></div>

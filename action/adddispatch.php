@@ -14,11 +14,13 @@ if(isset($_POST['add'])){
     $driver = $_POST['driver'];
     $care_in_progress = $_POST['care_in_progress'];
     $mass_casualty = $_POST['mass_casualty'];
+    date_default_timezone_set('Asia/Manila');
+    $date_created=date("F j, Y");
 
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `dispatch` VALUES('', '$service_no', '$date_time_call', '$ambulance', '$dispatched_for', '$call_location', '$moi_noi', '$patients_on_scene', '$on_board_tl', '$ems', '$driver', '$care_in_progress', '$mass_casualty', '$enroute')") or die(mysqli_error());
+    $conn->query("INSERT INTO `dispatch` VALUES('', '$service_no', '$date_time_call', '$ambulance', '$dispatched_for', '$call_location', '$moi_noi', '$patients_on_scene', '$on_board_tl', '$ems', '$driver', '$care_in_progress', '$mass_casualty', '$enroute', '$date_created')") or die(mysqli_error());
     $conn->close();
 }
 ?>

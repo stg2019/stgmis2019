@@ -1,10 +1,10 @@
 
 $(document).ready(function(){
-    showNewUser();
+    notificationNewUser();
+    notificationBadgeUser();
 });
 
-//show dispatch
-function showNewUser(){
+function notificationNewUser(){
     $.ajax({
         url: '../notifications/newusers.php',
         type: 'POST',
@@ -13,7 +13,21 @@ function showNewUser(){
             show: 1
         },
         success: function(response){
-            $('.newuser').html(response);
+            $('.notificationnewuser').html(response);
+        }
+    });
+}
+
+function notificationBadgeUser(){
+    $.ajax({
+        url: '../notifications/badgeuser.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('.badgeuser').html(response);
         }
     });
 }

@@ -7,7 +7,7 @@ if(isset($_POST['show'])){
     $fetch2 = $query2->fetch_array();
 ?>
 
-<li class="dropdown-header">Notifications (<?php echo $fetch2['total']?>)</li>
+<li class="dropdown-header">New Users (<?php echo $fetch2['total']?>)</li>
 <?php 
 
         $query3 = $conn->query("SELECT * FROM `users` WHERE `date_created` = '$date_today' limit 5") or die(mysqli_error());
@@ -16,10 +16,10 @@ if(isset($_POST['show'])){
 
 <li class="media">
     <a href="javascript:;">
-        <div class="media-left"><span class="fa fa-user fa-3x"></span></div>
+        <div class="media-left" style="padding-left:10px;"><span class="fa fa-user fa-3x"></span></div>
         <div class="media-body">
-            <h6 class="media-heading"> New User Created</h6>
-            <div class="text-muted f-s-11"><?php echo $fetch3['complete_name']?></div>
+            <h6 class="media-heading" > New User Created</h6>
+            <p style="padding-right:10px;"><?php echo $fetch3['complete_name']?></p>
             <div class="text-muted f-s-11"><?php echo $fetch3['time_created']?></div>
         </div>
     </a>

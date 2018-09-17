@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
     showEMTAccount();
-    notificationNewUser();
-    notificationBadgeUser();
     //add call log
     $(document).on('click', '#addnew', function(){
         if ($('#complete_name').val()=="" || $('#username').val()=="" || $('#password').val()==""){
@@ -67,33 +65,7 @@ function showEMTAccount(){
     });
 }
 
-function notificationNewUser(){
-    $.ajax({
-        url: '../notifications/newusers.php',
-        type: 'POST',
-        async: false,
-        data:{
-            show: 1
-        },
-        success: function(response){
-            $('.notificationnewuser').html(response);
-        }
-    });
-}
 
-function notificationBadgeUser(){
-    $.ajax({
-        url: '../notifications/badgeuser.php',
-        type: 'POST',
-        async: false,
-        data:{
-            show: 1
-        },
-        success: function(response){
-            $('.badgeuser').html(response);
-        }
-    });
-}
 
 
 
