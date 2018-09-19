@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
     showRefusalTreatment();
+    showAdminRefusalTreatment();
 
     $(document).on('click', '#addnew', function(){
         if ($('#signed').val()=="" || $('#witness1').val()=="" || $('#witness2').val()=="" || $('#date_incident').val()=="" || $('#statements').val()=="" || $('#attachment').val()=="" || $('#prepared_by').val()==""){
@@ -90,8 +91,24 @@ $(document).ready(function(){
 
 
 
-//show dispatch
+//show refusal
 function showRefusalTreatment(){
+    $.ajax({
+        url: 'tables/refusaltreatment.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('#refusaltreatmentTable').html(response);
+            var table = $('#refusaltreatmenttable').DataTable();
+        }
+    });
+}
+
+//show admin refusal
+function showAdminRefusalTreatment(){
     $.ajax({
         url: 'tables/refusaltreatment.php',
         type: 'POST',

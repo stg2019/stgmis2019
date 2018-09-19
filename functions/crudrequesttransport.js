@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
     showRequestTransport();
+    showAdminRequestTransport();
     //add dispatch
     $(document).on('click', '#addnew', function(){
         if ($('#date_time').val()=="" || $('#requesting_party').val()=="" || $('#contact_no').val()=="" || $('#patient_name').val()=="" || $('#address').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#medical_history').val()=="" || $('#special_considerations').val()=="" || $('#froma').val()=="" || $('#toa').val()=="" || $('#fromb').val()=="" || $('#gcs').val()=="" || $('#bp').val()=="" || $('#rr').val()=="" || $('#pr').val()=="" || $('#sat').val()=="" || $('#requesting_approval').val()=="" || $('#approval').val()==""){
@@ -152,6 +153,23 @@ $(document).ready(function(){
 
 //show dispatch
 function showRequestTransport(){
+    $.ajax({
+        url: 'tables/requesttransport.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('#requesttransportTable').html(response);
+            var table = $('#requesttransporttable').DataTable();
+        }
+    });
+}
+
+
+//show dispatch
+function showAdminRequestTransport(){
     $.ajax({
         url: 'tables/requesttransport.php',
         type: 'POST',

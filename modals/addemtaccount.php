@@ -34,7 +34,7 @@
             </div>
             <div class="modal-footer">
                 <div id="please" style="float:left;"></div>
-                <button type = "button" id="addnew" class = "btn btn-sm btn-success">Save</button>
+                <button type = "button" id="addnew" class = "btn btn-sm btn-primary">Save</button>
                 <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Close</button>
             </div>
         </div>

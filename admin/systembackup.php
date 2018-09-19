@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if !IE]><!-->
+<?php require '../require/logincheck.php'?>
 <html lang="en">
     <!--<![endif]-->
     <head>

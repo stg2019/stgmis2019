@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
     showDispatch();
+    showAdminDispatch();
     //add dispatch
     $(document).on('click', '#addnew', function(){
         if ($('#service_no').val()=="" || $('#date_time_call').val()=="" || $('#ambulance').val()=="" || $('#dispatched_for').val()=="" || $('#call_location').val()=="" || $('#moi_noi').val()=="" || $('#patients_on_scene').val()=="" || $('#on_board_tl').val()=="" || $('#ems').val()=="" || $('#driver').val()=="" || $('#care_in_progress').val()=="" || $('#mass_casualty').val()==""){
@@ -143,6 +144,21 @@ $(document).ready(function(){
 function showDispatch(){
     $.ajax({
         url: 'tables/dispatchlist.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('#dispatchTable').html(response);
+            var table = $('#dispatchtable').DataTable();
+        }
+    });
+}
+
+function showAdminDispatch(){
+    $.ajax({
+        url: 'tables/dispatchmentlist.php',
         type: 'POST',
         async: false,
         data:{

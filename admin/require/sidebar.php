@@ -20,12 +20,24 @@
             <li class="has-sub">
                 <a href="javascript:;">
                     <b class="caret"></b>
+                    <i class="fa fa-archive"></i>
+                    <span>Master File</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="dispatchmentrecord.php">Dispatchment Record</a></li>
+                    <li><a href="patientrecord.php">Patient Record</a></li>
+                    <li><a href="refusaltreatmentrecord.php">Refusal for Treatment Record</a></li>
+                    <li><a href="requesttransportrecord.php">Request for Transport Record</a></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
                     <i class="fa fa-edit"></i>
                     <span>Data Entry</span>
                 </a>
                 <ul class="sub-menu">
                     <li><a href="emtaccount.php">EMT Account</a></li>
-                    <li><a href="#">Patient Master File</a></li>
                     <li><a href="#">Medical Supplies</a></li>
                 </ul>
             </li>
@@ -36,12 +48,8 @@
                     <span>Transactions</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="#">Dispatchment</a></li>
-                    <li><a href="#">Assessment</a></li>
-                    <li><a href="#">Request for Transport</a></li>
-                    <li><a href="#">Refusal of Treatment</a></li>
-                    <li><a href="#">Daily Time Record</a></li>
                     <li><a href="inventory.php">Inventory</a></li>
+                    <li><a href="inventory.php">Medical Supplies Request</a></li>
                 </ul>
             </li>
             <li class="has-sub">

@@ -1,16 +1,7 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if !IE]><!-->
+
 <?php
-function getstatus($status){
-    if($status == '0'){
-        return "Not Active";
-    }else{
-        return "Active";
-    }
-}
-
-
+require '../require/logincheck.php';
 ?>
 <html lang="en">
     <!--<![endif]-->
