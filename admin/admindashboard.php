@@ -34,7 +34,57 @@ require '../require/logincheck.php';
             <div id="content" class="content">
                 <h1 class="page-header">Dashboard</h1>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-lg-3">
+                        <div class="widget widget-stats bg-grey-darker">
+                            <div class="stats-icon"><i class="fa fa-group"></i></div>
+                            <div class="stats-info">
+                                <h4>USERS REGISTERED</h4>
+                                <p>3,291,922</p>	
+                            </div>
+                            <div class="stats-link">
+                                <a href="patientrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="widget widget-stats bg-red">
+                            <div class="stats-icon"><i class="fa fa-male"></i></div>
+                            <div class="stats-info">
+                                <h4>PATIENTS REGISTERED</h4>
+                                <p>3,291,922</p>	
+                            </div>
+                            <div class="stats-link">
+                                <a href="patientrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="widget widget-stats bg-blue">
+                            <div class="stats-icon"><i class="fa fa-ambulance"></i></div>
+                            <div class="stats-info">
+                                <h4>TOTAL DISPATCHMENT</h4>
+                                <p>3,291,922</p>	
+                            </div>
+                            <div class="stats-link">
+                                <a href="dispatchmentrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="widget widget-stats bg-orange">
+                            <div class="stats-icon"><i class="fa fa-map-marker"></i></div>
+                            <div class="stats-info">
+                                <h4>REQUEST TRANSPORT</h4>
+                                <p>3,291,922</p>	
+                            </div>
+                            <div class="stats-link">
+                                <a href="patientrecord.php"><span class="fa fa-info-circle"></span> This Month | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <h4 class="panel-title">DISPATCHMENT FOR THE YEAR <?php echo date('Y')?></h4>
@@ -45,6 +95,8 @@ require '../require/logincheck.php';
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-3">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
