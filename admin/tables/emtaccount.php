@@ -1,5 +1,13 @@
 <?php
 require '../require/dbconnection.php';
+function getstatus($status){
+    if($status == '0'){
+        return "Not Active";
+    }else{
+        return "Active";
+    }
+}
+
 if(isset($_POST['show'])){
 ?>
 <table id="emttable" class="table table-hover table-condensed nowrap" width="100%">
@@ -24,7 +32,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['username']?></td>
             <td>********</td>
             <td><?php echo $fetch['date_created']. ' ' .$fetch['time_created']?></td>
-            <td><?php echo $fetch['status']?></td>
+            <td><?php echo getstatus($fetch['status'])?></td>
         </tr>
         <?php
     }

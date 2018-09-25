@@ -17,11 +17,14 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-file fa-fw"></i> Data Entry <b class="caret"></b>
+                        <i class="fa fa-file fa-fw"></i> Master File <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="masterlistpatient.php">Patient Master File</a></li>
-                        <li><a href="#">Medical Supplies</a></li>
+                        <li><a href="mastercalllog.php">Call Log Record</a></li>
+                        <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
+                        <li><a href="masterpatient.php">Patient Record</a></li>
+                        <li><a href="masterrefusaltreatment.php">Refusal for Treatment Record</a></li>
+                        <li><a href="masterrequesttransport.php">Request for Transport Record</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -32,9 +35,9 @@
                         <li><a href="calllogs.php">Call Logs</a></li>
                         <li><a href="dispatchment.php">Dispatchment</a></li>
                         <li><a href="assessmentlist.php">Assessment</a></li>
-                        <li><a href="requesttransport.php">Request for Transport</a></li>
                         <li><a href="refusaltreatment.php">Refusal of Treatment</a></li>
-                        <li><a href="responsivemap.php">Inventory</a></li>
+                        <li><a href="requesttransport.php">Request for Transport</a></li>
+                        <li><a href="inventory.php">Inventory</a></li>
                     </ul>
                 </li>
 

@@ -26,7 +26,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['address']?></td>
             <td>
                 <a href="editrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></a>
-                <a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-white">View</a>
+                <!--<a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-white">View</a> -->
             </td>
         </tr>
         <?php

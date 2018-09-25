@@ -38,7 +38,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="emtaccount.php">EMT Account</a></li>
-                    <li><a href="#">Medical Supplies</a></li>
+                    <li><a href="medicalsupplies.php">Medical Supplies</a></li>
                 </ul>
             </li>
             <li class="has-sub">

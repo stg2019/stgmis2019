@@ -87,6 +87,12 @@ require '../require/logincheck.php';
                                             <input type="text" id="" class="form-control"/>
                                         </div>
                                     </div>
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-2 col-form-label">Confirm Password</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="" class="form-control"/>
+                                        </div>
+                                    </div>
                                     <hr>
                                     <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="addnew" class="btn btn-sm btn-primary m-r-5">Save Changes</button>
                                     <a href="dispatchment.php" class="btn btn-sm btn-white">Back</a>

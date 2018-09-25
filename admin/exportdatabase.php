@@ -10,6 +10,7 @@ require '../require/logincheck.php';
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
+
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
         <link href="../assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -22,9 +23,8 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
         <script src="../assets/plugins/pace/pace.min.js"></script>
-        <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script src="../assets/js/jquery.canvasjs.min.js"></script>
-        <?php require '../assets/js/loadchart/dispatchment.php'?>
+        <link href="../assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -32,56 +32,55 @@ require '../require/logincheck.php';
             <?php require 'require/header.php'?>
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
-                <h1 class="page-header">Dashboard</h1>
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#">Data Entry</a></li>
+                    <li class="active">EMT account</li>
+                </ol>
+                <h1 class="page-header"><a href="#" class="btn btn-sm btn-primary" id="export">Export Database</a>
+                    <a href="#" class="btn btn-sm btn-primary" id="import">Import Database</a>
+                </h1>
+                <div id="alert" class="alert alert-info" style="display:none;">
+                    <center><span id="alerttext"></span></center>
+                </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">DISPATCHMENT FOR THE YEAR <?php echo date('Y')?></h4>
+                                <h4 class="panel-title">List of EMT Accounts</h4>
                             </div>
-
                             <div class="panel-body">
-                                <div id="chartContainer1" style="width: 100%; height: 400px"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-primary" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">DISPATCHMENT FOR THE YEAR <?php echo date('Y')?></h4>
-                            </div>
-
-                            <div class="panel-body">
-                                <div id="chartContainer2" style="width: 100%; height: 400px"></div>
+                                <div id="emtTable"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+
             <?php require '../require/sidepanel.php'?>
+            <?php require '../modals/addemtaccount.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
+
+        <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../functions/crudemtaccount.js"></script>
         <script type="text/javascript" src="../functions/shownotifications.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
-        <script src="../assets/plugins/gritter/js/jquery.gritter.js"></script>
-        <script src="../assets/plugins/flot/jquery.flot.min.js"></script>
-        <script src="../assets/plugins/flot/jquery.flot.time.min.js"></script>
-        <script src="../assets/plugins/flot/jquery.flot.resize.min.js"></script>
-        <script src="../assets/plugins/flot/jquery.flot.pie.min.js"></script>
-        <script src="../assets/plugins/sparkline/jquery.sparkline.js"></script>
-        <script src="../assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-        <script src="../assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-        <script src="../assets/js/dashboard.min.js"></script>
+        <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+        <script src="../assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+        <script src="../assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../assets/js/table-manage-default.demo.min.js"></script>
         <script src="../assets/js/apps.min.js"></script>
         <script>
             $(document).ready(function() {
                 App.init();
+                FormPlugins.init();
+                TableManageDefault.init();
             });
         </script>
         <script>
@@ -94,5 +93,6 @@ require '../require/logincheck.php';
             ga('send', 'pageview');
 
         </script>
+
     </body>
 </html>

@@ -22,7 +22,6 @@ require 'require/logincheck.php';
         <link href="assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
         <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
-        <link href="assets/css/invoice-print.min.css" rel="stylesheet" />
         <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <link href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
@@ -35,8 +34,9 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li class="active">Master List of Patients</li>
+                    <li class="active">Patient Record</li>
                 </ol>
+                <h1 class="page-header">Patient Record</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-info" >
@@ -44,7 +44,40 @@ require 'require/logincheck.php';
                                 <h4 class="panel-title">Master List of Patients</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="masterlistpatientTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient Name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Date of Birth</th>
+                                            <th>Contact Number</th>
+                                            <th>Home Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `patient`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['patient_name']?></td>
+                                            <td><?php echo $fetch['age']?></td>
+                                            <td><?php echo $fetch['gender']?></td>
+                                            <td><?php echo $fetch['date_of_birth']?></td>
+                                            <td><?php echo $fetch['contact_no']?></td>
+                                            <td><?php echo $fetch['home_address']?></td>
+                                            <td>
+                                                <a href="editdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-success">View</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -56,7 +89,6 @@ require 'require/logincheck.php';
 
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/crudmasterlistpatient.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>

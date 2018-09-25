@@ -78,7 +78,7 @@ $(document).ready(function(){
 //show dispatch
 function showEMTAccount(){
     $.ajax({
-        url: '../tables/emtaccount.php',
+        url: 'tables/emtaccount.php',
         type: 'POST',
         async: false,
         data:{

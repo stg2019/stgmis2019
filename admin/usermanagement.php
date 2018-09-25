@@ -9,8 +9,6 @@ function getstatus($status){
         return "Active";
     }
 }
-
-
 ?>
 <html lang="en">
     <!--<![endif]-->

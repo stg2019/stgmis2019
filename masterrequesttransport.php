@@ -22,7 +22,6 @@ require 'require/logincheck.php';
         <link href="assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
         <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
-        <link href="assets/css/invoice-print.min.css" rel="stylesheet" />
         <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <link href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
@@ -35,23 +34,48 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="#">Transactions</a></li>
-                    <li class="active">Request for Transport</li>
+                    <li class="active">Request of Transport Record</li>
                 </ol>
-
-
-                <h1 class="page-header"><a href="#addrequesttransport" class="btn btn-sm btn-success" data-toggle="modal">New Request</a></h1>
-                <div id="alert" class="alert alert-success" style="display:none;">
-                    <center><span id="alerttext"></span></center>
-                </div>
+                <h1 class="page-header">Request of Transport Record</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">Request for Transport</h4>
+                                <h4 class="panel-title">Master List of Patients</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="requesttransportTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed nowrap" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Date and Time</th>
+                                            <th>Requesting Party</th>
+                                            <th>Contact Number</th>
+                                            <th>Patient Name</th>
+                                            <th>Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `request_transport`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['date_time']?></td>
+                                            <td><?php echo $fetch['requesting_party']?></td>
+                                            <td><?php echo $fetch['contact_no']?></td>
+                                            <td><?php echo $fetch['patient_name']?></td>
+                                            <td><?php echo $fetch['address']?></td>
+                                            <td>
+                                                <a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-success">View</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -59,12 +83,10 @@ require 'require/logincheck.php';
             </div>
             <?php require 'require/sidepanel.php'?>
 
-            <?php require 'modals/addrequesttransport.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/crudrequesttransport.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -92,6 +114,7 @@ require 'require/logincheck.php';
         <script src="assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
         <script src="assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
         <script src="assets/js/table-manage-default.demo.min.js"></script>
+
         <script src="assets/js/form-plugins.demo.min.js"></script>
         <script src="assets/js/apps.min.js"></script>
         <script>
@@ -110,11 +133,6 @@ require 'require/logincheck.php';
             ga('create', 'UA-53034621-1', 'auto');
             ga('send', 'pageview');
 
-        </script>
-        <script>
-            var placesAutocomplete = places({
-                container: document.querySelector('#address')
-            });
         </script>
     </body>
 </html>
