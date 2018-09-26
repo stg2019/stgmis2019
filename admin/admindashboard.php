@@ -35,7 +35,7 @@ require '../require/logincheck.php';
                 <h1 class="page-header">Dashboard</h1>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="widget widget-stats bg-grey-darker">
+                        <div class="widget widget-stats bg-green">
                             <div class="stats-icon"><i class="fa fa-group"></i></div>
                             <div class="stats-info">
                                 <h4>USERS REGISTERED</h4>

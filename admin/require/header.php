@@ -57,8 +57,34 @@
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <?php
-                    $query2 = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `date_created` = '$date_today'") or die(mysqli_error());
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `date_created` = '$date_today'") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
+                    date_default_timezone_set('Asia/Manila');
+                    $time=date('g:i a');
+                    $currentTime = $fetch2['date_created'];
+                    $toTime = strtotime($currentTime);
+
+                    //And the time the notification was set
+                    $fromTime = strtotime($time);
+
+                    //Now calc the difference between the two
+                    $timeDiff = floor(abs($toTime - $fromTime) / 60);
+
+                    //Now we need find out whether or not the time difference needs to be in
+                    //minutes, hours, or days
+                    if ($timeDiff < 2) {
+                        $timeDiff = "Just now";
+                    } elseif ($timeDiff > 2 && $timeDiff < 60) {
+                        $timeDiff = floor(abs($timeDiff)) . " minutes ago";
+                    } elseif ($timeDiff > 60 && $timeDiff < 120) {
+                        $timeDiff = floor(abs($timeDiff / 60)) . " hour ago";
+                    } elseif ($timeDiff < 1440) {
+                        $timeDiff = floor(abs($timeDiff / 60)) . " hours ago";
+                    } elseif ($timeDiff > 1440 && $timeDiff < 2880) {
+                        $timeDiff = floor(abs($timeDiff / 1440)) . " day ago";
+                    } elseif ($timeDiff > 2880) {
+                        $timeDiff = floor(abs($timeDiff / 1440)) . " days ago";
+                    }
                     ?>
                     <i class="fa fa-ambulance"></i>
                     <span class="label"><?php echo $fetch2['total']?></span>
@@ -76,7 +102,7 @@
                             <div class="media-body">
                                 <h6 class="media-heading"><?php echo $fetch3['dispatched_for']?></h6>
                                 <p><?php echo $fetch3['call_location']?></p>
-                                <div class="text-muted f-s-11"><?php echo $fetch3['ambulance']. '|' .$fetch3['date_time_call']?></div>
+                                <div class="text-muted f-s-11"><?php echo $timeDiff?></div>
                             </div>
                         </a>
                     </li>
@@ -89,21 +115,23 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <?php
-                date_default_timezone_set('Asia/Manila');
-                $date_today = date('F j, Y');
-                $query2 = $conn->query("SELECT COUNT(*) as total FROM `users` WHERE `date_created` = '$date_today'") or die(mysqli_error());
-                $fetch2 = $query2->fetch_array();
-                ?>
-                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-                    <i class="fa fa-group"></i>
-                    <div class="badgeuser"></div>
-                </a>
-                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <div class="notificationnewuser"></div>
-                </ul>
-            </li>
+            <!--
+<li class="dropdown">
+<?php
+date_default_timezone_set('Asia/Manila');
+$date_today = date('F j, Y');
+$query2 = $conn->query("SELECT COUNT(*) as total FROM `users` WHERE `date_created` = '$date_today'") or die(mysqli_error());
+$fetch2 = $query2->fetch_array();
+?>
+<a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+<i class="fa fa-group"></i>
+<div class="badgeuser"></div>
+</a>
+<ul class="dropdown-menu media-list pull-right animated fadeInDown">
+<div class="notificationnewuser"></div>
+</ul>
+</li>
+-->
             <li class="dropdown navbar-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="../assets/img/ndrrmo/logo.png" alt="" /> 

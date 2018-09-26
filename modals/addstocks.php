@@ -15,35 +15,24 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >Name of Supplier</label>
-                                <select class="form-control selectpicker input-sm" data-style="btn-white" id="ambulance" name="ambulance">
-                                    <option value="" selected disabled>Select Option</option>
-                                    <option value="Puregold">Puregold</option>
-                                    <option value="SM">SM</option>
-                                    <option value="Banago">Banago</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label >Name of Medical Supply</label>
-                                <select class="form-control selectpicker input-sm" data-style="btn-white" id="ambulance" name="ambulance">
-                                    <option value="" selected disabled>Select Option</option>
-                                    <option value="Puregold">Puregold</option>
-                                    <option value="SM">SM</option>
-                                    <option value="Banago">Banago</option>
+                                <label >Medical Supply Name</label>
+                                <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
+                                    <option value="#" disabled>Select</option>
+                                    <?php
+                                    require 'require/dbconnection.php';
+                                    $query = $conn->query("SELECT * FROM `medical_supply_stocks`") or die(mysqli_error());
+
+                                    while($fetch = $query->fetch_array()){
+                                    ?>
+                                    <option value="<?php echo $fetch['medical_supply_name'];?>"><?php echo $fetch['medical_supply_name']?></option>
+                                    <?php
+                                    }
+                                    ?> 
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label >Number of Stocks</label>
-                                <input type="text" class="form-control input-sm" id="moi_noi" name="moi_noi" placeholder="Enter MOI/NOI" required/>
-                            </div>
-                            <div class="form-group ">
-                                <label >Date and Time Added</label>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" id="date_time_call" name="date_time_call" class="form-control" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
+                                <input type="text" class="form-control input-sm" id="number_of_stocks" name="number_of_stocks" placeholder="Enter Number of Stocks" required/>
                             </div>
                         </div>
                     </div>
@@ -51,6 +40,7 @@
                 <!-- end panel -->
             </div>
             <div class="modal-footer">
+                <div id="please" style="float:left;"></div>
                 <button type = "button" id="addnew" class = "btn btn-sm btn-success">Save</button>
                 <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Close</button>
             </div>

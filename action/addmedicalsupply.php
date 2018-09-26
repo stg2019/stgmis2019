@@ -8,7 +8,7 @@ if(isset($_POST['add'])){
     $date_created=date("F j, Y");
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `medical_supply_stocks` VALUES('', '$admin_id', '$medical_supply_name', '$medical_supply_description', '$supplier', '$date_created')") or die(mysqli_error());
+    $conn->query("INSERT INTO `medical_supply_stocks` VALUES('', '$admin_id', '$medical_supply_name', '$medical_supply_description', '$supplier', '0', 'Reorder', '$date_created')") or die(mysqli_error());
     $conn->close();
 }
 ?>
