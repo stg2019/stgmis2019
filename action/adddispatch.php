@@ -15,7 +15,7 @@ if(isset($_POST['add'])){
     $care_in_progress = $_POST['care_in_progress'];
     $mass_casualty = $_POST['mass_casualty'];
     date_default_timezone_set('Asia/Manila');
-    $date_created=date("F j, Y");
+    $date_created=date("F j, Y g:i a");
     $month = date("M", strtotime("+8 HOURS"));
     $year = date("Y", strtotime("+8 HOURS"));
 

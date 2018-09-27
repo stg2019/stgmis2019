@@ -6,7 +6,7 @@ require '../require/logincheck.php';
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/ndrrmo/logo.png">
-        <title>DRRMO | Bacolod City</title>
+        <title>DRRMO MIS | Bacolod City</title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />

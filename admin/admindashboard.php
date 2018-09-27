@@ -36,10 +36,14 @@ require '../require/logincheck.php';
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-green">
+                            <?php 
+    $query = $conn->query("SELECT count(*) as total FROM `users`") or die(mysqli_error());
+        $fetch = $query->fetch_array();
+                            ?>
                             <div class="stats-icon"><i class="fa fa-group"></i></div>
                             <div class="stats-info">
                                 <h4>USERS REGISTERED</h4>
-                                <p>3,291,922</p>	
+                                <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
                                 <a href="patientrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -48,10 +52,14 @@ require '../require/logincheck.php';
                     </div>
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-red">
+                            <?php 
+    $query = $conn->query("SELECT count(*) as total FROM `patient`") or die(mysqli_error());
+                                    $fetch = $query->fetch_array();
+                            ?>
                             <div class="stats-icon"><i class="fa fa-male"></i></div>
                             <div class="stats-info">
                                 <h4>PATIENTS REGISTERED</h4>
-                                <p>3,291,922</p>	
+                                <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
                                 <a href="patientrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -60,10 +68,14 @@ require '../require/logincheck.php';
                     </div>
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-blue">
+                            <?php 
+    $query = $conn->query("SELECT count(*) as total FROM `dispatch`") or die(mysqli_error());
+                                    $fetch = $query->fetch_array();
+                            ?>
                             <div class="stats-icon"><i class="fa fa-ambulance"></i></div>
                             <div class="stats-info">
                                 <h4>TOTAL DISPATCHMENT</h4>
-                                <p>3,291,922</p>	
+                                <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
                                 <a href="dispatchmentrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>

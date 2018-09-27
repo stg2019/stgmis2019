@@ -57,34 +57,14 @@
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <?php
-                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `date_created` = '$date_today'") or die(mysqli_error());
+
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch`") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
-                    date_default_timezone_set('Asia/Manila');
-                    $time=date('g:i a');
-                    $currentTime = $fetch2['date_created'];
-                    $toTime = strtotime($currentTime);
 
-                    //And the time the notification was set
-                    $fromTime = strtotime($time);
 
-                    //Now calc the difference between the two
-                    $timeDiff = floor(abs($toTime - $fromTime) / 60);
 
-                    //Now we need find out whether or not the time difference needs to be in
-                    //minutes, hours, or days
-                    if ($timeDiff < 2) {
-                        $timeDiff = "Just now";
-                    } elseif ($timeDiff > 2 && $timeDiff < 60) {
-                        $timeDiff = floor(abs($timeDiff)) . " minutes ago";
-                    } elseif ($timeDiff > 60 && $timeDiff < 120) {
-                        $timeDiff = floor(abs($timeDiff / 60)) . " hour ago";
-                    } elseif ($timeDiff < 1440) {
-                        $timeDiff = floor(abs($timeDiff / 60)) . " hours ago";
-                    } elseif ($timeDiff > 1440 && $timeDiff < 2880) {
-                        $timeDiff = floor(abs($timeDiff / 1440)) . " day ago";
-                    } elseif ($timeDiff > 2880) {
-                        $timeDiff = floor(abs($timeDiff / 1440)) . " days ago";
-                    }
+                    //echo $timestamp. '<br>';
+                    //echo $new_date_format;
                     ?>
                     <i class="fa fa-ambulance"></i>
                     <span class="label"><?php echo $fetch2['total']?></span>
@@ -92,8 +72,12 @@
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
                     <li class="dropdown-header">Dispatchment (<?php echo $fetch2['total']?>)</li>
                     <?php 
-    $query3 = $conn->query("SELECT * FROM `dispatch` where `date_created` = '$date_today' limit 5") or die(mysqli_error());
+    $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){
+                            date_default_timezone_set("Asia/Manila");     
+                            $date_created = $fetch3['date_created'];
+                            $timestamp = strtotime($date_created);
+                            $new_date_format = date('Y-m-d g:i:s a', $timestamp);
                     ?>
 
                     <li class="media">
@@ -102,7 +86,7 @@
                             <div class="media-body">
                                 <h6 class="media-heading"><?php echo $fetch3['dispatched_for']?></h6>
                                 <p><?php echo $fetch3['call_location']?></p>
-                                <div class="text-muted f-s-11"><?php echo $timeDiff?></div>
+                                <div class="text-muted f-s-11"><?php echo time_ago_in_php($new_date_format);?></div>
                             </div>
                         </a>
                     </li>
@@ -111,7 +95,7 @@
 
                     ?>
                     <li class="dropdown-footer text-center">
-                        <a href="javascript:;">View more</a>
+                        <a href="notificationsdispatchment.php">View more</a>
                     </li>
                 </ul>
             </li>
@@ -175,3 +159,87 @@ $fetch2 = $query2->fetch_array();
         </div>
     </div>
 </div>
+
+
+
+
+<?php
+    function time_ago_in_php($timestamp){
+    date_default_timezone_set("Asia/Manila");         
+    $time_ago        = strtotime($timestamp);
+    $current_time    = time();
+    $time_difference = $current_time - $time_ago;
+    $seconds         = $time_difference;
+
+    $minutes = round($seconds / 60); // value 60 is seconds  
+    $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+    $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+    $weeks   = round($seconds / 604800); // 7*24*60*60;  
+    $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+    $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+    if ($seconds <= 60){
+
+        return "Just Now";
+
+    } else if ($minutes <= 60){
+        if ($minutes == 1){
+
+            return "one minute ago";
+
+        } else {
+            return "$minutes minutes ago";
+        }
+    } else if ($hours <= 24){
+
+        if ($hours == 1){
+
+            return "an hour ago";
+
+        } else {
+
+            return "$hours hours ago";
+
+        }
+
+    } else if ($days <= 7){
+        if ($days == 1){
+
+            return "yesterday";
+
+        } else {
+            return "$days days ago";
+        }
+    } else if ($weeks <= 4.3){
+
+        if ($weeks == 1){
+
+            return "a week ago";
+
+        } else {
+
+            return "$weeks weeks ago";
+
+        }
+
+    } else if ($months <= 12){
+        if ($months == 1){
+
+            return "a month ago";
+
+        } else {
+            return "$months months ago";
+        }
+    } else {
+
+        if ($years == 1){
+
+            return "one year ago";
+
+        } else {
+
+            return "$years years ago";
+
+        }
+    }
+}
+?>
