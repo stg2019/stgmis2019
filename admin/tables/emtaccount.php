@@ -23,7 +23,7 @@ if(isset($_POST['show'])){
     </thead>
     <tbody>
         <?php
-    $query = $conn->query("select * from `users` order by `user_id` DESC") or die(mysqli_error());
+    $query = $conn->query("select * from `users` where `user_role` = 'EMT' order by `user_id` DESC") or die(mysqli_error());
     while($fetch = $query->fetch_array()){
         ?>                                      
         <tr>

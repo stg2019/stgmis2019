@@ -1,7 +1,7 @@
 <?php require '../chartqueries/monthlydispatchment.php'?>
 <script type="text/javascript"> 
     $(document).ready(function(){ 
-    var chart1 = new CanvasJS.Chart("chartContainer1",{
+        var chart1 = new CanvasJS.Chart("chartContainer1",{
             theme: "light2",
             zoomEnabled: true,
             zoomType: "x",
@@ -46,6 +46,7 @@
             axisX: {	
                 interval: 1,
                 labelFontColor: "black",
+                labelFontSize:8,
             },
             axisY: { 
                 title: "Total Count", 
@@ -58,8 +59,8 @@
                     showInLegend: true, 
                     legendText: "Number of Dispatchment",
                     name: "Number of Dispatchment",
-                //    markerType: "cross",
-                // color: "#0173c4",
+                    //    markerType: "cross",
+                    // color: "#0173c4",
                     dataPoints: [ 
                         { label: "January", y: <?php echo $fjan['total']?> },
                          { label: "February", y: <?php echo $ffeb['total']?> },
@@ -76,25 +77,25 @@
                     ] 
                 }
             ] 
-    });
-    var chart2 = new CanvasJS.Chart("chartContainer2",{
-        title :{
-    	text: "Live Data"
-        },
-        data: [{
-    	type: "column",
-    	dataPoints : [
-    	    { label: "apple",  y: 10  },
-    	    { label: "orange", y: 15  },
-    	    { label: "banana", y: 25  },
-    	    { label: "mango",  y: 30  },
-    	    { label: "grape",  y: 28  }
-    	]
-        }]
-    });
-     
-    chart1.render();
-    chart2.render();
+        });
+        //  var chart2 = new CanvasJS.Chart("chartContainer2",{
+        //      title :{
+        //  	text: "Live Data"
+        //      },
+        //       data: [{
+        //  	type: "column",
+        //  	dataPoints : [
+        //  	    { label: "apple",  y: 10  },
+        //  	    { label: "orange", y: 15  },
+        //  	    { label: "banana", y: 25  },
+        // 	    { label: "mango",  y: 30  },
+        //  	    { label: "grape",  y: 28  }
+        //  	]
+        //      }]
+        //  });
+
+        chart1.render();
+        //    chart2.render();
 
 
 

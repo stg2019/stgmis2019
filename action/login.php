@@ -286,7 +286,15 @@ if(ISSET($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = $conn->query("SELECT * FROM `users` WHERE BINARY `username` = '$username' && BINARY `password` = '$password' && `status` = 1") or die(mysqli_error());
+
+    $user = mysqli_real_escape_string($conn,$username);
+    $pass1 = mysqli_real_escape_string($conn,$password);
+
+    $pass = sha1($pass1);
+    $salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
+    $pass = $salt.$pass;
+
+    $query = $conn->query("SELECT * FROM `users` WHERE BINARY `username` = '$user' && BINARY `password` = '$pass' && `status` = 1") or die(mysqli_error());
     $fetch = $query->fetch_array();
     $valid = $query->num_rows;
     $user_role = $fetch['user_role'];
@@ -294,7 +302,7 @@ if(ISSET($_POST['login'])){
 
 
     if($valid > 0){
-        if ($user_role == 'Team Leader') {
+        if ($user_role == 'EMT') {
             $_SESSION['user_id'] = $fetch['user_id'];
             echo '<meta http-equiv="refresh" content="2;url=../dashboard.php">';
             //echo '<i>Logging in...</i>';
