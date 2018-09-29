@@ -46,7 +46,6 @@
             axisX: {	
                 interval: 1,
                 labelFontColor: "black",
-                labelFontSize:8,
             },
             axisY: { 
                 title: "Total Count", 
@@ -78,27 +77,124 @@
                 }
             ] 
         });
-        //  var chart2 = new CanvasJS.Chart("chartContainer2",{
-        //      title :{
-        //  	text: "Live Data"
-        //      },
-        //       data: [{
-        //  	type: "column",
-        //  	dataPoints : [
-        //  	    { label: "apple",  y: 10  },
-        //  	    { label: "orange", y: 15  },
-        //  	    { label: "banana", y: 25  },
-        // 	    { label: "mango",  y: 30  },
-        //  	    { label: "grape",  y: 28  }
-        //  	]
-        //      }]
-        //  });
+        CanvasJS.addColorSet("customColorSet", [ 
+            "#393f63",
+            "#e5d8B0", 
+            "#ffb367", 
+            "#f98461", 
+            "#d9695f",
+            "#e05850",
+            "#7E8F74",
+        ]);
+        var chart2 = new CanvasJS.Chart("chartContainer2",{
+            theme: "light2",
+            zoomEnabled: true,
+            zoomType: "x",
+            panEnabled: true,
+            animationEnabled: true,
+            animationDuration: 1000,
+            colorSet: "customColorSet",
+            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportEnabled: true,
+            toolTip: {
+                shared: true  
+            },
+            title: { 
+                text: "Medical Supplies Current Stocks",
+                fontSize: 12
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    } else {
+                        e.dataSeries.visible = true;
+                    }
+                    e.chart.render();
+                },
+                itemmouseover: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
+                    e.chart.render();
+                },
+                itemmouseout: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
+                    e.chart.render();
+                }
+            },
+            data: [ 
+                { 
+                    type: "doughnut", 
+                    //showInLegend: true, 
+                    toolTipContent: "{label} <br/> {y}", 
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f1['medical_supply_name']?>",
+                    //name: "Total Patients this year",
+                    dataPoints: <?php echo json_encode($data_points); ?>
+                }
+                    ] 
+                });
+                var chart3 = new CanvasJS.Chart("chartContainer3",{
+                theme: "light2",
+                zoomEnabled: true,
+                zoomType: "x",
+                panEnabled: true,
+                animationEnabled: true,
+                animationDuration: 1000,
+                colorSet: "customColorSet",
+                exportFileName: "Monthly Dispatchment - BDRRMO", 
+                exportEnabled: true,
+                toolTip: {
+                shared: true  
+                },
+                title: { 
+                text: "Bacolod Disaster Risk Reduction Management Office",
+                fontSize: 11
+                },
+                subtitles:[
+                {
+                text: "Top Emergency Cases <?php echo $year?>"
+                }
+            ],
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    } else {
+                        e.dataSeries.visible = true;
+                    }
+                    e.chart.render();
+                },
+                itemmouseover: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
+                    e.chart.render();
+                },
+                itemmouseout: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
+                    e.chart.render();
+                }
+            },
+            data: [ 
+                { 
+                    type: "doughnut", 
+                    //showInLegend: true, 
+                    toolTipContent: "{label} <br/> {y}", 
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
+                    //name: "Total Patients this year",
+                    dataPoints: <?php echo json_encode($data_points2); ?>
+                }
+                    ] 
+                });
 
-        chart1.render();
-        //    chart2.render();
-
-
-
-    });
+                chart1.render();
+                chart2.render();
+                chart3.render();
+                });
 
 </script>

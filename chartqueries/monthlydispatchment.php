@@ -1,3 +1,4 @@
+<!-- Monthly Dispatchment -->
 <?php
 $year = date('Y');
 
@@ -26,4 +27,35 @@ $qnov = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = '
 $fnov = $qnov->fetch_array();
 $qdec = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = 'Dec' && `year` = '$year'") or die(mysqli_error());
 $fdec = $qdec->fetch_array();
+?>
+
+<!-- Medical Supplies Balance -->
+<?php
+$res = $conn->query("SELECT * FROM `medical_supply_stocks` GROUP BY medical_supply_name") or die(mysqli_error());
+$data_points = array();
+while($result = $res->fetch_array()){
+    $R = $result['medical_supply_name'];
+    $q1 = $conn->query("SELECT * FROM `medical_supply_stocks` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
+    $f1 = $q1->fetch_array();
+    $FR = intval($f1['running_balance']);
+    $point = array('label' => $R, 'y' => $FR);
+    array_push($data_points, $point);
+}
+json_encode($data_points);
+?>
+
+
+<!-- Top 5 Emergency Cases -->
+<?php
+$res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 5") or die(mysqli_error());
+$data_points2 = array();
+while($result2 = $res2->fetch_array()){
+    $R2 = $result2['dispatched_for'];
+    $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+    $f2 = $q2->fetch_array();
+    $FR2 = intval($f2['total']);
+    $point2 = array('label' => $R2, 'y' => $FR2);
+    array_push($data_points2, $point2);
+}
+json_encode($data_points2);
 ?>
