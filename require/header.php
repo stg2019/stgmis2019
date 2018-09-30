@@ -23,8 +23,8 @@
                         <li><a href="mastercalllog.php">Call Log Record</a></li>
                         <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
                         <li><a href="masterpatient.php">Patient Record</a></li>
-                        <li><a href="masterrefusaltreatment.php">Refusal for Treatment Record</a></li>
-                        <li><a href="masterrequesttransport.php">Request for Transport Record</a></li>
+                        <li><a href="masterrefusaltreatment.php">Refusal of Treatment Record</a></li>
+                        <li><a href="masterrequesttransport.php">Request of Transport Record</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -36,7 +36,7 @@
                         <li><a href="dispatchment.php">Dispatchment</a></li>
                         <li><a href="assessmentlist.php">Assessment</a></li>
                         <li><a href="refusaltreatment.php">Refusal of Treatment</a></li>
-                        <li><a href="requesttransport.php">Request for Transport</a></li>
+                        <li><a href="requesttransport.php">Request of Transport</a></li>
                         <li><a href="inventory.php">Inventory</a></li>
                     </ul>
                 </li>
@@ -111,7 +111,7 @@
             <li class="dropdown navbar-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="assets/img/ndrrmo/logo.png" alt="" /> 
-                    <span class="hidden-xs"><?php echo $find['username']?></span> <b class="caret"></b>
+                    <span class="hidden-xs"><?php echo $find['complete_name']?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInDown">
                     <li class="arrow"></li>

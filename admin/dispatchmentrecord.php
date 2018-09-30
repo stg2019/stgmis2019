@@ -36,6 +36,7 @@ require '../require/logincheck.php';
                     <li><a href="#">Master File</a></li>
                     <li class="active">Dispatchment Record</li>
                 </ol>
+                <h1 class="page-header">Dispatchment</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -46,7 +47,38 @@ require '../require/logincheck.php';
                                 <h4 class="panel-title">List of Dispatchment</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="dispatchTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Service Number</th>
+                                            <th>Date and Time</th>
+                                            <th>Dispatched For</th>
+                                            <th>Driver</th>
+                                            <th>Call Location</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `dispatch`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['service_no']?></td>
+                                            <td><?php echo $fetch['date_time_call']?></td>
+                                            <td><?php echo $fetch['dispatched_for']?></td>
+                                            <td><?php echo $fetch['driver']?></td>
+                                            <td><?php echo $fetch['call_location']?></td>
+                                            <td>
+                                                <a href="masterdispatchment.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-primary">Overview</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -58,7 +90,6 @@ require '../require/logincheck.php';
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../functions/cruddispatch.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>

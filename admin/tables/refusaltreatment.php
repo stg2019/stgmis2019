@@ -2,7 +2,7 @@
 require '../require/dbconnection.php';
 if(isset($_POST['show'])){
 ?>
-<table id="refusaltreatmenttable" class="table table-hover table-condensed nowrap" width="100%">
+<table id="refusaltreatmenttable" class="table table-hover table-condensed" width="100%">
     <thead>
         <tr>
             <th>Date of Incident</th>

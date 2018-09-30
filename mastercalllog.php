@@ -34,19 +34,19 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Master File</a></li>
-                    <li class="active">Dispachment Record</li>
+                    <li class="active">Call Log Record</li>
                 </ol>
 
 
-                <h1 class="page-header">Dispatchment Record</h1>
+                <h1 class="page-header">Call Log Record</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Calls</h4>
                             </div>
                             <div class="panel-body">
-                                <table id="data-table" class="table table-hover table-condensed nowrap" width="100%">
+                                <table id="data-table" class="table table-hover table-condensed" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Call ID</th>
@@ -71,7 +71,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['caller_name']?></td>
                                             <td><?php echo $fetch['contact_no']?></td>
                                             <td>
-                                                <a href="editcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-success">View</a>
+                                                <a href="overviewcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-success">Overview</a>
                                             </td>
                                         </tr>
                                         <?php

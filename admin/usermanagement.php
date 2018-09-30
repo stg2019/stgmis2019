@@ -90,7 +90,6 @@ function getstatus($status){
                     <div class="row">
                         <div class="panel panel-info" >
                             <div class="panel-body">
-
                                 <table id="" class="table table-hover table-condensed nowrap dataTables-wrapper">
                                     <thead>
                                         <tr>

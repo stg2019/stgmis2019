@@ -67,7 +67,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['witness1']?></td>
                                             <td><?php echo $fetch['witness2']?></td>
                                             <td><?php echo $fetch['prepared_by']?></td>
-                                            <td><a href="editrefusaltreatment.php?refusal_treatment_id=<?php echo $fetch['refusal_treatment_id']?>" class="btn btn-sm btn-success">View</a></td>
+                                            <td><a href="overviewrefusal.php?refusal_treatment_id=<?php echo $fetch['refusal_treatment_id']?>" class="btn btn-sm btn-success">Overview</a></td>
 
                                         </tr>
                                         <?php

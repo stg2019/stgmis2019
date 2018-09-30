@@ -26,57 +26,7 @@ require '../require/logincheck.php';
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
         <?php require '../assets/js/loadchart/dispatchment.php'?>
-        <script>
-            var geocoder = new google.maps.Geocoder();
-            function codeAddress() {
-                var street = document.getElementById("route").value;
-                var city = document.getElementById("locality").value;
-                var state = document.getElementById("administrative_area_level_1").value;
-                var postcode = document.getElementById("postal_code").value;
-                var country = document.getElementById("country").value;
-                var address = street +"," + city + "," + state +"," + postcode + "," + country;    
-                geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
-                        if (marker && marker.setPosition) {
-                            marker.setPosition(results[0].geometry.location);
-                        } else {
-                            marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location
-                            });
-                        }
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            }
-
-            window.onload = codeAddress; // everyload dive in database of google map find the address
-            // global variables
-            var marker;
-            var map;
-            function initialize() {
-
-                var mapOptions = {
-                    center: new google.maps.LatLng(10.6676534, 122.9445116),
-                    zoom: 15,
-                    mapTypeId: google.maps.MapTypeId.HYBRID,
-                    gestureHandling: 'greedy',
-                    mapTypeControl: true,
-                    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
-                }
-                map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-                // To add the marker to the map, use the 'map' property
-                marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title:"Hello World!"
-                });
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
+        <script src="../assets/js/geocode.js"></script>
         <style>
             #map-canvas {
                 height: 300px;
@@ -142,10 +92,14 @@ require '../require/logincheck.php';
                     </div>
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-orange">
+                            <?php 
+    $query = $conn->query("SELECT count(*) as total FROM `request_transport`") or die(mysqli_error());
+                                    $fetch = $query->fetch_array();
+                            ?>
                             <div class="stats-icon"><i class="fa fa-map-marker"></i></div>
                             <div class="stats-info">
                                 <h4>REQUEST TRANSPORT</h4>
-                                <p>3,291,922</p>	
+                                <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
                                 <a href="patientrecord.php"><span class="fa fa-info-circle"></span> This Month | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -154,6 +108,13 @@ require '../require/logincheck.php';
                     </div>
                 </div>
                 <div class="row">
+                    <?php
+    date_default_timezone_set('Asia/Manila');
+                                    $date_created=date("F j, Y g:i a");
+                                    $month = date("M");
+                                    $year = date("Y");
+echo $month;
+                    ?>
                     <div class="col-md-12">
                         <div class="panel panel-inverse" >
                             <div class="panel-heading ">
@@ -289,7 +250,7 @@ require '../require/logincheck.php';
                                 $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
                                 ?>
-                                <h4 class="panel-title">LATEST DISPATCHMENT - <?php echo $fetch['date_time_call']?></h4>
+                                <h4 class="panel-title">LATEST DISPATCHMENT - <?php echo $fetch['call_location']?></h4>
                             </div>
                             <div class="panel-body">
 

@@ -33,8 +33,9 @@ require 'require/logincheck.php';
             <?php require 'require/header.php'?>
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
-                    <li><a href="dashboard.php">Dashboard</a></li>
-                    <li class="active">Request of Transport Record</li>
+                    <li><a href="#">Master File</a></li>
+                    <li><a href="masterrefusaltreatment.php">Request of Transport Record</a></li>
+                    <li class="active">Refusal for Treatment Overview</li>
                 </ol>
                 <h1 class="page-header">Request of Transport Record</h1>
                 <div class="row">
@@ -67,7 +68,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['patient_name']?></td>
                                             <td><?php echo $fetch['address']?></td>
                                             <td>
-                                                <a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-success">View</a>
+                                                <a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-success">Overview</a>
                                             </td>
                                         </tr>
                                         <?php

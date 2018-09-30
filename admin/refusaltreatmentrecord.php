@@ -36,6 +36,7 @@ require '../require/logincheck.php';
                     <li><a href="#">Master File</a></li>
                     <li class="active">Refusal of Treatment / Transportation</li>
                 </ol>
+                <h1 class="page-header">Refusal of Treatment / Transportation</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -46,7 +47,38 @@ require '../require/logincheck.php';
                                 <h4 class="panel-title">List of Refusal of Treatment / Transportation</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="refusaltreatmentTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Date of Incident</th>
+                                            <th>Name of Patient</th>
+                                            <th>Witness 1</th>
+                                            <th>Witness 2</th>
+                                            <th>Prepared By</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `refusal_treatment`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['date_incident']?></td>
+                                            <td><?php echo $fetch['signed']?></td>
+                                            <td><?php echo $fetch['witness1']?></td>
+                                            <td><?php echo $fetch['witness2']?></td>
+                                            <td><?php echo $fetch['prepared_by']?></td>
+                                            <td><a href="masterrefusaltreatment.php?refusal_treatment_id=<?php echo $fetch['refusal_treatment_id']?>" class="btn btn-sm btn-primary">Overview</a></td>
+
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -58,11 +90,9 @@ require '../require/logincheck.php';
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../functions/crudrefusaltreatment.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
         <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2018 at 05:44 PM
+-- Generation Time: Sep 30, 2018 at 01:09 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ndrrmo`
+-- Database: `id7318069_ndrrmo`
 --
 
 -- --------------------------------------------------------
@@ -121,14 +121,18 @@ CREATE TABLE `dispatch` (
 --
 
 INSERT INTO `dispatch` (`dispatch_id`, `service_no`, `date_time_call`, `ambulance`, `dispatched_for`, `call_location`, `moi_noi`, `patients_on_scene`, `on_board_tl`, `ems`, `driver`, `care_in_progress`, `mass_casualty`, `enroute`, `date_created`, `month`, `year`) VALUES
-(1, '10000', '08/25/2018 11:32 AM', 'Samaritan 1', 'Airway Obstruction', 'Bacolod City', '100', '100', '100', '100', 'Driver A', 'Citizen', 'on', '11:34 am', 'August 17, 2018', 'Aug', '2018'),
-(2, '1009', '08/25/2018 1:41 PM', 'Samaritan 1', 'Airway Obstruction', 'Bacolod City', '123', '123', '123', '123', 'Driver B', 'Citizen', 'No', '1:41 pm', 'August 17, 2018', 'Aug', '2018'),
-(3, '123', '09/01/2018 12:31 AM', 'Samaritan 1', 'Hypertension', 'Bacolod City', '12', '12', '12', '12', 'Driver A', 'Citizen', 'No', '12:31 am', 'August 17, 2018', 'Aug', '2018'),
-(4, '10009', '09/01/2018 12:38 AM', 'Samaritan 1', 'Stroke/CVA', '12', '12', '12', '12', '12', '12', 'Citizen', 'Yes', '12:38 am', 'September 15, 2018', 'Sep', '2018'),
-(5, '1234', '09/07/2018 12:25 PM', 'Samaritan 2', 'Airway Obstruction', 'Bacolod City', '100', '100', '100', 'Kurt Dela Torre', 'Driver A', 'Citizen', 'Yes', '12:25 pm', 'September 16, 2018', 'Sep', '2018'),
-(6, '1099', '09/07/2018 5:36 PM', 'Samaritan 1', 'Airway Obstruction', 'Taculing Barangay Hall, Bacolod City, Negros Occidental, Philippines', '109', '109', '109', 'EMS', 'Driver ABC', 'Citizen', 'Yes', '5:37 pm', 'September 17, 2018', 'Sep', '2018'),
-(7, '100022', '09/17/2018 11:10 AM', 'Samaritan 1', 'Hypertension', 'Santa Clara St, Mandalagan, Negros Occidental, Philippines', '12', '1', '12', 'Test', 'Driver A', 'Citizen', 'Yes', '11:12 am', 'September 17, 2018', 'Sep', '2018'),
-(8, '100999', '09/23/2018 6:30 PM', 'Samaritan 1', 'Stroke/CVA', 'Lizares Avenue, Bacolod City, Negros Occidental, Philippines', '20', '10', '10', '10', 'Driver ABC', 'Medical Practicioner / First Aider', 'No', '6:30 pm', 'September 23, 2018', 'Sep', '2018');
+(1, '10000', '08/25/2018 11:32 AM', 'Samaritan 1', 'Airway Obstruction', 'Andalucia Street, Bacolod City', '100', '100', '100', '100', 'Driver A', 'Citizen', 'on', '11:34 am', 'August 17, 2018 07:44 pm', 'Aug', '2018'),
+(2, '1009', '08/25/2018 1:41 PM', 'Samaritan 1', 'Airway Obstruction', 'Bacolod City', '123', '123', '123', '123', 'Driver B', 'Citizen', 'No', '1:41 pm', 'August 17, 2018 08:44 pm', 'Aug', '2018'),
+(3, '123', '09/01/2018 12:31 AM', 'Samaritan 1', 'Hypertension', 'Bacolod City', '12', '12', '12', '12', 'Driver A', 'Citizen', 'No', '12:31 am', 'August 17, 2018 10:10 am', 'Aug', '2018'),
+(4, '10009', '09/01/2018 12:38 AM', 'Samaritan 1', 'Stroke/CVA', '12', '12', '12', '12', '12', '12', 'Citizen', 'Yes', '12:38 am', 'September 15, 2018 10:30 am', 'Sep', '2018'),
+(5, '1234', '09/07/2018 12:25 PM', 'Samaritan 2', 'Airway Obstruction', 'Bacolod City', '100', '100', '100', 'Kurt Dela Torre', 'Driver A', 'Citizen', 'Yes', '12:25 pm', 'September 16, 2018 10:50 am', 'Sep', '2018'),
+(6, '1099', '09/07/2018 5:36 PM', 'Samaritan 1', 'Airway Obstruction', 'Taculing Barangay Hall, Bacolod City, Negros Occidental, Philippines', '109', '109', '109', 'EMS', 'Driver ABC', 'Citizen', 'Yes', '5:37 pm', 'September 17, 2018 12:44 pm', 'Sep', '2018'),
+(7, '100022', '09/17/2018 11:10 AM', 'Samaritan 1', 'Hypertension', 'Santa Clara St, Mandalagan, Negros Occidental, Philippines', '12', '1', '12', 'Test', 'Driver A', 'Citizen', 'Yes', '11:12 am', 'September 17, 2018 09:44 pm', 'Sep', '2018'),
+(8, '100999', '09/23/2018 6:30 PM', 'Samaritan 1', 'Stroke/CVA', 'Lizares Avenue, Bacolod City, Negros Occidental, Philippines', '20', '10', '10', '10', 'Driver ABC', 'Medical Practicioner / First Aider', 'No', '6:30 pm', 'September 23, 2018 10:44 am', 'Sep', '2018'),
+(9, '100999', '09/27/2018 12:11 AM', 'Samaritan 1', 'Hypertension', 'Lizares Avenue, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'Citizen', 'No', '12:11 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
+(10, '121319', '09/27/2018 12:23 AM', 'Samaritan 2', 'Allergic Reaction', 'Sum-ag, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', 'Alkaid Lamig', 'Peter Sacayle', 'None', 'No', '12:24 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
+(11, '23412', '09/27/2018 10:44 PM', 'Samaritan 1', 'Major Trauma', 'Lacson, Bacolod City, Negros Occidental, Philippines', '102', '12', '12', 'Test', 'Driver ABC', 'Citizen', 'No', '10:44 pm', 'September 27, 2018 10:44 pm', 'Sep', '2018'),
+(12, '127381', '09/27/2018 11:02 PM', 'Samaritan 1', 'Respiratory Distress', 'Margarita, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', 'Driver ZXC', 'Citizen', 'No', '11:03 pm', 'September 27, 2018 11:03 pm', 'Sep', '2018');
 
 -- --------------------------------------------------------
 
@@ -169,6 +173,8 @@ CREATE TABLE `medical_supply_stocks` (
   `medical_supply_name` varchar(100) NOT NULL,
   `medical_supply_description` varchar(100) NOT NULL,
   `supplier` varchar(100) NOT NULL,
+  `running_balance` int(10) NOT NULL,
+  `status` varchar(20) NOT NULL,
   `date_created` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -176,13 +182,13 @@ CREATE TABLE `medical_supply_stocks` (
 -- Dumping data for table `medical_supply_stocks`
 --
 
-INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `date_created`) VALUES
-(1, 136, 'Alcohol', 'This is Alcohol', 'Savemore', 'September 23, 2018'),
-(2, 136, 'Cotton', 'This is Cotton', 'Libra', 'September 23, 2018'),
-(3, 136, 'Betadine', 'This is Betadine', 'PureGold', 'September 23, 2018'),
-(4, 136, 'Shit', 'Shit', 'Shit', 'September 23, 2018'),
-(5, 136, 'Sample', 'Sample', 'Sample', 'September 23, 2018'),
-(6, 136, 'Test', 'This is Test', 'Avon', 'September 25, 2018');
+INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`, `date_created`) VALUES
+(1, 136, 'Alcohol', 'This is Alcohol', 'Savemore', 30, 'Reorder', 'September 23, 2018'),
+(2, 136, 'Cotton', 'This is Cotton', 'Libra', 23, 'Reorder', 'September 23, 2018'),
+(3, 136, 'Betadine', 'This is Betadine', 'PureGold', 100, 'Reorder', 'September 23, 2018'),
+(4, 136, 'Shit', 'Shit', 'Shit', 200, 'Reorder', 'September 23, 2018'),
+(5, 136, 'Sample', 'Sample', 'Sample', 10, 'Reorder', 'September 23, 2018'),
+(6, 136, 'Test', 'This is Test', 'Avon', 505, 'Reorder', 'September 25, 2018');
 
 -- --------------------------------------------------------
 
@@ -279,7 +285,8 @@ INSERT INTO `refusal_treatment` (`refusal_treatment_id`, `signed`, `witness1`, `
 (2, 'Alkaid Lamig', 'Peter Sacayle', 'Kurt Dela Torre', '09/16/2018 12:51 PM', '', 'None', 'Peter Sacayle'),
 (3, 'Peter Sacayle', 'Kurt Dela Torre', 'Kurt Dela Torre', '09/03/2018 11:36 PM', 'This is a statement', 'None', 'Peter Sacayle'),
 (6, 'Juan Dela Cruz', 'Peter Lopez', 'John Dela Cruz', '09/16/2018 10:54 AM', '', 'None', 'Me'),
-(7, 'Patient A', 'Kurt Dela Torre', 'Alkaid Lamig', '09/16/2018 12:28 PM', '', 'None', 'Peter Sacayle');
+(7, 'Patient A', 'Kurt Dela Torre', 'Alkaid Lamig', '09/16/2018 12:28 PM', '', 'None', 'Peter Sacayle'),
+(8, 'Patient C', 'Alkaid Lamig', 'Peter Sacayle', '09/30/2018 12:03 AM', 'This is refusal', 'None', 'Kurt Dela Torre');
 
 -- --------------------------------------------------------
 
@@ -367,8 +374,8 @@ INSERT INTO `timeinout` (`timeinout_id`, `time`, `emt_id_number`) VALUES
 CREATE TABLE `users` (
   `user_id` int(10) NOT NULL,
   `complete_name` varchar(100) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `user_role` varchar(20) NOT NULL,
   `status` int(1) NOT NULL,
   `date_created` varchar(100) NOT NULL,
@@ -380,13 +387,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `complete_name`, `username`, `password`, `user_role`, `status`, `date_created`, `time_created`) VALUES
-(134, 'Kurt Dela Torre', 'kurt', 'delatorre', 'Team Leader', 1, 'September 15, 2018', '11:58 pm'),
-(135, 'Alkaid Lamig', 'alkaid', 'lamig', 'Team Leader', 1, 'September 10, 2018', '12:58 pm'),
-(136, 'Peter Sacayle', 'peter', 'sacayle', 'Administrator', 1, 'September 1, 2018', '10:00 pm'),
-(174, 'Juan Dela Cruz', 'juan', 'dgasjdgajs', 'Team Leader', 1, 'September 17, 2018', '9:59 am'),
-(175, 'Peter Dela Cruz', 'peterd', 'djasdgah', 'Team Leader', 1, 'September 17, 2018', '10:10 am'),
-(176, 'account', 'account', 'account', 'Team Leader', 1, 'September 21, 2018', '11:12 am'),
-(177, 'test', 'test', 'test', 'Team Leader', 1, 'September 23, 2018', '9:49 am');
+(182, 'kurt dela torre', 'kurt', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja5948a0b701a40b762d5a1311cc171a0607734ea', 'Administrator', 1, 'September 28, 2018', '11:50 pm'),
+(183, 'peter sacayle', 'peter', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj60b1cfb0ae85b40c40e85ee2e0da328b638ba643', 'EMT', 1, 'September 28, 2018', '11:51 pm'),
+(184, 'alkaid lamig', 'alkaid', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj71c12f2610b2b0f61eb92eaeca53ece710c141e4', 'EMT', 1, 'September 28, 2018', '11:51 pm');
 
 -- --------------------------------------------------------
 
@@ -527,7 +530,7 @@ ALTER TABLE `db_backup`
 -- AUTO_INCREMENT for table `dispatch`
 --
 ALTER TABLE `dispatch`
-  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `glassgow_coma_scale`
 --
@@ -552,7 +555,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `refusal_treatment`
 --
 ALTER TABLE `refusal_treatment`
-  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `request_transport`
 --
@@ -567,7 +570,7 @@ ALTER TABLE `timeinout`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 --
 -- AUTO_INCREMENT for table `vital_signs`
 --

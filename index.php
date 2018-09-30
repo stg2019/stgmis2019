@@ -23,7 +23,7 @@
             <div class="login login-with-news-feed">
                 <div class="news-feed">
                     <div class="news-image">
-                        <img src="assets/img/login.jpg" data-id="login-cover-image" alt="" />
+                        <img src="assets/img/login.jpg" data-id="login-cover-image" alt="drrmopicture" />
                     </div>
                     <div class="news-caption">
                         <h4 class="caption-title"><i class="fa fa-bank text-success"></i> Disaster Risk Reduction Management Office</h4>

@@ -36,6 +36,7 @@ require '../require/logincheck.php';
                     <li><a href="#">Master File</a></li>
                     <li class="active">Patient Record</li>
                 </ol>
+                <h1 class="page-header">Patient Record</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -46,7 +47,40 @@ require '../require/logincheck.php';
                                 <h4 class="panel-title">List of Patient</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="masterlistpatientTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient Name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Date of Birth</th>
+                                            <th>Contact Number</th>
+                                            <th>Home Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `patient`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['patient_name']?></td>
+                                            <td><?php echo $fetch['age']?></td>
+                                            <td><?php echo $fetch['gender']?></td>
+                                            <td><?php echo $fetch['date_of_birth']?></td>
+                                            <td><?php echo $fetch['contact_no']?></td>
+                                            <td><?php echo $fetch['home_address']?></td>
+                                            <td>
+                                                <a href="viewdetails.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-white">View</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -58,11 +92,9 @@ require '../require/logincheck.php';
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../functions/crudmasterlistpatient.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
         <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>

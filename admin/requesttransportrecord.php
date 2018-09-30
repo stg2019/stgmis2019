@@ -6,7 +6,7 @@ require '../require/logincheck.php';
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/ndrrmo/logo.png">
-        <title>DRRMO | Bacolod City</title>
+        <title>DRRMO MIS | Bacolod City</title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
@@ -34,8 +34,10 @@ require '../require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="#">Master File</a></li>
-                    <li class="active">Request for Transport</li>
+                    <li><a href="#">Request for Transport</a></li>
+                    <li class="active">Request for Transport Overview</li>
                 </ol>
+                <h1 class="page-header">Request for Transport</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -46,7 +48,38 @@ require '../require/logincheck.php';
                                 <h4 class="panel-title">List of Request for Transport</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="requesttransportTable"></div>
+                                <table id="data-table" class="table table-hover table-condensed" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Date and Time</th>
+                                            <th>Requesting Party</th>
+                                            <th>Contact Number</th>
+                                            <th>Patient Name</th>
+                                            <th>Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $query = $conn->query("select * from `request_transport`") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['date_time']?></td>
+                                            <td><?php echo $fetch['requesting_party']?></td>
+                                            <td><?php echo $fetch['contact_no']?></td>
+                                            <td><?php echo $fetch['patient_name']?></td>
+                                            <td><?php echo $fetch['address']?></td>
+                                            <td>
+                                                <a href="masterrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-primary">Overview</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+            }
+            $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -58,11 +91,9 @@ require '../require/logincheck.php';
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../functions/crudrequesttransport.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
         <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
