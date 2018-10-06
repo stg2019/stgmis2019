@@ -59,11 +59,11 @@
                     <span>Reports</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="#">Statistical</a></li>
-                    <li><a href="#">Individual Case Report</a></li>
+                    <li><a href="reportdispatchment.php">Dispatchment Report</a></li>
                     <li><a href="#">Assessment Report</a></li>
-                    <li><a href="#">Inventory Report</a></li>
                     <li><a href="#">Request for Transport Report</a></li>
+                    <li><a href="#">Refusal of Treatment Report</a></li>
+                    <li><a href="#">Inventory Report</a></li>
                 </ul>
             </li>
             <li class="has-sub">

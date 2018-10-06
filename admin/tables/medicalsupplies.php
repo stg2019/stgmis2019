@@ -31,7 +31,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch1['complete_name']?></td>
             <td><?php echo $fetch['date_created']?></td>
             <td>
-                <a href="editcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></a>
+                <a href="editcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-primary">Edit</a>
             </td>
         </tr>
         <?php

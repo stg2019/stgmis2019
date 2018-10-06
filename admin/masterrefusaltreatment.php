@@ -28,7 +28,7 @@ require '../require/logincheck.php';
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
-        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-light-sidebar">
             <?php require 'require/header.php'?>
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">

@@ -33,7 +33,7 @@ require 'require/logincheck.php';
             <?php require 'require/header.php'?>
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
-                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="dashboard.php">Master File</a></li>
                     <li class="active">Refusal of Treatment Record</li>
                 </ol>
                 <h1 class="page-header">Refusal of Treatment Record</h1>

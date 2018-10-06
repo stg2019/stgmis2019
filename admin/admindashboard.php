@@ -25,7 +25,7 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
-        <?php require '../assets/js/loadchart/dispatchment.php'?>
+        <?php require '../assets/js/loadchart/dashboard/dashboardgraphs.php'?>
         <script src="../assets/js/geocode.js"></script>
         <style>
             #map-canvas {
@@ -36,7 +36,7 @@ require '../require/logincheck.php';
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
-        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-light-sidebar">
             <?php require 'require/header.php'?>
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
@@ -113,7 +113,6 @@ require '../require/logincheck.php';
                                     $date_created=date("F j, Y g:i a");
                                     $month = date("M");
                                     $year = date("Y");
-echo $month;
                     ?>
                     <div class="col-md-12">
                         <div class="panel panel-inverse" >

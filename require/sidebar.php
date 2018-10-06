@@ -1,5 +1,5 @@
 
-<div id="sidebar" class="sidebar light-sidebar">
+<div id="sidebar" class="sidebar">
     <div data-scrollbar="true" data-height="100%">
         <ul class="nav">
             <li class="nav-profile">

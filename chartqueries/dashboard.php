@@ -27,6 +27,8 @@ $qnov = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = '
 $fnov = $qnov->fetch_array();
 $qdec = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = 'Dec' && `year` = '$year'") or die(mysqli_error());
 $fdec = $qdec->fetch_array();
+$total = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `year` = '$year'") or die(mysqli_error());
+$total = $total->fetch_array();
 ?>
 
 <!-- Medical Supplies Balance -->
@@ -58,4 +60,19 @@ while($result2 = $res2->fetch_array()){
     array_push($data_points2, $point2);
 }
 json_encode($data_points2);
+?>
+
+
+<?php
+$res3 = $conn->query("SELECT * FROM `dispatch` GROUP BY year") or die(mysqli_error());
+$data_points3 = array();
+while($result3 = $res3->fetch_array()){
+    $R3 = $result3['year'];
+    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$R3' group by year") or die(mysqli_error());
+    $f3 = $q3->fetch_array();
+    $FR3 = intval($f3['total']);
+    $point3 = array('label' => $R3, 'y' => $FR3);
+    array_push($data_points3, $point3);
+}
+json_encode($data_points3);
 ?>

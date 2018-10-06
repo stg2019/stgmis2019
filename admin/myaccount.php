@@ -40,7 +40,7 @@ require '../require/logincheck.php';
         <!-- end #page-loader -->
 
         <!-- begin #page-container -->
-        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-light-sidebar">
             <!-- begin #header -->
             <?php require 'require/header.php'?>
             <!-- end #header -->

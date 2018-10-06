@@ -28,7 +28,7 @@ require '../require/logincheck.php';
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
-        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-light-sidebar">
             <?php require 'require/header.php'?>
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
@@ -72,7 +72,7 @@ require '../require/logincheck.php';
                                             <td><?php echo $fetch['contact_no']?></td>
                                             <td><?php echo $fetch['home_address']?></td>
                                             <td>
-                                                <a href="viewdetails.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-white">View</a>
+                                                <a href="masterpatient.php?patient_id=<?php echo $fetch['patient_id']?>" class="btn btn-sm btn-primary">Overview</a>
                                             </td>
                                         </tr>
                                         <?php
