@@ -62,7 +62,7 @@ while($result2 = $res2->fetch_array()){
 json_encode($data_points2);
 ?>
 
-
+<!-- Annual Dispatchment-->
 <?php
 $res3 = $conn->query("SELECT * FROM `dispatch` GROUP BY year") or die(mysqli_error());
 $data_points3 = array();
@@ -76,3 +76,20 @@ while($result3 = $res3->fetch_array()){
 }
 json_encode($data_points3);
 ?>
+
+<!-- -->
+<?php
+$res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 5") or die(mysqli_error());
+$data_points4 = array();
+while($result4 = $res4->fetch_array()){
+    $R4 = $result4['call_location'];
+    $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
+    $f4 = $q4->fetch_array();
+    $FR4 = intval($f4['total']);
+    $point4 = array('label' => $R4, 'y' => $FR4);
+    array_push($data_points4, $point4);
+}
+json_encode($data_points4);
+?>
+
+

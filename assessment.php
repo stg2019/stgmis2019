@@ -29,7 +29,7 @@ require 'require/logincheck.php';
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
-        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-light-sidebar">
+        <div id="page-container" class="fade page-without-sidebar page-header-fixed">
             <?php require 'require/header.php'?>	
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">

@@ -9,7 +9,6 @@ if(isset($_POST['show'])){
             <th>Medical Supply Name</th>
             <th>Medical Supply Description</th>
             <th>Supplier</th>
-            <th>Created By</th>
             <th>Date Created</th>
             <th>Action</th>
         </tr>
@@ -18,20 +17,15 @@ if(isset($_POST['show'])){
         <?php
     $query = $conn->query("select * from `medical_supply_stocks` order by `stock_id` DESC") or die(mysqli_error());
     while($fetch = $query->fetch_array()){
-        $admin_id = $fetch['admin_id'];
-        $query1 = $conn->query("select * from `users` where `user_id` = '$admin_id'") or die(mysqli_error());
-        $fetch1 = $query1->fetch_array();
-
         ?>                                      
         <tr>
             <td><?php echo $fetch['stock_id']?></td>
             <td><?php echo $fetch['medical_supply_name']?></td>
             <td><?php echo $fetch['medical_supply_description']?></td>
             <td><?php echo $fetch['supplier']?></td>
-            <td><?php echo $fetch1['complete_name']?></td>
             <td><?php echo $fetch['date_created']?></td>
-            <td>
-                <a href="editcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-primary">Edit</a>
+            <td><a href="#edit<?php echo $fetch['stock_id']; ?>" data-target="#edit<?php echo $fetch['stock_id']; ?>" data-toggle="modal" class="btn btn-sm btn-primary ">Edit</a>
+                <?php require '../../modals/editmedicalsupplies.php'?>
             </td>
         </tr>
         <?php

@@ -39,6 +39,7 @@ require '../require/logincheck.php';
             <div id="content" class="content content-full-width">
                 <div class="p-20">
                     <!-- begin row -->
+
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
@@ -49,6 +50,7 @@ require '../require/logincheck.php';
                                     <option value="yearly">Yearly</option>
                                 </select>
                             </div>
+                            <p><b>Graphical</b></p>
                         </div>
                     </div>
                     <div class="row">
@@ -64,159 +66,116 @@ require '../require/logincheck.php';
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="panel panel-primary monthly reporttype" data-sortable-id="index-1">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Monthly Dispatchment Count
-                                    </h4>
-                                </div>
-                                <table class="table table-valign-middle m-b-0">
-                                    <thead>
-                                        <tr>	
-                                            <th>Month</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php require '../chartqueries/dashboard.php'?>
-                                        <tr>
-                                            <td>January</td>
-                                            <td><?php echo $fjan['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>February</td>
-                                            <td><?php echo $ffeb['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>March</td>
-                                            <td><?php echo $fmar['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>April</td>
-                                            <td><?php echo $fapr['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>May</td>
-                                            <td><?php echo $fmay['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>June</td>
-                                            <td><?php echo $fjun['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>July</td>
-                                            <td><?php echo $fjul['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>August</td>
-                                            <td><?php echo $faug['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>September</td>
-                                            <td><?php echo $fsep['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>October</td>
-                                            <td><?php echo $foct['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>November</td>
-                                            <td><?php echo $fnov['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>December</td>
-                                            <td><?php echo $fdec['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>TOTAL</strong></td>
-                                            <td><span class="label label-primary"><?php echo $total['total']?></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> <!-- INDI MAKITA UNLESS MA SELECT -->
-                        <div class="col-md-4">
-                            <div class="panel panel-primary quarterly reporttype" data-sortable-id="index-1">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Quarterly Dispatchment Count
-                                    </h4>
-                                </div>
-                                <table class="table table-valign-middle m-b-0">
-                                    <thead>
-                                        <tr>	
-                                            <th>Quarter</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php require '../chartqueries/reportsdispatchment.php'?>
-                                        <tr>
-                                            <td>Quarter 1</td>
-                                            <td><?php echo $q1['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quarter 2</td>
-                                            <td><?php echo $q2['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quarter 3</td>
-                                            <td><?php echo $q3['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quarter 4</td>
-                                            <td><?php echo $q4['total']?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>TOTAL</strong></td>
-                                            <td><span class="label label-primary"><?php echo $total['total']?></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> <!-- INDI MAKITA UNLESS MA SELECT -->
-                        <div class="col-md-4">
-                            <div class="panel panel-primary yearly reporttype" data-sortable-id="index-1">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Recent Request for Transport
-                                    </h4>
-                                </div>
-                                <table class="table table-valign-middle m-b-0">
-                                    <thead>
-                                        <tr>	
-                                            <th>Date & Time</th>
-                                            <th>Address</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-    $query = $conn->query("SELECT *, count(*) as total FROM `dispatch` group by year") or die(mysqli_error());
-        while($fetch = $query->fetch_array()){
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $fetch['year']?></td>
-                                            <td><?php echo $fetch['total']?></td>
-                                        </tr>
-
-                                        <?php
-        }
-
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> <!-- INDI MAKITA UNLESS MA SELECT -->
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="email-content monthly quarterly yearly reporttype">
                                 <div class="panel-body">
                                     <div id="chartContainer4" style="width: 100%; height: 300px"></div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="email-content monthly quarterly yearly reporttype">
+                                <div class="panel-body">
+                                    <div id="chartContainer5" style="width: 100%; height: 300px"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
+                    <br>
+                    <p><b>Tabular</b></p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="email-content">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="primary">
+                                            <th><center>Jan</center></th>
+                                            <th><center>Feb</center></th>
+                                            <th><center>Mar</center></th>
+                                            <th><center>Apr</center></th>
+                                            <th><center>May</center></th>
+                                            <th><center>June</center></th>
+                                            <th><center>July</center></th>
+                                            <th><center>Aug</center></th>
+                                            <th><center>Sep</center></th>
+                                            <th><center>Oct</center></th>
+                                            <th><center>Nov</center></th>
+                                            <th><center>Dec</center></th>
+                                            <th><center>Total</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php require '../chartqueries/dashboard.php'?>
+                                        <tr>
+                                            <td><center><?php echo $fjan['total']?></center></td>
+                                            <td><center><?php echo $ffeb['total']?></center></td>
+                                            <td><center><?php echo $fmar['total']?></center></td>
+                                            <td><center><?php echo $fapr['total']?></center></td>
+                                            <td><center><?php echo $fmay['total']?></center></td>
+                                            <td><center><?php echo $fjun['total']?></center></td>
+                                            <td><center><?php echo $fjul['total']?></center></td>
+                                            <td><center><?php echo $faug['total']?></center></td>
+                                            <td><center><?php echo $fsep['total']?></center></td>
+                                            <td><center><?php echo $foct['total']?></center></td>
+                                            <td><center><?php echo $fnov['total']?></center></td>
+                                            <td><center><?php echo $fdec['total']?></center></td>
+                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="email-content">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="primary">
+                                            <th><center>Quarter 1</center></th>
+                                            <th><center>Quarter 2</center></th>
+                                            <th><center>Quarter 3</center></th>
+                                            <th><center>Quarter 4</center></th>
+                                            <th><center>Total</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php require '../chartqueries/reportsdispatchment.php'?>
+                                        <tr>
+                                            <td><center><?php echo $q1['total']?></center></td>
+                                            <td><center><?php echo $q2['total']?></center></td>
+                                            <td><center><?php echo $q3['total']?></center></td>
+                                            <td><center><?php echo $q4['total']?></center></td>
+                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="email-content">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="primary">
+                                            <th><center>Year</center></th>
+                                            <th><center>Total</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php require '../chartqueries/dashboard.php'?>
+                                        <tr>
+                                            <td><center><?php echo $f3['year']?></center></td>
+                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

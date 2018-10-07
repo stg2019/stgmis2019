@@ -44,6 +44,14 @@ require '../require/logincheck.php';
                 <?php
     $query = $conn->query("SELECT * FROM `patient`, `dispatch` WHERE dispatch.dispatch_id = patient.dispatch_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
             $fetch = $query->fetch_array();
+            $query2 = $conn->query("SELECT * FROM `patient`, `assessment` WHERE assessment.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+            $fetch2 = $query2->fetch_array();
+            $query3 = $conn->query("SELECT * FROM `patient`, `vital_signs` WHERE vital_signs.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+            $fetch3 = $query3->fetch_array();
+            $query4 = $conn->query("SELECT * FROM `patient`, `past_medical_history` WHERE past_medical_history.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+            $fetch4 = $query4->fetch_array();
+            $query5 = $conn->query("SELECT * FROM `patient`, `glassgow_coma_scale` WHERE glassgow_coma_scale.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+            $fetch5 = $query5->fetch_array();
                 ?>
                 <div class="row">
                     <div class="col-md-12">
@@ -52,7 +60,7 @@ require '../require/logincheck.php';
                                 <span class="pull-right hidden-print">
                                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
                                 </span>
-                                <?php echo $fetch['patient_name']?> - Service Number : <?php echo $fetch['service_no']?>
+                                <?php echo $fetch['patient_name']?>
                             </div>
                             <div class="invoice-header">
                                 <div class="invoice-from">
@@ -62,33 +70,33 @@ require '../require/logincheck.php';
                             <div class="invoice-content">
                                 <div class="table-responsive">
                                     <div class="col-md-6">
-                                        <table class="table">
+                                        <table class="table table-bordered">
                                             <tbody>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Age</strong></td>
                                                     <td><?php echo $fetch['age']?> years old</td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Gender</strong></td>
                                                     <td><?php echo $fetch['gender']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Date of Birth</strong></td>
                                                     <td><?php echo $fetch['date_of_birth']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Home Address</strong></td>
                                                     <td><?php echo $fetch['home_address']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Directives</strong></td>
                                                     <td><?php echo $fetch['directives']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Next to Kin</strong></td>
                                                     <td><?php echo $fetch['next_to_kin']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Relationship</strong></td>
                                                     <td><?php echo $fetch['relationship']?></td>
                                                 </tr>
@@ -96,33 +104,33 @@ require '../require/logincheck.php';
                                         </table>
                                     </div>
                                     <div class="col-md-6">
-                                        <table class="table">
+                                        <table class="table table-bordered">
                                             <tbody>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Date and Time of Call</strong></td>
                                                     <td><?php echo $fetch['date_time_call']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Ambulance</strong></td>
                                                     <td><?php echo $fetch['ambulance']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Dispatch For</strong></td>
                                                     <td><?php echo $fetch['dispatched_for']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Call Location</strong></td>
                                                     <td><?php echo $fetch['call_location']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>Driver</strong></td>
                                                     <td><?php echo $fetch['driver']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>MOI/NOI</strong></td>
                                                     <td><?php echo $fetch['moi_noi']?></td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr >
                                                     <td><strong>EMS</strong></td>
                                                     <td><?php echo $fetch['ems']?></td>
                                                 </tr>
@@ -132,26 +140,165 @@ require '../require/logincheck.php';
                                 </div>
                                 <div class="invoice-header">
                                     <div class="invoice-from">
-                                        <strong>Assessment</strong><br />
+                                        <strong>Assessment & Glassgow Coma Scale</strong><br />
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                           <span>CARDIOVASCULAR</span>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" <?php if($fetch['dispatched_for'] == 'Hypertension') echo 'checked';?>/>
-                                                    Hypertension
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />
-                                                    Checkbox Label 2
-                                                </label>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6"><br>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr >
+                                                    <td><strong>Assessment</strong></td>
+                                                    <td><?php echo $fetch['dispatched_for']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Chief Complaints</strong></td>
+                                                    <td><?php echo $fetch2['chief_complaints']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Subjective Assessment</strong></td>
+                                                    <td><?php echo $fetch2['subjective_assessment']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Objective Assessment</strong></td>
+                                                    <td><?php echo $fetch2['objective_assessment']?></td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td><strong>Priority Level</strong></td>
+                                                    <td><?php echo $fetch2['priority_level']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6"><br>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr >
+                                                    <td><strong>Time</strong></td>
+                                                    <td><?php echo $fetch3['time']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Eye</strong></td>
+                                                    <td><?php echo $fetch5['eye']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Verbal</strong></td>
+                                                    <td><?php echo $fetch5['verbal']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Motor</strong></td>
+                                                    <td><?php echo $fetch5['motor']?></td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td><strong>Total</strong></td>
+                                                    <td><?php echo $fetch5['eye'] + $fetch5['verbal'] + $fetch5['motor']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="invoice-header">
+                                    <div class="invoice-from">
+                                        <strong>Vital Signs & Past Medical History</strong><br />
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <div class="col-md-6"><br>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr >
+                                                    <td><strong>Time</strong></td>
+                                                    <td><?php echo $fetch3['time']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>LOC</strong></td>
+                                                    <td><?php echo $fetch3['loc']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>B.P. (mmHg)</strong></td>
+                                                    <td><?php echo $fetch3['bp']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>SaO2 (%)</strong></td>
+                                                    <td><?php echo $fetch3['sa']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>PR (bpm)</strong></td>
+                                                    <td><?php echo $fetch3['pr']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>RR (cpm)</strong></td>
+                                                    <td><?php echo $fetch3['rr']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Temperature (celcius)</strong></td>
+                                                    <td><?php echo $fetch3['temp']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>RBS (mg/dl)</strong></td>
+                                                    <td><?php echo $fetch3['rbs']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Pupils</strong></td>
+                                                    <td><?php echo $fetch3['pupils']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Skin</strong></td>
+                                                    <td><?php echo $fetch3['skin']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6"><br>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr >
+                                                    <td><strong>Allergy to</strong></td>
+                                                    <td><?php echo $fetch4['allergy']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Medications</strong></td>
+                                                    <td><?php echo $fetch4['medications']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>P. History</strong></td>
+                                                    <td><?php echo $fetch4['phistory']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Last Oral Intake</strong></td>
+                                                    <td><?php echo $fetch4['last_oral_intake']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Events Leading to ing/ill</strong></td>
+                                                    <td><?php echo $fetch4['events_leading_to']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Other Pertinent Information</strong></td>
+                                                    <td><?php echo $fetch4['notes']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="invoice-header">
+                                    <div class="invoice-from">
+                                        <strong>Incident / Patient Disposition & Interventions</strong><br />
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <div class="col-md-6"><br>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr >
+                                                    <td><strong>Incident / Patient Disposition</strong></td>
+                                                    <td><?php echo $fetch2['patient_disposition']?></td>
+                                                </tr>
+                                                <tr >
+                                                    <td><strong>Interventions</strong></td>
+                                                    <td><?php echo $fetch2['interventions']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

@@ -46,30 +46,30 @@ require '../require/logincheck.php';
                     <div class="col-md-8">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">Overview</h4>
                                 <?php
     $query = $conn->query("SELECT * FROM `refusal_treatment` WHERE `refusal_treatment_id` = '$_GET[refusal_treatment_id]'") or die(mysqli_error());
             $fetch = $query->fetch_array();
                                 ?>
+                                <h4 class="panel-title">Overview</h4>
                             </div>
                             <div class="panel-body">
                                 <label class="alert alert-warning"  style="text-align:justify;"><small>I hereby express my <strong>refusal to [treatment] or [transportation to a hospital]</strong> and I acknowledged that my refusal entails full knowledge of the risk and consequence as explained by the EMS crew. I hereby release the EMS crew of DRRMO Bacolod from any liability that may occur as a result of my refusal.</small></label>
                                 <div class="form-group">
-                                    <label >Witness 1</label>
-                                    <input type="text" class="form-control input-sm" value="<?php echo $fetch['signed']; ?>" id="usigned<?php echo $fetch['signed']; ?>" name="signed" placeholder="Enter Patient Name" required readonly/>
+                                    <label >Name of Patient</label>
+                                    <strong><input type="text" class="form-control input-sm" value="<?php echo $fetch['signed']; ?>" id="usigned<?php echo $fetch['signed']; ?>" name="signed" placeholder="Enter Patient Name" required readonly/></strong>
                                 </div>
                                 <div class="form-group">
                                     <label >Witness 1</label>
-                                    <input type="text" class="form-control input-sm" value="<?php echo $fetch['witness1']; ?>" id="uwitness1<?php echo $fetch['refusal_treatment_id']; ?>" name="witness1" placeholder="Enter Witness 1 Name" required readonly/>
+                                    <strong><input type="text" class="form-control input-sm" value="<?php echo $fetch['witness1']; ?>" id="uwitness1<?php echo $fetch['refusal_treatment_id']; ?>" name="witness1" placeholder="Enter Witness 1 Name" required readonly/></strong>
                                 </div>
                                 <div class="form-group">
                                     <label >Witness 2</label>
-                                    <input type="text" class="form-control input-sm" value="<?php echo $fetch['witness2']; ?>" id="uwitness2<?php echo $fetch['refusal_treatment_id']; ?>" name="witness2" placeholder="Enter Witness 2 Name" required readonly/>
+                                    <strong><input type="text" class="form-control input-sm" value="<?php echo $fetch['witness2']; ?>" id="uwitness2<?php echo $fetch['refusal_treatment_id']; ?>" name="witness2" placeholder="Enter Witness 2 Name" required readonly/></strong>
                                 </div>
                                 <div class="form-group ">
                                     <label >Date of Incident</label>
                                     <div class="input-group date" id="datetimepicker1">
-                                        <input type="text" value="<?php echo $fetch['date_incident']; ?>" id="udate_incident<?php echo $fetch['refusal_treatment_id']; ?>" name="date_incident" class="form-control input-sm" readonly/>
+                                        <strong><input type="text" value="<?php echo $fetch['date_incident']; ?>" id="udate_incident<?php echo $fetch['refusal_treatment_id']; ?>" name="date_incident" class="form-control input-sm" readonly/></strong>
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -81,11 +81,11 @@ require '../require/logincheck.php';
                                 </div>
                                 <div class="form-group">
                                     <label >Attachment: (legal documents etc.)</label>
-                                    <input type="text" class="form-control input-sm" value="<?php echo $fetch['attachment']; ?>" id="uattachment<?php echo $fetch['refusal_treatment_id']; ?>" name="attachment" placeholder="Enter Attachment" required readonly/>
+                                    <strong><input type="text" class="form-control input-sm" value="<?php echo $fetch['attachment']; ?>" id="uattachment<?php echo $fetch['refusal_treatment_id']; ?>" name="attachment" placeholder="Enter Attachment" required readonly/></strong>
                                 </div>
                                 <div class="form-group">
                                     <label >Prepared By</label>
-                                    <input type="text" class="form-control input-sm" value="<?php echo $fetch['prepared_by']; ?>" id="uprepared_by<?php echo $fetch['refusal_treatment_id']; ?>" name="prepared_by" placeholder="Enter Name" required readonly/>
+                                    <strong><input type="text" class="form-control input-sm" value="<?php echo $fetch['prepared_by']; ?>" id="uprepared_by<?php echo $fetch['refusal_treatment_id']; ?>" name="prepared_by" placeholder="Enter Name" required readonly/></strong>
                                 </div>
                             </div>
 

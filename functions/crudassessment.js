@@ -12,7 +12,7 @@ $(document).ready(function(){
         else{
             $patient_id=$('.add_assessment').val();
             //vital signs
-            $time=$('#tim').val();
+            $time=$('#time').val();
             $loc=$('#loc').val();
             $bp=$('#bp').val();
             $sa=$('#sa').val();

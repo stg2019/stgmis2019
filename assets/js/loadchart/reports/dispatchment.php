@@ -254,10 +254,65 @@
                 }
                     ] 
                 });
+                var chart5 = new CanvasJS.Chart("chartContainer5",{
+                theme: "light2",
+                zoomEnabled: true,
+                zoomType: "x",
+                panEnabled: true,
+                animationEnabled: true,
+                animationDuration: 1000,
+                exportFileName: "Top Call Location Cases - BDRRMO", 
+                exportEnabled: true,
+                toolTip: {
+                shared: true  
+                },
+                title: { 
+                text: "Bacolod Disaster Risk Reduction Management Office",
+                fontSize: 11
+                },
+                subtitles:[
+                {
+                text: "Top Dispatchment Location <?php echo $year?>"
+                }
+            ],
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    } else {
+                        e.dataSeries.visible = true;
+                    }
+                    e.chart.render();
+                },
+                itemmouseover: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
+                    e.chart.render();
+                },
+                itemmouseout: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
+                    e.chart.render();
+                }
+            },
+            data: [ 
+                { 
+                    type: "bar", 
+                    //showInLegend: true, 
+                    toolTipContent: "{label} <br/> {y}", 
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f4['call_location']?>",
+                    //name: "Total Patients this year",
+                    dataPoints: <?php echo json_encode($data_points4); ?>
+                }
+                    ] 
+                });
                 chart1.render();
                 chart2.render();
                 chart3.render();
                 chart4.render();
+                chart5.render();
 
                 });
 
