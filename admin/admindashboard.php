@@ -115,7 +115,7 @@ require '../require/logincheck.php';
                                     $year = date("Y");
                     ?>
                     <div class="col-md-12">
-                        <div class="panel panel-inverse" >
+                        <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <h4 class="panel-title">DISPATCHMENT FOR THE YEAR <?php echo date('Y')?></h4>
                             </div>
@@ -128,7 +128,7 @@ require '../require/logincheck.php';
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="panel panel-inverse" >
+                        <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <h4 class="panel-title">MEDICAL SUPPLIES</h4>
                             </div>
@@ -136,12 +136,12 @@ require '../require/logincheck.php';
                                 <div id="chartContainer2" style="width: 100%; height: 300px"></div>
                             </div>
                             <?php
-    $query = $conn->query("SELECT medical_supply_name, running_balance FROM `medical_supply_stocks` GROUP BY medical_supply_name order by running_balance DESC limit 3") or die(mysqli_error());
+    $query = $conn->query("SELECT medical_supply_name, running_balance FROM `medical_supply_stocks` GROUP BY medical_supply_name order by running_balance DESC limit 2") or die(mysqli_error());
                                     while($fetch = $query->fetch_array()){
                             ?>
 
                             <div class="list-group">
-                                <a href="inventory.php" class="list-group-item list-group-item-inverse text-ellipsis">
+                                <a href="#" class="list-group-item list-group-item-primary text-ellipsis">
                                     <span class="badge badge-primary"><?php echo $fetch['running_balance']?></span>
                                     <?php echo $fetch['medical_supply_name']?>
                                 </a>
@@ -150,10 +150,15 @@ require '../require/logincheck.php';
                                     }
 
                             ?>
+                            <div class="list-group">
+                                <a href="inventory.php" class="list-group-item list-group-item-info text-ellipsis">
+                                    <small> See All </small>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="panel panel-inverse" >
+                        <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <h4 class="panel-title">EMERGENCY CASES <?php echo date('Y')?></h4>
                             </div>
@@ -162,12 +167,12 @@ require '../require/logincheck.php';
                                 <div id="chartContainer3" style="width: 100%; height: 300px"></div>
                             </div>
                             <?php
-    $query = $conn->query("SELECT *, count(*) as total FROM `dispatch` GROUP BY dispatched_for order by total DESC limit 3") or die(mysqli_error());
+    $query = $conn->query("SELECT *, count(*) as total FROM `dispatch` GROUP BY dispatched_for order by total DESC limit 2") or die(mysqli_error());
                                     while($fetch = $query->fetch_array()){
                             ?>
 
                             <div class="list-group">
-                                <a href="dispatchmentrecord.php" class="list-group-item list-group-item-inverse text-ellipsis">
+                                <a href="#" class="list-group-item list-group-item-primary text-ellipsis">
                                     <span class="badge badge-primary"><?php echo $fetch['total']?></span>
                                     <?php echo $fetch['dispatched_for']?>
                                 </a>
@@ -176,10 +181,15 @@ require '../require/logincheck.php';
                                     }
 
                             ?>
+                            <div class="list-group">
+                                <a href="dispatchmentrecord.php" class="list-group-item list-group-item-info text-ellipsis">
+                                    <small> See All </small>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="panel panel-inverse" data-sortable-id="index-1">
+                        <div class="panel panel-primary" data-sortable-id="index-1">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     Recent Request for Transport
@@ -209,7 +219,7 @@ require '../require/logincheck.php';
                                 </tbody>
                             </table>
                         </div>
-                        <div class="panel panel-inverse" data-sortable-id="index-1">
+                        <div class="panel panel-primary" data-sortable-id="index-1">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     Recent Refusal for Treatment
@@ -243,7 +253,7 @@ require '../require/logincheck.php';
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <div class="panel panel-inverse" >
+                        <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <?php
                                 $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());

@@ -2,13 +2,24 @@
 <?php require '../chartqueries/reportsdispatchment.php'?>
 <script type="text/javascript"> 
     $(document).ready(function(){ 
+        CanvasJS.addColorSet("customColorSet", [ 
+            "#f6e58d",
+            "#ffbe76", 
+            "#ff7979", 
+            "#eb4d4b", 
+            "#7ed6df",
+            "#22a6b3",
+            "#6ab04c",
+        ]);
         var chart1 = new CanvasJS.Chart("chartContainer1",{
             theme: "light2",
             zoomEnabled: true,
             zoomType: "x",
             panEnabled: true,
+            colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
+
             exportFileName: "Monthly Dispatchment Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
@@ -207,6 +218,7 @@
                 panEnabled: true,
                 animationEnabled: true,
                 animationDuration: 1000,
+                colorSet: "customColorSet",
                 exportFileName: "Top Emergency Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
@@ -260,6 +272,7 @@
                 zoomType: "x",
                 panEnabled: true,
                 animationEnabled: true,
+                colorSet: "customColorSet",
                 animationDuration: 1000,
                 exportFileName: "Top Call Location Cases - BDRRMO", 
                 exportEnabled: true,
@@ -272,7 +285,7 @@
                 },
                 subtitles:[
                 {
-                text: "Top Dispatchment Location <?php echo $year?>"
+                text: "Top Call Location Cases <?php echo $year?>"
                 }
             ],
             legend: {

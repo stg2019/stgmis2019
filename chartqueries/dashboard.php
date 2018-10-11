@@ -49,7 +49,7 @@ json_encode($data_points);
 
 <!-- Top 5 Emergency Cases -->
 <?php
-$res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 5") or die(mysqli_error());
+$res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
 $data_points2 = array();
 while($result2 = $res2->fetch_array()){
     $R2 = $result2['dispatched_for'];
@@ -79,7 +79,7 @@ json_encode($data_points3);
 
 <!-- -->
 <?php
-$res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 5") or die(mysqli_error());
+$res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
 $data_points4 = array();
 while($result4 = $res4->fetch_array()){
     $R4 = $result4['call_location'];

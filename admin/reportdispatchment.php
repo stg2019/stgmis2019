@@ -66,116 +66,105 @@ require '../require/logincheck.php';
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4 monthly quarterly yearly reporttype">
+                            <div class="panel panel-primary" data-sortable-id="index-1">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        Top Emergency Cases 2018
+                                    </h4>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>	
+                                            <th>Emergency Case</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
+        $data_points2 = array();
+        while($result2 = $res2->fetch_array()){
+            $R2 = $result2['dispatched_for'];
+            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+            $f2 = $q2->fetch_array();
+            $FR2 = intval($f2['total']);
+            $point2 = array('label' => $R2, 'y' => $FR2);
+            array_push($data_points2, $point2);
+
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $f2['dispatched_for']?></td>
+                                            <td><?php echo $f2['total']?></td>
+                                        </tr>
+
+                                        <?php
+        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
                             <div class="email-content monthly quarterly yearly reporttype">
                                 <div class="panel-body">
-                                    <div id="chartContainer4" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer4" style="width: 100%; height: 285px"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 monthly quarterly yearly reporttype">
+                            <div class="panel panel-primary" data-sortable-id="index-1">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        Top Emergency Location 2018
+                                    </h4>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>	
+                                            <th>Emergency Location</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
+                                        $data_points4 = array();
+                                        while($result4 = $res4->fetch_array()){
+                                            $R4 = $result4['call_location'];
+                                            $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
+                                            $f4 = $q4->fetch_array();
+                                            $FR4 = intval($f4['total']);
+                                            $point4 = array('label' => $R4, 'y' => $FR4);
+                                            array_push($data_points4, $point4);
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $f4['call_location']?></td>
+                                            <td><?php echo $f4['total']?></td>
+                                        </tr>
+
+                                        <?php
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
                             <div class="email-content monthly quarterly yearly reporttype">
                                 <div class="panel-body">
-                                    <div id="chartContainer5" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer5" style="width: 100%; height: 285px"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <p><b>Tabular</b></p>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="email-content">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="primary">
-                                            <th><center>Jan</center></th>
-                                            <th><center>Feb</center></th>
-                                            <th><center>Mar</center></th>
-                                            <th><center>Apr</center></th>
-                                            <th><center>May</center></th>
-                                            <th><center>June</center></th>
-                                            <th><center>July</center></th>
-                                            <th><center>Aug</center></th>
-                                            <th><center>Sep</center></th>
-                                            <th><center>Oct</center></th>
-                                            <th><center>Nov</center></th>
-                                            <th><center>Dec</center></th>
-                                            <th><center>Total</center></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php require '../chartqueries/dashboard.php'?>
-                                        <tr>
-                                            <td><center><?php echo $fjan['total']?></center></td>
-                                            <td><center><?php echo $ffeb['total']?></center></td>
-                                            <td><center><?php echo $fmar['total']?></center></td>
-                                            <td><center><?php echo $fapr['total']?></center></td>
-                                            <td><center><?php echo $fmay['total']?></center></td>
-                                            <td><center><?php echo $fjun['total']?></center></td>
-                                            <td><center><?php echo $fjul['total']?></center></td>
-                                            <td><center><?php echo $faug['total']?></center></td>
-                                            <td><center><?php echo $fsep['total']?></center></td>
-                                            <td><center><?php echo $foct['total']?></center></td>
-                                            <td><center><?php echo $fnov['total']?></center></td>
-                                            <td><center><?php echo $fdec['total']?></center></td>
-                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="email-content">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="primary">
-                                            <th><center>Quarter 1</center></th>
-                                            <th><center>Quarter 2</center></th>
-                                            <th><center>Quarter 3</center></th>
-                                            <th><center>Quarter 4</center></th>
-                                            <th><center>Total</center></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php require '../chartqueries/reportsdispatchment.php'?>
-                                        <tr>
-                                            <td><center><?php echo $q1['total']?></center></td>
-                                            <td><center><?php echo $q2['total']?></center></td>
-                                            <td><center><?php echo $q3['total']?></center></td>
-                                            <td><center><?php echo $q4['total']?></center></td>
-                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="email-content">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="primary">
-                                            <th><center>Year</center></th>
-                                            <th><center>Total</center></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php require '../chartqueries/dashboard.php'?>
-                                        <tr>
-                                            <td><center><?php echo $f3['year']?></center></td>
-                                            <td><center><span class="label label-primary"><?php echo $total['total']?></span></center></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
 

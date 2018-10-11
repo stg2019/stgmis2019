@@ -1,11 +1,21 @@
 <?php require '../chartqueries/dashboard.php'?>
 <script type="text/javascript"> 
     $(document).ready(function(){ 
+        CanvasJS.addColorSet("customColorSet", [ 
+            "#f6e58d",
+            "#ffbe76", 
+            "#ff7979", 
+            "#eb4d4b", 
+            "#7ed6df",
+            "#22a6b3",
+            "#6ab04c",
+        ]);
         var chart1 = new CanvasJS.Chart("chartContainer1",{
             theme: "light2",
             zoomEnabled: true,
             zoomType: "x",
             panEnabled: true,
+            colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
             exportFileName: "Monthly Dispatchment - BDRRMO", 
@@ -77,15 +87,6 @@
                 }
             ] 
         });
-        CanvasJS.addColorSet("customColorSet", [ 
-            "#393f63",
-            "#e5d8B0", 
-            "#ffb367", 
-            "#f98461", 
-            "#d9695f",
-            "#e05850",
-            "#7E8F74",
-        ]);
         var chart2 = new CanvasJS.Chart("chartContainer2",{
             theme: "light2",
             zoomEnabled: true,
