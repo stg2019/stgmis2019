@@ -11,7 +11,7 @@ require '../require/logincheck.php';
         <meta content="" name="description" />
         <meta content="" name="author" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <link href="../assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -38,8 +38,6 @@ require '../require/logincheck.php';
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content content-full-width">
                 <div class="p-20">
-                    <!-- begin row -->
-
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">

@@ -102,7 +102,7 @@ require '../require/logincheck.php';
                                 <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
-                                <a href="patientrecord.php"><span class="fa fa-info-circle"></span> This Month | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                                <a href="requesttransportrecord.php"><span class="fa fa-info-circle"></span> This Month | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

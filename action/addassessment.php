@@ -40,6 +40,13 @@ if(isset($_POST['add'])){
     $subjective_assessment = $_POST['subjective_assessment'];
     $objective_assessment = $_POST['objective_assessment'];
 
+    //pain assessment
+    $onset = $_POST['onset'];
+    $pain = $_POST['pain'];
+    $quality = $_POST['quality'];
+    $region = $_POST['region'];
+    $severity = $_POST['severity'];
+
 
     require '../require/dbconnection.php';
 
@@ -50,6 +57,8 @@ if(isset($_POST['add'])){
     $conn->query("INSERT INTO `glassgow_coma_scale` VALUES('', '$eye', '$verbal', '$motor', '$patient_id')") or die(mysqli_error());
 
     $conn->query("INSERT INTO `assessment` VALUES('', '$chief_complaints', '$subjective_assessment', '$objective_assessment', '$priority_level', '$newpatientdisposition', '$newinterventions', '$patient_id')") or die(mysqli_error());
+
+    $conn->query("INSERT INTO `pain_assessment` VALUES('', '$onset', '$pain', '$quality', '$region', '$severity', '$patient_id')") or die(mysqli_error());
 
     $conn->query("UPDATE `patient` SET `status` = 'Assessed' WHERE `patient_id` = '$patient_id'") or die(mysqli_error());
     $conn->close();

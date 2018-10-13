@@ -10,7 +10,7 @@ require 'require/logincheck.php';
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -270,7 +270,7 @@ require 'require/logincheck.php';
                                                     <input type="text" class="form-control" id="rescue" name="rescue" placeholder="Enter Name of Rescue Agency"/>
                                                 </div>
                                             </div>
-                                            <hr><h4 class="text-danger">&nbsp; Interventions</h4><hr>
+                                            <h4 class="text-danger">&nbsp; Interventions</h4>
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <select onchange="checkValue(this);" class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="interventions" name="interventions">
@@ -382,7 +382,37 @@ require 'require/logincheck.php';
                                                     </select>
                                                 </div>
                                             </div>
-
+                                            <hr><h4 class="text-danger">&nbsp; Pain Assessment</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Onset</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="onset" name="onset" placeholder="Enter Onset" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Pain</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="pain" name="pain" placeholder="Enter Pain" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Quality</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="quality" name="quality" placeholder="Enter Quality" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Region</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region/Radiation" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Severity</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="severity" name="severity" placeholder="Enter Severity (1-10)" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div><hr>
                                     <div class="row">
@@ -543,7 +573,7 @@ require 'require/logincheck.php';
 
                         default:
                             document.getElementById("agency").style.display = "none";
-                                     }
+                                       }
                 });
             });
 
