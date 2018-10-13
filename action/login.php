@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
     <head>
-        <title>NDRRMO | Bacolod City</title>
+        <title>DRRMO MIS | Bacolod City</title>
         <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/ndrrmo/logo.png">
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <style type="text/css">
@@ -273,10 +273,10 @@ session_start();
 
 <?php
 require ('../require/dbconnection.php');
-//require ('../recaptchalib.php');
-//$secret = "6LeIim4UAAAAAIX3525-X_IVCum-HgV7MOE3qwYI";
-//$response = null;
-//$reCaptcha = new ReCaptcha($secret);
+require ('../recaptchalib.php');
+$secret = "6LeIim4UAAAAAIX3525-X_IVCum-HgV7MOE3qwYI";
+$response = null;
+$reCaptcha = new ReCaptcha($secret);
 
 
 
