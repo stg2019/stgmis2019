@@ -1,5 +1,5 @@
 .bg-gradient-primary {
-    background: linear-gradient(to right, #3867d6, #4b7bec);
+    background: linear-gradient(to right, #ED4C67, #B53471);
 }
 
 .bg-gradient-secondary {
@@ -11,6 +11,10 @@
 }
 
 .bg-gradient-info {
+    background: linear-gradient(to right, #0984e3, #74b9ff);
+}
+
+.bg-gradient-warning {
     background: linear-gradient(to right, #ffbe76, #f0932b);
 }
 
@@ -22,8 +26,8 @@
     background: linear-gradient(to right, #ffbf96, #fe7096);
 }
 
-.bg-gradient-light {
-    background: linear-gradient(to bottom, #f4f4f4, #e4e4e9);
+.bg-gradient-light-blue {
+    background: linear-gradient(to bottom, #1289A7, #12CBC4);
 }
 
 .bg-gradient-dark {

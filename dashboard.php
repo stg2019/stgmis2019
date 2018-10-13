@@ -39,6 +39,19 @@ require 'require/logincheck.php';
                 <h1 class="page-header">DASHBOARD</h1>
                 <div class="row">
                     <div class="col-lg-3">
+                        <div class="widget widget-stats bg-gradient-light-blue" onclick="location.href='masterrequesttransport.php';"style="cursor:pointer;">
+                            <img src="assets/img/ndrrmo/phone.svg" class="card-img-absolute" alt="circle-image"/>
+                            <div class="stats-content">
+                                <div class="stats-title">MASTER FILE</div>
+                                <div class="stats-number">CALL LOGS RECORD</div>
+                                <div class="stats-progress progress">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <div class="stats-desc">View Record</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
                         <div class="widget widget-stats bg-gradient-danger" onclick="location.href='masterdispatchment.php';"style="cursor:pointer;">
                             <img src="assets/img/ndrrmo/dispatchment.svg" class="card-img-absolute" alt="circle-image"/>
                             <div class="stats-content">
@@ -80,7 +93,7 @@ require 'require/logincheck.php';
                 </div>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="widget widget-stats bg-gradient-info" onclick="location.href='dispatchment.php';"style="cursor:pointer;">
+                        <div class="widget widget-stats bg-gradient-warning" onclick="location.href='dispatchment.php';"style="cursor:pointer;">
                             <img src="assets/img/ndrrmo/hospital.svg" class="card-img-absolute" alt="circle-image"/>
                             <div class="stats-content">
                                 <div class="stats-title">TRANSACTIONS</div>
@@ -106,11 +119,24 @@ require 'require/logincheck.php';
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="widget widget-stats bg-gradient-pink" onclick="location.href='assessmentlist.php';"style="cursor:pointer;">
+                        <div class="widget widget-stats bg-gradient-info" onclick="location.href='assessmentlist.php';"style="cursor:pointer;">
                             <img src="assets/img/ndrrmo/flask.svg" class="card-img-absolute" alt="circle-image"/>
                             <div class="stats-content">
                                 <div class="stats-title">TRANSACTIONS</div>
                                 <div class="stats-number">CURRENT INVENTORY</div>
+                                <div class="stats-progress progress">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <div class="stats-desc">View Record</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="widget widget-stats bg-gradient-pink" onclick="location.href='dispatchment.php';"style="cursor:pointer;">
+                            <img src="assets/img/ndrrmo/refusal.svg" class="card-img-absolute" alt="circle-image"/>
+                            <div class="stats-content">
+                                <div class="stats-title">TRANSACTIONS</div>
+                                <div class="stats-number">REFUSAL TREATMENT</div>
                                 <div class="stats-progress progress">
                                     <div class="progress-bar" style="width: 100%;"></div>
                                 </div>

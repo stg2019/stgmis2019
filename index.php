@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="login-content">
-                        <form action="action/login2.php" method="POST" class="margin-bottom-0">
+                        <form action="action/login.php" method="POST" class="margin-bottom-0">
                             <div id="modallabel" class="alert alert-danger" style="display:none;">
                                 <center><span id="checkfield"></span></center>
                             </div>
@@ -51,7 +51,7 @@
                             <div class="form-group m-b-15">
                                 <input type="password" class="form-control input-lg" placeholder="Password" name="password" required />
                             </div>
-                            <div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div>
+                           <!--<div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div> -->
                             <hr>
                             <div class="login-buttons">
                                 <button type="submit" class="btn btn-info btn-block btn-lg" id="login" name="login">Sign me in</button>
