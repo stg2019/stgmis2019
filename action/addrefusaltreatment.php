@@ -8,10 +8,13 @@ if(isset($_POST['add'])){
     $statements = $_POST['statements'];
     $attachment = $_POST['attachment'];
     $prepared_by = $_POST['prepared_by'];
+    date_default_timezone_set('Asia/Manila');
+    $month = date("M");
+    $year = date("Y");
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `refusal_treatment` VALUES('', '$signed', '$witness1', '$witness2', '$date_incident', '$statements', '$attachment', '$prepared_by')") or die(mysqli_error());
+    $conn->query("INSERT INTO `refusal_treatment` VALUES('', '$signed', '$witness1', '$witness2', '$date_incident', '$statements', '$attachment', '$prepared_by', '$month', '$year')") or die(mysqli_error());
     $conn->close();
 }
 ?>

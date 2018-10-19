@@ -77,7 +77,7 @@ while($result3 = $res3->fetch_array()){
 json_encode($data_points3);
 ?>
 
-<!-- -->
+<!-- Call Location -->
 <?php
 $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
 $data_points4 = array();
@@ -90,6 +90,22 @@ while($result4 = $res4->fetch_array()){
     array_push($data_points4, $point4);
 }
 json_encode($data_points4);
+?>
+
+<!-- Custom Yearly on Request of Transport -->
+<?php
+$res5 = $conn->query("SELECT * FROM `request_transport` GROUP BY year") or die(mysqli_error());
+$data_points5 = array();
+while($result5 = $res5->fetch_array()){
+    $R5 = $result5['year'];
+    $q5 = $conn->query("SELECT *, COUNT(*) as total FROM `request_transport` WHERE `year` = '$R5' group by year") or die(mysqli_error());
+    $f5 = $q5->fetch_array();
+    $FR5 = intval($f5['total']);
+    $point5 = array('label' => $R5, 'y' => $FR5);
+    array_push($data_points5, $point5);
+}
+json_encode($data_points5);
+
 ?>
 
 

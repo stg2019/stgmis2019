@@ -10,7 +10,7 @@ require '../require/logincheck.php';
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
         <link href="../assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -252,14 +252,14 @@ require '../require/logincheck.php';
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <?php
                                 $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
                                 ?>
-                                <h4 class="panel-title">LATEST DISPATCHMENT - <?php echo $fetch['call_location']?></h4>
+                                <h4 class="panel-title">RECENT DISPATCHMENT - <?php echo $fetch['call_location']?></h4>
                             </div>
                             <div class="panel-body">
 

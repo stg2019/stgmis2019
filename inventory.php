@@ -40,20 +40,28 @@ require 'require/logincheck.php';
                 </ol>
 
 
-                <h1 class="page-header"><a href="#addcall" class="btn btn-sm btn-success" data-toggle="modal">New Call Log</a>
-                    <a href="dispatchment.php" class="btn btn-sm btn-primary">Go to Dispatchment</a>
-                </h1>
+                <h1 class="page-header"><a href="#requestsupplies" class="btn btn-sm btn-success" data-toggle="modal">Request Medical Supplies</a></h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-5">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Call Logs</h4>
+                                <h4 class="panel-title">Requested Medical Supplies</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="calllogsTable"></div>
+                                <div id="requestTable"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="panel panel-info" >
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">List of Medical Supplies</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="inventoryTable"></div>
                             </div>
                         </div>
                     </div>
@@ -61,12 +69,12 @@ require 'require/logincheck.php';
             </div>
             <?php require 'require/sidepanel.php'?>
 
-            <?php require 'modals/addcall.php'?>
+            <?php require 'modals/requestsupplies.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/crudcalllogs.js"></script>
+        <script type="text/javascript" src="functions/crudemtinventory.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>

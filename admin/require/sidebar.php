@@ -49,7 +49,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="inventory.php">Inventory</a></li>
-                    <li><a href="inventory.php">Medical Supplies Request</a></li>
+                    <li><a href="medicalsuppliesrequest.php">Medical Supplies Request</a></li>
                 </ul>
             </li>
             <li class="has-sub">
@@ -60,10 +60,10 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="reportdispatchment.php">Dispatchment Report</a></li>
-                    <li><a href="#">Assessment Report</a></li>
-                    <li><a href="#">Request for Transport Report</a></li>
-                    <li><a href="#">Refusal of Treatment Report</a></li>
-                    <li><a href="#">Inventory Report</a></li>
+                    <li><a href="reportassessment.php">Assessment Report</a></li>
+                    <li><a href="reportrequesttransport.php">Request for Transport Report</a></li>
+                    <li><a href="reportrefusaltreatment.php">Refusal of Treatment Report</a></li>
+                    <li><a href="reportsinventory.php">Inventory Report</a></li>
                 </ul>
             </li>
             <li class="has-sub">
