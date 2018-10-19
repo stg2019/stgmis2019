@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2018 at 01:09 PM
+-- Generation Time: Oct 19, 2018 at 04:42 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id7318069_ndrrmo`
+-- Database: `ndrrmo`
 --
 
 -- --------------------------------------------------------
@@ -48,7 +48,10 @@ INSERT INTO `assessment` (`assessment_id`, `chief_complaints`, `subjective_asses
 (4, '123', '123', '123', '2 - Urgent', 'Treated and Released / transferred care CLMMRH', 'ET Tube 12 12            ', 4),
 (5, 'Test', 'Test', 'Test', '1 - Emergent', 'Treated and Released / transferred care Riverside', 'CPR       100 08/25/2018 2:11 PM      ', 5),
 (6, 'Shit', 'Shit', 'Shit', '1 - Emergent', 'Treated and Released / transferred care CLMMRH', 'O2 Administered   12 12          ', 9),
-(7, 'Assessment', 'Assessment', 'Assessment', '1 - Emergent', 'Refused Treatment ', 'Airway Cleared              ', 10);
+(7, 'Assessment', 'Assessment', 'Assessment', '1 - Emergent', 'Refused Treatment ', 'Airway Cleared              ', 10),
+(8, 'Best Thesis', 'Best Thesis', 'Best Thesis', '2 - Urgent', 'No Treatment Required ', 'O2 Administered   12 12          ', 11),
+(9, 'Test', 'Test', 'Test', '3 - Non-urgent', 'No Treatment Required ', 'Walked to ambulance              ', 12),
+(10, 'qwe', 'qwe', 'qwe', '1 - Emergent', 'Treated / transport to facility ', 'Moved to ambulance on stretcher/backboard              ', 13);
 
 -- --------------------------------------------------------
 
@@ -70,10 +73,11 @@ CREATE TABLE `call_logs` (
 --
 
 INSERT INTO `call_logs` (`call_id`, `date_time_call`, `complete_address`, `emergency`, `caller_name`, `contact_no`) VALUES
-(1, '09/16/2018 11:49 AM', 'Lizares Avenue, Bacolod City', 'Accident near 7/11', 'Kurt Dela Torre', '4332449'),
+(1, '09/16/2018 11:49 AM', 'Lizares Avenue, Bacolod City', 'Accident near 7/112', 'Kurt Dela Torre', '4332449'),
 (2, '09/16/2018 11:49 AM', 'Lacson Avenue, Bacolod City, Negros Occidental, Philippines', 'Accident sa may Lacson', 'Peter Sacayle', '4332449'),
 (3, '09/16/2018 11:56 AM', 'Balboa St. Eroreco, Bacolod City', 'Fire', 'Alkaid Lamig', '4332449'),
-(4, '09/19/2018 11:51 PM', 'Banago, Negros Occidental, Philippines', 'Test', 'Test', 'Test');
+(4, '09/19/2018 11:51 PM', 'Banago, Negros Occidental, Philippines', 'Test', 'Test', 'Test'),
+(5, '10/14/2018 12:48 AM', 'Bacolod City, Negros Occidental, Philippines', 'Test', 'Test', 'Test');
 
 -- --------------------------------------------------------
 
@@ -122,17 +126,19 @@ CREATE TABLE `dispatch` (
 
 INSERT INTO `dispatch` (`dispatch_id`, `service_no`, `date_time_call`, `ambulance`, `dispatched_for`, `call_location`, `moi_noi`, `patients_on_scene`, `on_board_tl`, `ems`, `driver`, `care_in_progress`, `mass_casualty`, `enroute`, `date_created`, `month`, `year`) VALUES
 (1, '10000', '08/25/2018 11:32 AM', 'Samaritan 1', 'Airway Obstruction', 'Andalucia Street, Bacolod City', '100', '100', '100', '100', 'Driver A', 'Citizen', 'on', '11:34 am', 'August 17, 2018 07:44 pm', 'Aug', '2018'),
-(2, '1009', '08/25/2018 1:41 PM', 'Samaritan 1', 'Airway Obstruction', 'Bacolod City', '123', '123', '123', '123', 'Driver B', 'Citizen', 'No', '1:41 pm', 'August 17, 2018 08:44 pm', 'Aug', '2018'),
+(2, '10092', '08/25/2018 1:41 PM', 'Samaritan 1', 'Airway Obstruction', 'Bacolod City', '123', '123', '123', '123', 'Driver B', 'Citizen', 'No', '1:41 pm', 'August 17, 2018 08:44 pm', 'Aug', '2018'),
 (3, '123', '09/01/2018 12:31 AM', 'Samaritan 1', 'Hypertension', 'Bacolod City', '12', '12', '12', '12', 'Driver A', 'Citizen', 'No', '12:31 am', 'August 17, 2018 10:10 am', 'Aug', '2018'),
-(4, '10009', '09/01/2018 12:38 AM', 'Samaritan 1', 'Stroke/CVA', '12', '12', '12', '12', '12', '12', 'Citizen', 'Yes', '12:38 am', 'September 15, 2018 10:30 am', 'Sep', '2018'),
+(4, '100013213', '09/01/2018 12:38 AM', 'Samaritan 1', 'Stroke/CVA', 'Lizares Avenue, Bacolod City', '12', '12', '12', '12', '12', 'Citizen', 'Yes', '12:38 am', 'September 15, 2018 10:30 am', 'Sep', '2018'),
 (5, '1234', '09/07/2018 12:25 PM', 'Samaritan 2', 'Airway Obstruction', 'Bacolod City', '100', '100', '100', 'Kurt Dela Torre', 'Driver A', 'Citizen', 'Yes', '12:25 pm', 'September 16, 2018 10:50 am', 'Sep', '2018'),
-(6, '1099', '09/07/2018 5:36 PM', 'Samaritan 1', 'Airway Obstruction', 'Taculing Barangay Hall, Bacolod City, Negros Occidental, Philippines', '109', '109', '109', 'EMS', 'Driver ABC', 'Citizen', 'Yes', '5:37 pm', 'September 17, 2018 12:44 pm', 'Sep', '2018'),
-(7, '100022', '09/17/2018 11:10 AM', 'Samaritan 1', 'Hypertension', 'Santa Clara St, Mandalagan, Negros Occidental, Philippines', '12', '1', '12', 'Test', 'Driver A', 'Citizen', 'Yes', '11:12 am', 'September 17, 2018 09:44 pm', 'Sep', '2018'),
-(8, '100999', '09/23/2018 6:30 PM', 'Samaritan 1', 'Stroke/CVA', 'Lizares Avenue, Bacolod City, Negros Occidental, Philippines', '20', '10', '10', '10', 'Driver ABC', 'Medical Practicioner / First Aider', 'No', '6:30 pm', 'September 23, 2018 10:44 am', 'Sep', '2018'),
-(9, '100999', '09/27/2018 12:11 AM', 'Samaritan 1', 'Hypertension', 'Lizares Avenue, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'Citizen', 'No', '12:11 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
-(10, '121319', '09/27/2018 12:23 AM', 'Samaritan 2', 'Allergic Reaction', 'Sum-ag, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', 'Alkaid Lamig', 'Peter Sacayle', 'None', 'No', '12:24 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
-(11, '23412', '09/27/2018 10:44 PM', 'Samaritan 1', 'Major Trauma', 'Lacson, Bacolod City, Negros Occidental, Philippines', '102', '12', '12', 'Test', 'Driver ABC', 'Citizen', 'No', '10:44 pm', 'September 27, 2018 10:44 pm', 'Sep', '2018'),
-(12, '127381', '09/27/2018 11:02 PM', 'Samaritan 1', 'Respiratory Distress', 'Margarita, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', 'Driver ZXC', 'Citizen', 'No', '11:03 pm', 'September 27, 2018 11:03 pm', 'Sep', '2018');
+(6, '1099', '09/07/2018 5:36 PM', 'Samaritan 1', 'Airway Obstruction', 'Taculing Barangay Hall, Bacolod City', '109', '109', '109', 'EMS', 'Driver ABC', 'Citizen', 'Yes', '5:37 pm', 'September 17, 2018 12:44 pm', 'Sep', '2018'),
+(7, '100022', '09/17/2018 11:10 AM', 'Samaritan 1', 'Hypertension', 'Santa Clara St, Mandalagan', '12', '1', '12', 'Test', 'Driver A', 'Citizen', 'Yes', '11:12 am', 'September 17, 2018 09:44 pm', 'Sep', '2018'),
+(8, '123456789', '09/23/2018 6:30 PM', 'Samaritan 1', 'Stroke/CVA', 'Lizares Avenue, Bacolod City', '20', '10', '10', '10', 'Driver ABC', 'Medical Practicioner / First Aider', 'No', '6:30 pm', 'September 23, 2018 10:44 am', 'Sep', '2018'),
+(9, '100999', '09/27/2018 12:11 AM', 'Samaritan 1', 'Hypertension', 'Lizares Avenue, Bacolod City', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'Citizen', 'No', '12:11 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
+(10, '121319', '09/27/2018 12:23 AM', 'Samaritan 2', 'Allergic Reaction', 'Sum-ag, Bacolod City', '12', '12', '12', 'Alkaid Lamig', 'Peter Sacayle', 'None', 'No', '12:24 am', 'September 26, 2018 11:44 pm', 'Sep', '2018'),
+(11, '23412', '09/27/2018 10:44 PM', 'Samaritan 1', 'Major Trauma', 'Lacson, Bacolod City', '102', '12', '12', 'Test', 'Driver ABC', 'Citizen', 'No', '10:44 pm', 'September 27, 2018 10:44 pm', 'Sep', '2018'),
+(12, '127381', '09/27/2018 11:02 PM', 'Samaritan 1', 'Respiratory Distress', 'Margarita, Bacolod City', '12', '12', '12', '12', 'Driver ZXC', 'Citizen', 'No', '11:03 pm', 'September 27, 2018 11:03 pm', 'Sep', '2018'),
+(13, '2131', '09/30/2018 11:08 PM', 'Samaritan 1', 'Respiratory Distress', 'Hilado Street, Bacolod City', 'Test', '12', '12', 'Alkaid Lamig', 'Kurt Dela Torre', 'Citizen', 'Yes', '11:09 pm', 'September 30, 2018 11:09 pm', 'Oct', '2018'),
+(14, '2131', '09/30/2018 11:28 PM', 'Samaritan 2', 'Respiratory Arrest', 'Hernaez Street, Bacolod City', 'Kurt Dela Torre', '1', '1', 'Peter Sacayle', 'Alkaid Lamig', 'Medical Practicioner / First Aider', 'No', '11:29 pm', 'September 30, 2018 11:29 pm', 'Sep', '2018');
 
 -- --------------------------------------------------------
 
@@ -159,7 +165,37 @@ INSERT INTO `glassgow_coma_scale` (`glassgow_coma_scale_id`, `eye`, `verbal`, `m
 (4, 3, 3, 3, 4),
 (5, 3, 4, 4, 5),
 (6, 4, 4, 4, 9),
-(7, 3, 4, 5, 10);
+(7, 3, 4, 5, 10),
+(8, 2, 2, 6, 11),
+(9, 3, 3, 4, 12),
+(10, 2, 4, 5, 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_supply_request`
+--
+
+CREATE TABLE `medical_supply_request` (
+  `medical_supply_request_id` int(10) NOT NULL,
+  `medical_supply_name` varchar(100) NOT NULL,
+  `requested_quantity` varchar(10) NOT NULL,
+  `date_requested` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `month` varchar(20) NOT NULL,
+  `year` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `medical_supply_request`
+--
+
+INSERT INTO `medical_supply_request` (`medical_supply_request_id`, `medical_supply_name`, `requested_quantity`, `date_requested`, `status`, `month`, `year`) VALUES
+(1, 'Sample', '100', 'October 14, 2018 8:44 pm', 'Pending', 'Oct', '2018'),
+(2, 'Cotton', '20', 'October 14, 2018 8:55 pm', 'Pending', 'Oct', '2018'),
+(4, 'Cotton', '20', 'October 14, 2018 8:56 pm', 'Pending', 'Oct', '2018'),
+(5, 'Betadine', '200', 'October 19, 2018 7:48 pm', 'Approved', 'Oct', '2018'),
+(6, 'Test', '100', 'October 19, 2018 8:27 pm', 'Pending', 'Oct', '2018');
 
 -- --------------------------------------------------------
 
@@ -183,12 +219,62 @@ CREATE TABLE `medical_supply_stocks` (
 --
 
 INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`, `date_created`) VALUES
-(1, 136, 'Alcohol', 'This is Alcohol', 'Savemore', 30, 'Reorder', 'September 23, 2018'),
+(1, 136, 'Alcohol', 'This is Alcohol', 'Savemore', 13, 'Reorder', 'September 23, 2018'),
 (2, 136, 'Cotton', 'This is Cotton', 'Libra', 23, 'Reorder', 'September 23, 2018'),
 (3, 136, 'Betadine', 'This is Betadine', 'PureGold', 100, 'Reorder', 'September 23, 2018'),
 (4, 136, 'Shit', 'Shit', 'Shit', 200, 'Reorder', 'September 23, 2018'),
-(5, 136, 'Sample', 'Sample', 'Sample', 10, 'Reorder', 'September 23, 2018'),
+(5, 136, 'Sample', 'Sample', 'Sample', 30, 'Reorder', 'September 23, 2018'),
 (6, 136, 'Test', 'This is Test', 'Avon', 505, 'Reorder', 'September 25, 2018');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_supply_stocks_emt`
+--
+
+CREATE TABLE `medical_supply_stocks_emt` (
+  `stock_id` int(10) NOT NULL,
+  `medical_supply_name` varchar(100) NOT NULL,
+  `medical_supply_description` varchar(100) NOT NULL,
+  `supplier` varchar(100) NOT NULL,
+  `running_balance` int(10) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `medical_supply_stocks_emt`
+--
+
+INSERT INTO `medical_supply_stocks_emt` (`stock_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`) VALUES
+(1, 'Alcohol', 'This is Alcohol', 'Savemore', 30, 'Reorder'),
+(2, 'Cotton', 'This is Cotton', 'Libra', 10, 'Reorder'),
+(3, 'Betadine', 'This is Betadine', 'PureGold', 100, 'Reorder'),
+(4, 'Shit', 'Shit', 'Shit', 200, 'Reorder'),
+(5, 'Sample', 'Sample', 'Sample', 10, 'Reorder'),
+(6, 'Test', 'This is Test', 'Avon', 505, 'Reorder');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pain_assessment`
+--
+
+CREATE TABLE `pain_assessment` (
+  `pain_assessment_id` int(10) NOT NULL,
+  `onset` varchar(100) NOT NULL,
+  `pain` varchar(100) NOT NULL,
+  `quality` varchar(100) NOT NULL,
+  `region` varchar(100) NOT NULL,
+  `severity` varchar(100) NOT NULL,
+  `patient_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pain_assessment`
+--
+
+INSERT INTO `pain_assessment` (`pain_assessment_id`, `onset`, `pain`, `quality`, `region`, `severity`, `patient_id`) VALUES
+(1, 'Onset', 'Pain', 'Quality', 'Region', '10', 13);
 
 -- --------------------------------------------------------
 
@@ -218,7 +304,10 @@ INSERT INTO `past_medical_history` (`past_med_his_id`, `allergy`, `medications`,
 (4, '12', '12', '12', '12', '12', 'VA seatbelt used', 4),
 (5, '12', '12', '12', '12', '12', 'VA seatbelt used', 5),
 (6, '12', '12', '12', '12', '12', 'Extrication Required', 9),
-(7, '20', '20', '20', '20', '20', 'VA seatbelt used', 10);
+(7, '20', '20', '20', '20', '20', 'VA seatbelt used', 10),
+(8, '12', '12', '12', '12', '12', 'Extrication Required', 11),
+(9, '12', '12', '12', '12', '12', 'VA seatbelt used', 12),
+(10, '12', '12', '12', '12', '12', 'Extrication Required', 13);
 
 -- --------------------------------------------------------
 
@@ -256,8 +345,9 @@ INSERT INTO `patient` (`patient_id`, `patient_name`, `age`, `gender`, `date_of_b
 (8, 'Patient H', '12', 'Male', '08/13/2018', '4332449', 'bacolod City', 'Test', 'Test', 'Allergies', '2', 'Unassessed'),
 (9, 'Patient M', '12', 'Male', '08/23/2018', '4332449', 'Bacolod City', 'Sample', 'Sample', 'Allergies', '2', 'Assessed'),
 (10, 'Patient H', '12', 'Male', '09/11/2018', '4332449', 'Bacolod City', 'Test', 'Test', 'Allergies', '3', 'Assessed'),
-(11, 'Alkaid Lamig', '21', 'Male', '09/16/2018', '4332449', 'Bacolod City', 'Peter Sacayle', 'Brother', 'None', '3', 'Unassessed'),
-(12, 'Patient G', '20', 'Male', '09/10/2018', '4332449', 'Bacolod', 'Test', 'Test', 'DNR', '3', 'Unassessed');
+(11, 'Alkaid Lamig', '21', 'Male', '09/16/2018', '4332449', 'Bacolod City', 'Peter Sacayle', 'Brother', 'None', '3', 'Assessed'),
+(12, 'Patient G', '20', 'Male', '09/10/2018', '4332449', 'Bacolod', 'Test', 'Test', 'DNR', '3', 'Assessed'),
+(13, 'Kurt Dela Torre', '20', 'Male', '10/01/2018', '4332449', 'Lizares Avenue, Bacolod City', 'Test', 'Test', 'Organ Donor', '6', 'Assessed');
 
 -- --------------------------------------------------------
 
@@ -273,20 +363,23 @@ CREATE TABLE `refusal_treatment` (
   `date_incident` varchar(50) NOT NULL,
   `statements` varchar(255) NOT NULL,
   `attachment` varchar(50) NOT NULL,
-  `prepared_by` varchar(50) NOT NULL
+  `prepared_by` varchar(50) NOT NULL,
+  `month` varchar(20) NOT NULL,
+  `year` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `refusal_treatment`
 --
 
-INSERT INTO `refusal_treatment` (`refusal_treatment_id`, `signed`, `witness1`, `witness2`, `date_incident`, `statements`, `attachment`, `prepared_by`) VALUES
-(1, 'Kurt Dela Torre', 'Peter Sacayle', 'Alkaid Lamig', '09/16/2018 12:41 PM', '', 'None', 'Alkaid Lamig'),
-(2, 'Alkaid Lamig', 'Peter Sacayle', 'Kurt Dela Torre', '09/16/2018 12:51 PM', '', 'None', 'Peter Sacayle'),
-(3, 'Peter Sacayle', 'Kurt Dela Torre', 'Kurt Dela Torre', '09/03/2018 11:36 PM', 'This is a statement', 'None', 'Peter Sacayle'),
-(6, 'Juan Dela Cruz', 'Peter Lopez', 'John Dela Cruz', '09/16/2018 10:54 AM', '', 'None', 'Me'),
-(7, 'Patient A', 'Kurt Dela Torre', 'Alkaid Lamig', '09/16/2018 12:28 PM', '', 'None', 'Peter Sacayle'),
-(8, 'Patient C', 'Alkaid Lamig', 'Peter Sacayle', '09/30/2018 12:03 AM', 'This is refusal', 'None', 'Kurt Dela Torre');
+INSERT INTO `refusal_treatment` (`refusal_treatment_id`, `signed`, `witness1`, `witness2`, `date_incident`, `statements`, `attachment`, `prepared_by`, `month`, `year`) VALUES
+(1, 'Kurt Dela Torre', 'Peter Sacayle', 'Alkaid Lamig', '09/16/2018 12:41 PM', '', 'None', 'Alkaid Lamig', 'Sep', '2018'),
+(2, 'Alkaid Lamig', 'Peter Sacayle', 'Kurt Dela Torre', '09/16/2018 12:51 PM', '', 'None', 'Peter Sacayle', 'Sep', '2018'),
+(3, 'Peter Sacayle', 'Alkaid Lamig', 'Kurt Dela Torre', '09/03/2018 11:36 PM', '', 'None', 'Peter Sacayle', 'Sep', '2018'),
+(6, 'Juan Dela Cruz', 'Peter Lopez', 'John Dela Cruz', '09/16/2018 10:54 AM', '', 'None', 'Me', 'Sep', '2018'),
+(7, 'Patient A', 'Kurt Dela Torre', 'Alkaid Lamig', '09/16/2018 12:28 PM', '', 'None', 'Peter Sacayle', 'Sep', '2018'),
+(8, 'Patient C', 'Alkaid Lamig', 'Peter Sacayle', '09/30/2018 12:03 AM', 'This is refusal', 'None', 'Kurt Dela Torre', 'Sep', '2018'),
+(9, 'Patient E', 'Kurt Dela Torre', 'Peter Sacayle', '10/19/2018 6:41 PM', 'No Comment', 'None', 'Alkaid Lamig', 'Oct', '2018');
 
 -- --------------------------------------------------------
 
@@ -315,26 +408,30 @@ CREATE TABLE `request_transport` (
   `sat` varchar(50) NOT NULL,
   `requesting_approval` varchar(50) NOT NULL,
   `approval` varchar(50) NOT NULL,
-  `date_created` varchar(100) NOT NULL
+  `date_created` varchar(100) NOT NULL,
+  `month` varchar(20) NOT NULL,
+  `year` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request_transport`
 --
 
-INSERT INTO `request_transport` (`request_transport_id`, `date_time`, `requesting_party`, `contact_no`, `patient_name`, `address`, `age`, `gender`, `medical_history`, `special_considerations`, `froma`, `toa`, `fromb`, `gcs`, `bp`, `rr`, `pr`, `sat`, `requesting_approval`, `approval`, `date_created`) VALUES
-(5, '09/03/2018 6:51 PM', 'Party YUI', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', ''),
-(6, '09/03/2018 6:52 PM', 'Party E', '1234', 'Patient H', 'Margarita Street', '28', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '12', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', ''),
-(7, '09/01/2018 1:32 PM', 'Party GGG', '4332449', 'Pedro Colmenares', 'Andalucia Street', '28', 'Male', 'None', 'Chest Tube Drainage', 'Bacolod City', 'Bacolod City', 'Bacolod City', '10', '10', '10', '10', '10', 'Doctor A', 'Doctor B', ''),
-(8, '09/01/2018 2:11 PM', 'Party G', '4332449', 'Patient DFG', 'Bugnay Rd. Villamonte', '20', 'Male', 'None', 'Chest Tube Drainage', '12', '12', '12', '12', '12', '121', '12', '12', 'Dr. Delatorre', 'Dr. Delatorre', ''),
-(9, '09/02/2018 10:55 AM', 'Three Propis', '433-2449', 'Juan Dela Cruz', 'Lizares Avenue, Bacolod City', '28', 'Male', 'None', '', 'Lizares Avenue, Bacolod City', 'Margarita St., Bacolod City', 'Lizares Avenue, Bacolod City', '12', '12', '12', '12', '12', 'Alson John Bayon-on', 'Carl Betio', ''),
-(10, '09/02/2018 8:22 PM', 'Party ZXC', '433-2449', 'Pedro Dela Cruz', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', ''),
-(11, '09/03/2018 7:08 PM', 'Party RTY', '433-2449', 'Patient DFG', 'Felisa, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Colostomy', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Alvin', 'Alvin', ''),
-(12, '09/03/2018 10:20 PM', 'Party Party', '4332449', 'Patient CVB', 'Burgos St, Bacolod City, Negros Occidental, Philippines', '12', 'Male', '12', '02', '12', '12', '12', '12', '12', '12', '12', '12', '12', '12', ''),
-(13, '09/17/2018 10:50 AM', 'Safetech Guardians', '433-2449', 'Peter Sacayle', 'Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Chest Tube Drainage', 'Sum-ag', 'Lizares', 'Lizares', '12', '12', '12', '12', '12', 'Test', 'Test', 'September 17, 2018'),
-(14, '09/17/2018 10:56 AM', 'CIT', '4332449', 'Alkaid Lamig', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '21', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018'),
-(15, '09/17/2018 11:01 AM', 'CBA', '4332449', 'Kurt Dela Torre', 'Molave St, Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018'),
-(16, '09/19/2018 11:55 PM', 'Party CVVB', '4332449', 'Alkaid Lamig', 'Prk. Fiesta Homes Sum-ag Bacolod City', '21', 'Male', 'None', 'Chest Tube Drainage', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 19, 2018');
+INSERT INTO `request_transport` (`request_transport_id`, `date_time`, `requesting_party`, `contact_no`, `patient_name`, `address`, `age`, `gender`, `medical_history`, `special_considerations`, `froma`, `toa`, `fromb`, `gcs`, `bp`, `rr`, `pr`, `sat`, `requesting_approval`, `approval`, `date_created`, `month`, `year`) VALUES
+(5, '09/03/2018 6:51 PM', 'Party YUI', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', 'September 17, 2018', 'Sep', '2018'),
+(6, '09/03/2018 6:52 PM', 'Party E', '1234', 'Patient H', 'Margarita Street', '28', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '12', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'September 17, 2018', 'Sep', '2018'),
+(7, '09/01/2018 1:32 PM', 'Party GGGFFF', '4332449', 'Pedro Colmenares', 'Andalucia Street', '28', 'Male', 'None', 'Chest Tube Drainage', 'Bacolod City', 'Bacolod City', 'Bacolod City', '10', '10', '10', '10', '10', 'Doctor A', 'Doctor B', 'September 17, 2018', 'Sep', '2018'),
+(8, '09/01/2018 2:11 PM', 'Party G', '4332449', 'Patient DFG', 'Bugnay Rd. Villamonte', '20', 'Male', 'None', 'Chest Tube Drainage', '12', '12', '12', '12', '12', '121', '12', '12', 'Dr. Delatorre', 'Dr. Delatorre', 'September 17, 2018', 'Sep', '2018'),
+(9, '09/02/2018 10:55 AM', 'Three Propis', '433-2449', 'Juan Dela Cruz', 'Lizares Avenue, Bacolod City', '28', 'Male', 'None', '', 'Lizares Avenue, Bacolod City', 'Margarita St., Bacolod City', 'Lizares Avenue, Bacolod City', '12', '12', '12', '12', '12', 'Alson John Bayon-on', 'Carl Betio', 'September 17, 2018', 'Sep', '2018'),
+(10, '09/02/2018 8:22 PM', 'Party ZXC', '433-2449', 'Pedro Dela Cruz', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 17, 2018', 'Sep', '2018'),
+(11, '09/03/2018 7:08 PM', 'Party RTY', '433-2449', 'Patient DFG', 'Felisa, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Colostomy', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Alvin', 'Alvin', 'September 17, 2018', 'Sep', '2018'),
+(12, '09/03/2018 10:20 PM', 'Party Party', '4332449', 'Patient CVB', 'Burgos St, Bacolod City, Negros Occidental, Philippines', '12', 'Male', '12', '02', '12', '12', '12', '12', '12', '12', '12', '12', '12', '12', 'September 17, 2018', 'Sep', '2018'),
+(13, '09/17/2018 10:50 AM', 'Safetech Guardians', '433-2449', 'Peter Sacayle', 'Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Chest Tube Drainage', 'Sum-ag', 'Lizares', 'Lizares', '12', '12', '12', '12', '12', 'Test', 'Test', 'September 17, 2018', 'Sep', '2018'),
+(14, '09/17/2018 10:56 AM', 'CIT', '4332449', 'Alkaid Lamig', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '21', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
+(15, '09/17/2018 11:01 AM', 'CBA', '4332449', 'Kurt Dela Torre', 'Molave St, Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
+(16, '09/19/2018 11:55 PM', 'Party CVVB', '4332449', 'Alkaid Lamig', 'Prk. Fiesta Homes Sum-ag Bacolod City', '21', 'Male', 'None', 'Chest Tube Drainage', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 19, 2018', 'Sep', '2018'),
+(17, '10/19/2018 11:03 AM', 'Party QWEASD', '4332449', 'Alkaid Lamig', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018'),
+(18, '10/19/2018 6:22 PM', 'Party STG', '4332449', 'Alkaid Lamig', 'Margarita Street', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '21', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018');
 
 -- --------------------------------------------------------
 
@@ -389,7 +486,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `complete_name`, `username`, `password`, `user_role`, `status`, `date_created`, `time_created`) VALUES
 (182, 'kurt dela torre', 'kurt', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja5948a0b701a40b762d5a1311cc171a0607734ea', 'Administrator', 1, 'September 28, 2018', '11:50 pm'),
 (183, 'peter sacayle', 'peter', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj60b1cfb0ae85b40c40e85ee2e0da328b638ba643', 'EMT', 1, 'September 28, 2018', '11:51 pm'),
-(184, 'alkaid lamig', 'alkaid', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj71c12f2610b2b0f61eb92eaeca53ece710c141e4', 'EMT', 1, 'September 28, 2018', '11:51 pm');
+(184, 'alkaid lamig', 'alkaid', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj71c12f2610b2b0f61eb92eaeca53ece710c141e4', 'EMT', 1, 'September 28, 2018', '11:51 pm'),
+(185, 'test', 'test', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'EMT', 1, 'October 14, 2018', '5:26 pm'),
+(186, 'juan dela cruz', 'juan', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj2a5c0ba4cb7dcb073059250118e118971f35b5e4', 'EMT', 1, 'October 14, 2018', '5:35 pm');
 
 -- --------------------------------------------------------
 
@@ -423,7 +522,10 @@ INSERT INTO `vital_signs` (`vital_signs_id`, `time`, `loc`, `bp`, `sa`, `pr`, `r
 (4, '', 'Alert', '12', '12', '12', '12', '12', '12', 'Constricted - L', 'Flushed', '4'),
 (5, '', 'Voice', '12', '12', '12', '12', '12', '12', 'Sluggish - L', 'Moist', '5'),
 (6, '', 'Voice', '12', '12', '12', '12', '12', '12', 'Constricted - L', 'Warm', '9'),
-(7, '', 'Pain', '202', '20', '20', '20', '20', '20', 'Normal - L', 'Pale', '10');
+(7, '', 'Pain', '202', '20', '20', '20', '20', '20', 'Normal - L', 'Pale', '10'),
+(8, '', 'Alert', '12', '12', '12', '12', '12', '12', 'Sluggish - R', 'Flushed', '11'),
+(9, '', 'Voice', '12', '1212', '12', '12', '12', '12', 'No Response - R', 'Cyanotic', '12'),
+(10, '10:14 PM', 'Alert', '11', '11', '11', '11', '11', '11', 'Normal - R', 'Pale', '13');
 
 --
 -- Indexes for dumped tables
@@ -460,10 +562,28 @@ ALTER TABLE `glassgow_coma_scale`
   ADD PRIMARY KEY (`glassgow_coma_scale_id`);
 
 --
+-- Indexes for table `medical_supply_request`
+--
+ALTER TABLE `medical_supply_request`
+  ADD PRIMARY KEY (`medical_supply_request_id`);
+
+--
 -- Indexes for table `medical_supply_stocks`
 --
 ALTER TABLE `medical_supply_stocks`
   ADD PRIMARY KEY (`stock_id`);
+
+--
+-- Indexes for table `medical_supply_stocks_emt`
+--
+ALTER TABLE `medical_supply_stocks_emt`
+  ADD PRIMARY KEY (`stock_id`);
+
+--
+-- Indexes for table `pain_assessment`
+--
+ALTER TABLE `pain_assessment`
+  ADD PRIMARY KEY (`pain_assessment_id`);
 
 --
 -- Indexes for table `past_medical_history`
@@ -515,12 +635,12 @@ ALTER TABLE `vital_signs`
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `call_logs`
 --
 ALTER TABLE `call_logs`
-  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `db_backup`
 --
@@ -530,37 +650,52 @@ ALTER TABLE `db_backup`
 -- AUTO_INCREMENT for table `dispatch`
 --
 ALTER TABLE `dispatch`
-  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `glassgow_coma_scale`
 --
 ALTER TABLE `glassgow_coma_scale`
-  MODIFY `glassgow_coma_scale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `glassgow_coma_scale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `medical_supply_request`
+--
+ALTER TABLE `medical_supply_request`
+  MODIFY `medical_supply_request_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `medical_supply_stocks`
 --
 ALTER TABLE `medical_supply_stocks`
   MODIFY `stock_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `medical_supply_stocks_emt`
+--
+ALTER TABLE `medical_supply_stocks_emt`
+  MODIFY `stock_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `pain_assessment`
+--
+ALTER TABLE `pain_assessment`
+  MODIFY `pain_assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `past_medical_history`
 --
 ALTER TABLE `past_medical_history`
-  MODIFY `past_med_his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `past_med_his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patient_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `patient_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `refusal_treatment`
 --
 ALTER TABLE `refusal_treatment`
-  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `request_transport`
 --
 ALTER TABLE `request_transport`
-  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `timeinout`
 --
@@ -570,12 +705,12 @@ ALTER TABLE `timeinout`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 --
 -- AUTO_INCREMENT for table `vital_signs`
 --
 ALTER TABLE `vital_signs`
-  MODIFY `vital_signs_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `vital_signs_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
