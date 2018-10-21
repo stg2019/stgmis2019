@@ -274,7 +274,7 @@
                 animationEnabled: true,
                 colorSet: "customColorSet",
                 animationDuration: 1000,
-                exportFileName: "Top Call Location Cases - BDRRMO", 
+                exportFileName: "Top Dispatchment Location Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -285,7 +285,7 @@
                 },
                 subtitles:[
                 {
-                text: "Top Call Location Cases <?php echo $year?>"
+                text: "Top Dispatchment Location Cases <?php echo $year?>"
                 }
             ],
             legend: {

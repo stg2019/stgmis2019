@@ -115,48 +115,45 @@ require '../require/logincheck.php';
 
                     <div class="row">
                         <div class="col-md-4 monthly quarterly yearly reporttype">
-                            <div class="panel panel-primary" data-sortable-id="index-1">
+                            <div class="panel panel-primary" data-sortable-id="index-5">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Top Emergency Location 2018
-                                    </h4>
+                                    <h4 class="panel-title">Top Dispatchment Location</h4>
                                 </div>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>	
-                                            <th>Emergency Location</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
-                                        $data_points4 = array();
-                                        while($result4 = $res4->fetch_array()){
-                                            $R4 = $result4['call_location'];
-                                            $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
-                                            $f4 = $q4->fetch_array();
-                                            $FR4 = intval($f4['total']);
-                                            $point4 = array('label' => $R4, 'y' => $FR4);
-                                            array_push($data_points4, $point4);
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $f4['call_location']?></td>
-                                            <td><?php echo $f4['total']?></td>
-                                        </tr>
 
-                                        <?php
-                                        }
+                                <div class="panel-body">
+                                    <div class="height-sm" data-scrollbar="true">
+                                        <ul class="media-list media-list-with-divider media-messaging">
+                                            <?php
+                                            $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
+                                            $data_points4 = array();
+                                            while($result4 = $res4->fetch_array()){
+                                                $R4 = $result4['call_location'];
+                                                $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
+                                                $f4 = $q4->fetch_array();
+                                                $FR4 = intval($f4['total']);
+                                                $point4 = array('label' => $R4, 'y' => $FR4);
+                                                array_push($data_points4, $point4);
+                                            ?>
+                                            <li class="media media-sm">
+                                                <div class="media-body">
+                                                    <h5 class="media-heading"><?php echo $f4['call_location']?></h5>
+                                                    <p>Total Dispatchment : <?php echo $f4['total']?></p>
+                                                </div>
+                                            </li>
+                                            <?php
+                                            }
 
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-md-8">
                             <div class="email-content monthly quarterly yearly reporttype">
                                 <div class="panel-body">
-                                    <div id="chartContainer5" style="width: 100%; height: 285px"></div>
+                                    <div id="chartContainer5" style="width: 100%; height: 309px"></div>
                                 </div>
                             </div>
                         </div>

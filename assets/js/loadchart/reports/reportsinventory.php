@@ -127,18 +127,18 @@
                     //    markerType: "cross",
                     // color: "#0173c4",
                     dataPoints: [ 
-                        { label: "January", y: <?php echo $fjan['total']?> },
-                         { label: "February", y: <?php echo $ffeb['total']?> },
-                        { label: "March", y: <?php echo $fmar['total']?> },
-                         { label: "April", y: <?php echo $fapr['total']?> },
-                        { label: "May", y: <?php echo $fmay['total']?> },
-                         { label: "June", y: <?php echo $fjun['total']?> },
-                        { label: "July", y: <?php echo $fjul['total']?> },
-                         { label: "August", y: <?php echo $faug['total']?> },
-                        { label: "September", y: <?php echo $fsep['total']?> },
-                         { label: "October", y: <?php echo $foct['total']?> },
-                        { label: "November", y: <?php echo $fnov['total']?> },
-                         { label: "December", y: <?php echo $fdec['total']?> }
+                        { label: "January", y: <?php echo $fjan2['total']?> },
+                         { label: "February", y: <?php echo $ffeb2['total']?> },
+                        { label: "March", y: <?php echo $fmar2['total']?> },
+                         { label: "April", y: <?php echo $fapr2['total']?> },
+                        { label: "May", y: <?php echo $fmay2['total']?> },
+                         { label: "June", y: <?php echo $fjun2['total']?> },
+                        { label: "July", y: <?php echo $fjul2['total']?> },
+                         { label: "August", y: <?php echo $faug2['total']?> },
+                        { label: "September", y: <?php echo $fsep2['total']?> },
+                         { label: "October", y: <?php echo $foct2['total']?> },
+                        { label: "November", y: <?php echo $fnov2['total']?> },
+                         { label: "December", y: <?php echo $fdec2['total']?> }
                     ] 
                 }
             ] 
@@ -162,7 +162,7 @@
             },
             subtitles:[
                 {
-                    text: "Total Requested Medical Supplies - <?php echo $year?>"
+                    text: "Total Requested Per Medical Supply - <?php echo $year?>"
                 }
             ],
             legend: {

@@ -43,18 +43,48 @@ require '../require/logincheck.php';
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
+
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-primary" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">List of Requested Medical Supplies</h4>
+                    <div class="col-md-7">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    Medical Supplies Requisition
+                                </h4>
+                                <?php
+    $query = $conn->query("SELECT * FROM `medical_supply_request` WHERE `medical_supply_request_id` = '$_GET[medical_supply_request_id]'") or die(mysqli_error());
+            $fetch = $query->fetch_array();
+                                ?>
                             </div>
                             <div class="panel-body">
-                                <div id="requestmedicalTable"></div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-4 col-form-label">Medical Supply Name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="medical_supply_name" value="<?php echo $fetch['medical_supply_name']; ?>" id="umedical_supply_name<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-4 col-form-label">Requested Quantity</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="requested_quantity" value="<?php echo $fetch['requested_quantity']; ?>" id="urequested_quantity<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-4 col-form-label">Date Requested</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="date_requested" value="<?php echo $fetch['date_requested']; ?>" id="udate_requested<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
+                                    </div>
+                                </div>
+                                <hr>
+                                <button type="button" class="btn btn-sm btn-primary approve_request"  value="<?php echo $_GET['medical_supply_request_id']; ?>" class="btn btn-sm btn-primary m-r-5">Approve Request</button>
+                                <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
 
             </div>
 
@@ -110,6 +140,11 @@ require '../require/logincheck.php';
             ga('create', 'UA-53034621-1', 'auto');
             ga('send', 'pageview');
 
+        </script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
         </script>
 
     </body>

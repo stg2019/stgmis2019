@@ -1,4 +1,5 @@
 <?php require '../chartqueries/dashboard.php'?>
+<?php require '../chartqueries/requestedmedicalstocks.php'?>
 <script type="text/javascript"> 
     $(document).ready(function(){ 
         CanvasJS.addColorSet("customColorSet", [ 
@@ -100,10 +101,15 @@
             toolTip: {
                 shared: true  
             },
-            title: { 
-                text: "Medical Supplies Current Stocks",
-                fontSize: 12
+             title: { 
+                text: "Bacolod Disaster Risk Reduction Management Office",
+                fontSize: 10
             },
+            subtitles:[
+                {
+                    text: "Medical Supplies Current Stocks - <?php echo $year?>"
+                }
+            ],
             legend: {
                 cursor: "pointer",
                 itemclick: function (e) {
@@ -192,9 +198,66 @@
                 }
                     ] 
                 });
+                var chart4 = new CanvasJS.Chart("chartContainer4",{
+                theme: "light2",
+                zoomEnabled: true,
+                zoomType: "x",
+                panEnabled: true,
+                animationEnabled: true,
+                animationDuration: 1000,
+                colorSet: "customColorSet",
+                exportFileName: "Monthly Dispatchment - BDRRMO", 
+                exportEnabled: true,
+                toolTip: {
+                shared: true  
+                },
+                title: { 
+                text: "Bacolod Disaster Risk Reduction Management Office",
+                fontSize: 10
+                },
+                subtitles:[
+                {
+                text: "Total Requested Per Medical Supply - <?php echo $year?>"
+                }
+            ],
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    } else {
+                        e.dataSeries.visible = true;
+                    }
+                    e.chart.render();
+                },
+                itemmouseover: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
+                    e.chart.render();
+                },
+                itemmouseout: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
+                    e.chart.render();
+                }
+            },
+            data: [ 
+                { 
+                    type: "doughnut", 
+                    //showInLegend: true, 
+                    toolTipContent: "{label} <br/> {y}", 
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f1['medical_supply_name']?>",
+                    //name: "Total Patients this year",
+                    dataPoints: <?php echo json_encode($data_points); ?>
+                }
+                    ] 
+                });
+
                 chart1.render();
                 chart2.render();
                 chart3.render();
+                chart4.render();
                 });
 
 </script>

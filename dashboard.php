@@ -149,7 +149,7 @@ require 'require/logincheck.php';
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="widget-chart with-sidebar bg-white">
                             <div class="widget-chart-content">
                                 <h4 class="chart-title text-success m-r-5">
@@ -169,32 +169,44 @@ require 'require/logincheck.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-primary" >
-                            <div class="panel-heading ">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
                                 <h4 class="panel-title">RECENT DISPATCHMENT</h4>
                             </div>
-                            <?php
+
+                            <div class="panel-body">
+                                <div class="height-sm" data-scrollbar="true">
+                                    <ul class="media-list media-list-with-divider media-messaging">
+                                        <?php
     $query = $conn->query("SELECT * FROM `dispatch` order by dispatch_id DESC limit 6") or die(mysqli_error());
                                     while($fetch = $query->fetch_array()){
-                            ?>
-
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-primary text-ellipsis">
-                                    <span class="badge badge-primary"><?php echo $fetch['date_created']?></span>
-                                    <?php echo $fetch['dispatched_for']?>
-                                </a>
-                            </div>
-                            <?php
+                                        ?>
+                                        <li class="media media-sm">
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><?php echo $fetch['dispatched_for']?></h5>
+                                                <p>Date and Time : <?php echo $fetch['service_no']?></p>
+                                                <p>
+                                                    Requesting Party : <?php echo $fetch['date_time_call']?>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <?php
                                     }
 
-                            ?>
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="list-group">
-                                <a href="masterdispatchment.php" class="list-group-item list-group-item-info text-ellipsis">
-                                    <small> See All </small>
+                                <a href="masterdispatchment.php" class="list-group-item list-group-item-warning text-ellipsis">
+                                    See All
                                 </a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -45,7 +45,7 @@ require '../require/logincheck.php';
                     <li><a href="#">Dispatchment Record</a></li>
                     <li class="active">Dispatchment Overview</li>
                 </ol>
-                                <h1 class="page-header">Dispatchment Overview</h1>
+                <h1 class="page-header">Dispatchment Overview</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -77,74 +77,61 @@ require '../require/logincheck.php';
                         </div>
                         <!-- end profile-highlight -->
                     </div>
-                    <div class="profile-right">
-                        <div class="profile-info">
-                            <div class="table-responsive">
-                                <table class="table table-profile">
-                                    <tbody>
-                                        <tr class="highlight">
-                                            <td class="field">Service No</td>
-                                            <td><a href="#"><?php echo $fetch['service_no']?></a></td>
-                                        </tr>
-                                        <tr class="divider">
-                                            <td colspan="2"></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Date of Call</td>
-                                            <td><a href="#"><?php echo $fetch['date_time_call']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Ambulance</td>
-                                            <td><a href="#"><?php echo $fetch['ambulance']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Dispatch For</td>
-                                            <td><a href="#"><?php echo $fetch['dispatched_for']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Driver</td>
-                                            <td><a href="#"><?php echo $fetch['driver']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Enroute</td>
-                                            <td><a href="#"><?php echo $fetch['enroute']?></a></td>
-                                        </tr>
-                                        <tr class="divider">
-                                            <td colspan="2"></td>
-                                        </tr>
-                                        <tr class="highlight">
-                                            <td class="field">EMS</td>
-                                            <td><a href="#"><?php echo $fetch['ems']?></a></td>
-                                        </tr>
-                                        <tr class="divider">
-                                            <td colspan="2"></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">MOI/NOI</td>
-                                            <td><a href="#"><?php echo $fetch['moi_noi']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Patients</td>
-                                            <td><a href="#"><?php echo $fetch['patients_on_scene']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Onboard TL</td>
-                                            <td><a href="#"><?php echo $fetch['on_board_tl']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">In Progress</td>
-                                            <td><a href="#"><?php echo $fetch['care_in_progress']?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Mass Casualty</td>
-                                            <td><a href="#"><?php echo $fetch['mass_casualty']?></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end table -->
+                    <div class="table-responsive">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr >
+                                        <td><strong>Service Number</strong></td>
+                                        <td><?php echo $fetch['service_no']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Date of Call</strong></td>
+                                        <td><?php echo $fetch['date_time_call']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Ambulance</strong></td>
+                                        <td><?php echo $fetch['ambulance']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Dispatched for</strong></td>
+                                        <td><?php echo $fetch['dispatched_for']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Driver</strong></td>
+                                        <td><?php echo $fetch['driver']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Enroute</strong></td>
+                                        <td><?php echo $fetch['enroute']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>EMS</strong></td>
+                                        <td><?php echo $fetch['ems']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>MOI/NOI</strong></td>
+                                        <td><?php echo $fetch['moi_noi']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Patients on scene</strong></td>
+                                        <td><?php echo $fetch['patients_on_scene']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>On Board TL</strong></td>
+                                        <td><?php echo $fetch['on_board_tl']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Care in Progress</strong></td>
+                                        <td><?php echo $fetch['care_in_progress']?></td>
+                                    </tr>
+                                    <tr >
+                                        <td><strong>Mass Casualty</strong></td>
+                                        <td><?php echo $fetch['mass_casualty']?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- end profile-info -->
                     </div>
                     <!-- end profile-right -->
                 </div>

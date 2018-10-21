@@ -29,7 +29,7 @@ require '../require/logincheck.php';
         <script src="../assets/js/geocode.js"></script>
         <style>
             #map-canvas {
-                height: 300px;
+                height: 338px;
                 width: 100%;
             }
         </style>
@@ -130,7 +130,7 @@ require '../require/logincheck.php';
                     <div class="col-md-4">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">MEDICAL SUPPLIES</h4>
+                                <h4 class="panel-title">MEDICAL SUPPLIES CURRENT STOCKS</h4>
                             </div>
                             <div class="panel-body">
                                 <div id="chartContainer2" style="width: 100%; height: 300px"></div>
@@ -151,8 +151,8 @@ require '../require/logincheck.php';
 
                             ?>
                             <div class="list-group">
-                                <a href="inventory.php" class="list-group-item list-group-item-info text-ellipsis">
-                                    <small> See All </small>
+                                <a href="reportsinventory.php" class="list-group-item list-group-item-warning text-ellipsis">
+                                    Overview 
                                 </a>
                             </div>
                         </div>
@@ -160,15 +160,46 @@ require '../require/logincheck.php';
                     <div class="col-md-4">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">EMERGENCY CASES <?php echo date('Y')?></h4>
+                                <h4 class="panel-title">TOTAL REQUESTED PER MEDICAL SUPPLY</h4>
+                            </div>
+
+                            <div class="panel-body">
+                                <div id="chartContainer4" style="width: 100%; height: 300px"></div>
+                            </div>
+                            <?php
+                            $query = $conn->query("SELECT *, count(*) as total FROM `medical_supply_request` GROUP BY medical_supply_name order by requested_quantity DESC limit 2") or die(mysqli_error());
+                            while($fetch = $query->fetch_array()){
+                            ?>
+
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-primary text-ellipsis">
+                                    <span class="badge badge-primary"><?php echo $fetch['total']?></span>
+                                    <?php echo $fetch['medical_supply_name']?>
+                                </a>
+                            </div>
+                            <?php
+                            }
+
+                            ?>
+                            <div class="list-group">
+                                <a href="reportsinventory.php" class="list-group-item list-group-item-warning text-ellipsis">
+                                    Overview 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">TOP EMERGENCY CASES</h4>
                             </div>
 
                             <div class="panel-body">
                                 <div id="chartContainer3" style="width: 100%; height: 300px"></div>
                             </div>
                             <?php
-    $query = $conn->query("SELECT *, count(*) as total FROM `dispatch` GROUP BY dispatched_for order by total DESC limit 2") or die(mysqli_error());
-                                    while($fetch = $query->fetch_array()){
+                            $query = $conn->query("SELECT *, count(*) as total FROM `dispatch` GROUP BY dispatched_for order by total DESC limit 2") or die(mysqli_error());
+                            while($fetch = $query->fetch_array()){
                             ?>
 
                             <div class="list-group">
@@ -178,76 +209,14 @@ require '../require/logincheck.php';
                                 </a>
                             </div>
                             <?php
-                                    }
+                            }
 
                             ?>
                             <div class="list-group">
-                                <a href="dispatchmentrecord.php" class="list-group-item list-group-item-info text-ellipsis">
-                                    <small> See All </small>
+                                <a href="reportsdispatchment.php" class="list-group-item list-group-item-warning text-ellipsis">
+                                    Overview 
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="panel panel-primary" data-sortable-id="index-1">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    Recent Request for Transport
-                                </h4>
-                            </div>
-                            <table class="table table-valign-middle m-b-0">
-                                <thead>
-                                    <tr>	
-                                        <th>Date & Time</th>
-                                        <th>Address</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $query = $conn->query("SELECT * FROM `request_transport` order by request_transport_id DESC limit 3") or die(mysqli_error());
-                                    while($fetch = $query->fetch_array()){
-                                    ?>
-                                    <tr>
-                                        <td><label class="label label-primary"><?php echo $fetch['date_time']?></label></td>
-                                        <td><?php echo $fetch['address']?></td>
-                                    </tr>
-
-                                    <?php
-                                    }
-
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="panel panel-primary" data-sortable-id="index-1">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    Recent Refusal for Treatment
-                                </h4>
-                            </div>
-                            <table class="table table-valign-middle m-b-0">
-                                <thead>
-                                    <tr>	
-                                        <th>Date of Incident</th>
-                                        <th>Patient Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $query = $conn->query("SELECT * FROM `refusal_treatment` order by refusal_treatment_id DESC limit 3") or die(mysqli_error());
-                                    while($fetch = $query->fetch_array()){
-                                    ?>
-                                    <tr>
-                                        <td><label class="label label-danger"><?php echo $fetch['date_incident']?></label></td>
-                                        <td><?php echo $fetch['signed']?></td>
-                                    </tr>
-
-                                    <?php
-                                    }
-
-                                    ?>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -273,6 +242,118 @@ require '../require/logincheck.php';
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="panel-title">Recent Refusal for Treatment</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="height-sm" data-scrollbar="true">
+                    <ul class="media-list media-list-with-divider media-messaging">
+                        <?php
+    $query = $conn->query("SELECT * FROM `refusal_treatment` order by refusal_treatment_id DESC limit 10") or die(mysqli_error());
+                                    while($fetch = $query->fetch_array()){
+                        ?>
+                        <li class="media media-sm">
+                            <div class="media-body">
+                                <h5 class="media-heading"><?php echo $fetch['signed']?></h5>
+                                <p>Date of Incident : <?php echo $fetch['date_incident']?></p>
+                                <p>
+                                    Witnesses : <?php echo $fetch['witness1']. ' & ' .$fetch['witness2']?>
+                                </p>
+                            </div>
+                        </li>
+                        <?php
+                                    }
+
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="list-group">
+                <a href="refusaltreatmentrecord.php" class="list-group-item list-group-item-warning text-ellipsis">
+                    See All
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="panel-title">RECENT REQUEST FOR TRANSPORT</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="height-sm" data-scrollbar="true">
+                    <ul class="media-list media-list-with-divider media-messaging">
+                        <?php
+                        $query = $conn->query("SELECT * FROM `request_transport` order by request_transport_id DESC limit 10") or die(mysqli_error());
+                        while($fetch = $query->fetch_array()){
+                        ?>
+                        <li class="media media-sm">
+                            <div class="media-body">
+                                <h5 class="media-heading"><?php echo $fetch['address']?></h5>
+                                <p>Date and Time : <?php echo $fetch['date_time']?></p>
+                                <p>
+                                    Requesting Party : <?php echo $fetch['requesting_party']?>
+                                </p>
+                            </div>
+                        </li>
+                        <?php
+                        }
+
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="list-group">
+                <a href="requesttransportrecord.php" class="list-group-item list-group-item-warning text-ellipsis">
+                    See All
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="panel-title">USER'S ACTIVITY LOG</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="height-sm" data-scrollbar="true">
+                    <ul class="media-list media-list-with-divider media-messaging">
+                        <?php
+                        $query = $conn->query("SELECT * FROM `request_transport` order by request_transport_id DESC limit 10") or die(mysqli_error());
+                        while($fetch = $query->fetch_array()){
+                        ?>
+                        <li class="media media-sm">
+                            <div class="media-body">
+                                <h5 class="media-heading"><?php echo $fetch['address']?></h5>
+                                <p>Date and Time : <?php echo $fetch['date_time']?></p>
+                                <p>
+                                    Requesting Party : <?php echo $fetch['requesting_party']?>
+                                </p>
+                            </div>
+                        </li>
+                        <?php
+                        }
+
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="list-group">
+                <a href="requesttransportrecord.php" class="list-group-item list-group-item-warning text-ellipsis">
+                    See All
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 
 

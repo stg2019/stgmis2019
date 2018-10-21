@@ -3,37 +3,32 @@ $(document).ready(function(){
     showRequestMedical();
     //add stocks
 
-    $(document).on('click', '.approverequest', function(){
-        if ($('#medical_supply_request_id').val()==""){
-            $('#modallabel').slideDown();
-            $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
-            setTimeout(function() {
-                $('#modallabel').fadeOut('slow');
-            }, 3500);
-        }
-        else {
-            $medical_supply_request_id=$('#medical_supply_request_id').val();
-            $requested_quantity=$('#requested_quantity').val();
-            $medical_supply_name=$('#medical_supply_name').val();
-            $.ajax({
-                type: "POST",
-                url: "action/approverequest.php",
-                data: {
-                    medical_supply_request_id: $medical_supply_request_id,
-                    requested_quantity : $requested_quantity,
-                    medical_supply_name : $medical_supply_name,
-                    edit: 1,
-                },
-                success: function(){
-                    $('#alert').slideDown();
-                    $('#alerttext').text('Medical Supply Request Approved Successfully');
-                    setTimeout(function() {
-                        $('#alert').fadeOut('slow');
-                    }, 1500);
-                    showRequestMedical();
-                }
-            });
-        }
+    $(document).on('click', '.approve_request', function(){
+        $umedical_supply_request_id=$(this).val();
+        $umedical_supply_name = $('#umedical_supply_name'+$umedical_supply_request_id).val();
+        $urequested_quantity = $('#urequested_quantity'+$umedical_supply_request_id).val();
+        $udate_requested = $('#udate_requested'+$umedical_supply_request_id).val();
+        $.ajax({
+            type: "POST",
+            url: "../action/approverequest.php",
+            data: {
+                medical_supply_request_id: $umedical_supply_request_id,
+                medical_supply_name : $umedical_supply_name,
+                requested_quantity : $urequested_quantity,
+                date_requested : $udate_requested,
+                edit: 1,
+            },
+            success: function(){
+                $('#alert').slideDown();
+                $('#alerttext').text('Medical Supply Request Approve Successfully');
+                setTimeout(function() {
+                    $('#alert').fadeOut('slow');
+                }, 1500);
+                setTimeout(function() {
+                    window.location.href = 'medicalsuppliesrequest.php'; 
+                }, 2000);
+            }
+        });
     });
 });
 

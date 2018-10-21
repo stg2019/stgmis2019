@@ -8,7 +8,7 @@ if(isset($_POST['add'])){
     $year = date("Y");
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `medical_supply_request` VALUES('', '$medical_supply_name', '$requested_quantity', '$date_requested', 'Pending', '$month', '$year')") or die(mysqli_error());
+    $conn->query("INSERT INTO `medical_supply_request` VALUES('', '$medical_supply_name', '$requested_quantity', '$date_requested', 'Pending', '$month', '$year', 'Pending')") or die(mysqli_error());
     $conn->close();
 }
 ?>
