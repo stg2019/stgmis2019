@@ -57,9 +57,6 @@ require '../require/logincheck.php';
                     <div class="col-md-12">
                         <div class="invoice">
                             <div class="invoice-company">
-                                <span class="pull-right hidden-print">
-                                    <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
-                                </span>
                                 <?php echo $fetch['patient_name']?>
                             </div>
                             <div class="invoice-header">
