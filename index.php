@@ -28,7 +28,7 @@
                     <div class="news-caption">
                         <h4 class="caption-title"><i class="fa fa-bank text-success"></i> Disaster Risk Reduction Management Office</h4>
                         <p>
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2nd Floor, Old City Hall, Araneta Avenue, Bacolod City 6100
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2nd Floor, Old City Hall, Luzuriaga St., Bacolod City 6100
                         </p>
                     </div>
                 </div>

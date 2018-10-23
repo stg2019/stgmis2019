@@ -24,9 +24,9 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/pace/pace.min.js"></script>
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
         <?php require '../assets/js/loadchart/dashboard/dashboardgraphs.php'?>
-        <script src="../assets/js/geocode.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
+        <script src="../assets/js/geocodetimekilometers.js"></script>
         <style>
             #map-canvas {
                 height: 338px;
@@ -233,6 +233,8 @@ require '../require/logincheck.php';
                             <div class="panel-body">
 
                                 <div id="map-canvas"></div>
+                                <br>
+                                <div class="alert alert-warning" id="output"></div>
                                 <input type="hidden" id="route" placeholder="Street" value="<?php echo $fetch['call_location']?>"></input>
                             <input type="hidden" id="locality" placeholder="City" value="Bacolod City"></input>
                         <input type="hidden" id="administrative_area_level_1" placeholder="State" value="Negros Occidental"></input>
