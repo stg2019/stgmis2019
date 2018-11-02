@@ -17,11 +17,13 @@ if(isset($_POST['add'])){
     $date_created=date("F j, Y g:i a");
     $month = date("M");
     $year = date("Y");
+    $lat = $_POST['lat'];
+    $long = $_POST['long'];
 
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `dispatch` VALUES('', '$service_no', '$date_time_call', '$ambulance', '$dispatched_for', '$call_location', '$moi_noi', '$patients_on_scene', '$on_board_tl', '$ems', '$driver', '$care_in_progress', '$mass_casualty', '$enroute', '$date_created', '$month', '$year')") or die(mysqli_error());
+    $conn->query("INSERT INTO `dispatch` VALUES('', '$service_no', '$date_time_call', '$ambulance', '$dispatched_for', '$call_location', '$moi_noi', '$patients_on_scene', '$on_board_tl', '$ems', '$driver', '$care_in_progress', '$mass_casualty', '$enroute', '$date_created', '$month', '$year', '$lat', '$long')") or die(mysqli_error());
     $conn->close();
 }
 ?>

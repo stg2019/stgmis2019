@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    showCalllogs();
+    showDrivers();
     //add call log
     $(document).on('click', '#addnew', function(){
         if ($('#date_time_call').val()=="" || $('#complete_address').val()=="" || $('#emergency').val()=="" || $('#caller_name').val()=="" || $('#contact_no').val()==""){
@@ -39,9 +39,6 @@ $(document).ready(function(){
                             $('#alert').fadeOut('slow');
                         }, 1500);
                         showCalllogs();
-                        setTimeout(function() {
-                            window.location.href = 'dispatchment.php'; 
-                        }, 2000);
                     }
                 });
             }
@@ -88,17 +85,17 @@ $(document).ready(function(){
 
 
 //show dispatch
-function showCalllogs(){
+function showDrivers(){
     $.ajax({
-        url: 'tables/calllogs.php',
+        url: 'tables/drivers.php',
         type: 'POST',
         async: false,
         data:{
             show: 1
         },
         success: function(response){
-            $('#calllogsTable').html(response);
-            var table = $('#calllogstable').DataTable();
+            $('#driverTable').html(response);
+            var table = $('#drivertable').DataTable();
         }
     });
 }

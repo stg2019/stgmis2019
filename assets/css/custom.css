@@ -3,7 +3,7 @@
 }
 
 .bg-gradient-secondary {
-    background: linear-gradient(to right, #e7ebf0, #868e96);
+    background: #95afc0;
 }
 
 .bg-gradient-success {
@@ -40,12 +40,12 @@
     height: 100%;
 }
 #currentTime {
-    letter-spacing:3px;
+    letter-spacing:1px;
     font-family:Source Sans Pro;
-    font-size:50px;
-    color: #fff;
+    font-size:13px;
 }
-#currentDate{
-    color:#fff;
-    font-size:15px;
+#day{
+    letter-spacing:1px;
+    font-family:Source Sans Pro;
+    font-size:13px;
 }

@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     showDispatch();
     showAdminDispatch();
@@ -24,6 +23,8 @@ $(document).ready(function(){
             $driver=$('#driver').val();
             $care_in_progress=$('#care_in_progress').val();
             $mass_casualty=$('#mass_casualty').val();
+            $lat=$('#lat').val();
+            $long=$('#long').val();
 
             if(confirm('Are you sure you want to add this dispatchment record?')){
                 $.ajax({
@@ -44,6 +45,8 @@ $(document).ready(function(){
                         driver : $driver,
                         care_in_progress : $care_in_progress,
                         mass_casualty : $mass_casualty,
+                        lat : $lat,
+                        long : $long,
                         add: 1,
                     },
                     success: function(){
@@ -61,9 +64,6 @@ $(document).ready(function(){
         }
 
     });
-
-
-
     //update dispatch
     $(document).on('click', '.update_dispatch', function(){
         $udispatch_id=$(this).val();

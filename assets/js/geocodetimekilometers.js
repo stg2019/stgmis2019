@@ -1,5 +1,5 @@
 function initMap() {
-    
+
     var street = document.getElementById("route").value;
     var city = document.getElementById("locality").value;
     var state = document.getElementById("administrative_area_level_1").value;
@@ -19,6 +19,7 @@ function initMap() {
         center: {lat: 10.6675065, lng: 122.9451055},
         zoom: 10,
         gestureHandling: 'greedy'
+
     });
     var geocoder = new google.maps.Geocoder;
 

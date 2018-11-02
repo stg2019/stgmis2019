@@ -53,7 +53,7 @@ $(document).ready(function(){
             $pain=$('#pain').val();
             $quality=$('#quality').val();
             $region=$('#region').val();
-            $severity=$('#severity').val();
+            $severity=$('#customValue_rangeSlider').val();
 
             //dropdown 
             $ettubesize=$('#ettubesize').val();

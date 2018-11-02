@@ -143,14 +143,11 @@ require '../require/logincheck.php';
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <!-- begin panel -->
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><!--<button class="btn btn-sm btn-white" onclick="codeAddress();" value="geocode">Show Destination</button>-->
-                                    Transport Destination
-                                </h4>
+                        <div class="invoice">
+                            <div class="invoice-company">
+                                Transport Destination
                             </div>
-                            <div class="panel-body">
+                            <div class="invoice-content">
                                 <div id="map-canvas"></div>
 
                                 <input type="hidden" id="route" placeholder="Street" value="<?php echo $fetch['address']?>"></input>
@@ -158,11 +155,8 @@ require '../require/logincheck.php';
                         <input type="hidden" id="administrative_area_level_1" placeholder="State" value="Negros Occidental"></input>
                     <input type="hidden" id="postal_code" placeholder="Postal Code" value="6100"></input>
                 <input type="hidden" id="country" placeholder="Country" value="Philippines"></input>
-
-
         </div>
         </div>
-    <!-- end panel -->
     </div>
 </div>
 

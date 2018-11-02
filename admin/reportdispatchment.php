@@ -50,6 +50,13 @@ require '../require/logincheck.php';
                             </div>
                             <p><b>Graphical</b></p>
                         </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-inverse monthly quarterly yearly reporttype" onclick="openTabular()">Show Tabular</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-warning monthly quarterly yearly reporttype" onclick="openHeatMap()">Heat Map</button>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -229,6 +236,15 @@ require '../require/logincheck.php';
                     });
                 }).change();
             });
+        </script>
+        <script>
+            function openTabular() {
+                window.open("dispatchmenttabular.php");
+            }
+
+            function openHeatMap() {
+                window.open("heatmap.php");
+            }
         </script>
 
     </body>

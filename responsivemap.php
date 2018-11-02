@@ -397,7 +397,7 @@
 	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/plugins/js-cookie/js.cookie.js"></script>
 	<script src="assets/js/theme/default.min.js"></script>
-	<script src="assets/js/apps.min.js"></script>
+	<script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"></script>
 	<!-- ================== END BASE JS ================== -->
 	
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->

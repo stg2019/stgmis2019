@@ -31,6 +31,7 @@ if(isset($_POST['show'])){
         else echo "<a class='btn btn-xs btn-danger' href='assessment.php?patient_id=".$fetch['patient_id']."'>Assessment</a>";
                 ?>
             </td>
+            <td></td>
         </tr>
         <?php
     }

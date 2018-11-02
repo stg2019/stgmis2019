@@ -1,4 +1,5 @@
-<!-- Monthly Dispatchment -->
+
+
 <?php
 $year = date('Y');
 
@@ -31,22 +32,6 @@ $total = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `year` = '
 $total = $total->fetch_array();
 ?>
 
-<!-- Admin Medical Supplies Balance -->
-<?php
-$res = $conn->query("SELECT * FROM `medical_supply_stocks` GROUP BY medical_supply_name") or die(mysqli_error());
-$data_points = array();
-while($result = $res->fetch_array()){
-    $R = $result['medical_supply_name'];
-    $q1 = $conn->query("SELECT * FROM `medical_supply_stocks` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
-    $f1 = $q1->fetch_array();
-    $FR = intval($f1['running_balance']);
-    $point = array('label' => $R, 'y' => $FR);
-    array_push($data_points, $point);
-}
-json_encode($data_points);
-?>
-
-
 <!-- Top 5 Emergency Cases -->
 <?php
 $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
@@ -62,50 +47,18 @@ while($result2 = $res2->fetch_array()){
 json_encode($data_points2);
 ?>
 
-<!-- Annual Dispatchment-->
+
+<!-- EMT Medical Supplies Balance -->
 <?php
-$res3 = $conn->query("SELECT * FROM `dispatch` GROUP BY year") or die(mysqli_error());
-$data_points3 = array();
-while($result3 = $res3->fetch_array()){
-    $R3 = $result3['year'];
-    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$R3' group by year") or die(mysqli_error());
-    $f3 = $q3->fetch_array();
-    $FR3 = intval($f3['total']);
-    $point3 = array('label' => $R3, 'y' => $FR3);
-    array_push($data_points3, $point3);
+$res = $conn->query("SELECT * FROM `medical_supply_stocks_emt` GROUP BY medical_supply_name") or die(mysqli_error());
+$data_points = array();
+while($result = $res->fetch_array()){
+    $R = $result['medical_supply_name'];
+    $q1 = $conn->query("SELECT * FROM `medical_supply_stocks_emt` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
+    $f1 = $q1->fetch_array();
+    $FR = intval($f1['running_balance']);
+    $point = array('label' => $R, 'y' => $FR);
+    array_push($data_points, $point);
 }
-json_encode($data_points3);
+json_encode($data_points);
 ?>
-
-<!-- Call Location -->
-<?php
-$res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
-$data_points4 = array();
-while($result4 = $res4->fetch_array()){
-    $R4 = $result4['call_location'];
-    $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
-    $f4 = $q4->fetch_array();
-    $FR4 = intval($f4['total']);
-    $point4 = array('label' => $R4, 'y' => $FR4);
-    array_push($data_points4, $point4);
-}
-json_encode($data_points4);
-?>
-
-<!-- Custom Yearly on Request of Transport -->
-<?php
-$res5 = $conn->query("SELECT * FROM `request_transport` GROUP BY year") or die(mysqli_error());
-$data_points5 = array();
-while($result5 = $res5->fetch_array()){
-    $R5 = $result5['year'];
-    $q5 = $conn->query("SELECT *, COUNT(*) as total FROM `request_transport` WHERE `year` = '$R5' group by year") or die(mysqli_error());
-    $f5 = $q5->fetch_array();
-    $FR5 = intval($f5['total']);
-    $point5 = array('label' => $R5, 'y' => $FR5);
-    array_push($data_points5, $point5);
-}
-json_encode($data_points5);
-
-?>
-
-

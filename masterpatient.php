@@ -41,7 +41,7 @@ require 'require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">Master List of Patients</h4>
+                                <h4 class="panel-title">Master File - Patients</h4>
                             </div>
                             <div class="panel-body">
                                 <table id="data-table" class="table table-hover table-condensed nowrap">
@@ -69,7 +69,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['contact_no']?></td>
                                             <td><?php echo $fetch['home_address']?></td>
                                             <td>
-                                                <a href="editdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-success">View</a>
+                                                <a href="editdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-success">Overiew</a>
                                             </td>
                                         </tr>
                                         <?php
@@ -118,7 +118,7 @@ require 'require/logincheck.php';
         <script src="assets/js/table-manage-default.demo.min.js"></script>
 
         <script src="assets/js/form-plugins.demo.min.js"></script>
-        <script src="assets/js/apps.min.js"></script>
+        <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
         <script>
             $(document).ready(function() {
                 App.init();

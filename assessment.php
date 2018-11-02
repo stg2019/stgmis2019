@@ -12,9 +12,12 @@ require 'require/logincheck.php';
         <meta content="" name="author" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+        <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="assets/plugins/ionRangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+        <link href="assets/plugins/ionRangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
         <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet" />
         <link href="assets/css/style.min.css" rel="stylesheet" />
@@ -51,13 +54,14 @@ require 'require/logincheck.php';
                     </div>
                 </center>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
                                 <div class="panel-heading-btn">
                                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-white" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                                 </div>
-                                <h4 class="panel-title">Pre Hospital Care Report</h4>
+                                <h4 class="panel-title">Pre Hospital Care Form</h4>
                                 <?php
                                 $query = $conn->query("SELECT * FROM `patient` WHERE `patient_id` = '$_GET[patient_id]'") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
@@ -66,374 +70,428 @@ require 'require/logincheck.php';
                             <div class="panel-body">
                                 <form class="form-horizontal">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <h4 class="text-danger">&nbsp; Vital Signs</h4><hr>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Time</label>
-                                                <div class="col-md-8">
-                                                    <div class="input-group date" id="datetimepicker2">
-                                                        <input type="text" id="time" name="time" class="form-control" />
-                                                        <span class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-time"></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">LOC</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-style="btn-white" id="loc" name="loc">
-                                                        <option value="" selected disabled>Select LOC</option>
-                                                        <option value="Alert">Alert </option>
-                                                        <option value="Voice">Voice</option>
-                                                        <option value="Pain">Pain</option>
-                                                        <option value="Unresponsive">Unresponsive</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">B.P. (mmHg)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="bp" name="bp" placeholder="Enter Blood Pressure" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Sa02 (%)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="sa" name="sa" placeholder="Enter Sa02 (%)" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">PR (bpm)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="pr" name="pr" placeholder="Enter PR (bpm)" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">RR (cpm)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="rr" name="rr" placeholder="Enter RR (cpm)" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Temperature (C)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="temp" name="temp" placeholder="Enter Temperature (C)" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">RBS (mg/dl)</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="rbs" name="rbs" placeholder="Enter RBS (mg/dl)" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Pupil</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="pupils" name="pupils">
-                                                        <option value="" selected disabled>Select Pupil</option>
-                                                        <option value="Normal - R">Normal - R </option>
-                                                        <option value="Normal - L">Normal - L</option>
-                                                        <option value="Dilated - R">Dilated - R</option>
-                                                        <option value="Dilated - L">Dilated - L</option>
-                                                        <option value="Constricted - R">Constricted - R</option>
-                                                        <option value="Constricted - L">Constricted - L</option>
-                                                        <option value="Sluggish - R">Sluggish - R</option>
-                                                        <option value="Sluggish - L">Sluggish - L</option>
-                                                        <option value="No Response - R">No Response - R</option>
-                                                        <option value="No Response - L">No Response - L</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Skin</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="skin" name="skin">
-                                                        <option value="" selected disabled>Select Skin</option>
-                                                        <option value="Unremarkable">Unremarkable </option>
-                                                        <option value="Pale">Pale</option>
-                                                        <option value="Warm">Warm</option>
-                                                        <option value="Cyanotic">Cyanotic</option>
-                                                        <option value="Moist">Moist</option>
-                                                        <option value="Flushed">Flushed</option>
-                                                        <option value="Dry">Dry</option>
-                                                        <option value="Jaundiced">Jaundiced</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-12">
+                                            <table class="table table-condensed table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Vital Signs</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Time</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <div class="input-group date" id="datetimepicker2">
+                                                                    <input type="text" id="time" name="time" class="form-control" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-time"></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>LOC</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select class="form-control selectpicker input-sm" data-style="btn-white" id="loc" name="loc">
+                                                                    <option value="" selected disabled>Select LOC</option>
+                                                                    <option value="Alert">Alert </option>
+                                                                    <option value="Voice">Voice</option>
+                                                                    <option value="Pain">Pain</option>
+                                                                    <option value="Unresponsive">Unresponsive</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>B.P. (mmHg)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="bp" name="bp" placeholder="Enter Blood Pressure" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SA02 (%)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="sa" name="sa" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PR (bpm)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="pr" name="pr" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>RR (cpm)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="rr" name="rr" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Temperature (C)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="temp" name="temp" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>RBS (mg/dl)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="rbs" name="rbs" placeholder="Enter RBS (mg/dl)" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Pupil</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="pupils" name="pupils">
+                                                                    <option value="" selected disabled>Select Pupil</option>
+                                                                    <option value="Normal - R">Normal - R </option>
+                                                                    <option value="Normal - L">Normal - L</option>
+                                                                    <option value="Dilated - R">Dilated - R</option>
+                                                                    <option value="Dilated - L">Dilated - L</option>
+                                                                    <option value="Constricted - R">Constricted - R</option>
+                                                                    <option value="Constricted - L">Constricted - L</option>
+                                                                    <option value="Sluggish - R">Sluggish - R</option>
+                                                                    <option value="Sluggish - L">Sluggish - L</option>
+                                                                    <option value="No Response - R">No Response - R</option>
+                                                                    <option value="No Response - L">No Response - L</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Skin</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="skin" name="skin">
+                                                                    <option value="" selected disabled>Select Skin</option>
+                                                                    <option value="Unremarkable">Unremarkable </option>
+                                                                    <option value="Pale">Pale</option>
+                                                                    <option value="Warm">Warm</option>
+                                                                    <option value="Cyanotic">Cyanotic</option>
+                                                                    <option value="Moist">Moist</option>
+                                                                    <option value="Flushed">Flushed</option>
+                                                                    <option value="Dry">Dry</option>
+                                                                    <option value="Jaundiced">Jaundiced</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Glasgow Coma Scale</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Eye Reponse</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="eye" name="eye" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Verbal Response</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="verbal" name="verbal" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Motor Response</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="motor" name="motor" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Past Medical History</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Allergy to</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="allergy" name="allergy" placeholder="Enter Allergy" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Medications</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="medications" name="medications" placeholder="Enter Medications" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Patient History</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="phistory" name="phistory" placeholder="Enter P History" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Last Oral Intake</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="last_oral_intake" name="last_oral_intake" placeholder="Enter Last Oral Intake" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Events Leading To</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="events_leading_to" name="events_leading_to" placeholder="Enter Events Leading to" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Note</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="notes" name="notes">
+                                                                    <option value="" selected disabled>Select Option</option>
+                                                                    <option value="Extrication Required">Extrication required </option>
+                                                                    <option value="VA seatbelt used">VA seatbelt used</option>
+                                                                    <option value="Helmet">Helmet</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Incident/Patient Disposition and Interventions</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Patient Disposition</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="patient_disposition" name="patient_disposition">
+                                                                    <option value="" selected disabled>Select Option</option>
+                                                                    <option value="Treated / transport to facility">Treated / transport to facility</option>
+                                                                    <option value="No Treatment Required">No Treatment Required</option>
+                                                                    <option value="Refused Treatment">Refused Treatment</option>
+                                                                    <option value="Treated and Released / transferred care">Treated and Released / transferred care</option>
+                                                                    <option value="Call Cancelled">Call Cancelled</option>
+                                                                    <option value="Dead at scene">Dead at scene</option>
+                                                                    <option value="Endorsed to law enforcement or authority">Endorsed to law enforcement or authority</option>
+                                                                    <option value="Behavioral / altered mental status">Behavioral / altered mental status</option>
+                                                                    <option value="Not of legal age /minor">Not of legal age /minor</option>
+                                                                    <option value="Others">Others</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Interventions</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <select onchange="checkValue(this);" class="form-control selectpicker input-sm"  data-style="btn-white" id="interventions" name="interventions">
+                                                                    <option value="" selected disabled>Select Option</option>
+                                                                    <option value="Moved to ambulance on stretcher/backboard">Moved to ambulance on stretcher/backboard </option>
+                                                                    <option value="Walked to ambulance">Walked to ambulance </option>
+                                                                    <option value="Airway Cleared">Airway Cleared </option>
+                                                                    <option value="OPA / NPA used">OPA / NPA used</option>
+                                                                    <option value="ET Tube">ET Tube</option>
+                                                                    <option value="O2 Administered">O2 Administered</option>
+                                                                    <option value="Suction Used">Suction Used</option>
+                                                                    <option value="Artificial Ventilation">Artificial Ventilation</option>
+                                                                    <option value="CPR">CPR</option>
+                                                                    <option value="Cardiac Monitoring (Attach Tracing)">Cardiac Monitoring (Attach Tracing)</option>
+                                                                    <option value="Defibrillation/Cardioversion">Defibrillation/Cardioversion</option>
+                                                                    <option value="Medication Administered">Medication Administered</option>
+                                                                    <option value="IV Established Fluid">IV Established Fluid</option>
+                                                                    <option value="Bleeding/Hemorrhage Controlled">Bleeding/Hemorrhage Controlled</option>
+                                                                    <option value="Spinal Immobilization Neck and Back">Spinal Immobilization Neck and Back</option>
+                                                                    <option value="Heat or Cold Applied">Heat or Cold Applied</option>
+                                                                    <option value="Heat or Cold Applied">Splinting</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group" id="agency" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="rescue" name="rescue" placeholder="Enter Name of Rescue Agency"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="tubesize" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="ettubesize" name="ettubesize" placeholder="Enter ET Tube Size "/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="levelsize" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="level" name="level" placeholder="Enter Level "/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="administered" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="at" name="at" placeholder="@"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="lpm" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="via" name="via" placeholder="via"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="suction" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="size" name="size" placeholder="Size"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="artificial" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="method" name="method" placeholder="Method"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="cpr" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="cycles" name="cycles" placeholder="Cycles"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="time_of" style="display:none;">
+                                                                    <label class="col-md-4 control-label">Time of arrest</label>
+                                                                    <div class="col-md-8">
+                                                                        <div class="input-group date" id="datetimepicker1">
+                                                                            <input type="text" id="time_of_arrest" name="time_of_arrest" class="form-control" />
+                                                                            <span class="input-group-addon">
+                                                                                <span class="glyphicon glyphicon-time"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="defitime" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="cardioversion" name="cardioversion" placeholder="No. of Times"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="medication" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="admin" name="admin" placeholder="Administered"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="established" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="fluid" name="fluid" placeholder="Fluid"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="establishedg" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="gauge" name="gauge" placeholder="Gauge"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="bleeding" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="hemorrhage" name="hemorrhage" placeholder="Method Used"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="spinal" style="display:none;">
+                                                                    <div class="col-md-12">
+                                                                        <input type="text" class="form-control" id="eqts" name="eqts" placeholder="Eqts u"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Pain Assessment</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Onset</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="onset" name="onset" placeholder="Enter Onset" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Pain</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="pain" name="pain" placeholder="Enter Pain" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Quality</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="quality" name="quality" placeholder="Enter Quality" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Region</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region/Radiation" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Severity</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="customValue_rangeSlider" name="severiy" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Chief Complaint(s)</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control" id="chief_complaints" name="chief_complaints" placeholder="Enter Chief Complaint(s)" rows="2"></textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Subjective Assessment</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control" id="subjective_assessment" name="subjective_assessment" placeholder="Enter Subjective Assessment" rows="2"></textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Objective Assessment</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control" id="objective_assessment" name="objective_assessment" placeholder="Enter Objective Assessment" rows="2"></textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Priority Level</td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" id="priority_level" name="priority_level" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
                                         </div>
-                                        <div class="col-md-4">
-                                            <h4 class="text-danger">&nbsp; Past Medical History</h4><hr>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Allergy to</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="allergy" name="allergy" placeholder="Enter Allergy" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Medications</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="medications" name="medications" placeholder="Enter Medications" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">P History</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="phistory" name="phistory" placeholder="Enter P History" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Last Oral Intake</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="last_oral_intake" name="last_oral_intake" placeholder="Enter Last Oral Intake" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Events Leading to</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="events_leading_to" name="events_leading_to" placeholder="Enter Events Leading to" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Note</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="notes" name="notes">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="Extrication Required">Extrication required </option>
-                                                        <option value="VA seatbelt used">VA seatbelt used</option>
-                                                        <option value="Helmet">Helmet</option>
-                                                    </select>
-                                                </div>
-                                            </div><hr>
-                                            <h4 class="text-danger">&nbsp; Glassgow Coma Scale</h4><hr>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Eye Response</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="eye" name="eye">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="4">4 - Spontaneous </option>
-                                                        <option value="3">3 - Responsive to voice</option>
-                                                        <option value="2">2 - Responsive to pain</option>
-                                                        <option value="1 - No Response">1 - No Response</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Verbal Response</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="verbal" name="verbal">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="5">5 - Oriented </option>
-                                                        <option value="4">4 - Confused </option>
-                                                        <option value="3e">3 - Inappropriate response</option>
-                                                        <option value="2">2 - Incomprehensive</option>
-                                                        <option value="1">1 - No Response</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Motor Response</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="motor" name="motor">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="6">6 - Obeys Command </option>
-                                                        <option value="5">5 - Purposeful movement to pain </option>
-                                                        <option value="4">4 - Withdraws from pain </option>
-                                                        <option value="3">3 - Abnormal flexion (decorticate)</option>
-                                                        <option value="2">2 - Abnormal extension (decebrate)</option>
-                                                        <option value="1">1 - No Response</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h4 class="text-danger">&nbsp; Incident/Patient Disposition</h4><hr>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="patient_disposition" name="patient_disposition">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="Treated / transport to facility">Treated / transport to facility</option>
-                                                        <option value="No Treatment Required">No Treatment Required</option>
-                                                        <option value="Refused Treatment">Refused Treatment</option>
-                                                        <option value="Treated and Released / transferred care">Treated and Released / transferred care</option>
-                                                        <option value="Call Cancelled">Call Cancelled</option>
-                                                        <option value="Dead at scene">Dead at scene</option>
-                                                        <option value="Endorsed to law enforcement or authority">Endorsed to law enforcement or authority</option>
-                                                        <option value="Behavioral / altered mental status">Behavioral / altered mental status</option>
-                                                        <option value="Not of legal age /minor">Not of legal age /minor</option>
-                                                        <option value="Others">Others</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="agency" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="rescue" name="rescue" placeholder="Enter Name of Rescue Agency"/>
-                                                </div>
-                                            </div>
-                                            <h4 class="text-danger">&nbsp; Interventions</h4>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <select onchange="checkValue(this);" class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="interventions" name="interventions">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="Moved to ambulance on stretcher/backboard">Moved to ambulance on stretcher/backboard </option>
-                                                        <option value="Walked to ambulance">Walked to ambulance </option>
-                                                        <option value="Airway Cleared">Airway Cleared </option>
-                                                        <option value="OPA / NPA used">OPA / NPA used</option>
-                                                        <option value="ET Tube">ET Tube</option>
-                                                        <option value="O2 Administered">O2 Administered</option>
-                                                        <option value="Suction Used">Suction Used</option>
-                                                        <option value="Artificial Ventilation">Artificial Ventilation</option>
-                                                        <option value="CPR">CPR</option>
-                                                        <option value="Cardiac Monitoring (Attach Tracing)">Cardiac Monitoring (Attach Tracing)</option>
-                                                        <option value="Defibrillation/Cardioversion">Defibrillation/Cardioversion</option>
-                                                        <option value="Medication Administered">Medication Administered</option>
-                                                        <option value="IV Established Fluid">IV Established Fluid</option>
-                                                        <option value="Bleeding/Hemorrhage Controlled">Bleeding/Hemorrhage Controlled</option>
-                                                        <option value="Spinal Immobilization Neck and Back">Spinal Immobilization Neck and Back</option>
-                                                        <option value="Heat or Cold Applied">Heat or Cold Applied</option>
-                                                        <option value="Heat or Cold Applied">Splinting</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="tubesize" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="ettubesize" name="ettubesize" placeholder="Enter ET Tube Size "/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="levelsize" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="level" name="level" placeholder="Enter Level "/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="administered" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="at" name="at" placeholder="@"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="lpm" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="via" name="via" placeholder="via"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="suction" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="size" name="size" placeholder="Size"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="artificial" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="method" name="method" placeholder="Method"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="cpr" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="cycles" name="cycles" placeholder="Cycles"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="time_of" style="display:none;">
-                                                <label class="col-md-4 control-label">Time of arrest</label>
-                                                <div class="col-md-8">
-                                                    <div class="input-group date" id="datetimepicker1">
-                                                        <input type="text" id="time_of_arrest" name="time_of_arrest" class="form-control" />
-                                                        <span class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-time"></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="defitime" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="cardioversion" name="cardioversion" placeholder="No. of Times"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="medication" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="admin" name="admin" placeholder="Administered"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="established" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="fluid" name="fluid" placeholder="Fluid"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="establishedg" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="gauge" name="gauge" placeholder="Gauge"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="bleeding" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="hemorrhage" name="hemorrhage" placeholder="Method Used"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" id="spinal" style="display:none;">
-                                                <div class="col-md-12">
-                                                    <input type="text" class="form-control" id="eqts" name="eqts" placeholder="Eqts u"/>
-                                                </div>
-                                            </div>
-                                            <hr><h4 class="text-danger">&nbsp; Priority Level</h4>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <select class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="priority_level" name="priority_level">
-                                                        <option value="" selected disabled>Select Option</option>
-                                                        <option value="1 - Emergent">1 - Emergent </option>
-                                                        <option value="2 - Urgent">2 - Urgent </option>
-                                                        <option value="3 - Non-urgent">3 - Non-urgent </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <hr><h4 class="text-danger">&nbsp; Pain Assessment</h4>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Onset</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="onset" name="onset" placeholder="Enter Onset" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Pain</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="pain" name="pain" placeholder="Enter Pain" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Quality</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="quality" name="quality" placeholder="Enter Quality" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Region</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region/Radiation" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Severity</label>
-                                                <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="severity" name="severity" placeholder="Enter Severity (1-10)" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><hr>
-                                    <div class="row">
-                                        <h4 >&nbsp; Chief Complaint(s)</h4>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <textarea class="form-control" id="chief_complaints" name="chief_complaints" placeholder="Enter Chief Complaint(s)" rows="2"></textarea>
-                                            </div>
-                                        </div>
-                                        <h4 > &nbsp; Subjective Assessment</h4>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <textarea class="form-control" id="subjective_assessment" name="subjective_assessment" placeholder="Enter Subjective Assessment" rows="2"></textarea>
-                                            </div>
-                                        </div>
-                                        <h4 > &nbsp; Objective Assessment</h4>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <textarea class="form-control" id="objective_assessment" name="objective_assessment" placeholder="Enter Objective Assessment" rows="2"></textarea>
-                                            </div>
-                                        </div> <hr>
+
                                     </div>
                                 </form>
                             </div>
@@ -479,7 +537,7 @@ require 'require/logincheck.php';
         <script src="assets/js/table-manage-default.demo.min.js"></script>
 
         <script src="assets/js/form-plugins.demo.min.js"></script>
-        <script src="assets/js/apps.min.js"></script>
+        <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
         <script>
             $(document).ready(function() {
                 App.init();

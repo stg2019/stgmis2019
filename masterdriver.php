@@ -27,24 +27,6 @@ require 'require/logincheck.php';
         <link href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
         <script src="assets/plugins/pace/pace.min.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-        <script type="text/javascript">
-            window.onload = function(){
-                var geocoder = new google.maps.Geocoder();
-                var address = document.getElementById("call_location").value;
-                //var address = "casiana, eroreco, bacolod city";
-
-                geocoder.geocode( { 'address': address}, function(results, status) {
-
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        var latitude = results[0].geometry.location.lat();
-                        var longitude = results[0].geometry.location.lng();
-                        document.getElementById("lat").value = latitude;
-                        document.getElementById("long").value = longitude;
-                    } 
-                }); 
-            }
-        </script>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -53,9 +35,13 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li class="active">Dispachment</li>
+                    <li><a href="#">Master File</a></li>
+                    <li class="active">List of Drivers</li>
                 </ol>
-                <h1 class="page-header"><a href="#adddispatchment" class="btn btn-sm btn-success" data-toggle="modal">New Dispatchment</a></h1>
+
+
+                <h1 class="page-header">List of Drivers
+                </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -63,56 +49,23 @@ require 'require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">Master File - Drivers</h4>
                             </div>
                             <div class="panel-body">
-                                <div id="dispatchTable"></div>
+                                <div id="driverTable"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php
-
-
-    // To Write CSV File
-    require 'require/dbconnection.php';
-
-            // get Users
-            $query = "SELECT longi, lat FROM dispatch";
-            if (!$result = mysqli_query($conn, $query)) {
-                exit(mysqli_error($conn));
-            }
-
-            $list = array();
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $list[] = $row;
-                }
-            }      
-
-            $file = fopen("export.csv","w");
-            fputcsv($file, array('lon', 'lat'), ';'); //INITIALIZE CSV HEADERSSSSS       
-            foreach ($list as $line)
-            {
-                fputcsv($file,$line, ';');
-            }
-            fclose($file);
-
-
-
-            // mmmmmmmmmm ending    
-            ?>
-
             <?php require 'require/sidepanel.php'?>
 
-            <?php require 'modals/adddispatchment.php'?>
+            <?php require 'modals/addcall.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 
         </div>
-
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/cruddispatch.js"></script>
+        <script type="text/javascript" src="functions/cruddriver.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -163,7 +116,7 @@ require 'require/logincheck.php';
         </script>
         <script>
             var placesAutocomplete = places({
-                container: document.querySelector('#call_location')
+                container: document.querySelector('#complete_address')
             });
         </script>
     </body>

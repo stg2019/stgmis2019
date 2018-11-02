@@ -231,7 +231,7 @@ require 'require/logincheck.php';
         <script src="assets/js/table-manage-default.demo.min.js"></script>
 
         <script src="assets/js/form-plugins.demo.min.js"></script>
-        <script src="assets/js/apps.min.js"></script>
+        <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
         <script>
             $(document).ready(function() {
                 App.init();

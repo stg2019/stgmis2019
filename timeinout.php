@@ -95,7 +95,7 @@
 
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
         <script src="assets/js/login-v2.demo.min.js"></script>
-        <script src="assets/js/apps.min.js"></script>
+        <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
         <!-- ================== END PAGE LEVEL JS ================== -->
 
         <script>

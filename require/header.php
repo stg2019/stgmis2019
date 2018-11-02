@@ -23,8 +23,9 @@
                         <li><a href="mastercalllog.php">Call Log Record</a></li>
                         <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
                         <li><a href="masterpatient.php">Patient Record</a></li>
-                        <li><a href="masterrefusaltreatment.php">Refusal of Treatment Record</a></li>
-                        <li><a href="masterrequesttransport.php">Request of Transport Record</a></li>
+                        <li><a href="masterdriver.php">List of Drivers</a></li>
+                        <!-- <li><a href="masterrefusaltreatment.php">Refusal of Treatment Record</a></li> -->
+                        <!-- <li><a href="masterrequesttransport.php">Request of Transport Record</a></li> -->
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -49,6 +50,11 @@
         $find = $query->fetch_array();
         ?>
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#">
+                    <span id="currentTime"></span> - <span id="day"></span>
+                </a>
+            </li>
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <i class="fa fa-bell-o"></i>

@@ -90,7 +90,7 @@ require 'require/logincheck.php';
     <script src="assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/table-manage-default.demo.min.js"></script>
     <script src="assets/js/form-plugins.demo.min.js"></script>
-    <script src="assets/js/apps.min.js"></script>
+    <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
 
     <script>
         $(document).ready(function() {

@@ -14,6 +14,8 @@
                 <form id="dispatchform">
                     <div class="row">
                         <div class="col-md-6">
+                            <input type="hidden" id="lat" name="lat"/>
+                            <input type="hidden" id="long" name="long"/>
                             <div class="form-group">
                                 <label >Service Number</label>
                                 <input type="text" class="form-control input-sm" id="service_no" name="service_no" placeholder="Enter Service Number" required/>
@@ -29,10 +31,18 @@
                             </div>
                             <div class="form-group">
                                 <label >Ambulance</label>
-                                <select class="form-control selectpicker input-sm" data-style="btn-white" id="ambulance" name="ambulance">
-                                    <option value="" selected disabled>Select Option</option>
-                                    <option value="Samaritan 1">Samaritan 1</option>
-                                    <option value="Samaritan 2">Samaritan 2</option>
+                                <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="ambulance" name="ambulance">
+                                    <option selected disabled value="#">Select</option>
+                                    <?php
+                                    require 'require/dbconnection.php';
+                                    $query = $conn->query("SELECT * FROM `ambulance` where status = 'Unbooked'") or die(mysqli_error());
+
+                                    while($fetch = $query->fetch_array()){
+                                    ?>
+                                    <option value="<?php echo $fetch['model'];?>"><?php echo $fetch['model'] . ' ' .$fetch['plate_no']?></option>
+                                    <?php
+                                    }
+                                    ?> 
                                 </select>
                             </div>
                             <div class="form-group">
@@ -117,12 +127,29 @@
                                 <input type="text" class="form-control input-sm" id="ems" name="ems" placeholder="Enter EMS" required/>
                             </div>
                             <div class="form-group">
-                                <label>Driver</label>
-                                <input type="text" class="form-control input-sm" id="driver" name="driver" placeholder="Enter Driver" required/>
+                                <label >Driver</label>
+                                <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="driver" name="driver">
+                                    <option value="#">Select</option>
+                                    <?php
+                                    require 'require/dbconnection.php';
+                                    $query = $conn->query("SELECT * FROM `driver` where status = 'Unbooked'") or die(mysqli_error());
+
+                                    while($fetch = $query->fetch_array()){
+                                    ?>
+                                    <option value="<?php echo $fetch['driver_name'];?>"><?php echo $fetch['driver_name']?></option>
+                                    <?php
+                                    }
+                                    ?> 
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label >Call Location</label>
-                                <input type="search" class="form-control input-sm" id="call_location" name="call_location" placeholder="Enter Call Location" />
+                                <?php 
+                                require 'require/dbconnection.php';
+                                $query = $conn->query("SELECT * FROM `call_logs` order by call_id DESC limit 1") or die(mysqli_error());
+                                $fetch = $query->fetch_array();
+                                ?>
+                                <input type="text" class="form-control input-sm" id="call_location" name="call_location" value="<?php echo $fetch['complete_address']?>" placeholder="Enter Call Location" />
                             </div>
                             <div class="form-group">
                                 <label >Mass Casualty</label>
