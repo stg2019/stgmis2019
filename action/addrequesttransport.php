@@ -15,8 +15,8 @@ if(isset($_POST['add'])){
     $fromb = $_POST['fromb'];
     $gcs = $_POST['gcs'];
     $bp = $_POST['bp'];
-    $rr = $_POST['rr'];
-    $pr = $_POST['pr'];
+    $rer = $_POST['rer'];
+    $per = $_POST['per'];
     $sat = $_POST['sat'];
     $requesting_approval = $_POST['requesting_approval'];
     $approval = $_POST['approval'];
@@ -29,7 +29,7 @@ if(isset($_POST['add'])){
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rr', '$pr', '$sat', '$requesting_approval', '$approval', '$date_created', '$month', '$year')") or die(mysqli_error());
+    $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rer', '$per', '$sat', '$requesting_approval', '$approval', '$date_created', '$month', '$year')") or die(mysqli_error());
     $conn->close();
 }a
 ?>

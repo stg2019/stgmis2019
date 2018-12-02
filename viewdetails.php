@@ -155,7 +155,46 @@ require 'require/logincheck.php';
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile">
-                                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                                    <?php
+    $query = $conn->query("SELECT * FROM `dispatch` WHERE `dispatch_id` = '$_GET[dispatch_id]'") or die(mysqli_error());
+                                    $fetch = $query->fetch_array();
+                                    ?>
+                                    <div class="panel-body">
+                                        <center>
+                                            <div id="modallabel" class="alert alert-danger" style="display:none;">
+                                                <center><span id="checkfield"></span></center>
+                                            </div>
+                                        </center>
+                                        <div class="form-group">
+                                            <label >Medical Supply Name</label>
+                                            <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
+                                                <option value="#" disabled>Select</option>
+                                                <?php
+                                                require 'require/dbconnection.php';
+                                                $query = $conn->query("SELECT * FROM `medical_supply_stocks` where running_balance >= 1") or die(mysqli_error());
+
+                                                while($fetch = $query->fetch_array()){
+                                                ?>
+                                                <option value="<?php echo $fetch['medical_supply_name'];?>"><?php echo $fetch['medical_supply_name']?></option>
+                                                <?php
+                                                }
+                                                ?> 
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Quantity Used</label>
+                                            <input type="text" class="form-control input-sm" id="quantity_used" name="quantity_used" placeholder="Enter Quantity Used" required/>
+                                        </div>
+                                        <hr>
+                                        <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="additem" class="btn btn-sm btn-success m-r-5">Add</button>
+                                        <hr>
+                                        <div class="invoice-content">
+                                            <div id="alert" class="alert alert-success" style="display:none;">
+                                                <center><span id="alerttext"></span></center>
+                                            </div>
+                                            <div id="itemTable"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

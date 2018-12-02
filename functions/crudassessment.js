@@ -2,7 +2,7 @@ $(document).ready(function(){
     showPatient();
     //add dispatch
     $(document).on('click', '.add_assessment', function(){
-        if ($('#time').val()=="" || $('#loc').val()=="" || $('#bp').val()=="" || $('#sa').val()=="" || $('#pr').val()=="" || $('#rr').val()=="" || $('#temp').val()=="" || $('#rbs').val()=="" || $('#pupils').val()=="" || $('#skin').val()=="" || $('#allergy').val()=="" || $('#medications').val()=="" || $('#phistory').val()=="" || $('#last_oral_intake').val()=="" || $('#events_leading_to').val()=="" || $('#notes').val()=="" || $('#eye').val()=="" || $('#verbal').val()=="" || $('#motor').val()=="" || $('#patient_disposition').val()=="" || $('#interventions').val()=="" || $('#priority_level').val()==""|| $('#chief_complaints').val()=="" || $('#subjective_assessment').val()=="" || $('#objective_assessment').val()=="" || $('#onset').val()=="" || $('#pain').val()=="" || $('#quality').val()=="" || $('#region').val()=="" || $('#severity').val()==""){
+        if ($('#allergy').val()=="" || $('#medications').val()=="" || $('#phistory').val()=="" || $('#last_oral_intake').val()=="" || $('#events_leading_to').val()=="" || $('#notes').val()=="" || $('#eye').val()=="" || $('#verbal').val()=="" || $('#motor').val()=="" || $('#patient_disposition').val()=="" || $('#interventions').val()=="" || $('#priority_level').val()==""|| $('#chief_complaints').val()=="" || $('#subjective_assessment').val()=="" || $('#objective_assessment').val()=="" || $('#onset').val()=="" || $('#pain').val()=="" || $('#quality').val()=="" || $('#region').val()=="" || $('#severity').val()==""){
             $('#modallabel').slideDown();
             $('#checkfield').text('Input all required fields!');
             setTimeout(function() {
@@ -11,18 +11,7 @@ $(document).ready(function(){
         }
         else{
             $patient_id=$('.add_assessment').val();
-            //vital signs
-            $time=$('#time').val();
-            $loc=$('#loc').val();
-            $bp=$('#bp').val();
-            $sa=$('#sa').val();
-            $pr=$('#pr').val();
-            $rr=$('#rr').val();
-            $temp=$('#temp').val();
-            $rbs=$('#rbs').val();
-            $pupils=$('#pupils').val();
-            $skin=$('#skin').val();
-
+            
             //past medical history
             $allergy=$('#allergy').val();
             $medications=$('#medications').val();
@@ -30,11 +19,6 @@ $(document).ready(function(){
             $last_oral_intake=$('#last_oral_intake').val();
             $events_leading_to=$('#events_leading_to').val();
             $notes=$('#notes').val();
-
-            //glassgow coma scale
-            $eye=$('#eye').val();
-            $verbal=$('#verbal').val();
-            $motor=$('#motor').val();
 
             //incident / patient disposition
             $patient_disposition=$('#patient_disposition').val();
@@ -80,18 +64,6 @@ $(document).ready(function(){
                 data: {
                     patient_id : $patient_id,
 
-                    // vital signs
-                    time : $time,
-                    loc : $loc,
-                    bp : $bp,
-                    sa : $sa,
-                    pr : $pr,
-                    rr : $rr,
-                    temp : $temp,
-                    rbs : $rbs,
-                    pupils : $pupils,
-                    skin: $skin,
-
                     //past medical history
                     allergy: $allergy,
                     medications: $medications,
@@ -99,11 +71,6 @@ $(document).ready(function(){
                     last_oral_intake: $last_oral_intake,
                     events_leading_to: $events_leading_to,
                     notes: $notes,
-
-                    //glassgow coma scale
-                    eye : $eye,
-                    verbal : $verbal,
-                    motor : $motor,
 
                     // incident / patient disposition
                     patient_disposition : $patient_disposition,
@@ -123,7 +90,7 @@ $(document).ready(function(){
                     quality : $quality,
                     region : $region,
                     severity : $severity,
-                    
+
                     // dropdown
                     ettubesize : $ettubesize,
                     level : $level,

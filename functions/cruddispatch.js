@@ -3,7 +3,7 @@ $(document).ready(function(){
     showAdminDispatch();
     //add dispatch
     $(document).on('click', '#addnew', function(){
-        if ($('#service_no').val()=="" || $('#date_time_call').val()=="" || $('#ambulance').val()=="" || $('#dispatched_for').val()=="" || $('#call_location').val()=="" || $('#moi_noi').val()=="" || $('#patients_on_scene').val()=="" || $('#on_board_tl').val()=="" || $('#ems').val()=="" || $('#driver').val()=="" || $('#care_in_progress').val()=="" || $('#mass_casualty').val()==""){
+        if ($('#service_no').val()=="" || $('#ambulance').val()=="" || $('#dispatched_for').val()=="" || $('#call_location').val()=="" || $('#moi_noi').val()=="" || $('#patients_on_scene').val()=="" || $('#on_board_tl').val()=="" || $('#ems').val()=="" || $('#driver').val()=="" || $('#care_in_progress').val()=="" || $('#mass_casualty').val()==""){
             $('#modallabel').slideDown();
             $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
             setTimeout(function() {
@@ -12,7 +12,7 @@ $(document).ready(function(){
         }
         else{
             $service_no=$('#service_no').val();
-            $date_time_call=$('#date_time_call').val();
+           // $date_time_call=$('#date_time_call').val();
             $ambulance=$('#ambulance').val();
             $dispatched_for=$('#dispatched_for').val();
             $call_location=$('#call_location').val();
@@ -34,7 +34,7 @@ $(document).ready(function(){
                     async:false,
                     data: {
                         service_no : $service_no,
-                        date_time_call : $date_time_call,
+                        //date_time_call : $date_time_call,
                         ambulance : $ambulance,
                         dispatched_for : $dispatched_for,
                         call_location : $call_location,

@@ -3,7 +3,8 @@ if(isset($_POST['add'])){
     date_default_timezone_set('Asia/Manila');
     $enroute=date("g:i a");
     $service_no = $_POST['service_no'];
-    $date_time_call = $_POST['date_time_call'];
+    // $date_time_call = $_POST['date_time_call'];
+    $date_time_call=date("F j, Y g:i a");
     $ambulance = $_POST['ambulance'];
     $dispatched_for = $_POST['dispatched_for'];
     $call_location = $_POST['call_location'];

@@ -76,7 +76,7 @@
                     <li><a href="myaccount.php">My Account</a></li>
                     <li><a href="usermanagement.php">User Management</a></li>
                     <li><a href="systembackup.php">System Backup</a></li>
-                    <li><a href="#">User's Activity Log</a></li>
+                    <li><a href="usersactivity.php">Users Activity Log</a></li>
                 </ul>
             </li>
             <!-- begin sidebar minify button -->

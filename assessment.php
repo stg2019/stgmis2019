@@ -74,145 +74,80 @@ require 'require/logincheck.php';
                                             <table class="table table-condensed table-bordered">
                                                 <tbody>
                                                     <tr>
-                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Vital Signs</h4></td>
+                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Pain Assessment</h4></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Time</td>
+                                                        <td>Onset</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <div class="input-group date" id="datetimepicker2">
-                                                                    <input type="text" id="time" name="time" class="form-control" />
-                                                                    <span class="input-group-addon">
-                                                                        <span class="glyphicon glyphicon-time"></span>
-                                                                    </span>
-                                                                </div>
+                                                                <input type="text" class="form-control" id="onset" name="onset" placeholder="Enter Onset" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>LOC</td>
+                                                        <td>Pain</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <select class="form-control selectpicker input-sm" data-style="btn-white" id="loc" name="loc">
-                                                                    <option value="" selected disabled>Select LOC</option>
-                                                                    <option value="Alert">Alert </option>
-                                                                    <option value="Voice">Voice</option>
-                                                                    <option value="Pain">Pain</option>
-                                                                    <option value="Unresponsive">Unresponsive</option>
-                                                                </select>
+                                                                <input type="text" class="form-control" id="pain" name="pain" placeholder="Enter Pain" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>B.P. (mmHg)</td>
+                                                        <td>Quality</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="bp" name="bp" placeholder="Enter Blood Pressure" />
+                                                                <input type="text" class="form-control" id="quality" name="quality" placeholder="Enter Quality" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>SA02 (%)</td>
+                                                        <td>Region</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" id="sa" name="sa" />
+                                                                <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region/Radiation" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>PR (bpm)</td>
+                                                        <td>Severity</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" id="pr" name="pr" />
+                                                                <input type="text" id="customValue_rangeSlider" name="severiy" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>RR (cpm)</td>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Chief Complaint(s)</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" id="rr" name="rr" />
+                                                                <textarea class="form-control" id="chief_complaints" name="chief_complaints" placeholder="Enter Chief Complaint(s)" rows="2"></textarea>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Temperature (C)</td>
+                                                        <td>Subjective Assessment</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" id="temp" name="temp" />
+                                                                <textarea class="form-control" id="subjective_assessment" name="subjective_assessment" placeholder="Enter Subjective Assessment" rows="2"></textarea>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>RBS (mg/dl)</td>
+                                                        <td>Objective Assessment</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="rbs" name="rbs" placeholder="Enter RBS (mg/dl)" />
+                                                                <textarea class="form-control" id="objective_assessment" name="objective_assessment" placeholder="Enter Objective Assessment" rows="2"></textarea>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Pupil</td>
+                                                        <td>Priority Level</td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="pupils" name="pupils">
-                                                                    <option value="" selected disabled>Select Pupil</option>
-                                                                    <option value="Normal - R">Normal - R </option>
-                                                                    <option value="Normal - L">Normal - L</option>
-                                                                    <option value="Dilated - R">Dilated - R</option>
-                                                                    <option value="Dilated - L">Dilated - L</option>
-                                                                    <option value="Constricted - R">Constricted - R</option>
-                                                                    <option value="Constricted - L">Constricted - L</option>
-                                                                    <option value="Sluggish - R">Sluggish - R</option>
-                                                                    <option value="Sluggish - L">Sluggish - L</option>
-                                                                    <option value="No Response - R">No Response - R</option>
-                                                                    <option value="No Response - L">No Response - L</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Skin</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <select class="form-control selectpicker input-sm"  data-style="btn-white" id="skin" name="skin">
-                                                                    <option value="" selected disabled>Select Skin</option>
-                                                                    <option value="Unremarkable">Unremarkable </option>
-                                                                    <option value="Pale">Pale</option>
-                                                                    <option value="Warm">Warm</option>
-                                                                    <option value="Cyanotic">Cyanotic</option>
-                                                                    <option value="Moist">Moist</option>
-                                                                    <option value="Flushed">Flushed</option>
-                                                                    <option value="Dry">Dry</option>
-                                                                    <option value="Jaundiced">Jaundiced</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Glasgow Coma Scale</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Eye Reponse</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="eye" name="eye" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Verbal Response</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="verbal" name="verbal" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Motor Response</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="motor" name="motor" />
+                                                                <input type="text" id="priority_level" name="priority_level" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -409,84 +344,7 @@ require 'require/logincheck.php';
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Pain Assessment</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Onset</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="onset" name="onset" placeholder="Enter Onset" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Pain</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="pain" name="pain" placeholder="Enter Pain" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Quality</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="quality" name="quality" placeholder="Enter Quality" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Region</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" class="form-control" id="region" name="region" placeholder="Enter Region/Radiation" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Severity</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="customValue_rangeSlider" name="severiy" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chief Complaint(s)</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <textarea class="form-control" id="chief_complaints" name="chief_complaints" placeholder="Enter Chief Complaint(s)" rows="2"></textarea>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Subjective Assessment</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <textarea class="form-control" id="subjective_assessment" name="subjective_assessment" placeholder="Enter Subjective Assessment" rows="2"></textarea>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Objective Assessment</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <textarea class="form-control" id="objective_assessment" name="objective_assessment" placeholder="Enter Objective Assessment" rows="2"></textarea>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Priority Level</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="priority_level" name="priority_level" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+
                                                 </tbody>
                                             </table>
 

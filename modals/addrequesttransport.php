@@ -44,7 +44,7 @@
 
                             <div class="form-group">
                                 <label >Age and Gender</label>
-                                <div class="row row-space-12">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" class="form-control input-sm"  id="age" name="age" placeholder="Enter Age" />
                                     </div>
@@ -94,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label >GCS and BP</label>
-                                <div class="row row-space-12">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" class="form-control input-sm" id="gcs" name="gcs" placeholder="Enter GCS" required/>
                                     </div>
@@ -105,12 +105,12 @@
                             </div>
                             <div class="form-group">
                                 <label >RR and PR</label>
-                                <div class="row row-space-12">
+                                <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control input-sm" id="rr" name="rr" placeholder="Enter RR" required/>
+                                        <input type="text" class="form-control input-sm" id="rer" name="rer" placeholder="Enter RR" required/>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control input-sm" id="pr" name="pr" placeholder="Enter PR" required/>
+                                        <input type="text" class="form-control input-sm" id="per" name="per" placeholder="Enter PR" required/>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group">
                                 <label >Requesting Approval and Approval</label>
-                                <div class="row row-space-12">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" class="form-control input-sm" id="requesting_approval" name="requesting_approval" placeholder="Enter Requesting Approval" required/>
                                     </div>

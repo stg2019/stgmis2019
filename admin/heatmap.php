@@ -56,7 +56,6 @@
         var map, pointarray, heatmap;
         var csv = [];
 
-        // http://stackoverflow.com/a/2901298/562440
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
@@ -124,7 +123,6 @@
                 radius: $("#radius-slider").slider("value"),
                 opacity: $("#opacity-slider").slider("value")
             });
-
             heatmap.setMap(map);
         }
 
@@ -187,14 +185,15 @@
     <!-- the draggable input and display controls -->
     <div id="draggable">
         <div id="project"></div>
-        <div>BDRRMO Dispatchment Cases</div> <br>
+        <div>Heat Map Dispatchment Cases</div> <br>
         <input type="file" id="csv-file" name="files"/>
 
         <div id="radius-label">radius: 20</div>
         <div id="radius-slider"></div>
 
         <div id="opacity-label">opacity: 0.5</div>
-        <div id="opacity-slider"></div>
+        <div id="opacity-slider"></div> <br>
+        <div><a href="exportcsv.php">Download CSV</a></div>
     </div>
 </body>
 

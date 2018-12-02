@@ -29,7 +29,7 @@ require 'require/logincheck.php';
         <?php require 'assets/js/loadchart/dashboard/emtdashboardgraphs.php'?>
         <style>
             #map-canvas {
-                height: 400px;
+                height: 500px;
                 width: 100%;
             }
         </style>
@@ -152,6 +152,7 @@ require 'require/logincheck.php';
                                     $fetch = $query->fetch_array();
                         ?>
                         <div class="email-content monthly quarterly yearly reporttype">
+                            <h4>Recent Dispatchment</h4>
                             <div class="panel-body">
                                 <div id="map-canvas"></div>
                                 <br>

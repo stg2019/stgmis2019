@@ -10,6 +10,8 @@ if(isset($_POST['edit'])){
     $conn->query("UPDATE `medical_supply_request` SET `status` = 'Approved', `date_approved` = '$date_approved' WHERE `medical_supply_request_id` = '$medical_supply_request_id'") or die(mysqli_error());
 
     $conn->query("UPDATE `medical_supply_stocks_emt` SET `running_balance` = `running_balance` + '$requested_quantity' WHERE `medical_supply_name` = '$medical_supply_name'") or die(mysqli_error());
+    
+    $conn->query("UPDATE `medical_supply_stocks` SET `running_balance` = `running_balance` - '$requested_quantity' WHERE `medical_supply_name` = '$medical_supply_name'") or die(mysqli_error());
 
 }
 ?>

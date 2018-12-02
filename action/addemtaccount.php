@@ -1,4 +1,5 @@
 <?php
+require '../require/logincheck.php';
 if(isset($_POST['add'])){
     $complete_name = $_POST['complete_name'];
     $username = $_POST['username'];
@@ -6,15 +7,22 @@ if(isset($_POST['add'])){
     date_default_timezone_set('Asia/Manila');
     $date=date("F j, Y");
     $time=date('g:i a');
-    
-    $pass1 = sha1($password);
-	$salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
-	$pass1 = $salt.$pass1;
 
-    
+    $pass1 = sha1($password);
+    $salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
+    $pass1 = $salt.$pass1;
+
+    //history_log
+    $user_id=$_SESSION['user_id'];
+    date_default_timezone_set('Asia/Manila');
+    $date_time=date("F j, Y - g:i a");
+
+
     require '../require/dbconnection.php';
 
     $conn->query("INSERT INTO `users` VALUES('', '$complete_name', '$username', '$pass1', 'EMT', '1', '$date', '$time')") or die(mysqli_error());
+
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New User','$date_time')") or die(mysqli_error());
     $conn->close();
 }
 ?>

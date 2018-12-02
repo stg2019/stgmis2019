@@ -4,7 +4,7 @@ $(document).ready(function(){
     showAdminRequestTransport();
     //add dispatch
     $(document).on('click', '#addnew', function(){
-        if ($('#date_time').val()=="" || $('#requesting_party').val()=="" || $('#contact_no').val()=="" || $('#patient_name').val()=="" || $('#address').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#medical_history').val()=="" || $('#special_considerations').val()=="" || $('#froma').val()=="" || $('#toa').val()=="" || $('#fromb').val()=="" || $('#gcs').val()=="" || $('#bp').val()=="" || $('#rr').val()=="" || $('#pr').val()=="" || $('#sat').val()=="" || $('#requesting_approval').val()=="" || $('#approval').val()==""){
+        if ($('#date_time').val()=="" || $('#requesting_party').val()=="" || $('#contact_no').val()=="" || $('#patient_name').val()=="" || $('#address').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#medical_history').val()=="" || $('#special_considerations').val()=="" || $('#froma').val()=="" || $('#toa').val()=="" || $('#fromb').val()=="" || $('#gcs').val()=="" || $('#bp').val()=="" || $('#rer').val()=="" || $('#per').val()=="" || $('#sat').val()=="" || $('#requesting_approval').val()=="" || $('#approval').val()==""){
             $('#modallabel').slideDown();
             $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
             setTimeout(function() {
@@ -26,8 +26,8 @@ $(document).ready(function(){
             $fromb=$('#fromb').val();
             $gcs=$('#gcs').val();
             $bp=$('#bp').val();
-            $rr=$('#rr').val();
-            $pr=$('#pr').val();
+            $rer=$('#rer').val();
+            $per=$('#per').val();
             $sat=$('#sat').val();
             $requesting_approval=$('#requesting_approval').val();
             $approval=$('#approval').val();
@@ -53,8 +53,8 @@ $(document).ready(function(){
                     fromb : $fromb,
                     gcs : $gcs,
                     bp : $bp,
-                    rr : $rr,
-                    pr : $pr,
+                    rer : $rer,
+                    per : $per,
                     sat : $sat,
                     requesting_approval : $requesting_approval,
                     approval : $approval,

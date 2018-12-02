@@ -13,8 +13,8 @@ function initMap() {
     var origin1 = {lat: 10.6675065, lng: 122.9451055};
     var destinationA = street +"," + city + "," + state +"," + postcode + "," + country;    
 
-    var destinationIcon = 'pin.png';
-    var originIcon = 'pin.png';
+    var destinationIcon = 'assets/img/pin.png';
+    var originIcon = 'assets/img/ambulance.png';
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: {lat: 10.6675065, lng: 122.9451055},
         zoom: 10,

@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     notificationNewUser();
-    notificationBadgeUser();
+    notificationLocateUser();
 });
 
 function notificationNewUser(){
@@ -18,16 +18,16 @@ function notificationNewUser(){
     });
 }
 
-function notificationBadgeUser(){
+function notificationLocateUser(){
     $.ajax({
-        url: '../notifications/badgeuser.php',
+        url: '../notifications/locateuser.php',
         type: 'POST',
         async: false,
         data:{
             show: 1
         },
         success: function(response){
-            $('.badgeuser').html(response);
+            $('.notificationLocateUser').html(response);
         }
     });
 }

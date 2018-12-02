@@ -20,15 +20,17 @@
                                 <label >Service Number</label>
                                 <input type="text" class="form-control input-sm" id="service_no" name="service_no" placeholder="Enter Service Number" required/>
                             </div>
-                            <div class="form-group ">
-                                <label >Date and Time of Call</label>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" id="date_time_call" name="date_time_call" class="form-control" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
+                            <!--
+<div class="form-group ">
+<label >Date and Time of Call</label>
+<div class="input-group date" id="datetimepicker1">
+<input type="text" id="date_time_call" name="date_time_call" class="form-control" />
+<span class="input-group-addon">
+<span class="glyphicon glyphicon-calendar"></span>
+</span>
+</div>
+</div>
+-->
                             <div class="form-group">
                                 <label >Ambulance</label>
                                 <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="ambulance" name="ambulance">
@@ -112,12 +114,13 @@
                                 <label >MOI/NOI</label>
                                 <input type="text" class="form-control input-sm" id="moi_noi" name="moi_noi" placeholder="Enter MOI/NOI" required/>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label >Number of patients on-scene</label>
                                 <input type="number" class="form-control input-sm" id="patients_on_scene" name="patients_on_scene" placeholder="Enter Number of patients on-scene" required/>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+
                             <div class="form-group">
                                 <label>On Board : TL</label>
                                 <input type="number" class="form-control input-sm" id="on_board_tl" name="on_board_tl" placeholder="Enter On Board : TL" required/>

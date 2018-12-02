@@ -1,5 +1,6 @@
 $(document).ready(function(){
     showPatient();
+    showItemUsed();
     //add dispatch
     $(document).on('click', '#addnew', function(){
         if ($('#patient_name').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#date_of_birth').val()=="" || $('#contact_no').val()=="" || $('#home_address').val()=="" || $('#next_to_kin').val()=="" || $('#relationship').val()=="" || $('#directives').val()==""){
@@ -55,6 +56,45 @@ $(document).ready(function(){
         }
 
     });
+
+    //add medical supply used
+    $(document).on('click', '#additem', function(){
+        if ($('#medical_supply_name').val()=="" || $('#quantity_used').val()==""){
+            $('#modallabel').slideDown();
+            $('#checkfield').text('All fields are required!');
+            setTimeout(function() {
+                $('#modallabel').fadeOut('slow');
+            }, 3500);
+        }
+        else{
+            $dispatch_id=$('#additem').val();
+            $medical_supply_name=$('#medical_supply_name').val();
+            $quantity_used=$('#quantity_used').val();
+            $.ajax({
+                type: "POST",
+                url: "action/additemused.php",
+                cache:false,
+                async:false,
+                data: {
+                    medical_supply_name : $medical_supply_name,
+                    quantity_used : $quantity_used,
+                    dispatch_id : $dispatch_id,
+                    add: 1,
+                },
+                success: function(){
+                    $('#alert').slideDown();
+                    $('#alerttext').text('Medical Supply Item Added Successfully!');
+                    setTimeout(function() {
+                        $('#alert').fadeOut('slow');
+                    }, 1500);
+                    showItemUsed();
+                }
+            });
+            $('form').trigger('reset');
+        }
+
+    });
+
 });
 
 //show dispatch
@@ -73,6 +113,25 @@ function showPatient(){
         }
     });
 }
+
+function showItemUsed(){
+    $dispatch_id=$('#additem').val(); 
+    $.ajax({
+        url: 'tables/itemused.php',
+        type: 'POST',
+        data:{
+            dispatch_id : $dispatch_id,
+            show: 1
+        },
+        success: function(response){
+            $('#itemTable').html(response);
+
+        }
+    });
+}
+
+
+
 
 
 
