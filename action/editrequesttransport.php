@@ -1,5 +1,5 @@
 <?php
-require '../require/dbconnection.php';
+require '../require/logincheck.php';
 if(isset($_POST['edit'])){
     $request_transport_id = $_POST['request_transport_id'];
     $date_time = $_POST['date_time'];
@@ -22,6 +22,16 @@ if(isset($_POST['edit'])){
     $requesting_approval = $_POST['requesting_approval'];
     $approval = $_POST['approval'];
 
+    //history_log
+    $user_id=$_SESSION['user_id'];
+    date_default_timezone_set('Asia/Manila');
+    $date_time=date("F j, Y - g:i a");
+
+    require '../require/dbconnection.php';
+
     $conn->query("UPDATE `request_transport` SET `date_time` = '$date_time', `requesting_party` = '$requesting_party', `contact_no` = '$contact_no', `patient_name` = '$patient_name', `address` = '$address', `age` = '$age', `gender` = '$gender', `medical_history` = '$medical_history', `special_considerations` = '$special_considerations', `froma` = '$froma', `toa` = '$toa', `fromb` = '$fromb', `gcs` = '$gcs', `bp` = '$bp', `rr` = '$rr', `pr` = '$pr', `sat` = '$sat', `requesting_approval` = '$requesting_approval', `approval` = '$approval'  WHERE `request_transport_id` = '$request_transport_id'") or die(mysqli_error());
+
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Call Log','$date_time')") or die(mysqli_error());
+    $conn->close();
 }
 ?>

@@ -60,11 +60,11 @@ $(document).ready(function(){
     //add medical supply used
     $(document).on('click', '#additem', function(){
         if ($('#medical_supply_name').val()=="" || $('#quantity_used').val()==""){
-            $('#modallabel').slideDown();
-            $('#checkfield').text('All fields are required!');
+            $('#modallabels').slideDown();
+            $('#checkfields').text('Please input quantity used!');
             setTimeout(function() {
-                $('#modallabel').fadeOut('slow');
-            }, 3500);
+                $('#modallabels').fadeOut('slow');
+            }, 2500);
         }
         else{
             $dispatch_id=$('#additem').val();

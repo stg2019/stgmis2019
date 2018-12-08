@@ -161,8 +161,8 @@ require 'require/logincheck.php';
                                     ?>
                                     <div class="panel-body">
                                         <center>
-                                            <div id="modallabel" class="alert alert-danger" style="display:none;">
-                                                <center><span id="checkfield"></span></center>
+                                            <div id="modallabels" class="alert alert-danger" style="display:none;">
+                                                <center><span id="checkfields"></span></center>
                                             </div>
                                         </center>
                                         <div class="form-group">

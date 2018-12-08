@@ -71,7 +71,6 @@ require 'require/logincheck.php';
 
             <?php require 'modals/requestsupplies.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="functions/crudemtinventory.js"></script>
@@ -103,7 +102,6 @@ require 'require/logincheck.php';
         <script src="assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
         <script src="assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
         <script src="assets/js/table-manage-default.demo.min.js"></script>
-
         <script src="assets/js/form-plugins.demo.min.js"></script>
         <script src="assets/js/apps.min.js"></script> <script src="assets/js/timedate.js"> </script>
         <script>

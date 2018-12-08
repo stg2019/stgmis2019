@@ -1,5 +1,6 @@
 
 <?php
+require '../require/logincheck.php';
 if(isset($_POST['add'])){
     $date_time = $_POST['date_time'];
     $requesting_party = $_POST['requesting_party'];
@@ -25,11 +26,16 @@ if(isset($_POST['add'])){
     $month = date("M");
     $year = date("Y");
 
-
+    //history_log
+    $user_id=$_SESSION['user_id'];
+    date_default_timezone_set('Asia/Manila');
+    $date_time=date("F j, Y - g:i a");
 
     require '../require/dbconnection.php';
 
     $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rer', '$per', '$sat', '$requesting_approval', '$approval', '$date_created', '$month', '$year')") or die(mysqli_error());
+
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Request of Transport','$date_time')") or die(mysqli_error());
     $conn->close();
 }a
 ?>
