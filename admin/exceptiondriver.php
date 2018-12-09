@@ -24,6 +24,7 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <script src="../assets/plugins/pace/pace.min.js"></script>
+        <?php require '../assets/js/loadchart/exception/driver.php'?>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -31,59 +32,29 @@ require '../require/logincheck.php';
 
             <div id="content" class="content">
                 <div class="row">
+                    <?php require 'require/selectyear.php'?>
+                </div>
+                <div class="row">
                     <div class="col-md-9">
-                        <div id="chartContainer" style="width: 100%; height: 400px"></div>
+                        <div class="email-content">
+                            <div class="panel-body">
+                                <div id="chartContainer1" style="width: 100%; height: 300px"></div>
+                            </div>
+                        </div>
                     </div>
-
-                    <?php
-                    require 'require/dbconnection.php';
-                    $year = date('Y');
-                    $fetch = $conn->query("SELECT *, count(*) as count FROM `dispatch` where `year` = '$year' group by month") or die(mysqli_error());
-                    $data_points = array();
-                    while($result = $fetch->fetch_array()){
-                        $year = intval($result['year']);
-                        $month = $result['month'];
-                        $count = intval($result['count']);
-                        $point = array('year' => $year, 'month' => $month, 'count' => $count);
-                        array_push($data_points, $point);
-                    }
-                    $json_string = json_encode($data_points);
-                    $file = 'monthlydispatchment.json';
-                    file_put_contents($file, $json_string);
-                    ?> 
-
                     <?php require 'sidebarexception.php'?>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div id="alert" class="alert alert-warning" style="display:none;">
-                            <center><span id="alerttext"></span></center>
-                        </div>
-                        <select name="chart Type" id="chartType">
-                            <option selected disabled>Select Chart</option>
-                            <option value="stackedColumn">Column Chart</option>
-                            <option value="stackedBar">Bar Chart</option>
-                            <option value="line">Line Chart</option>
-                            <option value="pie">Pie Chart</option>
-                            <option value="doughnut">Doughnut Chart</option>
-                        </select>
-                        <?php require 'require/selectyear.php'?>
-                    </div>
 
-                </div>
             </div>
             <?php require '../require/sidepanel.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
-        <script src="exceptionreports/monthlydispatchment.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../assets/plugins/jquery-cookie/jquery.cookie.
-
-                     js"></script>
+        <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
         <script src="../assets/plugins/gritter/js/jquery.gritter.js"></script>
         <script src="../assets/js/dashboard.min.js"></script>
         <script src="../assets/js/apps.min.js"></script>
@@ -104,14 +75,14 @@ require '../require/logincheck.php';
             ga('send', 'pageview');
 
         </script>
-
         <script>
             $(document).ready(function(){
                 $("#pyear").on('change', function(){
                     var year=$(this).val();
-                    window.location = 'dispatchmenttabular.php?year='+year;
+                    window.location = 'exceptiondriver.php?year='+year;
                 });
             });
         </script>
+
     </body>
 </html>

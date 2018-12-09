@@ -1,6 +1,11 @@
 <!-- Monthly Dispatchment -->
 <?php
 $year = date('Y');
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
+
 
 require 'require/dbconnection.php';
 $qjan = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = 'Jan' && `year` = '$year'") or die(mysqli_error());
@@ -49,11 +54,16 @@ json_encode($data_points);
 
 <!-- Top 5 Emergency Cases -->
 <?php
+$year = date('Y');
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
 $data_points2 = array();
 while($result2 = $res2->fetch_array()){
     $R2 = $result2['dispatched_for'];
-    $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+    $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' && `year` = '$year' group by dispatched_for") or die(mysqli_error());
     $f2 = $q2->fetch_array();
     $FR2 = intval($f2['total']);
     $point2 = array('label' => $R2, 'y' => $FR2);
@@ -64,11 +74,16 @@ json_encode($data_points2);
 
 <!-- Annual Dispatchment-->
 <?php
+$year = date('Y');
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 $res3 = $conn->query("SELECT * FROM `dispatch` GROUP BY year") or die(mysqli_error());
 $data_points3 = array();
 while($result3 = $res3->fetch_array()){
     $R3 = $result3['year'];
-    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$R3' group by year") or die(mysqli_error());
+    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$year' group by year") or die(mysqli_error());
     $f3 = $q3->fetch_array();
     $FR3 = intval($f3['total']);
     $point3 = array('label' => $R3, 'y' => $FR3);

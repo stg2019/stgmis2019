@@ -15,7 +15,7 @@ if(isset($_POST['add'])){
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `medical_supply_request` VALUES('', '$medical_supply_name', '$requested_quantity', '$date_requested', 'Pending', '$month', '$year', 'Pending')") or die(mysqli_error());
+    $conn->query("INSERT INTO `medical_supply_request` VALUES('', '$medical_supply_name', '$requested_quantity', '$date_requested', 'Pending', '$month', '$year', 'Pending', '$user_id')") or die(mysqli_error());
 
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Requested $requested_quantity $medical_supply_name','$date_time')") or die(mysqli_error());
     $conn->close();

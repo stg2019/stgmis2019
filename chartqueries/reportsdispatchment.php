@@ -1,7 +1,10 @@
 <!-- Quarterly Dispatchment -->
 <?php
 $year = date('Y');
-
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 require 'require/dbconnection.php';
 $quarter1 = $conn->query("SELECT COUNT(*) as total FROM `dispatch` where (month = 'Jan' or month = 'Feb' or month = 'Mar') && `year` = '$year'") or die(mysqli_error());
 $q1 = $quarter1->fetch_array();

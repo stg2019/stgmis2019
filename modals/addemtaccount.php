@@ -14,6 +14,7 @@
                 <form id="dispatchform">
                     <div class="row">
                         <div class="col-md-12">
+                            <div id="cname_response"></div>
                             <div class="form-group">
                                 <label >Complete Name</label>
                                 <input type="text" class="form-control input-sm" id="complete_name" name="complete_name" placeholder="Enter Complete Name" required/>

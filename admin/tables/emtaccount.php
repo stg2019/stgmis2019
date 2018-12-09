@@ -32,7 +32,9 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['username']?></td>
             <td>********</td>
             <td><?php echo $fetch['date_created']. ' ' .$fetch['time_created']?></td>
-            <td><?php echo getstatus($fetch['status'])?></td>
+            <td><?php  if ($fetch['status'] == '1') echo "<span class='badge badge-info'>Active</span>";
+        if ($fetch['status'] == '0') echo "<span class='badge badge-danger'>Not Active</span>";
+                ?></td>
         </tr>
         <?php
     }

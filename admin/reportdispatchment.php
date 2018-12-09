@@ -39,6 +39,20 @@ require '../require/logincheck.php';
             <div id="content" class="content content-full-width">
                 <div class="p-20">
                     <div class="row">
+                        <?php
+    require 'require/dbconnection.php';
+        $fetch = $conn->query("SELECT * FROM `dispatch`") or die(mysqli_error());
+        $data_points = array();
+        while($result = $fetch->fetch_array()){
+            $year = intval($result['year']);
+            $dispatched_for = $result['dispatched_for'];
+            $point = array('year' => $year, 'dispatched_for' => $dispatched_for);
+            array_push($data_points, $point);
+        }
+        $json_string = json_encode($data_points);
+        $file = 'filterdispatch.json';
+        file_put_contents($file, $json_string);
+                        ?> 
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="form-control selectpicker input-sm" data-style="btn-primary" id="select-report" name="filterbutton">
@@ -47,12 +61,13 @@ require '../require/logincheck.php';
                                     <option value="quarterly">Quarterly</option>
                                     <option value="yearly">Yearly</option>
                                 </select>
+
                             </div>
                             <p><b>Graphical</b></p>
                         </div>
                         <div class="col-md-6"></div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-inverse monthly quarterly yearly reporttype" onclick="openTabular()">Show Tabular</button>
+                            <button type="button" class="btn btn-inverse monthly quarterly yearly reporttype" onclick="openTabular()">Exceptional Report</button>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-warning monthly quarterly yearly reporttype" onclick="openHeatMap()">Heat Map</button>
@@ -88,14 +103,14 @@ require '../require/logincheck.php';
                                     <tbody>
                                         <?php
     $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
-        $data_points2 = array();
-        while($result2 = $res2->fetch_array()){
-            $R2 = $result2['dispatched_for'];
-            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
-            $f2 = $q2->fetch_array();
-            $FR2 = intval($f2['total']);
-            $point2 = array('label' => $R2, 'y' => $FR2);
-            array_push($data_points2, $point2);
+                            $data_points2 = array();
+                            while($result2 = $res2->fetch_array()){
+                                $R2 = $result2['dispatched_for'];
+                                $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+                                $f2 = $q2->fetch_array();
+                                $FR2 = intval($f2['total']);
+                                $point2 = array('label' => $R2, 'y' => $FR2);
+                                array_push($data_points2, $point2);
 
                                         ?>
                                         <tr>
@@ -104,7 +119,7 @@ require '../require/logincheck.php';
                                         </tr>
 
                                         <?php
-        }
+                            }
 
                                         ?>
                                     </tbody>
@@ -239,13 +254,20 @@ require '../require/logincheck.php';
         </script>
         <script>
             function openTabular() {
-                window.open("dispatchmenttabular.php");
+                window.open("exceptionreports.php");
             }
 
             function openHeatMap() {
                 window.open("heatmap.php");
             }
         </script>
-
+        <script>
+            $(document).ready(function(){
+                $("#pyear").on('change', function(){
+                    var year=$(this).val();
+                    window.location = 'reportdispatchment.php?year='+year;
+                });
+            });
+        </script>
     </body>
 </html>

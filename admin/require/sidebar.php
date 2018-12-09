@@ -73,7 +73,7 @@
                     <span>System Maintenance</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="myaccount.php">My Account</a></li>
+                    <li><a href="myaccount.php">Admin Management</a></li>
                     <li><a href="usermanagement.php">User Management</a></li>
                     <li><a href="systembackup.php">System Backup</a></li>
                     <li><a href="usersactivity.php">Users Activity Log</a></li>

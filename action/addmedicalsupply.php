@@ -17,7 +17,7 @@ if(isset($_POST['add'])){
 
     $conn->query("INSERT INTO `medical_supply_stocks` VALUES('', '$admin_id', '$medical_supply_name', '$medical_supply_description', '$supplier', '0', 'Reorder', '$date_created')") or die(mysqli_error());
 
-    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Medical Supply','$date_time')") or die(mysqli_error());
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Medical Supply - $medical_supply_name','$date_time')") or die(mysqli_error());
     $conn->close();
 }
 ?>
