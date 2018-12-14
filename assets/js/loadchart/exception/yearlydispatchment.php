@@ -56,8 +56,10 @@
             data: [ 
                 { 
                     type: "column", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
+                    showInLegend: true, 
+                    legendText: "Number of Dispatchment",
+                    name: "Number of Dispatchment",
+                    indexLabel: "{y}",  
                     //legendText: "<?php echo $f3['year']?>",
                     //name: "Total Patients this year",
                     dataPoints: <?php echo json_encode($data_points3); ?>

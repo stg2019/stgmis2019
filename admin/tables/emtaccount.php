@@ -13,8 +13,9 @@ if(isset($_POST['show'])){
 <table id="emttable" class="table table-hover table-condensed nowrap" width="100%">
     <thead>
         <tr>
-            <th>User ID</th>
             <th>Complete Name</th>
+            <th>Contact No</th>
+            <th>Home Address</th>
             <th>Username</th>
             <th>Password</th>
             <th>Date and Time Created</th>
@@ -27,8 +28,9 @@ if(isset($_POST['show'])){
     while($fetch = $query->fetch_array()){
         ?>                                      
         <tr>
-            <td><?php echo $fetch['user_id']?></td>
             <td><?php echo $fetch['complete_name']?></td>
+            <td><?php echo $fetch['contact_no']?></td>
+            <td><?php echo $fetch['home_address']?></td>
             <td><?php echo $fetch['username']?></td>
             <td>********</td>
             <td><?php echo $fetch['date_created']. ' ' .$fetch['time_created']?></td>

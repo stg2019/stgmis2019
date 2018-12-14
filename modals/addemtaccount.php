@@ -19,6 +19,14 @@
                                 <label >Complete Name</label>
                                 <input type="text" class="form-control input-sm" id="complete_name" name="complete_name" placeholder="Enter Complete Name" required/>
                             </div>
+                            <div class="form-group">
+                                <label >Contact Number</label>
+                                <input type="text" class="form-control input-sm" id="contact_no" name="contact_no" placeholder="Enter Contact Number" required/>
+                            </div>
+                            <div class="form-group">
+                                <label >Home Address</label>
+                                <input type="text" class="form-control input-sm" id="home_address" name="home_address" placeholder="Enter Home Address" required/>
+                            </div>
                             <div id="uname_response"></div>
                             <div class="form-group">
                                 <label >Username</label>

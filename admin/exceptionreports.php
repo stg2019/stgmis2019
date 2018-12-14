@@ -39,6 +39,63 @@ require '../require/logincheck.php';
                         <div class="email-content">
                             <div class="panel-body">
                                 <div id="chartContainer1" style="width: 100%; height: 300px"></div>
+                                <hr>
+                                <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
+                                    <thead>
+                                        <tr class="warning">
+                                            <th>Month</th>
+                                            <th>Total Count</th>
+                                            <th>Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+    require '../require/dbconnection.php';
+        $query1 = $conn->query("SELECT count(*) as permonth FROM `dispatch`") or die(mysqli_error());
+        $fetch1 = $query1->fetch_array();
+        $query = $conn->query("SELECT month, count(*) as count FROM `dispatch` group by month order by count DESC") or die(mysqli_error());
+        while($fetch = $query->fetch_array()){
+            $permonth = ($fetch['count']/$fetch1['permonth']) * 100;
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['month']?></td>
+                                            <td><?php echo $fetch['count']?></td>
+                                            <td><?php echo number_format($permonth)?>%</td>
+                                        </tr>
+                                        <?php
+        }
+        $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
+                                    <thead >
+                                        <tr  class="warning">
+                                            <th >Dispatched For</th>
+                                            <th>Total Count</th>
+                                            <th>Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require '../require/dbconnection.php';
+                                        $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
+                                        $fetch1 = $query1->fetch_array();
+                                        $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
+                                        while($fetch = $query->fetch_array()){
+                                            $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
+                                        ?>                                      
+                                        <tr>
+                                            <td><?php echo $fetch['dispatched_for']?></td>
+                                            <td><?php echo $fetch['count']?></td>
+                                             <td><?php echo number_format($perdispatch)?>%</td>
+                                        </tr>
+                                        <?php
+                                        }
+                                        $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

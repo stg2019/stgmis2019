@@ -65,6 +65,7 @@
                 { 
                     type: "column", 
                     showInLegend: true, 
+                    indexLabel: "{y}",  
                     legendText: "Number of Dispatchment",
                     name: "Number of Dispatchment",
                     //    markerType: "cross",

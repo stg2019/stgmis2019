@@ -68,6 +68,7 @@
                     showInLegend: true, 
                     legendText: "Number of Dispatchment",
                     name: "Number of Dispatchment",
+                    indexLabel: "{y}",
                     //    markerType: "cross",
                     // color: "#0173c4",
                     dataPoints: [ 

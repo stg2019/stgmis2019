@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '#addnew', function(){
-        if ($('#complete_name').val()=="" || $('#username').val()=="" || $('#password').val()==""){
+        if ($('#complete_name').val()=="" || $('#contact_no').val()=="" || $('#home_address').val()=="" || $('#username').val()=="" || $('#password').val()==""){
             $('#modallabel').slideDown();
             $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
             setTimeout(function() {
@@ -63,6 +63,8 @@ $(document).ready(function(){
         }
         else{
             $complete_name=$('#complete_name').val();
+            $contact_no=$('#contact_no').val();
+            $home_address=$('#home_address').val();
             $username=$('#username').val();
             $password=$('#password').val();
 
@@ -74,6 +76,8 @@ $(document).ready(function(){
                     async:false,
                     data: {
                         complete_name : $complete_name,
+                        contact_no : $contact_no,
+                        home_address : $home_address,
                         username : $username,
                         password : $password,
                         add: 1,

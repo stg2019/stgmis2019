@@ -2,6 +2,8 @@
 require '../require/logincheck.php';
 if(isset($_POST['add'])){
     $complete_name = $_POST['complete_name'];
+    $contact_no = $_POST['contact_no'];
+    $home_address = $_POST['home_address'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     date_default_timezone_set('Asia/Manila');
@@ -20,7 +22,7 @@ if(isset($_POST['add'])){
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `users` VALUES('', '$complete_name', '$username', '$pass1', 'EMT', '1', '$date', '$time')") or die(mysqli_error());
+    $conn->query("INSERT INTO `users` VALUES('', '$complete_name', '$contact_no', '$home_address', '$username', '$pass1', 'EMT', '1', '$date', '$time')") or die(mysqli_error());
 
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New User','$date_time')") or die(mysqli_error());
     $conn->close();
