@@ -67,7 +67,7 @@ require '../require/logincheck.php';
                         </div>
                         <div class="col-md-6"></div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-inverse monthly quarterly yearly reporttype" onclick="openTabular()">Exceptional Report</button>
+                            <button type="button" class="btn btn-danger monthly quarterly yearly reporttype" onclick="openTabular()">Filter Reports</button>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-warning monthly quarterly yearly reporttype" onclick="openHeatMap()">Heat Map</button>
@@ -102,15 +102,15 @@ require '../require/logincheck.php';
                                     </thead>
                                     <tbody>
                                         <?php
-    $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
-                            $data_points2 = array();
-                            while($result2 = $res2->fetch_array()){
-                                $R2 = $result2['dispatched_for'];
-                                $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
-                                $f2 = $q2->fetch_array();
-                                $FR2 = intval($f2['total']);
-                                $point2 = array('label' => $R2, 'y' => $FR2);
-                                array_push($data_points2, $point2);
+                                        $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
+                                        $data_points2 = array();
+                                        while($result2 = $res2->fetch_array()){
+                                            $R2 = $result2['dispatched_for'];
+                                            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+                                            $f2 = $q2->fetch_array();
+                                            $FR2 = intval($f2['total']);
+                                            $point2 = array('label' => $R2, 'y' => $FR2);
+                                            array_push($data_points2, $point2);
 
                                         ?>
                                         <tr>
@@ -119,7 +119,7 @@ require '../require/logincheck.php';
                                         </tr>
 
                                         <?php
-                            }
+                                        }
 
                                         ?>
                                     </tbody>
@@ -260,14 +260,6 @@ require '../require/logincheck.php';
             function openHeatMap() {
                 window.open("heatmap.php");
             }
-        </script>
-        <script>
-            $(document).ready(function(){
-                $("#pyear").on('change', function(){
-                    var year=$(this).val();
-                    window.location = 'reportdispatchment.php?year='+year;
-                });
-            });
         </script>
     </body>
 </html>

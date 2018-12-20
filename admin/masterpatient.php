@@ -10,21 +10,22 @@ require '../require/logincheck.php';
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <link href="../assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
         <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="../assets/css/animate.min.css" rel="stylesheet" />
         <link href="../assets/css/style.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
         <link href="../assets/css/style-responsive.min.css" rel="stylesheet" />
+        <link href="../assets/css/invoice-print.min.css" rel="stylesheet" />
         <link href="../assets/css/theme/default.css" rel="stylesheet" id="theme" />
-        <link href="../assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
-        <link href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-        <link href="../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
-        <script src="../assets/plugins/pace/pace.min.js"></script>
         <link href="../assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+        <script src="../assets/plugins/pace/pace.min.js"></script>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -57,7 +58,25 @@ require '../require/logincheck.php';
                     <div class="col-md-12">
                         <div class="invoice">
                             <div class="invoice-company">
+
                                 <?php echo $fetch['patient_name']?>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
+                                            <option value="#" disabled>Select</option>
+                                            <?php
+
+    $query4 = $conn->query("SELECT * FROM `patient`") or die(mysqli_error());
+
+                                while($fetch4 = $query4->fetch_array()){
+                                            ?>
+                                            <option value="<?php echo $fetch4['patient_name'];?>"><?php echo $fetch4['patient_name']?></option>
+                                            <?php
+                                }
+                                            ?> 
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="invoice-header">
                                 <div class="invoice-from">
@@ -314,14 +333,35 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+        <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script src="../assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+        <script src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <script src="../assets/plugins/masked-input/masked-input.min.js"></script>
+        <script src="../assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+        <script src="../assets/plugins/password-indicator/js/password-indicator.js"></script>
+        <script src="../assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+        <script src="../assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="../assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+        <script src="../assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
+        <script src="../assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
+        <script src="../assets/plugins/bootstrap-daterangepicker/moment.js"></script>
+        <script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="../assets/plugins/select2/dist/js/select2.min.js"></script>
+        <script src="../assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="../assets/plugins/bootstrap-show-password/bootstrap-show-password.js"></script>
+        <script src="../assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+        <script src="../assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
         <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
         <script src="../assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
         <script src="../assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
         <script src="../assets/js/table-manage-default.demo.min.js"></script>
+
+        <script src="../assets/js/form-plugins.demo.min.js"></script>
         <script src="../assets/js/apps.min.js"></script>
         <script>
             $(document).ready(function() {
                 App.init();
+                FormPlugins.init();
                 TableManageDefault.init();
             });
         </script>
