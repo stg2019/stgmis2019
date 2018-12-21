@@ -10,7 +10,7 @@
             "#22a6b3",
             "#6ab04c",
         ]);
-        var chart11 = new CanvasJS.Chart("chartContainer11",{
+        var chart16 = new CanvasJS.Chart("chartContainer16",{
             theme: "light2",
             zoomEnabled: true,
             zoomType: "x",
@@ -18,7 +18,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+            exportFileName: "Top Emergency Cases - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -29,7 +29,7 @@
             },
             subtitles:[
                 {
-                    text: "Yearly Dispatchment Count <?php echo $year?>"
+                    text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
             legend: {
@@ -58,13 +58,14 @@
                     type: "column", 
                     //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
                     //name: "Total Patients this year",
-                    dataPoints: <?php echo json_encode($data_points3); ?>
+                    dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
-                var chart12 = new CanvasJS.Chart("chartContainer12",{
+                var chart17 = new CanvasJS.Chart("chartContainer17",{
                 theme: "light2",
                 zoomEnabled: true,
                 zoomType: "x",
@@ -72,7 +73,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Top Emergency Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -83,7 +84,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
             legend: {
@@ -112,13 +113,14 @@
                     type: "bar", 
                     //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
                     //name: "Total Patients this year",
-                    dataPoints: <?php echo json_encode($data_points3); ?>
+                    dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
-                var chart13 = new CanvasJS.Chart("chartContainer13",{
+                var chart18 = new CanvasJS.Chart("chartContainer18",{
                 theme: "light2",
                 zoomEnabled: true,
                 zoomType: "x",
@@ -126,7 +128,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Top Emergency Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -137,7 +139,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
             legend: {
@@ -166,13 +168,14 @@
                     type: "line", 
                     //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
                     //name: "Total Patients this year",
-                    dataPoints: <?php echo json_encode($data_points3); ?>
+                    dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
-                var chart14 = new CanvasJS.Chart("chartContainer14",{
+                var chart19 = new CanvasJS.Chart("chartContainer19",{
                 theme: "light2",
                 zoomEnabled: true,
                 zoomType: "x",
@@ -180,7 +183,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Top Emergency Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -191,7 +194,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
             legend: {
@@ -220,13 +223,14 @@
                     type: "pie", 
                     //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
                     //name: "Total Patients this year",
-                    dataPoints: <?php echo json_encode($data_points3); ?>
+                    dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
-                var chart15 = new CanvasJS.Chart("chartContainer15",{
+                var chart20 = new CanvasJS.Chart("chartContainer20",{
                 theme: "light2",
                 zoomEnabled: true,
                 zoomType: "x",
@@ -234,7 +238,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Top Emergency Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -245,7 +249,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
             legend: {
@@ -274,18 +278,21 @@
                     type: "doughnut", 
                     //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
+                    indexLabel: "{y}", 
+                    //legendText: "<?php echo $f2['dispatched_for']?>",
                     //name: "Total Patients this year",
-                    dataPoints: <?php echo json_encode($data_points3); ?>
+                    dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
                 
-                chart11.render();
-                chart12.render();
-                chart13.render();
-                chart14.render();
-                chart15.render();
+                chart16.render();
+                chart17.render();
+                chart18.render();
+                chart19.render();
+                chart20.render();
+
+
                 });
 
 </script>

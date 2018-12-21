@@ -264,7 +264,7 @@
             },
             subtitles:[
                 {
-                    text: "Medical Supplies Current Stocks - <?php echo $year?>"
+                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -308,7 +308,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Medical Supplies Stocks - BDRRMO", 
+                exportFileName: "Dispatchment Monthly Count - Year <?php echo $year?>", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -319,7 +319,7 @@
                 },
                 subtitles:[
                 {
-                text: "Medical Supplies Current Stocks - <?php echo $year?>"
+                text: "Dispatchment Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {

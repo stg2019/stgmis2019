@@ -1,4 +1,3 @@
-<!-- Top 5 Emergency Cases -->
 <?php
 $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY month ") or die(mysqli_error());
 $data_points2 = array();
@@ -12,3 +11,5 @@ while($result2 = $res2->fetch_array()){
 }
 json_encode($data_points2);
 ?>
+
+

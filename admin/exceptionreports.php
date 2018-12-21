@@ -30,6 +30,9 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <?php require '../assets/js/loadchart/exception/monthlydispatchment.php'?>
+        <?php require '../assets/js/loadchart/exception/quarterdispatchment.php'?>
+        <?php require '../assets/js/loadchart/exception/yearlydispatchment.php'?>
+        <?php require '../assets/js/loadchart/exception/emergency.php'?>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -80,23 +83,71 @@ require '../require/logincheck.php';
                                 Select Report Type:
                                 <select class="form-control selectpicker input-sm" data-style="btn-primary" id="select-report" name="filterbutton">
                                     <option value="monthly" selected="selected" disabled="disabled">Select Report</option>
-                                    <option value="colmonth">Monthly</option>
-                                    <option value="quarterly">Quarterly</option>
-                                    <option value="yearly">Yearly</option>
+                                    <option value="colmonth">Monthly Dispatchment</option>
+                                    <option value="colquarter">Quarterly Dispatchment</option>
+                                    <option value="colyearly">Yearly Dispatchment</option>
+                                    <option value="colemergency">Emergency Cases</option>
+                                    <option value="ambulance">Most Used Ambulance</option>
+                                    <option value="driver">Drivers</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-2">
-                            <div class="form-group">
+                            <!-- Chart Type Monthly -->
+                            <div class="form-group colmonth barmonth linemonth piemonth doughnutmonth reporttype">
                                 Select Chart Type:
-                                <select class="form-control selectpicker input-sm" data-style="btn-primary" id="select-report" name="filterbutton">
-                                    <option value="monthly" selected="selected" disabled="disabled">Select Report</option>
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary"name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
                                     <option value="colmonth">Column Chart</option>
                                     <option value="barmonth">Bar Chart</option>
                                     <option value="linemonth">Line Chart</option>
                                     <option value="piemonth">Pie Chart</option>
                                     <option value="doughnutmonth">Doughnut Chart</option>
                                 </select>
+                            </div>
+                            <!-- Chart Type Quarter -->
+                            <div class="form-group colquarter barquarter linequarter piequarter doughnutquarter reporttype">
+                                Select Chart Type:
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary" name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
+                                    <option value="colquarter">Column Chart</option>
+                                    <option value="barquarter">Bar Chart</option>
+                                    <option value="linequarter">Line Chart</option>
+                                    <option value="piequarter">Pie Chart</option>
+                                    <option value="doughnutquarter">Doughnut Chart</option>
+                                </select>
+                            </div>
+                            <!-- Chart Type Year -->
+                            <div class="form-group colyearly baryearly lineyearly pieyearly doughnutyearly reporttype">
+                                Select Chart Type:
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary" name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
+                                    <option value="colyearly">Column Chart</option>
+                                    <option value="baryearly">Bar Chart</option>
+                                    <option value="lineyearly">Line Chart</option>
+                                    <option value="pieyearly">Pie Chart</option>
+                                    <option value="doughnutyearly">Doughnut Chart</option>
+                                </select>
+                            </div>
+                            <!-- Chart Type Emergency -->
+                            <div class="form-group colemergency baremergency lineemergency pieemergency doughnutemergency reporttype">
+                                Select Chart Type:
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary" name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
+                                    <option value="colemergency">Column Chart</option>
+                                    <option value="baremergency">Bar Chart</option>
+                                    <option value="lineemergency">Line Chart</option>
+                                    <option value="pieemergency">Pie Chart</option>
+                                    <option value="doughnutemergency">Doughnut Chart</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
+                            <div class="alert alert-success fade in m-b-15">
+                                <strong><i class="fa fa-print"></i> Press P to Print!</strong>
+                                <span class="close" data-dismiss="alert">&times;</span>
                             </div>
                         </div>
                     </div>
@@ -105,84 +156,34 @@ require '../require/logincheck.php';
                         <div class="col-md-10">
                             <div class="email-content">
                                 <div class="panel-body">
+                                    <!-- Monthly -->
                                     <div id="chartContainer1" class="colmonth reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer2" class="barmonth reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer3" class="linemonth reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer4" class="piemonth reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer5" class="doughnutmonth reporttype" style="width: 100%; height: 300px"></div>
-                                    <label class="text text-danger">Per Month</label>
-                                    <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
-                                        <thead>
-                                            <tr class="warning">
-                                                <th>Month</th>
-                                                <th>Total Count</th>
-                                                <th>Percentage</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            require '../require/dbconnection.php';
-                                            $query1 = $conn->query("SELECT count(*) as permonth FROM `dispatch`") or die(mysqli_error());
-                                            $fetch1 = $query1->fetch_array();
-                                            $query = $conn->query("SELECT month, count(*) as count FROM `dispatch` group by month order by count DESC") or die(mysqli_error());
-                                            while($fetch = $query->fetch_array()){
-                                                $permonth = ($fetch['count']/$fetch1['permonth']) * 100;
-                                            ?>                                      
-                                            <tr>
-                                                <td><?php echo $fetch['month']?></td>
-                                                <td><?php echo $fetch['count']?></td>
-                                                <td><?php echo number_format($permonth)?>%</td>
-                                            </tr>
-                                            <?php
-                                            }
-                                            $conn->close();
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <label class="text text-danger">Per Dispatch</label>
-                                    <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
-                                        <thead >
-                                            <tr  class="warning">
-                                                <th >Dispatched For</th>
-                                                <th>Total Count</th>
-                                                <th>Percentage</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            require '../require/dbconnection.php';
-                                            $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
-                                            $fetch1 = $query1->fetch_array();
-                                            $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
-                                            while($fetch = $query->fetch_array()){
-                                                $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
-                                            ?>                                      
-                                            <tr>
-                                                <td><?php echo $fetch['dispatched_for']?></td>
-                                                <td><?php echo $fetch['count']?></td>
-                                                <td><?php echo number_format($perdispatch)?>%</td>
-                                            </tr>
-                                            <?php
-                                            }
-                                            $conn->close();
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                    <!-- Quarterly -->
+                                    <div id="chartContainer6" class="colquarter reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer7" class="barquarter reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer8" class="linequarter reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer9" class="piequarter reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer10" class="doughnutquarter reporttype" style="width: 100%; height: 300px"></div>
+                                    <!-- Yearly -->
+                                    <div id="chartContainer11" class="colyearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer12" class="baryearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer13" class="lineyearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer14" class="pieyearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer15" class="doughnutyearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <!-- Emergency -->
+                                    <div id="chartContainer16" class="colemergency reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer17" class="baremergency reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer18" class="lineemergency reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer19" class="pieemergency reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer20" class="doughnutemergency reporttype" style="width: 100%; height: 300px"></div>
+
                                     <hr>
-                                    <div class="invoice-header">
-                                        <div class="invoice-from">
-                                            <?php
-                                            require '../require/dbconnection.php';
-                                            $query = $conn->query("SELECT * FROM `users` WHERE `user_id` = $_SESSION[user_id]") or die(mysqli_error());
-                                            $find = $query->fetch_array();
-                                            ?>
-                                            <address class="m-t-5 m-b-5">
-                                                <strong>Approved By:</strong>
-                                            </address><br>
-                                            <h4><?php echo $find['complete_name']?></h4>
-                                            <small>BDRRMO Administrator</small>
-                                        </div>
-                                    </div>
+                                    <?php require 'exceptionreports/monthly.php'?>
+                                    <?php require 'exceptionreports/quarter.php'?>
                                 </div>
 
                             </div>

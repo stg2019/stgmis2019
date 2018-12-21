@@ -24,7 +24,7 @@ if(isset($_POST['add'])){
 
     $conn->query("INSERT INTO `users` VALUES('', '$complete_name', '$contact_no', '$home_address', '$username', '$pass1', 'EMT', '1', '$date', '$time')") or die(mysqli_error());
 
-    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New User','$date_time')") or die(mysqli_error());
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added $complete_name as New User','$date_time')") or die(mysqli_error());
     $conn->close();
 }
 ?>
