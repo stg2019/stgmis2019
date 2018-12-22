@@ -271,12 +271,9 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    indexLabel: "{y}",  
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: [ 
                         { label: "Quarter 1", y: <?php echo $q1['total']?> },
                          { label: "Quarter 2", y: <?php echo $q2['total']?> },
@@ -340,12 +337,9 @@
             data: [ 
                 { 
                     type: "doughnut", 
-                    //showInLegend: true, 
-                    indexLabel: "{y}",  
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: [ 
                         { label: "Quarter 1", y: <?php echo $q1['total']?> },
                          { label: "Quarter 2", y: <?php echo $q2['total']?> },

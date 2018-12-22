@@ -33,6 +33,9 @@ require '../require/logincheck.php';
         <?php require '../assets/js/loadchart/exception/quarterdispatchment.php'?>
         <?php require '../assets/js/loadchart/exception/yearlydispatchment.php'?>
         <?php require '../assets/js/loadchart/exception/emergency.php'?>
+        <?php require '../assets/js/loadchart/exception/ambulance.php'?>
+        <?php require '../assets/js/loadchart/exception/driver.php'?>
+        
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -87,8 +90,8 @@ require '../require/logincheck.php';
                                     <option value="colquarter">Quarterly Dispatchment</option>
                                     <option value="colyearly">Yearly Dispatchment</option>
                                     <option value="colemergency">Emergency Cases</option>
-                                    <option value="ambulance">Most Used Ambulance</option>
-                                    <option value="driver">Drivers</option>
+                                    <option value="pieambulance">Most Used Ambulance</option>
+                                    <option value="piedriver">Drivers</option>
                                 </select>
                             </div>
                         </div>
@@ -142,6 +145,25 @@ require '../require/logincheck.php';
                                     <option value="doughnutemergency">Doughnut Chart</option>
                                 </select>
                             </div>
+                            <!-- Chart Type Ambulance -->
+                            <div class="form-group pieambulance doughnutambulance reporttype">
+                                Select Chart Type:
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary" name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
+                                    <option value="pieambulance">Pie Chart</option>
+                                    <option value="doughnutambulance">Doughnut Chart</option>
+                                </select>
+                            </div>
+                            <!-- Chart Type Driver -->
+                            <div class="form-group piedriver doughnutdriver reporttype">
+                                Select Chart Type:
+                                <select class="form-control selectpicker input-sm" data-style="btn-primary" name="filterbutton">
+                                    <option value="monthly" selected="selected" disabled="disabled">Select Chart</option>
+                                    <option value="piedriver">Pie Chart</option>
+                                    <option value="doughnutdriver">Doughnut Chart</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="col-md-2"></div>
                         <div class="col-md-2">
@@ -180,10 +202,17 @@ require '../require/logincheck.php';
                                     <div id="chartContainer18" class="lineemergency reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer19" class="pieemergency reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer20" class="doughnutemergency reporttype" style="width: 100%; height: 300px"></div>
-
+                                    <!-- Ambulance -->
+                                    <div id="chartContainer21" class="pieambulance reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer22" class="doughnutambulance reporttype" style="width: 100%; height: 300px"></div>
+                                    <!-- Driver -->
+                                    <div id="chartContainer23" class="piedriver reporttype" style="width: 100%; height: 300px"></div>
+                                    <div id="chartContainer24" class="doughnutdriver reporttype" style="width: 100%; height: 300px"></div>
                                     <hr>
                                     <?php require 'exceptionreports/monthly.php'?>
                                     <?php require 'exceptionreports/quarter.php'?>
+                                    <?php require 'exceptionreports/yearly.php'?>
+                                    <?php require 'exceptionreports/emergency.php'?>
                                 </div>
 
                             </div>

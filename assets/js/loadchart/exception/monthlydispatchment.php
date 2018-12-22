@@ -291,11 +291,9 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['month']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
@@ -346,11 +344,9 @@
             data: [ 
                 { 
                     type: "doughnut", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['month']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 

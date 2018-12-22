@@ -56,10 +56,9 @@
             data: [ 
                 { 
                     type: "column", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -110,10 +109,9 @@
             data: [ 
                 { 
                     type: "bar", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -164,10 +162,9 @@
             data: [ 
                 { 
                     type: "line", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -218,10 +215,9 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -272,15 +268,14 @@
             data: [ 
                 { 
                     type: "doughnut", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    //legendText: "<?php echo $f3['year']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
                 });
-                
+
                 chart11.render();
                 chart12.render();
                 chart13.render();

@@ -10,7 +10,7 @@
             "#22a6b3",
             "#6ab04c",
         ]);
-        var chart1 = new CanvasJS.Chart("chartContainer1",{
+        var chart21 = new CanvasJS.Chart("chartContainer21",{
             theme: "light2",
             zoomEnabled: true,
             zoomType: "x",
@@ -56,16 +56,69 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['ambulance']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
                 });
-                chart1.render();
+                var chart22 = new CanvasJS.Chart("chartContainer22",{
+                theme: "light2",
+                zoomEnabled: true,
+                zoomType: "x",
+                panEnabled: true,
+                animationEnabled: true,
+                animationDuration: 1000,
+                colorSet: "customColorSet",
+                exportFileName: "Most Ambulance Used - BDRRMO", 
+                exportEnabled: true,
+                toolTip: {
+                shared: true  
+                },
+                title: { 
+                text: "Bacolod Disaster Risk Reduction Management Office",
+                fontSize: 11
+                },
+                subtitles:[
+                {
+                text: "Most Ambulance Used <?php echo $year?>"
+                }
+            ],
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    } else {
+                        e.dataSeries.visible = true;
+                    }
+                    e.chart.render();
+                },
+                itemmouseover: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
+                    e.chart.render();
+                },
+                itemmouseout: function(e) {
+                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
+                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
+                    e.chart.render();
+                }
+            },
+            data: [ 
+                { 
+                    type: "doughnut", 
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
+                    dataPoints: <?php echo json_encode($data_points2); ?>
+                }
+                    ] 
+                });
+
+                chart21.render();
+                chart22.render();
                 });
 
 </script>
