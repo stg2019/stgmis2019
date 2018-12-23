@@ -1,5 +1,5 @@
 <div class="colyearly baryearly lineyearly pieyearly doughnutyearly reporttype">
-    <label class="text text-danger ">Per Month</label>
+    <label class="text text-danger ">Per Year</label>
     <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
         <thead>
             <tr class="warning">

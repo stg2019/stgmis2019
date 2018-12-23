@@ -94,11 +94,16 @@ json_encode($data_points3);
 
 <!-- Call Location -->
 <?php
+$year = date('Y');
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
 $data_points4 = array();
 while($result4 = $res4->fetch_array()){
     $R4 = $result4['call_location'];
-    $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
+    $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' && `year` = '$year' group by call_location") or die(mysqli_error());
     $f4 = $q4->fetch_array();
     $FR4 = intval($f4['total']);
     $point4 = array('label' => $R4, 'y' => $FR4);

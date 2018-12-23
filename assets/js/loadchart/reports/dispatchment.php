@@ -257,11 +257,9 @@
             data: [ 
                 { 
                     type: "doughnut", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
-                    indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['dispatched_for']?>",
-                    //name: "Total Patients this year",
+                    indexLabel: "{label} - {y}", 
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 

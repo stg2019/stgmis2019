@@ -134,11 +134,9 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
                     indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['dispatched_for']?>",
-                    //name: "Total Patients this year",
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
@@ -189,11 +187,9 @@
             data: [ 
                 { 
                     type: "pie", 
-                    //showInLegend: true, 
-                    toolTipContent: "{label} <br/> {y}", 
                     indexLabel: "{y}", 
-                    //legendText: "<?php echo $f1['medical_supply_name']?>",
-                    //name: "Total Patients this year",
+                    showInLegend: true,
+                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points); ?>
                 }
                     ] 

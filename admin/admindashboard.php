@@ -16,6 +16,7 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="../assets/css/animate.min.css" rel="stylesheet" />
         <link href="../assets/css/style.min.css" rel="stylesheet" />
+        <link href="../assets/css/custom.css" rel="stylesheet"/>
         <link href="../assets/css/style-responsive.min.css" rel="stylesheet" />
         <link href="../assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <link href="../assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
@@ -29,7 +30,7 @@ require '../require/logincheck.php';
         <script src="../assets/js/geocodetimekilometers.js"></script>
         <style>
             #map-canvas {
-                height: 338px;
+                height: 500px;
                 width: 100%;
             }
         </style>
@@ -41,12 +42,71 @@ require '../require/logincheck.php';
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
                 <h1 class="page-header">Dashboard</h1>
+                <!--
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-3">
+<?php 
+    $query = $conn->query("SELECT count(*) as total FROM `users`") or die(mysqli_error());
+        $fetch = $query->fetch_array();
+?>
+<div class="widget widget-stats bg-gradient-primary" onclick="location.href='emtaccount.php';"style="cursor:pointer;">
+<div class="stats-icon"><i class="fa fa-group"></i></div>
+<div class="stats-info">
+<h4>Total Users</h4>
+<p><?php echo $fetch['total']?></p>	
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<?php 
+    $query = $conn->query("SELECT count(*) as total FROM `patient`") or die(mysqli_error());
+$fetch = $query->fetch_array();
+?>
+<div class="widget widget-stats bg-gradient-pink" onclick="location.href='patientrecord.php';"style="cursor:pointer;">
+<div class="stats-icon"><i class="fa fa-male"></i></div>
+<div class="stats-info">
+<h4>Patients Registered this Year</h4>
+<p><?php echo $fetch['total']?></p>	
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<?php 
+    $query = $conn->query("SELECT count(*) as total FROM `dispatch`") or die(mysqli_error());
+$fetch = $query->fetch_array();
+?>
+<div class="widget widget-stats bg-gradient-light-blue" onclick="location.href='dispatchmentrecord.php';"style="cursor:pointer;">
+<div class="stats-icon"><i class="fa fa-ambulance"></i></div>
+<div class="stats-info">
+<h4>Dispatchment this Year</h4>
+<p><?php echo $fetch['total']?></p>	
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<?php 
+    $year = date('Y');
+$query = $conn->query("SELECT count(*) as total FROM `request_transport` where `year` = '$year'") or die(mysqli_error());
+$fetch = $query->fetch_array();
+?>
+<div class="widget widget-stats bg-gradient-primary" onclick="location.href='requesttransportrecord.php';"style="cursor:pointer;">
+<div class="stats-icon"><i class="fa fa-map-marker"></i></div>
+<div class="stats-info">
+<h4>Request for Transport this Year</h4>
+<p><?php echo $fetch['total']?></p>	
+</div>
+</div>
+</div>
+</div>
+</div>
+-->
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-green">
                             <?php 
     $query = $conn->query("SELECT count(*) as total FROM `users`") or die(mysqli_error());
-        $fetch = $query->fetch_array();
+$fetch = $query->fetch_array();
                             ?>
                             <div class="stats-icon"><i class="fa fa-group"></i></div>
                             <div class="stats-info">
@@ -86,14 +146,15 @@ require '../require/logincheck.php';
                                 <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
-                                <a href="dispatchmentrecord.php">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                                <a href="dispatchmentrecord.php"><span class="fa fa-info-circle"></span> This Year | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-orange">
                             <?php 
-    $query = $conn->query("SELECT count(*) as total FROM `request_transport`") or die(mysqli_error());
+    $year = date('Y');
+                                    $query = $conn->query("SELECT count(*) as total FROM `request_transport` where `year` = '$year'") or die(mysqli_error());
                                     $fetch = $query->fetch_array();
                             ?>
                             <div class="stats-icon"><i class="fa fa-map-marker"></i></div>
@@ -102,7 +163,7 @@ require '../require/logincheck.php';
                                 <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
-                                <a href="requesttransportrecord.php"><span class="fa fa-info-circle"></span> This Month | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                                <a href="requesttransportrecord.php"><span class="fa fa-info-circle"></span> This Year | View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -132,8 +193,8 @@ require '../require/logincheck.php';
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <?php
-                                $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
-                                $fetch = $query->fetch_array();
+    $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
+                                    $fetch = $query->fetch_array();
                                 ?>
                                 <h4 class="panel-title">RECENT DISPATCHMENT - <?php echo $fetch['call_location']?></h4>
                             </div>
@@ -234,15 +295,15 @@ require '../require/logincheck.php';
                 <div class="height-sm" data-scrollbar="true">
                     <ul class="media-list media-list-with-divider media-messaging">
                         <?php
-                        $query = $conn->query("SELECT * FROM `request_transport` order by request_transport_id DESC limit 10") or die(mysqli_error());
+                        $query = $conn->query("SELECT * FROM `users_activity_log`, `users` where users.user_id = users_activity_log.user_id ORDER BY `log_id` DESC limit 10") or die(mysqli_error());
                         while($fetch = $query->fetch_array()){
                         ?>
                         <li class="media media-sm">
                             <div class="media-body">
-                                <h5 class="media-heading"><?php echo $fetch['address']?></h5>
-                                <p>Date and Time : <?php echo $fetch['date_time']?></p>
+                                <h5 class="media-heading"><?php echo $fetch['complete_name']?></h5>
+                                <p>Activity : <?php echo $fetch['action']?></p>
                                 <p>
-                                    Requesting Party : <?php echo $fetch['requesting_party']?>
+                                    Date and Time : <?php echo $fetch['date_time']?>
                                 </p>
                             </div>
                         </li>
@@ -254,7 +315,7 @@ require '../require/logincheck.php';
                 </div>
             </div>
             <div class="list-group">
-                <a href="requesttransportrecord.php" class="list-group-item list-group-item-warning text-ellipsis">
+                <a href="usersactivity.php" class="list-group-item list-group-item-warning text-ellipsis">
                     See All
                 </a>
             </div>

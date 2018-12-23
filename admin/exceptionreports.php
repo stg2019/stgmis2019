@@ -19,6 +19,7 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="../assets/css/animate.min.css" rel="stylesheet" />
         <link href="../assets/css/style.min.css" rel="stylesheet" />
+        <link href="../assets/css/custom.css" rel="stylesheet"/>
         <link href="../assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
         <link href="../assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
         <link href="../assets/css/style-responsive.min.css" rel="stylesheet" />
@@ -35,7 +36,7 @@ require '../require/logincheck.php';
         <?php require '../assets/js/loadchart/exception/emergency.php'?>
         <?php require '../assets/js/loadchart/exception/ambulance.php'?>
         <?php require '../assets/js/loadchart/exception/driver.php'?>
-        
+
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -213,6 +214,8 @@ require '../require/logincheck.php';
                                     <?php require 'exceptionreports/quarter.php'?>
                                     <?php require 'exceptionreports/yearly.php'?>
                                     <?php require 'exceptionreports/emergency.php'?>
+                                    <?php require 'exceptionreports/ambulance.php'?>
+                                    <?php require 'exceptionreports/driver.php'?>
                                 </div>
 
                             </div>
