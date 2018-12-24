@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 require '../require/logincheck.php';
+
+require '../admindbbackup/requireimport.php';
 ?>
 <html lang="en">
     <head>
@@ -33,11 +35,12 @@ require '../require/logincheck.php';
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
-                    <li><a href="#">Data Entry</a></li>
-                    <li class="active">EMT account</li>
+                    <li><a href="#">System Maintenance</a></li>
+                    <li class="active">System Backup</li>
                 </ol>
-                <h1 class="page-header"><a href="#" class="btn btn-sm btn-primary" id="export">Export Database</a>
-                    <a href="#" class="btn btn-sm btn-primary" id="import">Import Database</a>
+                <h1 class="page-header">
+                    <button type = "button" id="export" class = "btn btn-sm btn-success">Export Database</button>
+                    <a href="#import" class="btn btn-sm btn-primary" data-toggle="modal">Import Database</a>
                 </h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
@@ -46,7 +49,7 @@ require '../require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Database Activity</h4>
+                                <h4 class="panel-title">List of Database Backup Activity</h4>
                             </div>
                             <div class="panel-body">
                                 <div id="exportimportTable"></div>
@@ -58,7 +61,7 @@ require '../require/logincheck.php';
             </div>
 
             <?php require '../require/sidepanel.php'?>
-            <?php require '../modals/addemtaccount.php'?>
+            <?php require '../modals/importdatabase.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
 
