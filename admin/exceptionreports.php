@@ -36,6 +36,13 @@ require '../require/logincheck.php';
         <?php require '../assets/js/loadchart/exception/emergency.php'?>
         <?php require '../assets/js/loadchart/exception/ambulance.php'?>
         <?php require '../assets/js/loadchart/exception/driver.php'?>
+        <style type="text/css">
+            @media print {
+                .print{
+                    display: none !important;
+                }
+            }
+        </style>
 
     </head>
     <body>
@@ -44,7 +51,7 @@ require '../require/logincheck.php';
             <?php require 'require/header.php'?>
             <div id="content" class="content content-full-width">
                 <div class="p-20">
-                    <div class="row">
+                    <div class="row print">
                         <div class="col-md-1"></div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -176,6 +183,17 @@ require '../require/logincheck.php';
                     </div>
                     <div class="row">
                         <div class="col-md-1"></div>
+                        <?php
+                        date_default_timezone_set('Asia/Manila');
+                        $date=date("F j, Y");
+                        ?>
+                        <div class="col-md-3">
+                            <h4><?php echo $date?></h4>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
                         <div class="col-md-10">
                             <div class="email-content">
                                 <div class="panel-body">
@@ -292,15 +310,6 @@ require '../require/logincheck.php';
             });
         </script>
         <script>
-            function openTabular() {
-                window.open("exceptionreports.php");
-            }
-
-            function openHeatMap() {
-                window.open("heatmap.php");
-            }
-        </script>
-        <script>
             $(document).ready(function(){
                 $("#pyear").on('change', function(){
                     var year=$(this).val();
@@ -308,5 +317,6 @@ require '../require/logincheck.php';
                 });
             });
         </script>
+        <?php require 'require/pressp.php'?>
     </body>
 </html>

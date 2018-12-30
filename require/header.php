@@ -20,10 +20,11 @@
                         <i class="fa fa-file fa-fw"></i> Master File <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="masterambulance.php">Ambulance</a></li>
                         <li><a href="mastercalllog.php">Call Log Record</a></li>
                         <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
+                        <li><a href="masterdriver.php">Drivers</a></li>
                         <li><a href="masterpatient.php">Patient Record</a></li>
-                        <li><a href="masterdriver.php">List of Drivers</a></li>
                         <!-- <li><a href="masterrefusaltreatment.php">Refusal of Treatment Record</a></li> -->
                         <!-- <li><a href="masterrequesttransport.php">Request of Transport Record</a></li> -->
                     </ul>

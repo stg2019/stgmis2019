@@ -32,15 +32,15 @@ $total2 = $total->fetch_array();
 
 
 //total requested medical supplies
-$res = $conn->query("SELECT * FROM `medical_supply_request` GROUP BY medical_supply_name") or die(mysqli_error());
-$data_points = array();
-while($result = $res->fetch_array()){
-    $R = $result['medical_supply_name'];
-    $q1 = $conn->query("SELECT *, sum(requested_quantity) as sum FROM `medical_supply_request` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
-    $f1 = $q1->fetch_array();
-    $FR = intval($f1['sum']);
-    $point = array('label' => $R, 'y' => $FR);
-    array_push($data_points, $point);
+$res6 = $conn->query("SELECT * FROM `medical_supply_request` GROUP BY medical_supply_name") or die(mysqli_error());
+$data_points6 = array();
+while($result6 = $res6->fetch_array()){
+    $R6 = $result6['medical_supply_name'];
+    $q6 = $conn->query("SELECT *, sum(requested_quantity) as sum FROM `medical_supply_request` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
+    $f6 = $q6->fetch_array();
+    $FR6 = intval($f6['sum']);
+    $point6 = array('label' => $R6, 'y' => $FR6);
+    array_push($data_points6, $point6);
 }
-json_encode($data_points);
+json_encode($data_points6);
 ?>

@@ -37,6 +37,8 @@
                     <span>Data Entry</span>
                 </a>
                 <ul class="sub-menu">
+                    <li><a href="ambulance.php">Ambulance</a></li>
+                    <li><a href="driver.php">Drivers</a></li>
                     <li><a href="emtaccount.php">EMT Account</a></li>
                     <li><a href="medicalsupplies.php">Medical Supplies</a></li>
                 </ul>

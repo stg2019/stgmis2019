@@ -36,9 +36,9 @@ require 'require/logincheck.php';
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="dispatchment.php">Dispatchment</a></li>
-                    <li class="active">Dispachment Overview</li>
+                    <li class="active">Patient Assessment</li>
                 </ol>
-                <h1 class="page-header hidden-print">Dispatchment Overview</h1>
+                <h1 class="page-header hidden-print">Patient Assessment</h1>
 
                 <div class="row">
                     <form id="patientform" name="patientform">
@@ -62,7 +62,10 @@ require 'require/logincheck.php';
                                         <input type="text" class="form-control input-sm" id="patient_name" name="patient_name" placeholder="Enter Patient Name" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label >Age and Gender</label>
+                                        <label >Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp; Gender</label>
                                         <div class="row row-space-10">
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control"  id="age" name="age" placeholder="Enter Age" />
@@ -77,7 +80,9 @@ require 'require/logincheck.php';
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label >Date of Birth and Contact Number</label>
+                                        <label >Date of Birth &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp; Contact Number</label>
                                         <div class="row row-space-12">
                                             <div class="col-md-6">
                                                 <div class="input-group date" id="datepicker-autoClose">

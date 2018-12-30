@@ -27,6 +27,9 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
         <script src="../assets/plugins/pace/pace.min.js"></script>
+        <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="../assets/js/jquery.canvasjs.min.js"></script>
+        <?php require '../assets/js/loadchart/reports/reportsinventory.php'?>
 
     </head>
     <body>
@@ -40,13 +43,18 @@ require '../require/logincheck.php';
                     <li class="active">Medical Supplies Request</li>
                 </ol>
                 <h1 class="page-header">Medical Supplies Request</h1>
-                <div id="alert" class="alert alert-info" style="display:none;">
-                    <center><span id="alerttext"></span></center>
-                </div>
+                <center>
+                    <div id="modallabel" class="alert alert-danger" style="display:none;">
+                        <center><span id="checkfield"></span></center>
+                    </div>
+                    <div id="alert" class="alert alert-success" style="display:none;">
+                        <center><span id="alerttext"></span></center>
+                    </div>
+                </center>
 
 
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -54,7 +62,7 @@ require '../require/logincheck.php';
                                 </h4>
                                 <?php
     $query = $conn->query("SELECT * FROM `medical_supply_request` WHERE `medical_supply_request_id` = '$_GET[medical_supply_request_id]'") or die(mysqli_error());
-            $fetch = $query->fetch_array();
+        $fetch = $query->fetch_array();
                                 ?>
                             </div>
                             <div class="panel-body">
@@ -62,6 +70,7 @@ require '../require/logincheck.php';
                                     <label class="col-md-4 col-form-label">Medical Supply Name</label>
                                     <div class="col-md-8">
                                         <input type="text" name="medical_supply_name" value="<?php echo $fetch['medical_supply_name']; ?>" id="umedical_supply_name<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
+                                        <input type="hidden" name="medical_supply_name" value="<?php echo $fetch['medical_supply_name']; ?>" id="medical_supply_name" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group row m-b-15">
@@ -77,11 +86,26 @@ require '../require/logincheck.php';
                                     </div>
                                 </div>
                                 <hr>
+                                <div id="quantity_response"></div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-4 col-form-label">Approved Quantity</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="approved_quantity" id="uapproved_quantity" class="form-control"/>
+                                    </div>
+                                </div>
+                                <hr>
                                 <button type="button" class="btn btn-sm btn-primary approve_request"  value="<?php echo $_GET['medical_supply_request_id']; ?>" class="btn btn-sm btn-primary m-r-5">Approve Request</button>
                                 <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
                             </div>
                         </div>
 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="email-content">
+                            <div class="panel-body">
+                                <div id="chartContainer1" style="width: 100%; height: 310px"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

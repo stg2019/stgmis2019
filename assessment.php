@@ -38,7 +38,6 @@ require 'require/logincheck.php';
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="dispatchment.php">Dispatchment</a></li>
-                    <li><a href="#" onclick="goBack()">Dispachment Overview</a></li>
                     <li class="active">Patient Assessment</li>
                 </ol>
                 <h1 class="page-header">        

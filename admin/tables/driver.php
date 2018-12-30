@@ -11,6 +11,7 @@ if(isset($_POST['show'])){
             <th>Gender</th>
             <th>Duty Hours</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,9 @@ if(isset($_POST['show'])){
             <td><?php  if ($fetch['status'] == 'Unbook') echo "<span class='badge badge-info'>Unbook</span>";
         if ($fetch['status'] == 'Booked') echo "<span class='badge badge-danger'>Booked</span>";
                 ?></td>
+            <td>
+                <a href="editdriver.php?driver_id=<?php echo $fetch['driver_id']?>" class="btn btn-sm btn-primary"><span class="fa fa-edit"></span></a>
+            </td>
         </tr>
         <?php
     }

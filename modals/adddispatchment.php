@@ -135,7 +135,7 @@
                                     <option value="#">Select</option>
                                     <?php
                                     require 'require/dbconnection.php';
-                                    $query = $conn->query("SELECT * FROM `driver` where status = 'Unbooked'") or die(mysqli_error());
+                                    $query = $conn->query("SELECT * FROM `driver` where status = 'Unbook'") or die(mysqli_error());
 
                                     while($fetch = $query->fetch_array()){
                                     ?>

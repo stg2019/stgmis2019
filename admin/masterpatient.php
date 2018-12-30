@@ -26,6 +26,9 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
         <script src="../assets/plugins/pace/pace.min.js"></script>
+        <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="../assets/js/jquery.canvasjs.min.js"></script>
+        <?php require '../assets/js/loadchart/reports/patientvitals.php'?>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -44,15 +47,15 @@ require '../require/logincheck.php';
                 </div>
                 <?php
     $query = $conn->query("SELECT * FROM `patient`, `dispatch` WHERE dispatch.dispatch_id = patient.dispatch_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
-            $fetch = $query->fetch_array();
-            $query2 = $conn->query("SELECT * FROM `patient`, `assessment` WHERE assessment.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
-            $fetch2 = $query2->fetch_array();
-            $query3 = $conn->query("SELECT * FROM `patient`, `vital_signs` WHERE vital_signs.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
-            $fetch3 = $query3->fetch_array();
-            $query4 = $conn->query("SELECT * FROM `patient`, `past_medical_history` WHERE past_medical_history.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
-            $fetch4 = $query4->fetch_array();
-            $query5 = $conn->query("SELECT * FROM `patient`, `glassgow_coma_scale` WHERE glassgow_coma_scale.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
-            $fetch5 = $query5->fetch_array();
+        $fetch = $query->fetch_array();
+        $query2 = $conn->query("SELECT * FROM `patient`, `assessment` WHERE assessment.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+        $fetch2 = $query2->fetch_array();
+        $query3 = $conn->query("SELECT * FROM `patient`, `vital_signs` WHERE vital_signs.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+        $fetch3 = $query3->fetch_array();
+        $query4 = $conn->query("SELECT * FROM `patient`, `past_medical_history` WHERE past_medical_history.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+        $fetch4 = $query4->fetch_array();
+        $query5 = $conn->query("SELECT * FROM `patient`, `glassgow_coma_scale` WHERE glassgow_coma_scale.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+        $fetch5 = $query5->fetch_array();
                 ?>
                 <div class="row">
                     <div class="col-md-12">
@@ -60,23 +63,6 @@ require '../require/logincheck.php';
                             <div class="invoice-company">
 
                                 <?php echo $fetch['patient_name']?>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
-                                            <option value="#" disabled>Select</option>
-                                            <?php
-
-    $query4 = $conn->query("SELECT * FROM `patient`") or die(mysqli_error());
-
-                                while($fetch4 = $query4->fetch_array()){
-                                            ?>
-                                            <option value="<?php echo $fetch4['patient_name'];?>"><?php echo $fetch4['patient_name']?></option>
-                                            <?php
-                                }
-                                            ?> 
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                             <div class="invoice-header">
                                 <div class="invoice-from">
@@ -317,6 +303,12 @@ require '../require/logincheck.php';
                                         </table>
                                     </div>
                                 </div>
+                                <div class="invoice-header">
+                                    <div class="invoice-from">
+                                        <strong>Vital Signs Graphical</strong><br />
+                                    </div>
+                                </div>
+                                <div id="chartContainer1" style="width: 100%; height: 300px"></div>
                             </div>
                         </div>
                     </div>
@@ -327,7 +319,6 @@ require '../require/logincheck.php';
             <?php require '../require/sidepanel.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
-        <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>

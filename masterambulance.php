@@ -1,23 +1,21 @@
+<!DOCTYPE html>
 <?php
 require 'require/logincheck.php';
 ?>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>DRRMO MIS</title>
+        <title>DRRMO | Bacolod City</title>
         <link rel="icon" type="image/png" sizes="96x96" href="assets/img/ndrrmo/logo.png">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
+
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-        <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
-        <link href="assets/plugins/ionRangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
-        <link href="assets/plugins/ionRangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
         <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet" />
         <link href="assets/css/style.min.css" rel="stylesheet" />
@@ -33,92 +31,41 @@ require 'require/logincheck.php';
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
         <div id="page-container" class="fade page-without-sidebar page-header-fixed">
-            <?php require 'require/header.php'?>	
+            <?php require 'require/header.php'?>
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="dispatchment.php">Dispatchment</a></li>
-                    <li class="active">Patient Assessment</li>
+                    <li><a href="#">Master File</a></li>
+                    <li class="active">List of Drivers</li>
                 </ol>
-                <h1 class="page-header">        
-                    <button type = "button" class = "btn btn-sm btn-success add_assessment" value="<?php echo $_GET['patient_id']; ?>">Save Record</button>
-                    <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
+
+
+                <h1 class="page-header">List of Ambulance
                 </h1>
-                <center>
-                    <div id="alert" class="alert alert-success" style="display:none;">
-                        <center><span id="alerttext"></span></center>
-                    </div>
-                    <div id="modallabel" class="alert alert-danger" style="display:none;">
-                        <center><span id="checkfield"></span></center>
-                    </div>
-                </center>
+                <div id="alert" class="alert alert-success" style="display:none;">
+                    <center><span id="alerttext"></span></center>
+                </div>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <div class="panel-heading-btn">
-                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-white" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                                </div>
-                                <h4 class="panel-title">Pre Hospital Care Form</h4>
-                                <?php
-                                $query = $conn->query("SELECT * FROM `patient` WHERE `patient_id` = '$_GET[patient_id]'") or die(mysqli_error());
-                                $fetch = $query->fetch_array();
-                                ?>
+                                <h4 class="panel-title">Master File - Ambulance</h4>
                             </div>
                             <div class="panel-body">
-                                <form class="form-horizontal">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <table class="table table-condensed table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="2"><h4 class="text-danger">&nbsp; Glasgow Coma Scale</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Eye Reponse</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="eye" name="eye" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Verbal Response</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="verbal" name="verbal" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Motor Response</td>
-                                                        <td>
-                                                            <div class="col-md-12">
-                                                                <input type="text" id="motor" name="motor" />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-
-                                    </div>
-                                </form>
+                                <div id="ambulanceTable"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
             <?php require 'require/sidepanel.php'?>
+
+            <?php require 'modals/addcall.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="functions/crudglassgow.js"></script>
+        <script type="text/javascript" src="functions/crudambulance.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -158,11 +105,6 @@ require 'require/logincheck.php';
             });
         </script>
         <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-        <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -171,6 +113,11 @@ require 'require/logincheck.php';
             ga('create', 'UA-53034621-1', 'auto');
             ga('send', 'pageview');
 
+        </script>
+        <script>
+            var placesAutocomplete = places({
+                container: document.querySelector('#complete_address')
+            });
         </script>
     </body>
 </html>

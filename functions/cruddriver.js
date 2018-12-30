@@ -1,9 +1,10 @@
 
 $(document).ready(function(){
     showDrivers();
-    //add call log
+    showAdminDrivers();
+    //add driver
     $(document).on('click', '#addnew', function(){
-        if ($('#date_time_call').val()=="" || $('#complete_address').val()=="" || $('#emergency').val()=="" || $('#caller_name').val()=="" || $('#contact_no').val()==""){
+        if ($('#driver_name').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#contact_number').val()=="" || $('#home_address').val()=="" || $('#duty_hours').val()==""){
             $('#modallabel').slideDown();
             $('#checkfield').html('<span class="fa fa-exclamation-circle"></span> All fields are required!');
             setTimeout(function() {
@@ -11,34 +12,36 @@ $(document).ready(function(){
             }, 3500);
         }
         else{
-            $date_time_call=$('#date_time_call').val();
-            $complete_address=$('#complete_address').val();
-            $emergency=$('#emergency').val();
-            $caller_name=$('#caller_name').val();
-            $contact_no=$('#contact_no').val();
+            $driver_name=$('#driver_name').val();
+            $age=$('#age').val();
+            $gender=$('#gender').val();
+            $contact_number=$('#contact_number').val();
+            $home_address=$('#home_address').val();
+            $duty_hours=$('#duty_hours').val();
 
-            if(confirm('Are you sure you want to add this call log record?')){
+            if(confirm('Are you sure you want to add this driver?')){
                 $.ajax({
                     type: "POST",
-                    url: "action/addcalllog.php",
+                    url: "../action/adddriver.php",
                     cache:false,
                     async:false,
                     data: {
-                        date_time_call : $date_time_call,
-                        complete_address : $complete_address,
-                        emergency : $emergency,
-                        caller_name : $caller_name,
-                        contact_no : $contact_no,
+                        driver_name : $driver_name,
+                        age : $age,
+                        gender : $gender,
+                        contact_number : $contact_number,
+                        home_address : $home_address,
+                        duty_hours : $duty_hours,
                         add: 1,
                     },
                     success: function(){
-                        $('.addcall').modal('hide');
+                        $('.newdriver').modal('hide');
                         $('#alert').slideDown();
-                        $('#alerttext').html('<span class="fa fa-check"></span> Call Log Added Successfully!');
+                        $('#alerttext').html('<span class="fa fa-check"></span> Driver Added Successfully!');
                         setTimeout(function() {
                             $('#alert').fadeOut('slow');
                         }, 1500);
-                        showCalllogs();
+                        showAdminDrivers();
                     }
                 });
             }
@@ -47,47 +50,64 @@ $(document).ready(function(){
 
     });
 
-    //update call log
-    $(document).on('click', '.update_calllog', function(){
-        $ucall_id=$(this).val();
-        $udate_time_call = $('#udate_time_call'+$ucall_id).val();
-        $ucomplete_address = $('#ucomplete_address'+$ucall_id).val();
-        $uemergency = $('#uemergency'+$ucall_id).val();
-        $ucaller_name = $('#ucaller_name'+$ucall_id).val();
-        $ucontact_no = $('#ucontact_no'+$ucall_id).val();
+
+    //update driver
+    $(document).on('click', '.update_driver', function(){
+        $driver_id=$(this).val();
+        $driver_name = $('#driver_name'+$driver_id).val();
+        $age = $('#age'+$driver_id).val();
+        $gender = $('#gender'+$driver_id).val();
+        $contact_number = $('#contact_number'+$driver_id).val();
+        $home_address = $('#home_address'+$driver_id).val();
+        $duty_hours = $('#duty_hours'+$driver_id).val();
         $.ajax({
             type: "POST",
-            url: "action/editcalllog.php",
+            url: "../action/editdriver.php",
             data: {
-                call_id: $ucall_id,
-                date_time_call : $udate_time_call,
-                complete_address : $ucomplete_address,
-                emergency : $uemergency,
-                caller_name : $ucaller_name,
-                contact_no : $ucontact_no,
+                driver_id: $driver_id,
+                driver_name : $driver_name,
+                age : $age,
+                gender : $gender,
+                contact_number : $contact_number,
+                home_address : $home_address,
+                duty_hours : $duty_hours,
                 edit: 1,
             },
             success: function(){
                 $('#alert').slideDown();
-                $('#alerttext').text('Call Log Edited Successfully');
+                $('#alerttext').text('Driver Information Edited Successfully');
                 setTimeout(function() {
                     $('#alert').fadeOut('slow');
                 }, 1500);
                 setTimeout(function() {
-                    window.location.href = 'calllogs.php'; 
+                    window.location.href = 'driver.php'; 
                 }, 2000);
             }
         });
     });
-
 });
 
 
 
-//show dispatch
+//show masterfile driver EMT
 function showDrivers(){
     $.ajax({
         url: 'tables/drivers.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('#driverTable').html(response);
+            var table = $('#drivertable').DataTable();
+        }
+    });
+}
+
+function showAdminDrivers(){
+    $.ajax({
+        url: 'tables/driver.php',
         type: 'POST',
         async: false,
         data:{
