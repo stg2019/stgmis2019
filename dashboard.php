@@ -22,6 +22,7 @@ require 'require/logincheck.php';
         <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <link href="assets/css/custom.css" rel="stylesheet"/>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="weather.js"></script>
         <script src="assets/js/jquery.canvasjs.min.js"></script>
         <script src="assets/plugins/pace/pace.min.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
@@ -41,16 +42,16 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <h1 class="page-header">DASHBOARD</h1>
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-secondary" onclick="location.href='mastercalllog.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-fax"></i></div>
                             <div class="stats-info">
                                 <h4>Master File</h4>
-                                <p>Call Logs Record</p>	
+                                <p>Call Logs</p>	
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-secondary" onclick="location.href='masterdispatchment.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-mail-forward"></i></div>
                             <div class="stats-info">
@@ -59,16 +60,16 @@ require 'require/logincheck.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-secondary" onclick="location.href='masterpatient.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-male"></i></div>
                             <div class="stats-info">
                                 <h4>Master File</h4>
-                                <p>Patient Record</p>	
+                                <p>Patient</p>	
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-secondary" onclick="location.href='masterdriver.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-dashboard"></i></div>
                             <div class="stats-info">
@@ -77,41 +78,77 @@ require 'require/logincheck.php';
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-2 ">
+                        <div class="widget widget-stats bg-gradient-primary">
+                            <div class="stats-icon"><i class="fa fa-cloud"></i></div>
+                            <div class="stats-info">
+                                <h4>Clouds</h4>
+                                <p id="clouds"></p>	
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="widget widget-stats bg-gradient-primary">
+                            <div class="stats-icon"><i class="fa fa-thermometer"></i></div>
+                            <div class="stats-info">
+                                <h4>Temperature</h4>
+                                <p id="temperature"></p>	
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-danger" onclick="location.href='dispatchment.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-plus"></i></div>
                             <div class="stats-info">
                                 <h4>Transactions</h4>
-                                <p>New Dispatchment</p>	
+                                <p>Dispatchment</p>	
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-danger" onclick="location.href='assessmentlist.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-language"></i></div>
                             <div class="stats-info">
                                 <h4>Transactions</h4>
-                                <p>Patient Assessment</p>	
+                                <p>Assessment</p>	
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-danger" onclick="location.href='inventory.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-flask"></i></div>
                             <div class="stats-info">
                                 <h4>Transactions</h4>
-                                <p>Current Inventory</p>	
+                                <p>Inventory</p>	
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 ">
                         <div class="widget widget-stats bg-gradient-danger"  onclick="location.href='refusaltreatment.php';"style="cursor:pointer;">
                             <div class="stats-icon"><i class="fa fa-times"></i></div>
                             <div class="stats-info">
                                 <h4>Transactions</h4>
-                                <p>Refusal Treatment</p>	
+                                <p>Refusal</p>	
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="widget widget-stats bg-gradient-primary">
+                            <div class="stats-icon"><i class="fa fa-random"></i></div>
+                            <div class="stats-info">
+                                <h4>Pressure</h4>
+                                <p id="pressure"></p>	
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="widget widget-stats bg-gradient-primary">
+                            <div class="stats-icon"><i class="fa fa-signal"></i></div>
+                            <div class="stats-info">
+                                <h4>Humidity</h4>
+                                <p id="humidity"></p>	
                             </div>
                         </div>
                     </div>
@@ -151,7 +188,7 @@ require 'require/logincheck.php';
     $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
                                     $fetch = $query->fetch_array();
                         ?>
-                        <div class="email-content monthly quarterly yearly reporttype">
+                        <div class="email-content">
                             <h4>Recent Dispatchment</h4>
                             <div class="panel-body">
                                 <div id="map-canvas"></div>
@@ -165,6 +202,7 @@ require 'require/logincheck.php';
         </div>
         </div>
     </div>
+
 </div>
 
 </div>
@@ -197,5 +235,6 @@ require 'require/logincheck.php';
     ga('send', 'pageview');
 
 </script>
+
 </body>
 </html>

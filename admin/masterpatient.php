@@ -50,7 +50,7 @@ require '../require/logincheck.php';
         $fetch = $query->fetch_array();
         $query2 = $conn->query("SELECT * FROM `patient`, `assessment` WHERE assessment.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
         $fetch2 = $query2->fetch_array();
-        $query3 = $conn->query("SELECT * FROM `patient`, `vital_signs` WHERE vital_signs.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
+        $query3 = $conn->query("SELECT * FROM `patient`, `vital_signs` WHERE vital_signs.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]' order by vital_signs_id DESC limit 1") or die(mysqli_error());
         $fetch3 = $query3->fetch_array();
         $query4 = $conn->query("SELECT * FROM `patient`, `past_medical_history` WHERE past_medical_history.patient_id = patient.patient_id && patient.patient_id = '$_GET[patient_id]'") or die(mysqli_error());
         $fetch4 = $query4->fetch_array();
@@ -201,7 +201,7 @@ require '../require/logincheck.php';
                                 </div>
                                 <div class="invoice-header">
                                     <div class="invoice-from">
-                                        <strong>Vital Signs & Past Medical History</strong><br />
+                                        <strong>Recent Vital Signs & Past Medical History</strong><br />
                                     </div>
                                 </div>
                                 <div class="table-responsive">

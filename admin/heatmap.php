@@ -3,7 +3,7 @@
     <title>DRRMO | Bacolod City</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Raleway' rel='stylesheet' type='text/css'>
     <style>
-        html, body, #map-canvas {
+        #map-canvas {
             height: 100%;
             margin: 0px;
             padding: 0px;
@@ -14,13 +14,21 @@
         #draggable {
             z-index:100; 
             background-color: #dff9fb; 
-            width: 250px;
+            width: 220px;
             padding: 20px;
             position:absolute;
-            top:60px;
-            left:10px;
+            top:5px;
+            left:5px;
             cursor: move;
             border: black 1px solid;
+        }
+        #info {
+            z-index:100; 
+            background-color: #dff9fb; 
+            position:absolute;
+            top:545px;
+            left:1250px;
+            cursor: move;
         }
 
         #radius-label, #opacity-label, #max-label {
@@ -28,15 +36,11 @@
         }
 
         #radius-slider, #opacity-slider, #max-slider {
-            width:250px;
+            width:220px;
             margin-top: 10px;
         }
 
-        #project {
-            font-size: 10pt;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+
 
         #radius-slider .ui-slider-handle, 
         #opacity-slider .ui-slider-handle,
@@ -44,10 +48,18 @@
             cursor:pointer;
         }
     </style>
-
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="../assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../assets/css/style.min.css" rel="stylesheet" />
+    <link href="../assets/css/style-responsive.min.css" rel="stylesheet" />
+    <script src="../assets/plugins/pace/pace.min.js"></script>
     <script src="../assets/js/papaparse.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&libraries=visualization"></script>
-
     <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -102,10 +114,19 @@
 
         function initialize() {
             var mapOptions = {
-                center: new google.maps.LatLng(10.6411386, 122.9913936),
+                center: new google.maps.LatLng(10.6501297,123.024574),
                 zoom: 13,
                 gestureHandling: 'greedy',
-                mapTypeId: google.maps.MapTypeId.SATELLITE
+                streetViewControl: false,
+                mapTypeId: google.maps.MapTypeId.SATELLITE,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.TOP_CENTER
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
             };
 
             map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -133,6 +154,10 @@
 
             $(function() {
                 $( "#draggable" ).draggable();
+            });
+
+            $(function() {
+                $( "#info" ).draggable();
             });
 
             $(function() {
@@ -183,22 +208,78 @@
     <div id="map-canvas"> </div>
 
     <!-- the draggable input and display controls -->
-    <div id="draggable">
-        <div id="project"></div>
-        <div>Heat Map Dispatchment Cases</div> <br>
-        <input type="file" id="csv-file" name="files"/>
+    <div id="info">
+        <div class="map-float-table width-sm hidden-xs p-15">
+            <h5 class="m-t-0"><span class="text-danger m-r-5">Emergency Cases Percentage</span> </h5>
+            <div data-scrollbar="true" class="height-md">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Emergency Case</th>
+                            <th>Percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        require '../require/dbconnection.php';
+                        $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
+                        $fetch1 = $query1->fetch_array();
+                        $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
+                        while($fetch = $query->fetch_array()){
+                            $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
+                        ?>     
+                        <tr>
+                            <td><?php echo $fetch['dispatched_for']?></td>
+                            <td><span class="text-success"><?php echo number_format($perdispatch)?>%</span></td>
+                        </tr>
 
-        <div id="radius-label">radius: 20</div>
-        <div id="radius-slider"></div>
+                        <?php
+                        }
 
-        <div id="opacity-label">opacity: 0.5</div>
-        <div id="opacity-slider"></div> <br>
-        <div><a href="exportcsv.php">Download CSV</a></div>
+                        ?>
+                    </tbody>
+                </table>
+                <h5 class="m-t-0"><span class="text-danger m-r-5"><i class="fa fa-map-marker text-danger m-r-5"></i>Load Heatmap Here!</span> </h5>
+                <input type="file" id="csv-file" name="files"/>
+
+                <div id="radius-label">radius: 20</div>
+                <div id="radius-slider"></div>
+
+                <div id="opacity-label">opacity: 0.5</div>
+                <div id="opacity-slider"></div> <br>
+                <div><a href="exportcsv.php">Download CSV</a></div>
+            </div>
+        </div>
     </div>
-</body>
 
-<!--
-https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications
-http://www.html5rocks.com/en/tutorials/file/dndfiles/
-http://blog.teamtreehouse.com/reading-files-using-the-html5-filereader-api
--->
+
+
+
+    <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+    <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="../assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../assets/js/map-vector.demo.min.js"></script>
+    <script src="../assets/js/apps.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+            MapVector.init();
+        });
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-53034621-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>    

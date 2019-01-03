@@ -18,18 +18,18 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Patient Assessment", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
             },
             title: { 
-                text: "Bacolod Disaster Risk Reduction Management Office",
+                text: "<?php echo $fetch['patient_name']?>",
                 fontSize: 20
             },
             subtitles:[
                 {
-                    text: "Medical Supplies Current Stocks - <?php echo $year?>"
+                    text: "Vital Signs - Dispatch for <?php echo $fetch2['dispatched_for']?>"
                 }
             ],
             legend: {
@@ -56,22 +56,48 @@
             data: [ 
                 { 
                     type: "line", 
-                    indexLabel: "{label} - {y}", 
+                    toolTipContent: "Blood Pressure - {y}", 
+                    indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Blood Pressure",
                     dataPoints: <?php echo json_encode($data_points); ?>
                 },
                     { 
                     type: "line", 
-                    indexLabel: "{label} - {y}", 
+                    toolTipContent: "Sa02(%) - {y}", 
+                    indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Sa02(%)",
                     dataPoints: <?php echo json_encode($data_points2); ?>
+                },
+                { 
+                    type: "line", 
+                    toolTipContent: "Pulse Rate - {y}", 
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "Pulse Rate",
+                    dataPoints: <?php echo json_encode($data_points3); ?>
+                },
+                    { 
+                    type: "line", 
+                    toolTipContent: "Respiratory Rate - {y}", 
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "Respiratory Rate",
+                    dataPoints: <?php echo json_encode($data_points4); ?>
+                },
+                { 
+                    type: "line", 
+                    toolTipContent: "Temperture - {y}", 
+                    indexLabel: "{y}", 
+                    showInLegend: true,
+                    legendText: "Temperature",
+                    dataPoints: <?php echo json_encode($data_points5); ?>
                 }
-            ] 
-        });
+                    ] 
+                });
 
-        chart1.render();
-    });
+                chart1.render();
+                });
 
 </script>
