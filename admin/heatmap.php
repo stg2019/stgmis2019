@@ -11,17 +11,6 @@
             z-index:1;
         }
 
-        #draggable {
-            z-index:100; 
-            background-color: #dff9fb; 
-            width: 220px;
-            padding: 20px;
-            position:absolute;
-            top:5px;
-            left:5px;
-            cursor: move;
-            border: black 1px solid;
-        }
         #info {
             z-index:100; 
             background-color: #dff9fb; 
@@ -39,8 +28,6 @@
             width:220px;
             margin-top: 10px;
         }
-
-
 
         #radius-slider .ui-slider-handle, 
         #opacity-slider .ui-slider-handle,
@@ -152,9 +139,9 @@
 
             google.maps.event.addDomListener(window, 'load', initialize);
 
-            $(function() {
-                $( "#draggable" ).draggable();
-            });
+//            $(function() {
+//                $( "#draggable" ).draggable();
+//            });
 
             $(function() {
                 $( "#info" ).draggable();

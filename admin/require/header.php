@@ -123,10 +123,7 @@ $fetch2 = $query2->fetch_array();
                 </a>
                 <ul class="dropdown-menu animated fadeInDown">
                     <li class="arrow"></li>
-                    <li><a href="javascript:;">Edit Profile</a></li>
-                    <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-                    <li><a href="javascript:;">Calendar</a></li>
-                    <li><a href="javascript:;">Setting</a></li>
+                    <li><a href="myaccount.php">Edit Account</a></li>
                     <li class="divider"></li>
                     <li><a href="#logout" data-toggle="modal">Log Out</a></li>
                 </ul>
@@ -159,8 +156,6 @@ $fetch2 = $query2->fetch_array();
         </div>
     </div>
 </div>
-
-
 
 
 <?php

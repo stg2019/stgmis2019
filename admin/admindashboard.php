@@ -196,13 +196,12 @@ $fetch = $query->fetch_array();
     $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
                                     $fetch = $query->fetch_array();
                                 ?>
-                                <h4 class="panel-title">RECENT DISPATCHMENT - <?php echo $fetch['call_location']?></h4>
+                                <h4 class="panel-title">Recent Dispatchment & Street Traffic Condition in Bacolod City - Destination: <?php echo $fetch['call_location']?> in <span id="output"></span></h4>
                             </div>
                             <div class="panel-body">
 
                                 <div id="map-canvas"></div>
                                 <br>
-                                <div class="alert alert-warning" id="output"></div>
                                 <input type="hidden" id="route" placeholder="Street" value="<?php echo $fetch['call_location']?>"></input>
                             <input type="hidden" id="locality" placeholder="City" value="Bacolod City"></input>
                         <input type="hidden" id="administrative_area_level_1" placeholder="State" value="Negros Occidental"></input>

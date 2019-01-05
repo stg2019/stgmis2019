@@ -37,11 +37,11 @@
                                     <option selected disabled value="#">Select</option>
                                     <?php
                                     require 'require/dbconnection.php';
-                                    $query = $conn->query("SELECT * FROM `ambulance` where status = 'Unbooked'") or die(mysqli_error());
+                                    $query = $conn->query("SELECT * FROM `ambulance` where status = 'Unbook'") or die(mysqli_error());
 
                                     while($fetch = $query->fetch_array()){
                                     ?>
-                                    <option value="<?php echo $fetch['model'];?>"><?php echo $fetch['model'] . ' ' .$fetch['plate_no']?></option>
+                                    <option value="<?php echo $fetch['vehicle_name'];?>"><?php echo $fetch['vehicle_name'] . ' ' .$fetch['plate_no']?></option>
                                     <?php
                                     }
                                     ?> 

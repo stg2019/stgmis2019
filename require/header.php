@@ -58,60 +58,126 @@
             </li>
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="label">5</span>
+                    <?php
+
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `medical_supply_stocks_emt` where `running_balance` <= 15") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+
+                    //echo $timestamp. '<br>';
+                    //echo $new_date_format;
+                    ?>
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <span class="label"><?php echo $fetch2['total']?></span>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Notifications (5)</li>
+                    <li class="dropdown-header">Running out of Balance (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `medical_supply_stocks_emt` where `running_balance` <= 15 order by `stock_id` DESC limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                    ?>
+
                     <li class="media">
                         <a href="javascript:;">
-                            <div class="media-left"><i class="fa fa-bug media-object bg-red"></i></div>
+                            <div class="media-left"><i class="fa fa-exclamation-triangle media-object bg-red"></i></div>
                             <div class="media-body">
-                                <h6 class="media-heading">Server Error Reports</h6>
-                                <div class="text-muted f-s-11">3 minutes ago</div>
+                                <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
+                                <p>Supplier: <?php echo $fetch3['supplier']?></p>
+                                <div class="text-muted f-s-11">Running Balance: <?php echo $fetch3['running_balance']?></div>
                             </div>
                         </a>
                     </li>
-                    <li class="media">
-                        <a href="javascript:;">
-                            <div class="media-left"><img src="assets/img/ndrrmo/surgeon.png" class="media-object" alt="" /></div>
-                            <div class="media-body">
-                                <h6 class="media-heading">John Smith</h6>
-                                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                <div class="text-muted f-s-11">25 minutes ago</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media">
-                        <a href="javascript:;">
-                            <div class="media-left"><img src="assets/img/user-2.jpg" class="media-object" alt="" /></div>
-                            <div class="media-body">
-                                <h6 class="media-heading">Olivia</h6>
-                                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                <div class="text-muted f-s-11">35 minutes ago</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media">
-                        <a href="javascript:;">
-                            <div class="media-left"><i class="fa fa-plus media-object bg-green"></i></div>
-                            <div class="media-body">
-                                <h6 class="media-heading"> New User Registered</h6>
-                                <div class="text-muted f-s-11">1 hour ago</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media">
-                        <a href="javascript:;">
-                            <div class="media-left"><i class="fa fa-envelope media-object bg-blue"></i></div>
-                            <div class="media-body">
-                                <h6 class="media-heading"> New Email From John</h6>
-                                <div class="text-muted f-s-11">2 hour ago</div>
-                            </div>
-                        </a>
-                    </li>
+                    <?php
+                        }
+
+                    ?>
                     <li class="dropdown-footer text-center">
-                        <a href="javascript:;">View more</a>
+                        <a href="inventory.php">View Inventory</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <?php
+
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `medical_supply_request` where `status` = 'Approved'") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+
+                    //echo $timestamp. '<br>';
+                    //echo $new_date_format;
+                    ?>
+                    <i class="fa fa-medkit"></i>
+                    <span class="label"><?php echo $fetch2['total']?></span>
+                </a>
+                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                    <li class="dropdown-header">Approved Requested Supplies (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `medical_supply_request` where `status` = 'Approved' order by `medical_supply_request_id` DESC limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                            date_default_timezone_set("Asia/Manila");     
+                            $date_approved = $fetch3['date_approved'];
+                            $timestamp = strtotime($date_approved);
+                            $new_date_format = date('Y-m-d g:i:s a', $timestamp);
+                    ?>
+
+                    <li class="media">
+                        <a href="javascript:;">
+                            <div class="media-left"><i class="fa fa-medkit media-object bg-green"></i></div>
+                            <div class="media-body">
+                                <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
+                                <p>Requested Quantity: <?php echo $fetch3['requested_quantity']?></p>
+                                <div class="text-muted f-s-11"><?php echo time_ago_in_php($new_date_format);?></div>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                        }
+
+                    ?>
+                    <li class="dropdown-footer text-center">
+                        <a href="inventory.php">View Inventory</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <?php
+
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch`") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+
+                    //echo $timestamp. '<br>';
+                    //echo $new_date_format;
+                    ?>
+                    <i class="fa fa-ambulance"></i>
+                    <span class="label"><?php echo $fetch2['total']?></span>
+                </a>
+                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                    <li class="dropdown-header">Dispatchment (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                            date_default_timezone_set("Asia/Manila");     
+                            $date_created = $fetch3['date_created'];
+                            $timestamp = strtotime($date_created);
+                            $new_date_format = date('Y-m-d g:i:s a', $timestamp);
+                    ?>
+
+                    <li class="media">
+                        <a href="javascript:;">
+                            <div class="media-left"><i class="fa fa-ambulance media-object bg-green"></i></div>
+                            <div class="media-body">
+                                <h6 class="media-heading"><?php echo $fetch3['dispatched_for']?></h6>
+                                <p><?php echo $fetch3['call_location']?></p>
+                                <div class="text-muted f-s-11"><?php echo time_ago_in_php($new_date_format);?></div>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                        }
+
+                    ?>
+                    <li class="dropdown-footer text-center">
+                        <a href="masterdispatchment.php">View more</a>
                     </li>
                 </ul>
             </li>
@@ -121,12 +187,6 @@
                     <span class="hidden-xs"><?php echo $find['complete_name']?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInDown">
-                    <li class="arrow"></li>
-                    <li><a href="javascript:;">Edit Profile</a></li>
-                    <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-                    <li><a href="javascript:;">Calendar</a></li>
-                    <li><a href="javascript:;">Setting</a></li>
-                    <li class="divider"></li>
                     <li><a href="#logout" data-toggle="modal">Log Out</a></li>
                 </ul>
             </li>
@@ -158,3 +218,87 @@
         </div>
     </div>
 </div>
+
+
+
+
+<?php
+    function time_ago_in_php($timestamp){
+    date_default_timezone_set("Asia/Manila");         
+    $time_ago        = strtotime($timestamp);
+    $current_time    = time();
+    $time_difference = $current_time - $time_ago;
+    $seconds         = $time_difference;
+
+    $minutes = round($seconds / 60); // value 60 is seconds  
+    $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+    $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+    $weeks   = round($seconds / 604800); // 7*24*60*60;  
+    $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+    $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+    if ($seconds <= 60){
+
+        return "Just Now";
+
+    } else if ($minutes <= 60){
+        if ($minutes == 1){
+
+            return "one minute ago";
+
+        } else {
+            return "$minutes minutes ago";
+        }
+    } else if ($hours <= 24){
+
+        if ($hours == 1){
+
+            return "an hour ago";
+
+        } else {
+
+            return "$hours hours ago";
+
+        }
+
+    } else if ($days <= 7){
+        if ($days == 1){
+
+            return "yesterday";
+
+        } else {
+            return "$days days ago";
+        }
+    } else if ($weeks <= 4.3){
+
+        if ($weeks == 1){
+
+            return "a week ago";
+
+        } else {
+
+            return "$weeks weeks ago";
+
+        }
+
+    } else if ($months <= 12){
+        if ($months == 1){
+
+            return "a month ago";
+
+        } else {
+            return "$months months ago";
+        }
+    } else {
+
+        if ($years == 1){
+
+            return "one year ago";
+
+        } else {
+
+            return "$years years ago";
+
+        }
+    }
+}
+?>

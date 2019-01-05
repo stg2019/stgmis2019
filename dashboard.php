@@ -28,10 +28,19 @@ require 'require/logincheck.php';
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
         <script src="assets/js/geocodetimekilometers.js"></script>
         <?php require 'assets/js/loadchart/dashboard/emtdashboardgraphs.php'?>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
         <style>
             #map-canvas {
                 height: 500px;
                 width: 100%;
+            }
+            #info {
+                z-index:100; 
+                background-color: #dff9fb; 
+                position:absolute;
+                top:600px;
+                left:370px;
+                cursor: move;
             }
         </style>
     </head>
@@ -189,11 +198,10 @@ require 'require/logincheck.php';
                                     $fetch = $query->fetch_array();
                         ?>
                         <div class="email-content">
-                            <h4>Recent Dispatchment</h4>
+                            <h5>Recent Dispatchment & Street Traffic Condition in Bacolod City - <span class="text text-primary"><b>Destination : Luzuriaga St., Old City Hall to <?php echo $fetch['call_location']?></b></span></h5>
                             <div class="panel-body">
                                 <div id="map-canvas"></div>
                                 <br>
-                                <div class="alert alert-warning" id="output"></div>
                                 <input type="hidden" id="route" placeholder="Street" value="<?php echo $fetch['call_location']?>"></input>
                             <input type="hidden" id="locality" placeholder="City" value="Bacolod City"></input>
                         <input type="hidden" id="administrative_area_level_1" placeholder="State" value="Negros Occidental"></input>
@@ -201,9 +209,69 @@ require 'require/logincheck.php';
                 <input type="hidden" id="country" placeholder="Country" value="Philippines"></input>
         </div>
         </div>
-    </div>
+    <div id="info">
+        <div class="map-float-table width-sm hidden-xs p-15">
+            <h5 class="m-t-0"><span class="text-danger m-r-5">Dispatchment Details</span> </h5>
+            <div data-scrollbar="true" class="height-md">
+                <table class="table table-inverse">
+                    <tbody>
+                        <?php
+    require 'require/dbconnection.php';
+                                       $query1 = $conn->query("SELECT * FROM `dispatch` order by dispatch_id DESC limit 1") or die(mysqli_error());
+                                       $fetch1 = $query1->fetch_array();
+                        ?>  
+                        <tr>
+                            <td>Date and Time of Call</span></td>
+                <td><span class="text-success"><?php echo $fetch1['date_time_call']?></span></td>
+                </tr>   
+            <tr>
+                <td>Service No</span></td>
+        <td><span class="text-success"><?php echo $fetch1['service_no']?></span></td>
+        </tr>
+    <tr>
+        <td>Dispatched for</span></td>
+<td><span class="text-success"><?php echo $fetch1['dispatched_for']?></span></td>
+</tr>
+<tr>
+    <td>Ambulance</span></td>
+<td><span class="text-success"><?php echo $fetch1['ambulance']?></span></td>
+</tr>
+<tr>
+    <td>Patients on Scene</span></td>
+<td><span class="text-success"><?php echo $fetch1['patients_on_scene']?></span></td>
+</tr>
+<tr>
+    <td>Care in Progress</span></td>
+<td><span class="text-success"><?php echo $fetch1['care_in_progress']?></span></td>
+</tr>
+<tr>
+    <td>Mass Casualty</span></td>
+<td><span class="text-success"><?php echo $fetch1['mass_casualty']?></span></td>
+</tr>
+<tr>
+    <td>Enroute</span></td>
+<td><span class="text-success"><?php echo $fetch1['enroute']?></span></td>
+</tr>
+<tr>
+    <td>Driver</span></td>
+<td><span class="text-success"><?php echo $fetch1['driver']?></span></td>
+</tr>
+
+
+
+</tbody>
+</table>
+<h5 class="m-t-0"><span class="text-danger m-r-5">Estimated Distance and Time</span> </h5>
+<h3 class="m-t-0"><span class="text-success m-r-5" id="output"></span> </h3>
+</div>
+</div>
+</div>
 
 </div>
+
+</div>
+
+
 
 </div>
 <?php require 'require/sidepanel.php'?>
@@ -214,15 +282,25 @@ require 'require/logincheck.php';
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+<script src="assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+<script src="assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="assets/js/map-vector.demo.min.js"></script>
 <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
 <script src="assets/js/dashboard.min.js"></script>
 <script src="assets/js/apps.min.js"></script>
 <script src="assets/js/timedate.js"></script>
 
 <script>
+    $(document).ready(function(){
+        $( "#info" ).draggable();
+
+    });
+</script>
+<script>
     $(document).ready(function() {
         App.init();
         Dashboard.init();
+        MapVector.init();
     });
 </script>
 <script>

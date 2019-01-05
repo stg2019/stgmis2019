@@ -55,7 +55,7 @@
             },
             data: [ 
                 { 
-                    type: "line", 
+                    type: "spline", 
                     toolTipContent: "Blood Pressure - {y}", 
                     indexLabel: "{y}", 
                     showInLegend: true,
@@ -63,7 +63,7 @@
                     dataPoints: <?php echo json_encode($data_points); ?>
                 },
                     { 
-                    type: "line", 
+                    type: "spline", 
                     toolTipContent: "Sa02(%) - {y}", 
                     indexLabel: "{y}", 
                     showInLegend: true,
@@ -71,7 +71,7 @@
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 },
                 { 
-                    type: "line", 
+                    type: "spline", 
                     toolTipContent: "Pulse Rate - {y}", 
                     indexLabel: "{y}", 
                     showInLegend: true,
@@ -79,7 +79,7 @@
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 },
                     { 
-                    type: "line", 
+                    type: "spline", 
                     toolTipContent: "Respiratory Rate - {y}", 
                     indexLabel: "{y}", 
                     showInLegend: true,
@@ -87,7 +87,7 @@
                     dataPoints: <?php echo json_encode($data_points4); ?>
                 },
                 { 
-                    type: "line", 
+                    type: "spline", 
                     toolTipContent: "Temperture - {y}", 
                     indexLabel: "{y}", 
                     showInLegend: true,

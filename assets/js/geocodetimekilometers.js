@@ -17,12 +17,26 @@ function initMap() {
     var originIcon = 'assets/img/ambulance.png';
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: {lat: 10.6675065, lng: 122.9451055},
-        zoom: 10,
-        gestureHandling: 'greedy'
-			
+        zoom: 13,
+        streetViewControl: false,
+        gestureHandling: 'greedy',
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: google.maps.ControlPosition.TOP_CENTER
+        },
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_TOP
+        }
 
     });
+
+
     var geocoder = new google.maps.Geocoder;
+
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
 
     var service = new google.maps.DistanceMatrixService;
     service.getDistanceMatrix({
@@ -65,9 +79,11 @@ function initMap() {
                 for (var j = 0; j < results.length; j++) {
                     geocoder.geocode({'address': destinationList[j]},
                                      showGeocodedAddressOnMap(true));
-                    outputDiv.innerHTML += ' <i class="fa fa-info-circle"></i> Estimated Distance and Time : Luzuriaga St., Old City Hall' + ' to ' + destinationList[j] +
-                        ': <b>' + results[j].distance.text + ' in ' +
-                        results[j].duration.text + ' </b><br>';
+                    outputDiv.innerHTML +=results[j].distance.text + 's. in ' +
+                        results[j].duration.text;
+                  //  outputDiv.innerHTML += ' <i class="fa fa-info-circle"></i> Estimated Distance and Time : Luzuriaga St., Old City Hall' + ' to ' + destinationList[j] +
+                  //      ': <b>' + results[j].distance.text + ' in ' +
+                  //      results[j].duration.text + ' </b><br>';
                 }
             }
         }
