@@ -77,6 +77,7 @@ require 'require/logincheck.php';
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+        <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
@@ -124,6 +125,21 @@ require 'require/logincheck.php';
         <script>
             var placesAutocomplete = places({
                 container: document.querySelector('#complete_address')
+            });
+        </script>
+        <script>
+            $("#request").validate({
+                ignore: [],
+                rules: {
+                    requested_quantity: {
+                        min: 1
+                    },
+                    'newpassword': {
+                        minlength: 5,
+                        maxlength: 10,
+                        equalTo: "#password"
+                    }
+                }
             });
         </script>
     </body>

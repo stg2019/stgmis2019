@@ -53,7 +53,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="#">
-                    <span id="currentTime"></span> - <span id="day"></span>
+                    <span class="text text-info" id="currentTime"></span> - <span class="text text-info" id="day"></span>
                 </a>
             </li>
             <li class="dropdown">

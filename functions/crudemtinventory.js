@@ -3,6 +3,8 @@ $(document).ready(function(){
     showInventory();
     showRequest();
     //add stocks
+
+
     $(document).on('click', '#addnew', function(){
         if ($('#medical_supply_name').val()=="" || $('#requested_quantity').val()==""){
             $('#modallabel').slideDown();

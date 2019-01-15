@@ -139,8 +139,11 @@ require 'require/logincheck.php';
                                                     <tr>
                                                         <td>Temperature (C)</td>
                                                         <td>
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-9">
                                                                 <input type="text" id="temp" name="temp" />
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input type="number" class="form-control input-sm" id="tempdot" name="tempdot" placeholder="" min=0 oninput="validity.valid||(value='');" required/>
                                                             </div>
                                                         </td>
                                                     </tr>

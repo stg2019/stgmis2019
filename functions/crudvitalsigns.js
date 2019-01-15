@@ -19,6 +19,7 @@ $(document).ready(function(){
             $pr=$('#pr').val();
             $rr=$('#rr').val();
             $temp=$('#temp').val();
+            $tempdot=$('#tempdot').val();
             $rbs=$('#rbs').val();
             $pupils=$('#pupils').val();
             $skin=$('#skin').val();
@@ -39,6 +40,7 @@ $(document).ready(function(){
                     pr : $pr,
                     rr : $rr,
                     temp : $temp,
+                    tempdot : $tempdot,
                     rbs : $rbs,
                     pupils : $pupils,
                     skin: $skin,

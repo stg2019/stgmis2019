@@ -139,54 +139,52 @@
 
             google.maps.event.addDomListener(window, 'load', initialize);
 
-//            $(function() {
-//                $( "#draggable" ).draggable();
-//            });
+            //            $(function() {
+            //                $( "#draggable" ).draggable();
+            //            });
 
-            $(function() {
-                $( "#info" ).draggable();
+
+            $( "#info" ).draggable();
+
+            $( "#radius-slider" ).slider({
+                orientation: "horizontal",
+                range: "min",
+                min: 1,
+                max: 50,
+                value: 20,
+                slide: function(event, ui) {
+                    $("#radius-label").html("radius: " + ui.value);
+                    if(heatmap == null) return;
+                    heatmap.set('radius', ui.value);
+                }
             });
 
-            $(function() {
-                $( "#radius-slider" ).slider({
-                    orientation: "horizontal",
-                    range: "min",
-                    min: 1,
-                    max: 50,
-                    value: 20,
-                    slide: function(event, ui) {
-                        $("#radius-label").html("radius: " + ui.value);
-                        if(heatmap == null) return;
-                        heatmap.set('radius', ui.value);
-                    }
-                });
-
-                $( "#opacity-slider" ).slider({
-                    orientation: "horizontal",
-                    range: "min",
-                    min: 0,
-                    max: 100,
-                    value: 50,
-                    slide: function(event, ui) {
-                        $("#opacity-label").html("opacity: " + ui.value/100);
-                        if(heatmap == null) return;
-                        heatmap.set('opacity', ui.value/100);
-                    }
-                });
-
-                $( "#max-slider" ).slider({
-                    orientation: "horizontal",
-                    range: "min",
-                    min: 0,
-                    max: 1,
-                    value: 0,
-                    slide: function(event, ui) {
-                        $("#max-label").html("max: " + numberWithCommas(ui.value));
-                        if(heatmap == null) return;
-                        heatmap.set('maxIntensity', ui.value);
-                    }
-                });
+            $( "#opacity-slider" ).slider({
+                orientation: "horizontal",
+                range: "min",
+                min: 0,
+                max: 100,
+                value: 50,
+                slide: function(event, ui) {
+                    $("#opacity-label").html("opacity: " + ui.value/100);
+                    if(heatmap == null) return;
+                    heatmap.set('opacity', ui.value/100);
+                }
             });
+
+            $( "#max-slider" ).slider({
+                orientation: "horizontal",
+                range: "min",
+                min: 0,
+                max: 1,
+                value: 0,
+                slide: function(event, ui) {
+                    $("#max-label").html("max: " + numberWithCommas(ui.value));
+                    if(heatmap == null) return;
+                    heatmap.set('maxIntensity', ui.value);
+                }
+            });
+
         });
     </script>
 </head>

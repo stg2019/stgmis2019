@@ -1,7 +1,35 @@
 $(document).ready(function(){
     showPatient();
     showItemUsed();
-    //add dispatch
+
+    $("#patient_name").keyup(function(){
+
+        var dispatch_id = $("#dispatch_id").val();
+        var patient_name = $("#patient_name").val().trim();
+        if(patient_name != ''){
+            $("#pname_response").show();
+
+            $.ajax({
+                url: 'action/checkpatient.php',
+                type: 'post',
+                data: {patient_name:patient_name, dispatch_id:dispatch_id},
+                success: function(response){
+                    if(response > 0){
+                        $("#pname_response").html("<span class='label label-danger'>Patient Name already exist in this dispatchment</span>");
+                        $("#addnew").attr("disabled", true); 
+
+                    }else{
+                        $("#pname_response").html("");
+                        $("#addnew").attr("disabled", false); 
+                    }
+                }
+            });
+        }else{
+            $("#pname_response").hide();
+        }
+    });
+
+    //add patient
     $(document).on('click', '#addnew', function(){
         if ($('#patient_name').val()=="" || $('#age').val()=="" || $('#gender').val()=="" || $('#date_of_birth').val()=="" || $('#contact_no').val()=="" || $('#home_address').val()=="" || $('#next_to_kin').val()=="" || $('#relationship').val()=="" || $('#directives').val()==""){
             $('#modallabel').slideDown();
@@ -46,10 +74,7 @@ $(document).ready(function(){
                     setTimeout(function() {
                         $('#alert').fadeOut('slow');
                     }, 1500);
-                    setTimeout(function(){
-                        window.location.reload();
-                    }, 2500);
-                    showDispatch();
+                    showPatient();
                 }
             });
             $('form').trigger('reset');

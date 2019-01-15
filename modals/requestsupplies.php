@@ -11,7 +11,7 @@
                 <h4 class="modal-title">Request Stocks</h4>
             </div>
             <div class="modal-body">
-                <form id="dispatchform">
+                <form id="request">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label >Requested Quantity</label>
-                                <input type="text" class="form-control input-sm" id="requested_quantity" name="requested_quantity" placeholder="Enter Requested Quantity" required/>
+                                <input type="number" class="form-control input-sm" id="requested_quantity" name="requested_quantity" placeholder="Enter Requested Quantity" min=0 oninput="validity.valid||(value='');" required/>
                             </div>
                         </div>
                     </div>

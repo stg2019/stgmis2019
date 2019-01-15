@@ -11,6 +11,8 @@ if(isset($_POST['add'])){
     $pr=$_POST['pr'];
     $rr=$_POST['rr'];
     $temp=$_POST['temp'];
+    $tempdot=$_POST['tempdot'];
+    $temperature = $temp. "." .$tempdot;
     $rbs=$_POST['rbs'];
     $pupils=$_POST['pupils'];
     $skin=$_POST['skin'];
@@ -22,7 +24,7 @@ if(isset($_POST['add'])){
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `vital_signs` VALUES('', '$time', '$loc', '$bp', '$sa', '$pr', '$rr', '$temp', '$rbs', '$pupils', '$skin', '$patient_id')") or die(mysqli_error());
+    $conn->query("INSERT INTO `vital_signs` VALUES('', '$time', '$loc', '$bp', '$sa', '$pr', '$rr', '$temperature', '$rbs', '$pupils', '$skin', '$patient_id')") or die(mysqli_error());
 
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added Vital Signs','$date_time')") or die(mysqli_error());
     $conn->close();

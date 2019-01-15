@@ -181,7 +181,7 @@ require '../require/logincheck.php';
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-md-1"></div>
                         <?php
                         date_default_timezone_set('Asia/Manila');

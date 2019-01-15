@@ -39,7 +39,7 @@ require 'require/logincheck.php';
                 </ol>
                 <h1 class="page-header">               
                     Dispatchment Overview
-                    <a href="dispatchment.php" class="btn btn-sm btn-white ">Back</a>
+                    <a href="masterdispatchment.php" class="btn btn-sm btn-white ">Back</a>
                 </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
@@ -53,9 +53,6 @@ require 'require/logincheck.php';
                         ?>
                         <div class="invoice">
                             <div class="invoice-company">
-                                <span class="pull-right hidden-print">
-                                    <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
-                                </span>
                                 Service Number : <?php echo $fetch['service_no']?>
                             </div>
                             <div class="invoice-header">

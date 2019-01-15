@@ -29,6 +29,13 @@ require '../require/logincheck.php';
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <?php require '../assets/js/loadchart/reports/patientvitals.php'?>
+        <style type="text/css">
+            @media print {
+                .print{
+                    display: none !important;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -58,10 +65,15 @@ require '../require/logincheck.php';
         $fetch5 = $query5->fetch_array();
                 ?>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <div class="alert alert-success fade in m-b-15">
+                            <strong><i class="fa fa-print"></i> Press P to Print!</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
                         <div class="invoice">
                             <div class="invoice-company">
-
                                 <?php echo $fetch['patient_name']?>
                             </div>
                             <div class="invoice-header">
@@ -366,6 +378,7 @@ require '../require/logincheck.php';
             ga('send', 'pageview');
 
         </script>
+        <?php require 'require/pressp.php'?>
 
     </body>
 </html>

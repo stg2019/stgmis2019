@@ -198,7 +198,7 @@ require 'require/logincheck.php';
                                     $fetch = $query->fetch_array();
                         ?>
                         <div class="email-content">
-                            <h5>Recent Dispatchment & Street Traffic Condition in Bacolod City - <span class="text text-primary"><b>Destination : Luzuriaga St., Old City Hall to <?php echo $fetch['call_location']?></b></span></h5>
+                            <h5>Recent Dispatchment & Street Traffic Condition in Bacolod City - <span class="text text-primary"><b>Destination : <?php echo $fetch['call_location']?></b></span></h5>
                             <div class="panel-body">
                                 <div id="map-canvas"></div>
                                 <br>
@@ -262,7 +262,7 @@ require 'require/logincheck.php';
 </tbody>
 </table>
 <h5 class="m-t-0"><span class="text-danger m-r-5">Estimated Distance and Time</span> </h5>
-<h3 class="m-t-0"><span class="text-success m-r-5" id="output"></span> </h3>
+<h3 class="m-t-0"><span class="text-success m-r-5 lab" id="output"></span> </h3>
 </div>
 </div>
 </div>

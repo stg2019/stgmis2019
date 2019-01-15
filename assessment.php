@@ -42,6 +42,7 @@ require 'require/logincheck.php';
                 </ol>
                 <h1 class="page-header">        
                     <button type = "button" class = "btn btn-sm btn-success add_assessment" value="<?php echo $_GET['patient_id']; ?>">Save Record</button>
+                    <a href="#addrefusal" class="btn btn-sm btn-success" data-toggle="modal">Refusal of Treatment</a>
                     <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
                 </h1>
                 <center>
@@ -360,10 +361,12 @@ require 'require/logincheck.php';
 
 
             <?php require 'require/sidepanel.php'?>
+            <?php require 'modals/exceptionrefusal.php'?>
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="functions/crudassessment.js"></script>
+        <script type="text/javascript" src="functions/crudrefusaltreatment.js"></script>
         <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>

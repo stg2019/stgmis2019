@@ -57,15 +57,17 @@ require 'require/logincheck.php';
                                             <center><span id="checkfield"></span></center>
                                         </div>
                                     </center>
+                                    <div id="pname_response"></div>
+                                    <input type="hidden" class="form-control input-sm" id="dispatch_id" name="dispatch_id" value="<?php echo $fetch['dispatch_id']?>"/>
                                     <div class="form-group">
                                         <label >Patient Name</label>
                                         <input type="text" class="form-control input-sm" id="patient_name" name="patient_name" placeholder="Enter Patient Name" required/>
                                     </div>
                                     <div class="form-group">
                                         <label >Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp; Gender</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp; Gender</label>
                                         <div class="row row-space-10">
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control"  id="age" name="age" placeholder="Enter Age" />
@@ -81,8 +83,8 @@ require 'require/logincheck.php';
                                     </div>
                                     <div class="form-group">
                                         <label >Date of Birth &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp; Contact Number</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp; Contact Number</label>
                                         <div class="row row-space-12">
                                             <div class="col-md-6">
                                                 <div class="input-group date" id="datepicker-autoClose">
@@ -121,7 +123,7 @@ require 'require/logincheck.php';
                                         </select>
                                     </div>
                                     <hr>
-                                    <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="addnew" class="btn btn-sm btn-success m-r-5">Add</button>
+                                    <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="addnew" class="btn btn-sm btn-success m-r-5 addnew">Add</button>
                                     <a href="dispatchment.php" class="btn btn-sm btn-white">Back</a>
                                 </div>
                             </div>
