@@ -31,6 +31,35 @@ function initMap() {
         }
 
     });
+    infoWindow = new google.maps.InfoWindow;
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('EMT Rescue Team Current Location');
+            infoWindow.open(map);
+            map.setCenter(pos);
+        }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
 
 
     var geocoder = new google.maps.Geocoder;
@@ -81,9 +110,9 @@ function initMap() {
                                      showGeocodedAddressOnMap(true));
                     outputDiv.innerHTML +=results[j].distance.text + 's. in ' +
                         results[j].duration.text;
-                  //  outputDiv.innerHTML += ' <i class="fa fa-info-circle"></i> Estimated Distance and Time : Luzuriaga St., Old City Hall' + ' to ' + destinationList[j] +
-                  //      ': <b>' + results[j].distance.text + ' in ' +
-                  //      results[j].duration.text + ' </b><br>';
+                    //  outputDiv.innerHTML += ' <i class="fa fa-info-circle"></i> Estimated Distance and Time : Luzuriaga St., Old City Hall' + ' to ' + destinationList[j] +
+                    //      ': <b>' + results[j].distance.text + ' in ' +
+                    //      results[j].duration.text + ' </b><br>';
                 }
             }
         }

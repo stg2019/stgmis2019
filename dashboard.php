@@ -147,8 +147,8 @@ require 'require/logincheck.php';
                         <div class="widget widget-stats bg-gradient-primary">
                             <div class="stats-icon"><i class="fa fa-random"></i></div>
                             <div class="stats-info">
-                                <h4>Pressure</h4>
-                                <p id="pressure"></p>	
+                                <h4>Wind</h4>
+                                <p id="speed"></p>	
                             </div>
                         </div>
                     </div>
@@ -217,8 +217,8 @@ require 'require/logincheck.php';
                     <tbody>
                         <?php
     require 'require/dbconnection.php';
-                                       $query1 = $conn->query("SELECT * FROM `dispatch` order by dispatch_id DESC limit 1") or die(mysqli_error());
-                                       $fetch1 = $query1->fetch_array();
+                                $query1 = $conn->query("SELECT * FROM `dispatch` order by dispatch_id DESC limit 1") or die(mysqli_error());
+                                $fetch1 = $query1->fetch_array();
                         ?>  
                         <tr>
                             <td>Date and Time of Call</span></td>
@@ -268,7 +268,6 @@ require 'require/logincheck.php';
 </div>
 
 </div>
-
 </div>
 
 
@@ -289,7 +288,6 @@ require 'require/logincheck.php';
 <script src="assets/js/dashboard.min.js"></script>
 <script src="assets/js/apps.min.js"></script>
 <script src="assets/js/timedate.js"></script>
-
 <script>
     $(document).ready(function(){
         $( "#info" ).draggable();

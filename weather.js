@@ -27,8 +27,8 @@ $(document).ready(function(){
         type: "GET",
         dataType: "jsonp",
         success: function(data) {
-            var pressure = showPressure(data);
-            $("#pressure").html(pressure);
+            var speed = showSpeed(data);
+            $("#speed").html(speed);
         }
     });
 
@@ -53,8 +53,8 @@ function showClouds(data){
     return  data.weather[0].description;
 }
 
-function showPressure(data){
-    return  data.main.pressure;
+function showSpeed(data){
+    return  data.wind.speed + "m/s";
 }
 
 function showHumidity(data){
