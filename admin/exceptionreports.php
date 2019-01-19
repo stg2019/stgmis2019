@@ -100,6 +100,7 @@ require '../require/logincheck.php';
                                     <option value="colemergency">Emergency Cases</option>
                                     <option value="pieambulance">Most Used Ambulance</option>
                                     <option value="piedriver">Drivers</option>
+                                    <option value="patient">Patient</option>
                                 </select>
                             </div>
                         </div>
@@ -188,7 +189,7 @@ require '../require/logincheck.php';
                         $date=date("F j, Y");
                         ?>
                         <div class="col-md-3">
-                            <h4><?php echo $date?></h4>
+                            <h6><?php echo $date?></h6>
                         </div>
 
                     </div>
@@ -227,13 +228,13 @@ require '../require/logincheck.php';
                                     <!-- Driver -->
                                     <div id="chartContainer23" class="piedriver reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer24" class="doughnutdriver reporttype" style="width: 100%; height: 300px"></div>
-                                    <hr>
                                     <?php require 'exceptionreports/monthly.php'?>
                                     <?php require 'exceptionreports/quarter.php'?>
                                     <?php require 'exceptionreports/yearly.php'?>
                                     <?php require 'exceptionreports/emergency.php'?>
                                     <?php require 'exceptionreports/ambulance.php'?>
                                     <?php require 'exceptionreports/driver.php'?>
+                                    <?php require 'exceptionreports/patient.php'?>
                                 </div>
 
                             </div>

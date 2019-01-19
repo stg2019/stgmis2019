@@ -155,7 +155,7 @@ require 'require/logincheck.php';
                                                         <td colspan="2"><h4 class="text-danger">&nbsp; Past Medical History</h4></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Allergy to</td>
+                                                        <td>Allergy to - Sign and Symptoms</td>
                                                         <td>
                                                             <div class="col-md-12">
                                                                 <input type="text" class="form-control" id="allergy" name="allergy" placeholder="Enter Allergy" />
@@ -195,7 +195,7 @@ require 'require/logincheck.php';
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Note</td>
+                                                        <td>Remarks</td>
                                                         <td>
                                                             <div class="col-md-12">
                                                                 <select class="form-control selectpicker input-sm"  data-style="btn-white" id="notes" name="notes">

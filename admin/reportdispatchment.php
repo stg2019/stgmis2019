@@ -90,7 +90,7 @@ require '../require/logincheck.php';
                             <div class="panel panel-primary" data-sortable-id="index-1">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        Top Emergency Cases 2018
+                                        Top Emergency Cases <?php echo $year?>
                                     </h4>
                                 </div>
                                 <table class="table table-striped">
@@ -102,11 +102,11 @@ require '../require/logincheck.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
+                                        $res2 = $conn->query("SELECT * FROM `dispatch` where `year` = '$year' GROUP BY dispatched_for limit 7") or die(mysqli_error());
                                         $data_points2 = array();
                                         while($result2 = $res2->fetch_array()){
                                             $R2 = $result2['dispatched_for'];
-                                            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' group by dispatched_for") or die(mysqli_error());
+                                            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' && `year` = '$year' group by dispatched_for") or die(mysqli_error());
                                             $f2 = $q2->fetch_array();
                                             $FR2 = intval($f2['total']);
                                             $point2 = array('label' => $R2, 'y' => $FR2);
@@ -146,11 +146,11 @@ require '../require/logincheck.php';
                                     <div class="height-sm" data-scrollbar="true">
                                         <ul class="media-list media-list-with-divider media-messaging">
                                             <?php
-                                            $res4 = $conn->query("SELECT * FROM `dispatch` GROUP BY call_location limit 7") or die(mysqli_error());
+                                            $res4 = $conn->query("SELECT * FROM `dispatch` where `year` = '$year' GROUP BY call_location limit 7") or die(mysqli_error());
                                             $data_points4 = array();
                                             while($result4 = $res4->fetch_array()){
                                                 $R4 = $result4['call_location'];
-                                                $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' group by call_location") or die(mysqli_error());
+                                                $q4 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `call_location` = '$R4' && `year` = '$year' group by call_location") or die(mysqli_error());
                                                 $f4 = $q4->fetch_array();
                                                 $FR4 = intval($f4['total']);
                                                 $point4 = array('label' => $R4, 'y' => $FR4);

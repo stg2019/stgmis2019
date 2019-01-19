@@ -58,7 +58,8 @@
                     type: "column", 
                     indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Year",
+                    toolTipContent: "{label} <br/> {y}", 
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -111,7 +112,8 @@
                     type: "bar", 
                     indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Year",
+                    toolTipContent: "{label} <br/> {y}", 
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 
@@ -164,7 +166,8 @@
                     type: "line", 
                     indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Year",
+                    toolTipContent: "{label} <br/> {y}", 
                     dataPoints: <?php echo json_encode($data_points3); ?>
                 }
                     ] 

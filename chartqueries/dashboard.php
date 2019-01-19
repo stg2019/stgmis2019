@@ -83,7 +83,7 @@ $res3 = $conn->query("SELECT * FROM `dispatch` GROUP BY year") or die(mysqli_err
 $data_points3 = array();
 while($result3 = $res3->fetch_array()){
     $R3 = $result3['year'];
-    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$year' group by year") or die(mysqli_error());
+    $q3 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `year` = '$R3' group by year") or die(mysqli_error());
     $f3 = $q3->fetch_array();
     $FR3 = intval($f3['total']);
     $point3 = array('label' => $R3, 'y' => $FR3);

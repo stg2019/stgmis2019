@@ -15,9 +15,9 @@
             {
                 $year=$_GET['year'];
             }
-            $query1 = $conn->query("SELECT count(*) as permonth FROM `dispatch` where `year` = '$year'") or die(mysqli_error());
+            $query1 = $conn->query("SELECT count(*) as permonth FROM `dispatch`") or die(mysqli_error());
             $fetch1 = $query1->fetch_array();
-            $query = $conn->query("SELECT year, count(*) as count FROM `dispatch` where `year` = '$year' group by year order by count DESC") or die(mysqli_error());
+            $query = $conn->query("SELECT year, count(*) as count FROM `dispatch` group by year order by count DESC") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
                // $permonth = ($fetch['count']/$fetch1['permonth']) * 100;
             ?>                                      
@@ -43,9 +43,9 @@
         <tbody>
             <?php
             require '../require/dbconnection.php';
-            $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch` where `year` = '$year'") or die(mysqli_error());
+            $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
             $fetch1 = $query1->fetch_array();
-            $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` where `year` = '$year' group by dispatched_for order by count DESC") or die(mysqli_error());
+            $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
                 $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
             ?>                                      
