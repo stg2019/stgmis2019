@@ -25,7 +25,7 @@
             },
             title: { 
                 text: "Bacolod Disaster Risk Reduction Management Office",
-                fontSize: 11
+                fontSize: 15
             },
             subtitles:[
                 {
@@ -80,7 +80,7 @@
                 },
                 title: { 
                 text: "Bacolod Disaster Risk Reduction Management Office",
-                fontSize: 11
+                fontSize: 15
                 },
                 subtitles:[
                 {
@@ -135,7 +135,7 @@
                 },
                 title: { 
                 text: "Bacolod Disaster Risk Reduction Management Office",
-                fontSize: 11
+                fontSize: 20
                 },
                 subtitles:[
                 {
@@ -166,11 +166,8 @@
             data: [ 
                 { 
                     type: "line", 
-                    //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
                     indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['dispatched_for']?>",
-                    //name: "Total Patients this year",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
@@ -190,7 +187,7 @@
                 },
                 title: { 
                 text: "Bacolod Disaster Risk Reduction Management Office",
-                fontSize: 11
+                fontSize: 15
                 },
                 subtitles:[
                 {
@@ -243,7 +240,7 @@
                 },
                 title: { 
                 text: "Bacolod Disaster Risk Reduction Management Office",
-                fontSize: 11
+                fontSize: 15
                 },
                 subtitles:[
                 {

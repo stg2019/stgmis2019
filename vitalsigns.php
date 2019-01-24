@@ -42,7 +42,7 @@ require 'require/logincheck.php';
                 </ol>
                 <h1 class="page-header">        
                     <button type = "button" class = "btn btn-sm btn-success add_vital_signs" value="<?php echo $_GET['patient_id']; ?>">Save Record</button>
-                    <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
+                    <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Cancel</a>
                 </h1>
                 <center>
                     <div id="alert" class="alert alert-success" style="display:none;">

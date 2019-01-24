@@ -57,6 +57,7 @@ require '../require/logincheck.php';
                             <div class="form-group">
                                 Select Year:
                                 <select  class="form-control selectpicker input-sm" data-style="btn-primary" id="pyear">
+                                   <option selected disabled>Select Year</option>
                                     <option value="<?php 
     if(isset($_GET['year'])){
         $value=$_GET['year']; 

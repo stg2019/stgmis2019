@@ -66,12 +66,14 @@ require '../require/logincheck.php';
                             <p><b>Graphical</b></p>
                         </div>
                         <div class="col-md-6"></div>
+                        <!--
                         <div class="col-md-2">
                             <button type="button" class="btn btn-danger monthly quarterly yearly reporttype" onclick="openTabular()">Filter Reports</button>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-warning monthly quarterly yearly reporttype" onclick="openHeatMap()">Heat Map</button>
                         </div>
+                        -->
                     </div>
                     <div class="row">
                         <div class="col-md-12">

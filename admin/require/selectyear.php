@@ -1,6 +1,7 @@
 <div class="col-md-2">
     <div class="form-group">
         <select id="pyear" class="form-control selectpicker input-sm" data-style="btn-primary">
+           <option selected disabled> Select Year</option>
             <option value="<?php 
                            if(isset($_GET['year'])){
                                $value=$_GET['year']; 

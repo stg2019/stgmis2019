@@ -59,7 +59,7 @@ if(isset($_GET['year']))
 {
     $year=$_GET['year'];
 }
-$res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for limit 7") or die(mysqli_error());
+$res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for") or die(mysqli_error());
 $data_points2 = array();
 while($result2 = $res2->fetch_array()){
     $R2 = $result2['dispatched_for'];

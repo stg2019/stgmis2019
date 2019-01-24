@@ -6,20 +6,27 @@ if(isset($_POST['edit'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $pass1 = sha1($password);
-    $salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
-    $pass1 = $salt.$pass1;
 
-    //history_log
     $user_id=$_SESSION['user_id'];
     date_default_timezone_set('Asia/Manila');
     $date_time=date("F j, Y - g:i a");
 
-    require '../require/dbconnection.php';
+    if ($password ==""){
+        require ('../require/dbconnection.php');
+        $conn->query("UPDATE `users` SET `complete_name` = '$complete_name', `contact_no` = '$contact_no', `home_address` = '$home_address', `username` = '$username' WHERE `user_id` = '$user_id'") or die(mysqli_error());
+        $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Updated account of $complete_name','$date_time')") or die(mysqli_error());
+    }
+    else {
+        $pass1 = sha1($password);
+        $salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
+        $pass1 = $salt.$pass1;
 
-    $conn->query("UPDATE `users` SET `complete_name` = '$complete_name', `username` = '$username', `password` = '$pass1' WHERE `user_id` = '$user_id'") or die(mysqli_error());
+        require ('../require/dbconnection.php');
+        $conn->query("UPDATE `users` SET `complete_name` = '$complete_name', `contact_no` = '$contact_no', `home_address` = '$home_address', `username` = '$username', `password` = '$pass1' WHERE `user_id` = '$user_id'") or die(mysqli_error());
 
-    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Updated account of $complete_name','$date_time')") or die(mysqli_error());
-    $conn->close();
+        $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Updated account of $complete_name','$date_time')") or die(mysqli_error());
+
+    }
+
 }
 ?>

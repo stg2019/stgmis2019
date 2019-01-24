@@ -3,7 +3,6 @@ $(document).ready(function(){
     showItemUsed();
 
     $("#patient_name").keyup(function(){
-
         var dispatch_id = $("#dispatch_id").val();
         var patient_name = $("#patient_name").val().trim();
         if(patient_name != ''){
@@ -85,10 +84,10 @@ $(document).ready(function(){
     //add medical supply used
     $(document).on('click', '#additem', function(){
         if ($('#medical_supply_name').val()=="" || $('#quantity_used').val()==""){
-            $('#modallabels').slideDown();
-            $('#checkfields').text('Please input quantity used!');
+            $('#modallabelq').slideDown();
+            $('#checkfieldq').text('Please input quantity used!');
             setTimeout(function() {
-                $('#modallabels').fadeOut('slow');
+                $('#modallabelq').fadeOut('slow');
             }, 2500);
         }
         else{
@@ -107,12 +106,13 @@ $(document).ready(function(){
                     add: 1,
                 },
                 success: function(){
-                    $('#alert').slideDown();
-                    $('#alerttext').text('Medical Supply Item Added Successfully!');
+                    $('#alertq').slideDown();
+                    $('#alerttextq').text('Medical Supply Item Added Successfully!');
                     setTimeout(function() {
-                        $('#alert').fadeOut('slow');
+                        $('#alertq').fadeOut('slow');
                     }, 1500);
                     showItemUsed();
+                    $('#quantity_used').val('');
                 }
             });
             $('form').trigger('reset');

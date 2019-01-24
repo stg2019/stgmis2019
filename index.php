@@ -34,6 +34,7 @@
                 </div>
                 <div class="right-content">
                     <div class="login-header">
+                        <img src="assets/img/ndrrmo/logo.png" style="width:70px;height:70px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
                         <div class="brand">
                             DRRMO
                             <small>Management Information System</small>
@@ -51,7 +52,7 @@
                             <div class="form-group m-b-15">
                                 <input type="password" class="form-control input-lg" placeholder="Password" name="password" required />
                             </div>
-                           <!--<div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div> -->
+                            <!--<div class="g-recaptcha" data-sitekey="6LeIim4UAAAAAJdDvusn33vZb6LpwoI5HjIRRRmQ"></div> -->
                             <hr>
                             <div class="login-buttons">
                                 <button type="submit" class="btn btn-info btn-block btn-lg" id="login" name="login">Sign me in</button>
@@ -61,8 +62,8 @@
                             <p class="text-center">
                                 &copy; Safetech Guardians All Rights Reserved 2019
                             </p><br>
-                            <small><strong>Administrator</strong> <br> Username : kurt <br> Password : delatorre</small> <br> <br>
-                            <small><strong>EMT / Team Leader</strong> <br> Username : peter <br> Password : sacayle <br> <br>Username : alkaid <br> Password : lamig</small>
+                           <!-- <small><strong>Administrator</strong> <br> Username : kurt <br> Password : delatorre</small> <br> <br>
+                            <small><strong>EMT / Team Leader</strong> <br> Username : peter <br> Password : sacayle <br> <br>Username : alkaid <br> Password : lamig</small> -->
                         </form>
                     </div>
                 </div>

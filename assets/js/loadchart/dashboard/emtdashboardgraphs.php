@@ -186,10 +186,11 @@
             },
             data: [ 
                 { 
-                    type: "pie", 
+                    type: "bar", 
                     indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Medical Supplies",
+                    name: "Quantity",
                     dataPoints: <?php echo json_encode($data_points); ?>
                 }
                     ] 

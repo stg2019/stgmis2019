@@ -56,10 +56,11 @@
             },
             data: [ 
                 { 
-                    type: "doughnut", 
-                    indexLabel: "{label} - {y}", 
+                    type: "column", 
+                    indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Medical Supplies",
+                    name: "Quantity",
                     dataPoints: <?php echo json_encode($data_points); ?>
                 }
                     ] 
@@ -122,8 +123,6 @@
                     showInLegend: true, 
                     legendText: "Number of Requested Medical Supply",
                     name: "Requested Medical Supply",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
                     dataPoints: [ 
                         { label: "January", y: <?php echo $fjan2['total']?> },
                          { label: "February", y: <?php echo $ffeb2['total']?> },
@@ -173,7 +172,7 @@
                     }
                     e.chart.render();
                 },
-                itemmouseover: function(e) {
+                itemmouseover: function(e) {    
                     e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
                     e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
                     e.chart.render();

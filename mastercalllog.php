@@ -71,7 +71,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['caller_name']?></td>
                                             <td><?php echo $fetch['contact_no']?></td>
                                             <td>
-                                                <a href="overviewcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-success">Overview</a>
+                                                <a href="overviewcalllog.php?call_id=<?php echo $fetch['call_id']?>" class="btn btn-sm btn-success">View</a>
                                             </td>
                                         </tr>
                                         <?php

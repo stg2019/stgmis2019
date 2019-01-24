@@ -69,7 +69,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['driver']?></td>
                                             <td><?php echo $fetch['call_location']?></td>
                                             <td>
-                                                <a href="overviewdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>" class="btn btn-sm btn-success">Overview</a>
+                                                <a href="overviewdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>" class="btn btn-sm btn-success">View</a>
                                             </td>
                                         </tr>
                                         <?php

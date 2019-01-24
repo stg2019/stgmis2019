@@ -31,6 +31,10 @@ if(isset($_POST['add'])){
 
     $conn->query("INSERT INTO `dispatch` VALUES('', '$service_no', '$date_time_call', '$ambulance', '$dispatched_for', '$call_location', '$moi_noi', '$patients_on_scene', '$on_board_tl', '$ems', '$driver', '$care_in_progress', '$mass_casualty', '$enroute', '$date_created', '$month', '$year', '$lat', '$long')") or die(mysqli_error());
 
+    $conn->query("UPDATE `driver` SET `status` = 'Booked' WHERE `driver_name` = '$driver'") or die(mysqli_error());
+
+    $conn->query("UPDATE `ambulance` SET `status` = 'Booked' WHERE `vehicle_name` = '$ambulance'") or die(mysqli_error());
+
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Dispatch','$date_time')") or die(mysqli_error());
     $conn->close();
 }

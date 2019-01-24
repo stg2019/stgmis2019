@@ -36,7 +36,7 @@ require 'require/logincheck.php';
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="#">Transasctions</a></li>
-                    <li class="active">Call Logs</li>
+                    <li class="active">Inventory</li>
                 </ol>
 
 
@@ -45,25 +45,62 @@ require 'require/logincheck.php';
                     <center><span id="alerttext"></span></center>
                 </div>
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="panel panel-info" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">Requested Medical Supplies</h4>
+                    <div class="col-md-12">
+                        <div class="panel panel-info panel-with-tabs" data-sortable-id="ui-widget-9">
+                            <div class="panel-heading">
+                                <ul id="myTab" class="nav nav-tabs pull-right">
+                                    <li class="active"><a href="#request" data-toggle="tab"><span class="hidden-xs">Medical Supplies Request</span></a></li>
+                                    <li><a href="#current" data-toggle="tab"><span class="hidden-xs">Current Inventory</span></a></li>
+                                    <li><a href="#used" data-toggle="tab"><span class="hidden-xs">Medical Supplies Used</span></a></li>
+                                </ul>
+                                <h4 class="panel-title">Inventory</h4>
                             </div>
-                            <div class="panel-body">
-                                <div id="requestTable"></div>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="request">
+                                    <div class="panel-body">
+                                        <div id="requestTable"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="current">
+                                    <div class="panel-body">
+                                        <div id="inventoryTable"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="used">
+                                    <div class="panel-body">
+                                        <table id="data-table" class="table table-hover table-condensed nowrap" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Medical Supply Name</th>
+                                                    <th>Quantity Used</th>
+                                                    <th>Dispatch</th>
+                                                    <th>Location</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+    $query = $conn->query("select * from `items_used`, `dispatch` where items_used.dispatch_id = dispatch.dispatch_id") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                                ?>                                      
+                                                <tr>
+                                                    <td><?php echo $fetch['medical_supply_name']?></td>
+                                                    <td><?php echo $fetch['quantity_used']?></td>
+                                                    <td><?php echo $fetch['dispatched_for']?></td>
+                                                    <td><?php echo $fetch['call_location']?></td>
+                                                    <td><?php echo $fetch['date_created']?></td>
+                                                </tr>
+                                                <?php
+            }
+            $conn->close();
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="panel panel-info" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">List of Medical Supplies</h4>
-                            </div>
-                            <div class="panel-body">
-                                <div id="inventoryTable"></div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -74,7 +111,6 @@ require 'require/logincheck.php';
         </div>
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="functions/crudemtinventory.js"></script>
-        <script src="assets/js/angolia.js"></script>
         <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
         <script src="assets/plugins/jquery-validation/jquery.validate.js"></script>

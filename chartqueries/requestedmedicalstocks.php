@@ -32,11 +32,11 @@ $total2 = $total->fetch_array();
 
 
 //total requested medical supplies
-$res6 = $conn->query("SELECT * FROM `medical_supply_request` GROUP BY medical_supply_name") or die(mysqli_error());
+$res6 = $conn->query("SELECT * FROM `medical_supply_request` where `year` = '$year' GROUP BY medical_supply_name") or die(mysqli_error());
 $data_points6 = array();
 while($result6 = $res6->fetch_array()){
     $R6 = $result6['medical_supply_name'];
-    $q6 = $conn->query("SELECT *, sum(requested_quantity) as sum FROM `medical_supply_request` WHERE `medical_supply_name` = '$R'") or die(mysqli_error());
+    $q6 = $conn->query("SELECT *, sum(requested_quantity) as sum FROM `medical_supply_request` WHERE `year` = '$year' && `medical_supply_name` = '$R6'") or die(mysqli_error());
     $f6 = $q6->fetch_array();
     $FR6 = intval($f6['sum']);
     $point6 = array('label' => $R6, 'y' => $FR6);

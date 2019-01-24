@@ -78,7 +78,7 @@ function getstatus($status){
                                             <?php
     require 'require/dbconnection.php';  
             //  require '../modals/managepassword.php';
-            $query = $conn->query("select * from `users`") or die(mysqli_error());
+            $query = $conn->query("select * from `users` where `user_role` = 'EMT'") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
                                             ?>                                      
                                             <tr>
@@ -87,9 +87,7 @@ function getstatus($status){
                                                 <td>*************</td>
                                                 <td><?php echo $fetch['user_role']?></td>
                                                 <td><?php echo getstatus($fetch['status'])?></td>
-                                                <td>
-                                                    <a href="#edit_user<?php echo $fetch['user_id']; ?>" data-target="#edit_user<?php echo $fetch['user_id']; ?>" data-toggle="modal" class="btn btn-sm btn-success "><span class="fa fa-key"></span> Manage Password</a>
-                                                </td>
+                                                <td><center><a href="updateaccount.php?user_id=<?php echo $fetch['user_id']?>" class="btn btn-sm btn-primary">Update Account</a></center></td>
                                             </tr>   
                                             <?php
             }
@@ -107,30 +105,9 @@ function getstatus($status){
 
                 <!-- end row -->
             </div>
-            <!-- end #content -->
-
-
-
-            <?php
-            require 'require/dbconnection.php';  
-            $query = $conn->query("select * from `users`") or die(mysqli_error());           
-            while($fetch = $query ->fetch_array()){
-            ?>    
-            <?php require '../modals/edituser.php';?>
-
-            <?php } ?>
-
-            <!-- begin theme-panel -->
             <?php require '../require/sidepanel.php'?>
-            <!-- end theme-panel -->
-
-            <!-- begin scroll to top btn -->
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-            <!-- end scroll to top btn -->
         </div>
-        <!-- end page container -->
-
-        <!-- ================== BEGIN BASE JS ================== -->
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
         <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
         <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -139,10 +116,27 @@ function getstatus($status){
         <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
         <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
         <script src="../assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+        <script src="../assets/plugins/jquery-validation/jquery.validate.js"></script>
         <script src="../assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
         <script src="../assets/js/table-manage-default.demo.min.js"></script>
         <script src="../assets/js/apps.min.js"></script>
         <script src="../functions/crudusermanagement.js"></script>
+        <script>
+            $("#users").validate({
+                ignore: [],
+                rules: {
+                    password: {
+                        minlength: 6,
+                        maxlength: 10
+                    },
+                    'confirm_password': {
+                        minlength: 6,
+                        maxlength: 10,
+                        equalTo: "#password"
+                    }
+                }
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 App.init();
@@ -159,6 +153,5 @@ function getstatus($status){
             ga('send', 'pageview');
 
         </script>
-
     </body>
 </html>

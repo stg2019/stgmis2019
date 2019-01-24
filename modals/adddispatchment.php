@@ -17,8 +17,23 @@
                             <input type="hidden" id="lat" name="lat"/>
                             <input type="hidden" id="long" name="long"/>
                             <div class="form-group">
+                                <?php
+                                require 'require/dbconnection.php';
+                                $query = $conn->query("SELECT * FROM `dispatch` order by dispatch_id DESC limit 1") or die(mysqli_error());
+                                $fetch = $query->fetch_array();
+                                $service_no = $fetch['dispatch_id'] + 1;
+                                $year = date('Y');
+                                if ($service_no < 100)
+                                {
+                                    $service_no = "EMT" . $year . "00" .$service_no;
+                                }
+                                else if ($service_no > 100) {
+                                    $service_no = "EMT" . $year . "0" .$service_no;
+                                }
+
+                                ?>
                                 <label >Service Number</label>
-                                <input type="text" class="form-control input-sm" id="service_no" name="service_no" placeholder="Enter Service Number" required/>
+                                <input type="text" class="form-control input-sm" id="service_no" name="service_no" value="<?php echo $service_no?>" placeholder="Enter Service Number" required readonly style="color:#000"/>
                             </div>
                             <!--
 <div class="form-group ">
@@ -36,14 +51,14 @@
                                 <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="ambulance" name="ambulance">
                                     <option selected disabled value="#">Select</option>
                                     <?php
-                                    require 'require/dbconnection.php';
-                                    $query = $conn->query("SELECT * FROM `ambulance` where status = 'Unbook'") or die(mysqli_error());
+    require 'require/dbconnection.php';
+                                       $query = $conn->query("SELECT * FROM `ambulance` where status = 'Unbook'") or die(mysqli_error());
 
-                                    while($fetch = $query->fetch_array()){
+                                       while($fetch = $query->fetch_array()){
                                     ?>
                                     <option value="<?php echo $fetch['vehicle_name'];?>"><?php echo $fetch['vehicle_name'] . ' ' .$fetch['plate_no']?></option>
                                     <?php
-                                    }
+                                       }
                                     ?> 
                                 </select>
                             </div>
@@ -152,7 +167,7 @@
                                 $query = $conn->query("SELECT * FROM `call_logs` order by call_id DESC limit 1") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
                                 ?>
-                                <input type="text" class="form-control input-sm" id="call_location" name="call_location" value="<?php echo $fetch['complete_address']?>" placeholder="Enter Call Location" />
+                                <input type="text" class="form-control input-sm" id="call_location" name="call_location" value="<?php echo $fetch['complete_address']?>" placeholder="Enter Call Location" readonly/>
                             </div>
                             <div class="form-group">
                                 <label >Mass Casualty</label>

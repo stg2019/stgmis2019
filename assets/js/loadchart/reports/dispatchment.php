@@ -256,10 +256,11 @@
             },
             data: [ 
                 { 
-                    type: "doughnut", 
-                    indexLabel: "{label} - {y}", 
+                    type: "column", 
+                    indexLabel: "{y}", 
                     showInLegend: true,
-                    legendText: "{label}",
+                    legendText: "Dispatched For",
+                    name: "Count",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 

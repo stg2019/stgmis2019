@@ -135,7 +135,7 @@ require 'require/logincheck.php';
                                 <ul id="myTab" class="nav nav-tabs pull-right">
                                     <li class="active"><a href="#home" data-toggle="tab"><span class="hidden-xs">Patients</span></a></li>
                                     <li><a href="#profile" data-toggle="tab"><span class="hidden-xs">Medical Supplies Used</span></a></li>
-                                    <li><a href="#obgyne" data-toggle="tab"><span class="hidden-xs">OB Gyne</span></a></li>
+                                    <li><a href="#end" data-toggle="tab"><span class="hidden-xs">End Dispatchment</span></a></li>
                                 </ul>
                                 <h4 class="panel-title">Service No : <?php echo $fetch['service_no']?></h4>
                             </div>
@@ -169,14 +169,14 @@ require 'require/logincheck.php';
                                     ?>
                                     <div class="panel-body">
                                         <center>
-                                            <div id="modallabels" class="alert alert-danger" style="display:none;">
-                                                <center><span id="checkfields"></span></center>
+                                            <div id="modallabelq" class="alert alert-danger" style="display:none;">
+                                                <center><span id="checkfieldq"></span></center>
                                             </div>
                                         </center>
                                         <div class="form-group">
                                             <label >Medical Supply Name</label>
                                             <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
-                                                <option value="#" disabled>Select</option>
+                                                <option value="0" selected disabled>Select</option>
                                                 <?php
                                                 require 'require/dbconnection.php';
                                                 $query = $conn->query("SELECT * FROM `medical_supply_stocks` where running_balance >= 1") or die(mysqli_error());
@@ -197,53 +197,36 @@ require 'require/logincheck.php';
                                         <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="additem" class="btn btn-sm btn-success m-r-5">Add</button>
                                         <hr>
                                         <div class="invoice-content">
-                                            <div id="alert" class="alert alert-success" style="display:none;">
-                                                <center><span id="alerttext"></span></center>
+                                            <div id="alertq" class="alert alert-success" style="display:none;">
+                                                <center><span id="alerttextq"></span></center>
                                             </div>
                                             <div id="itemTable"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="obgyne">
-                                    <?php
-                                    $query = $conn->query("SELECT * FROM `dispatch` WHERE `dispatch_id` = '$_GET[dispatch_id]'") or die(mysqli_error());
-                                    $fetch = $query->fetch_array();
-                                    ?>
+                                <div class="tab-pane fade" id="end">
                                     <div class="panel-body">
                                         <center>
-                                            <div id="modallabels" class="alert alert-danger" style="display:none;">
-                                                <center><span id="checkfields"></span></center>
+                                            <?php
+                                            date_default_timezone_set('Asia/Manila');
+                                            $date_time=date("g:i a");
+                                            ?>
+                                            <div id="alerts" class="alert alert-success" style="display:none;">
+                                                <center><span id="alerttexts"><?php echo "Dispatchment Ended Successfully at $date_time"?></span></center>
                                             </div>
                                         </center>
-                                        <div class="form-group">
-                                            <label >Medical Supply Name</label>
-                                            <select  class="form-control selectpicker input-sm" data-live-search="true" data-style="btn-white" id="medical_supply_name" name="medical_supply_name">
-                                                <option value="#" disabled>Select</option>
-                                                <?php
-                                                require 'require/dbconnection.php';
-                                                $query = $conn->query("SELECT * FROM `medical_supply_stocks` where running_balance >= 1") or die(mysqli_error());
+                                        <h5>Are you sure you want to end this dispatchment? This will update the status of Ambulance and Driver to</h5> <h5 class="text text-success">AVAILABLE on the next dispatchment.</h5>
+                                        <?php
+    $query = $conn->query("SELECT * FROM `dispatch` WHERE `dispatch_id` = '$_GET[dispatch_id]'") or die(mysqli_error());
+                                                    $fetch = $query->fetch_array();
+                                                    $ambulance = $fetch['ambulance'];
 
-                                                while($fetch = $query->fetch_array()){
-                                                ?>
-                                                <option value="<?php echo $fetch['medical_supply_name'];?>"><?php echo $fetch['medical_supply_name']?></option>
-                                                <?php
-                                                }
-                                                ?> 
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label >Quantity Used</label>
-                                            <input type="text" class="form-control input-sm" id="quantity_used" name="quantity_used" placeholder="Enter Quantity Used" required/>
-                                        </div>
+
+                                        ?>
+                                        <input type="hidden" name="ambulance" id="ambulance" value="<?php echo $fetch['ambulance']?>"/>
+                                        <input type="hidden" name="driver" id="driver" value="<?php echo $fetch['driver']?>"/>
+                                        <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="enddispatchment" class="btn btn-md btn-success m-r-5">Confirm</button>
                                         <hr>
-                                        <button type="button" value="<?php echo $_GET['dispatch_id']; ?>" id="additem" class="btn btn-sm btn-success m-r-5">Add</button>
-                                        <hr>
-                                        <div class="invoice-content">
-                                            <div id="alert" class="alert alert-success" style="display:none;">
-                                                <center><span id="alerttext"></span></center>
-                                            </div>
-                                            <div id="itemTable"></div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -258,6 +241,7 @@ require 'require/logincheck.php';
         </div>
     <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="functions/crudpatient.js"></script>
+    <script type="text/javascript" src="functions/enddispatchment.js"></script>
     <script src="assets/js/angolia.js"></script>
     <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
     <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>

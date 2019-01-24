@@ -15,7 +15,7 @@ if(isset($_POST['show'])){
     </thead>
     <tbody>
         <?php
-    $query = $conn->query("select * from `medical_supply_request`, `users` where medical_supply_request.user_id = users.user_id && medical_supply_request.status = 'Pending'") or die(mysqli_error());
+    $query = $conn->query("select * from `medical_supply_request`, `users` where medical_supply_request.user_id = users.user_id && medical_supply_request.status = 'Pending' && medical_supply_request.requested_quantity != 0") or die(mysqli_error());
     while($fetch = $query->fetch_array()){
         ?>                                      
         <tr>
