@@ -1,5 +1,5 @@
 <?php
-// yearly or annualy request of transport shit
+$year = date('Y');
 $res3 = $conn->query("SELECT * FROM `request_transport` GROUP BY year") or die(mysqli_error());
 $data_points3 = array();
 while($result3 = $res3->fetch_array()){
@@ -17,7 +17,7 @@ $res2 = $conn->query("SELECT * FROM `request_transport` GROUP BY address limit 1
 $data_points2 = array();
 while($result2 = $res2->fetch_array()){
     $R2 = $result2['address'];
-    $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `request_transport` WHERE `address` = '$R2' group by address order by total ASC") or die(mysqli_error());
+    $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `request_transport` WHERE `address` = '$R2' && `year` = '$year' group by address order by total ASC") or die(mysqli_error());
     $f2 = $q2->fetch_array();
     $FR2 = intval($f2['total']);
     $point2 = array('label' => $R2, 'y' => $FR2);

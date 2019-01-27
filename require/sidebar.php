@@ -4,7 +4,7 @@
         <ul class="nav">
             <li class="nav-profile">
                 <div class="image">
-                    <a href="javascript:;"><img src="assets/img/ndrrmo/logo.png" alt="" /></a>
+                    <a href="javascript:;"><img src="admin/assets/img/admin.png" alt="drrmologo" /></a>
                 </div>
                 <div class="info">
                     <?php echo $find['username']?>

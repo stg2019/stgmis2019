@@ -66,19 +66,20 @@ require '../require/logincheck.php';
                             <p><b>Graphical</b></p>
                         </div>
                         <div class="col-md-6"></div>
-                        <!--
+
                         <div class="col-md-2">
                             <button type="button" class="btn btn-danger monthly quarterly yearly reporttype" onclick="openTabular()">Filter Reports</button>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-warning monthly quarterly yearly reporttype" onclick="openHeatMap()">Heat Map</button>
                         </div>
-                        -->
+
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="email-content">
                                 <div class="panel-body">
+                                    <span id="shit">Choose from the given Graphical Report above.</span>
                                     <div id="chartContainer1" class="monthly reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer2" class="quarterly reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer3" class="yearly reporttype" style="width: 100%; height: 300px"></div>
@@ -89,44 +90,41 @@ require '../require/logincheck.php';
                     <br>
                     <div class="row">
                         <div class="col-md-4 monthly quarterly yearly reporttype">
-                            <div class="panel panel-primary" data-sortable-id="index-1">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Top Emergency Cases <?php echo $year?>
-                                    </h4>
+                                    <h4 class="panel-title">Top Emergency Cases</h4>
                                 </div>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>	
-                                            <th>Emergency Case</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $res2 = $conn->query("SELECT * FROM `dispatch` where `year` = '$year' GROUP BY dispatched_for limit 7") or die(mysqli_error());
-                                        $data_points2 = array();
-                                        while($result2 = $res2->fetch_array()){
-                                            $R2 = $result2['dispatched_for'];
-                                            $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' && `year` = '$year' group by dispatched_for") or die(mysqli_error());
-                                            $f2 = $q2->fetch_array();
-                                            $FR2 = intval($f2['total']);
-                                            $point2 = array('label' => $R2, 'y' => $FR2);
-                                            array_push($data_points2, $point2);
 
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $f2['dispatched_for']?></td>
-                                            <td><?php echo $f2['total']?></td>
-                                        </tr>
+                                <div class="panel-body">
+                                    <div class="height-sm" data-scrollbar="true">
+                                        <ul class="media-list media-list-with-divider media-messaging">
+                                            <?php
+                                            $res2 = $conn->query("SELECT * FROM `dispatch` where `year` = '$year' GROUP BY dispatched_for limit 7") or die(mysqli_error());
+                                            $data_points2 = array();
+                                            while($result2 = $res2->fetch_array()){
+                                                $R2 = $result2['dispatched_for'];
+                                                $q2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` WHERE `dispatched_for` = '$R2' && `year` = '$year' group by dispatched_for") or die(mysqli_error());
+                                                $f2 = $q2->fetch_array();
+                                                $FR2 = intval($f2['total']);
+                                                $point2 = array('label' => $R2, 'y' => $FR2);
+                                                array_push($data_points2, $point2);
 
-                                        <?php
-                                        }
+                                            ?>
+                                            <li class="media media-sm">
+                                                <div class="media-body">
+                                                    <h5 class="media-heading"><?php echo $f2['dispatched_for']?></h5>
+                                                    <p>Total Count : <?php echo $f2['total']?></p>
+                                                </div>
+                                            </li>
+                                            <?php
+                                            }
 
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-md-8">
                             <div class="email-content monthly quarterly yearly reporttype">
@@ -262,6 +260,13 @@ require '../require/logincheck.php';
             function openHeatMap() {
                 window.open("heatmap.php");
             }
+        </script>
+        <script>
+            $(function () { /* DOM ready */
+                $("#select-report").change(function () {
+                    document.getElementById("shit").style.display = "none";
+                });
+            });
         </script>
     </body>
 </html>

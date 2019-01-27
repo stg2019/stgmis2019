@@ -5,7 +5,7 @@
         <ul class="nav">
             <li class="nav-profile">
                 <div class="image">
-                    <a href="javascript:;"><img src="../assets/img/ndrrmo/logo.png" alt="" /></a>
+                    <a href="javascript:;"><img src="assets/img/admin.png" alt="drrmologo"/></a>
                 </div>
                 <div class="info">
                     <span class="hidden-xs"><?php echo $find['complete_name']?></span>

@@ -34,7 +34,8 @@
                 </div>
                 <div class="right-content">
                     <div class="login-header">
-                        <img src="assets/img/ndrrmo/logo.png" style="width:70px;height:70px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                        <img src="admin/assets/img/admin.png" style="width:90px;height:90px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                        <img src="admin/assets/img/emt.png" style="width:70px;height:70px; padding: -10px; margin:-50px 0px 0px -10px;"alt="emt" />
                         <div class="brand">
                             DRRMO
                             <small>Management Information System</small>
@@ -62,8 +63,8 @@
                             <p class="text-center">
                                 &copy; Safetech Guardians All Rights Reserved 2019
                             </p><br>
-                           <!-- <small><strong>Administrator</strong> <br> Username : kurt <br> Password : delatorre</small> <br> <br>
-                            <small><strong>EMT / Team Leader</strong> <br> Username : peter <br> Password : sacayle <br> <br>Username : alkaid <br> Password : lamig</small> -->
+                            <!-- <small><strong>Administrator</strong> <br> Username : kurt <br> Password : delatorre</small> <br> <br>
+<small><strong>EMT / Team Leader</strong> <br> Username : peter <br> Password : sacayle <br> <br>Username : alkaid <br> Password : lamig</small> -->
                         </form>
                     </div>
                 </div>

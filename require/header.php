@@ -183,7 +183,7 @@
             </li>
             <li class="dropdown navbar-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="assets/img/ndrrmo/logo.png" alt="" /> 
+                    <img src="admin/assets/img/emt.png" alt="" /> 
                     <span class="hidden-xs"><?php echo $find['complete_name']?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInDown">

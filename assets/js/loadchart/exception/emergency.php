@@ -53,14 +53,18 @@
                     e.chart.render();
                 }
             },
+            axisY: { 
+                title: "Total Count", 
+                includeZero: false,
+            },
+            axisX: {		
+                interval: 1,
+            },
             data: [ 
                 { 
                     type: "column", 
-                    //showInLegend: true, 
                     toolTipContent: "{label} <br/> {y}", 
                     indexLabel: "{y}", 
-                    //legendText: "<?php echo $f2['dispatched_for']?>",
-                    //name: "Total Patients this year",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
@@ -108,6 +112,13 @@
                     e.chart.render();
                 }
             },
+            axisY: { 
+                title: "Total Count", 
+                includeZero: false,
+            },
+            axisX: {		
+                interval: 1,
+            },
             data: [ 
                 { 
                     type: "bar", 
@@ -142,26 +153,12 @@
                 text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
-            legend: {
-                cursor: "pointer",
-                itemclick: function (e) {
-                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                        e.dataSeries.visible = false;
-                    } else {
-                        e.dataSeries.visible = true;
-                    }
-                    e.chart.render();
-                },
-                itemmouseover: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
-                    e.chart.render();
-                },
-                itemmouseout: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
-                    e.chart.render();
-                }
+            axisY: { 
+                title: "Total Count", 
+                includeZero: false,
+            },
+            axisX: {		
+                interval: 1,
             },
             data: [ 
                 { 
@@ -194,33 +191,10 @@
                 text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
-            legend: {
-                cursor: "pointer",
-                itemclick: function (e) {
-                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                        e.dataSeries.visible = false;
-                    } else {
-                        e.dataSeries.visible = true;
-                    }
-                    e.chart.render();
-                },
-                itemmouseover: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
-                    e.chart.render();
-                },
-                itemmouseout: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
-                    e.chart.render();
-                }
-            },
             data: [ 
                 { 
                     type: "pie", 
                     indexLabel: "{label} - {y}", 
-                    showInLegend: true,
-                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 
@@ -247,33 +221,10 @@
                 text: "Top Emergency Cases <?php echo $year?>"
                 }
             ],
-            legend: {
-                cursor: "pointer",
-                itemclick: function (e) {
-                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                        e.dataSeries.visible = false;
-                    } else {
-                        e.dataSeries.visible = true;
-                    }
-                    e.chart.render();
-                },
-                itemmouseover: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness * 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize + 2;
-                    e.chart.render();
-                },
-                itemmouseout: function(e) {
-                    e.dataSeries.lineThickness = e.chart.data[e.dataSeriesIndex].lineThickness / 2;
-                    e.dataSeries.markerSize = e.chart.data[e.dataSeriesIndex].markerSize - 2;
-                    e.chart.render();
-                }
-            },
             data: [ 
                 { 
                     type: "doughnut", 
                     indexLabel: "{label} - {y}", 
-                    showInLegend: true,
-                    legendText: "{label}",
                     dataPoints: <?php echo json_encode($data_points2); ?>
                 }
                     ] 

@@ -32,9 +32,9 @@ require '../require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="javascript:;">System Maintenance</a></li>
-                    <li class="active">My Account</li>
+                    <li class="active">Admin Management</li>
                 </ol>
-                <h1 class="page-header">My Account</h1>
+                <h1 class="page-header">Admin Management</h1>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">

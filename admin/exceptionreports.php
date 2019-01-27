@@ -41,6 +41,12 @@ require '../require/logincheck.php';
                 .print{
                     display: none !important;
                 }
+                .hidden-header{
+                    display: inline !important;
+                }
+                .shit{
+                    display: none;
+                }
             }
         </style>
 
@@ -57,7 +63,7 @@ require '../require/logincheck.php';
                             <div class="form-group">
                                 Select Year:
                                 <select  class="form-control selectpicker input-sm" data-style="btn-primary" id="pyear">
-                                   <option selected disabled>Select Year</option>
+                                    <option selected disabled>Select Year</option>
                                     <option value="<?php 
     if(isset($_GET['year'])){
         $value=$_GET['year']; 
@@ -190,15 +196,27 @@ require '../require/logincheck.php';
                         $date=date("F j, Y");
                         ?>
                         <div class="col-md-3">
-                            <h6><?php echo $date?></h6>
+                            <h6 style="float:right; display:none;" class="hidden-header"><?php echo $date?></h6>
                         </div>
 
                     </div>
                     <div class="row">
+                        <label class="hidden-header" style="display:none;">
+                            <br>
+                            <img src="assets/img/admin.png" style="width:130px;height:130px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                            <img src="assets/img/emt.png" style="width:100px;height:100px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                            <h3>Bacolod Disaster Risk Reduction Management Office</h3>
+                            <h4>2nd Floor, Old City Hall, Luzuriaga St., Bacolod City 6100, Negros Occidental</h4>
+                            <h4>432-3879</h4>
+                            <br>
+                        </label>
+                    </div>
+                    <div class="row " >
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
                             <div class="email-content">
                                 <div class="panel-body">
+                                    <span id="shit">Choose from the given Graphical Report above.</span>
                                     <!-- Monthly -->
                                     <div id="chartContainer1" class="colmonth reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer2" class="barmonth reporttype" style="width: 100%; height: 300px"></div>
@@ -316,6 +334,13 @@ require '../require/logincheck.php';
                 $("#pyear").on('change', function(){
                     var year=$(this).val();
                     window.location = 'exceptionreports.php?year='+year;
+                });
+            });
+        </script>
+        <script>
+            $(function () { /* DOM ready */
+                $("#select-report").change(function () {
+                    document.getElementById("shit").style.display = "none";
                 });
             });
         </script>

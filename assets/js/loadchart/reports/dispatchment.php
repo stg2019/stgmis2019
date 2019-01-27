@@ -70,8 +70,7 @@
                     showInLegend: true, 
                     legendText: "Number of Dispatchment",
                     name: "Number of Dispatchment",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
+                    indexLabel: "{y}",
                     dataPoints: [ 
                         { label: "January", y: <?php echo $fjan['total']?> },
                          { label: "February", y: <?php echo $ffeb['total']?> },

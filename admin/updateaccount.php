@@ -60,6 +60,7 @@ require '../require/logincheck.php';
                                 <?php
     $query = $conn->query("SELECT * FROM `users` WHERE `user_id` = '$_GET[user_id]'") or die(mysqli_error());
             $fetch = $query->fetch_array();
+         $userid = $fetch['user_id'];
                                 ?>
                             </div>
                             <form id="users">
@@ -68,7 +69,7 @@ require '../require/logincheck.php';
                                         <label class="col-md-4 col-form-label">Complete Name</label>
                                         <div class="col-md-8">
                                             <input type="text" name="complete_name" value="<?php echo $fetch['complete_name']; ?>" id="complete_name<?php echo $fetch['user_id']; ?>" class="form-control complete_name"/>
-                                            <input type="hidden" name="user_id" value="<?php echo $fetch['user_id']; ?>" id="user_id" class="form-control"/>
+                                            <input type="text" name="user_id" value="<?php echo $userid ?>" id="user_id" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="form-group row m-b-15">
@@ -103,7 +104,7 @@ require '../require/logincheck.php';
                                         </div>
                                     </div>
                                     <hr>
-                                    <button type="button" class="btn btn-sm btn-primary update_account"  value="<?php echo $_GET['user_id']; ?>" class="btn btn-sm btn-primary m-r-5">Update Account</button>
+                                    <button type="button" class="btn btn-sm btn-primary update_account" value="<?php echo $userid; ?>" class="btn btn-sm btn-primary m-r-5">Update Account</button>
                                     <a href="#" onclick="goBack()" class="btn btn-sm btn-white ">Back</a>
                                 </div>
                             </form>

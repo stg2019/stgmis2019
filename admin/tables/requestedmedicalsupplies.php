@@ -23,7 +23,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['requested_quantity']?></td>
             <td><?php echo $fetch['date_requested']?></td>
             <td><?php echo $fetch['complete_name']?></td>
-            <td><center><a href="approverequest.php?medical_supply_request_id=<?php echo $fetch['medical_supply_request_id']?>" class="btn btn-sm btn-primary">Approve</a></center></td>
+            <td><center><a href="approverequest.php?medical_supply_request_id=<?php echo $fetch['medical_supply_request_id']?>" class="btn btn-sm btn-primary">View</a></center></td>
 
         </tr>
         <?php
