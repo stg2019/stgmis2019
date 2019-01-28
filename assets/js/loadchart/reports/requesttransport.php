@@ -68,8 +68,7 @@
                     showInLegend: true, 
                     legendText: "Number of Request of Transport",
                     name: "Request of Transport",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
+                    indexLabel: "{y}",
                     dataPoints: [ 
                         { label: "January", y: <?php echo $fjan['total']?> },
                          { label: "February", y: <?php echo $ffeb['total']?> },
@@ -145,8 +144,7 @@
                     showInLegend: true, 
                     legendText: "Number of Request of Transport",
                     name: "Request of Transport",
-                    //    markerType: "cross",
-                    // color: "#0173c4",
+                    indexLabel: "{y}",
                     dataPoints: [ 
                         { label: "Quarter 1", y: <?php echo $q1['total']?> },
                          { label: "Quarter 2", y: <?php echo $q2['total']?> },
@@ -156,10 +154,10 @@
                 }
             ] 
         });
-      
-                chart1.render();
-                chart2.render();
-              
-                });
+
+        chart1.render();
+        chart2.render();
+
+    });
 
 </script>

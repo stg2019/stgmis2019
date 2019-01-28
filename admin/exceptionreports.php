@@ -44,9 +44,6 @@ require '../require/logincheck.php';
                 .hidden-header{
                     display: inline !important;
                 }
-                .shit{
-                    display: none;
-                }
             }
         </style>
 

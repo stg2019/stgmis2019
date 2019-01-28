@@ -34,8 +34,8 @@
                 </div>
                 <div class="right-content">
                     <div class="login-header">
-                        <img src="admin/assets/img/admin.png" style="width:90px;height:90px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
-                        <img src="admin/assets/img/emt.png" style="width:70px;height:70px; padding: -10px; margin:-50px 0px 0px -10px;"alt="emt" />
+                        <img src="admin/assets/img/admin.png" style="width:90px;height:90px; padding: -10px; margin:-40px 0px 0px -10px;"alt="drrmopicture" />
+                        <img src="admin/assets/img/emt.png" style="width:70px;height:70px; padding: -10px; margin:-40px 0px 0px -10px;"alt="emt" />
                         <div class="brand">
                             DRRMO
                             <small>Management Information System</small>

@@ -1,5 +1,9 @@
 <?php
 $year = date('Y');
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 
 // monthly request of transport shit
 require '../require/dbconnection.php';
