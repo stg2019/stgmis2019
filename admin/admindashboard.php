@@ -175,26 +175,24 @@ $fetch = $query->fetch_array();
                                     $month = date("M");
                                     $year = date("Y");
                     ?>
-                    <div class="col-md-12">
-                        <div class="panel panel-primary" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">DISPATCHMENT FOR THE YEAR <?php echo date('Y')?></h4>
-                            </div>
-
-                            <div class="panel-body">
-                                <div id="chartContainer1" style="width: 100%; height: 300px"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="email-content">
+                                <div class="panel-body">
+                                    <div id="chartContainer1" style="width: 100%; height: 300px"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+<br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
                                 <?php
-    $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
-                                    $fetch = $query->fetch_array();
+                                $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
+                                $fetch = $query->fetch_array();
                                 ?>
                                 <h4 class="panel-title">Recent Dispatchment & Street Traffic Condition in Bacolod City - Destination: <?php echo $fetch['call_location']?> in <span id="output"></span></h4>
                             </div>

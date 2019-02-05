@@ -91,7 +91,7 @@ require '../require/logincheck.php';
                                         </div> 
                                         -->
                                         <hr>
-                                        <button type = "button" id="savechanges" class = "btn btn-sm btn-info">Save Changes</button>
+                                        <button type = "button" id="savechanges" class = "btn btn-sm btn-info update_account">Save Changes</button>
                                         <a href="dispatchment.php" class="btn btn-sm btn-white">Back</a>
                                     </form>
                                 </div>

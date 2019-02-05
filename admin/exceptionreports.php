@@ -250,7 +250,7 @@ require '../require/logincheck.php';
                                     <?php require 'exceptionreports/emergency.php'?>
                                     <?php require 'exceptionreports/ambulance.php'?>
                                     <?php require 'exceptionreports/driver.php'?>
-                                    <?php require 'exceptionreports/patient.php'?>
+                                    <?php require 'exceptionreports/patient.php'?> 
                                 </div>
 
                             </div>

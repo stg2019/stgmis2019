@@ -163,7 +163,7 @@ require 'require/logincheck.php';
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-7">
                         <div class="widget-chart with-sidebar bg-white">
                             <div class="widget-chart-content">
                                 <h4 class="chart-title text-success m-r-5">
@@ -183,7 +183,7 @@ require 'require/logincheck.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-5">
                         <div class="email-content monthly quarterly yearly reporttype">
                             <div class="panel-body">
                                 <div id="chartContainer3" style="width: 100%; height: 278px"></div>

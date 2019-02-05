@@ -253,6 +253,10 @@
                     e.chart.render();
                 }
             },
+            axisX: {	
+                interval: 2,
+                labelFontColor: "black",
+            },
             data: [ 
                 { 
                     type: "column", 

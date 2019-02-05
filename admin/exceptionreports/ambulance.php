@@ -1,22 +1,32 @@
 <div class="pieambulance doughnutambulance reporttype">
-    <?php
-    require '../require/dbconnection.php';
-    $query1 = $conn->query("SELECT *, count(*) as perambulance FROM `dispatch` where `year` = '$year' group by ambulance") or die(mysqli_error());
-    while($fetch = $query1->fetch_array()){
-    ?>                                      
-    <div class="col-md-3 col-sm-6">
-        <div class="widget widget-stats bg-gradient-danger" onclick="#">
-            <div class="stats-icon"><i class="fa fa-ambulance"></i></div>
-            <div class="stats-info">
-                <h4><?php echo $fetch['ambulance']?></h4>
-                <p><?php echo $fetch['perambulance']?></p>	
-            </div>
-        </div>
-    </div>
-    <?php
-    }
-    $conn->close();
-    ?>
+    <label class="text text-danger ">List of Drivers</label>
+    <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
+        <thead>
+            <tr class="warning">
+                <th>Ambulance Name</th>
+                <th>Number Used</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require '../require/dbconnection.php';
+            $year = date('Y');
+            if(isset($_GET['year']))
+            {
+                $year=$_GET['year'];
+            }
+            $query = $conn->query("SELECT *, count(*) as perambulance FROM `dispatch` where `year` = '$year' group by ambulance") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+            ?>                                      
+            <tr>
+                <td><?php echo $fetch['ambulance']?></td>
+                <td><?php echo $fetch['perambulance']?></td>
+            </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
     <hr>
     <?php require 'require/footerreport.php'?>
 </div>

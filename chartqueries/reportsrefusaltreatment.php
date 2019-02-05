@@ -1,6 +1,9 @@
 <?php
 $year = date('Y');
-
+if(isset($_GET['year']))
+{
+    $year=$_GET['year'];
+}
 // monthly request of transport shit
 require 'require/dbconnection.php';
 $qjan = $conn->query("SELECT COUNT(*) as total FROM `refusal_treatment` WHERE `month` = 'Jan' && `year` = '$year'") or die(mysqli_error());

@@ -69,7 +69,7 @@ require 'require/logincheck.php';
                                             <td><?php echo $fetch['contact_no']?></td>
                                             <td><?php echo $fetch['home_address']?></td>
                                             <td>
-                                                <a href="editdispatch.php?dispatch_id=<?php echo $fetch['dispatch_id']?>&service_no=<?php echo $fetch['service_no']?>" class="btn btn-sm btn-success">View</a>
+                                                <a href="overviewpatient.php?patient_id=<?php echo $fetch['patient_id']?>" class="btn btn-sm btn-success">View</a>
                                             </td>
                                         </tr>
                                         <?php

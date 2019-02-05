@@ -31,6 +31,16 @@ require '../require/logincheck.php';
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <?php require '../assets/js/loadchart/reports/refusaltreatment.php'?>
         <?php require '../assets/js/loadchart/reports/customrefusaltreatment.php'?>
+        <style type="text/css">
+            @media print {
+                .print{
+                    display: none !important;
+                }
+                .hidden-header{
+                    display: inline !important;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -39,7 +49,44 @@ require '../require/logincheck.php';
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content content-full-width">
                 <div class="p-20">
-                    <div class="row">
+                    <div class="row print">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select  class="form-control selectpicker input-sm" data-style="btn-primary" id="pyear">
+                                    <option selected disabled>Select Year</option>
+                                    <option value="<?php 
+    if(isset($_GET['year'])){
+        $value=$_GET['year']; 
+        echo $value;
+    }
+        else{
+            echo date('Y');
+        }
+                                                   ?>">
+                                        <?php 
+                                        if(isset($_GET['year'])){
+                                            $value=$_GET['year']; 
+                                            echo $value;
+                                        }
+                                        else{
+                                            echo date('Y');
+                                        }
+                                        ?></option>
+
+                                    <?php
+                                    require 'require/dbconnection.php';
+                                    $query = $conn->query("SELECT * FROM `dispatch` group by year") or die(mysqli_error());
+
+                                    while($fetch = $query->fetch_array()){
+                                    ?>
+                                    <option value="<?php echo $fetch['year'];?>"><?php echo $fetch['year']?></option>
+                                    <?php
+                                    }
+                                    ?> 
+                                </select>
+                            </div>
+                            <p><b>Graphical</b></p>
+                        </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="form-control selectpicker input-sm" data-style="btn-primary" id="select-report" name="filterbutton" >
@@ -49,16 +96,46 @@ require '../require/logincheck.php';
                                     <option value="yearly">Yearly</option>
                                 </select>
                             </div>
-                            <p><b>Graphical</b></p>
                         </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-2">
+                            <div class="alert alert-success fade in m-b-15">
+                                <strong><i class="fa fa-print"></i> Press P to Print!</strong>
+                                <span class="close" data-dismiss="alert">&times;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-1"></div>
+                        <?php
+                        date_default_timezone_set('Asia/Manila');
+                        $date=date("F j, Y");
+                        ?>
+                        <div class="col-md-3">
+                            <h6 style="float:right; display:none;" class="hidden-header"><?php echo $date?></h6>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <label class="hidden-header" style="display:none;">
+                            <br>
+                            <img src="assets/img/admin.png" style="width:130px;height:130px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                            <img src="assets/img/emt.png" style="width:100px;height:100px; padding: -10px; margin:-50px 0px 0px -10px;"alt="drrmopicture" />
+                            <h3>Bacolod Disaster Risk Reduction Management Office</h3>
+                            <h4>2nd Floor, Old City Hall, Luzuriaga St., Bacolod City 6100, Negros Occidental</h4>
+                            <h4>432-3879</h4>
+                            <br>
+                        </label>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="email-content">
                                 <div class="panel-body">
+                                    <span id="shit">Choose from the given Graphical Report above.</span>
                                     <div id="chartContainer1" class="monthly reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer2" class="quarterly reporttype" style="width: 100%; height: 300px"></div>
                                     <div id="chartContainer3" class="yearly reporttype" style="width: 100%; height: 300px"></div>
+                                    <?php require 'otherreports/monthlyrefusal.php'?>    
                                 </div>
                             </div>
                         </div>
@@ -133,6 +210,22 @@ require '../require/logincheck.php';
                 }).change();
             });
         </script>
+        <script>
+            $(document).ready(function(){
+                $("#pyear").on('change', function(){
+                    var year=$(this).val();
+                    window.location = 'reportrefusaltreatment.php?year='+year;
+                });
+            });
+        </script>
+        <script>
+            $(function () { /* DOM ready */
+                $("#select-report").change(function () {
+                    document.getElementById("shit").style.display = "none";
+                });
+            });
+        </script>
+        <?php require 'require/pressp.php'?>
 
     </body>
 </html>

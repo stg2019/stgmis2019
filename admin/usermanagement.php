@@ -86,7 +86,9 @@ function getstatus($status){
                                                 <td><?php echo $fetch['username']?></td>
                                                 <td>*************</td>
                                                 <td><?php echo $fetch['user_role']?></td>
-                                                <td><?php echo getstatus($fetch['status'])?></td>
+                                                <td><?php  if ($fetch['status'] == '1') echo "<span class='badge badge-info'>Active</span>";
+                if ($fetch['status'] == '0') echo "<span class='badge badge-danger'>Inactive</span>";
+                                                    ?></td>
                                                 <td><center><a href="updateaccount.php?user_id=<?php echo $fetch['user_id']?>" class="btn btn-sm btn-primary">Update Account</a></center></td>
                                             </tr>   
                                             <?php

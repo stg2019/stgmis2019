@@ -26,7 +26,7 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
         <script src="../assets/plugins/pace/pace.min.js"></script>
-        
+
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -44,14 +44,62 @@ require '../require/logincheck.php';
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-primary" >
-                            <div class="panel-heading ">
-                                <h4 class="panel-title">List of Medical Supplies</h4>
+                        <div class="panel panel-primary panel-with-tabs" data-sortable-id="ui-widget-9">
+                            <div class="panel-heading">
+                                <ul id="myTab" class="nav nav-tabs pull-right">
+                                    <li class="active"><a href="#current" data-toggle="tab"><span class="hidden-xs">Current Inventory</span></a></li>
+                                    <li><a href="#approved" data-toggle="tab"><span class="hidden-xs">Approved Medical Supply Request</span></a></li>
+                                    <li><a href="#used" data-toggle="tab"><span class="hidden-xs">Medical Supplies Used - EMT</span></a></li>
+                                </ul>
+                                <h4 class="panel-title">Inventory</h4>
                             </div>
-                            <div class="panel-body">
-                                <div id="inventoryTable"></div>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="current">
+                                    <div class="panel-body">
+                                        <div id="inventoryTable"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="approved">
+                                    <div class="panel-body">
+                                        <div id="approvedTable"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="used">
+                                    <div class="panel-body">
+                                        <table id="data-table" class="table table-hover table-condensed" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Medical Supply Name</th>
+                                                    <th>Quantity Used</th>
+                                                    <th>Dispatch</th>
+                                                    <th>Location</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+    $query = $conn->query("select * from `items_used`, `dispatch` where items_used.dispatch_id = dispatch.dispatch_id") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+                                                ?>                                      
+                                                <tr>
+                                                    <td><?php echo $fetch['medical_supply_name']?></td>
+                                                    <td><?php echo $fetch['quantity_used']?></td>
+                                                    <td><?php echo $fetch['dispatched_for']?></td>
+                                                    <td><?php echo $fetch['call_location']?></td>
+                                                    <td><?php echo $fetch['date_created']?></td>
+                                                </tr>
+                                                <?php
+            }
+            $conn->close();
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 

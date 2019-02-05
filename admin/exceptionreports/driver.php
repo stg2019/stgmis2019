@@ -1,22 +1,33 @@
-<div class="piedriver doughnutdriver reporttype">
-    <?php
-    require '../require/dbconnection.php';
-    $query1 = $conn->query("SELECT *, count(*) as perdriver FROM `dispatch` where `year` = '$year' group by driver") or die(mysqli_error());
-    while($fetch = $query1->fetch_array()){
-    ?>                                      
-    <div class="col-md-3 col-sm-6">
-        <div class="widget widget-stats bg-gradient-danger" onclick="#">
-            <div class="stats-icon"><i class="fa fa-car"></i></div>
-            <div class="stats-info">
-                <h4><?php echo $fetch['driver']?></h4>
-                <p><?php echo $fetch['perdriver']?></p>	
-            </div>
-        </div>
-    </div>
-    <?php
-    }
-    $conn->close();
-    ?>
+<div class="piedriver doughnut reporttype">
+    <label class="text text-danger ">List of Drivers</label>
+    <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
+        <thead>
+            <tr class="warning">
+                <th>Driver Name</th>
+                <th>Total Dispatch</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require '../require/dbconnection.php';
+            $year = date('Y');
+            if(isset($_GET['year']))
+            {
+                $year=$_GET['year'];
+            }
+            $query = $conn->query("SELECT *, count(*) as perdriver FROM `dispatch` where `year` = '$year' group by driver") or die(mysqli_error());
+            while($fetch = $query->fetch_array()){
+            ?>                                      
+            <tr>
+                <td><?php echo $fetch['driver']?></td>
+                <td><?php echo $fetch['perdriver']?></td>
+            </tr>
+            <?php
+            }
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
     <hr>
     <?php require 'require/footerreport.php'?>
 </div>

@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
     showInventory();
+    showApproved();
     //add stocks
     $(document).on('click', '#addnew', function(){
         if ($('#medical_supply_name').val()=="" || $('#number_of_stocks').val()==""){
@@ -58,6 +59,22 @@ function showInventory(){
         success: function(response){
             $('#inventoryTable').html(response);
             var table = $('#inventorytable').DataTable();
+        }
+    });
+}
+
+
+function showApproved(){
+    $.ajax({
+        url: 'tables/approvedrequest.php',
+        type: 'POST',
+        async: false,
+        data:{
+            show: 1
+        },
+        success: function(response){
+            $('#approvedTable').html(response);
+            var table = $('#approvedtable').DataTable();
         }
     });
 }

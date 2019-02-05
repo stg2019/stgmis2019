@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2019 at 05:08 PM
+-- Generation Time: Jan 30, 2019 at 04:58 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -38,7 +38,7 @@ CREATE TABLE `ambulance` (
 --
 
 INSERT INTO `ambulance` (`ambulance_id`, `plate_no`, `vehicle_name`, `status`) VALUES
-(1, 'WRT210', 'Samaritan 1', 'Unbook'),
+(1, 'WRT210', 'Samaritan 1', 'Booked'),
 (2, 'FYT291', 'Samaritan 2', 'Unbook'),
 (3, 'WMQ130', 'Samaritan 3', 'Unbook'),
 (4, 'EQL297', 'Samaritan 4', 'Unbook'),
@@ -178,7 +178,8 @@ INSERT INTO `call_logs` (`call_id`, `date_time_call`, `complete_address`, `emerg
 (49, '01/18/2019 1:38 PM', 'Mandalagan, Negros Occidental, Philippines', 'Heat Stroke', 'Benjamin Franklin', '0923013910'),
 (50, '01/18/2019 1:51 PM', 'North Highway', 'Multiple Vehicle Accident with mass casualty', 'Will Cortez', '034-2192'),
 (51, '01/18/2019 3:34 PM', 'Alijis', 'NA', 'Carlo Reyes', '0123981209'),
-(52, '01/24/2019 12:00 PM', 'Balboa St., Bacolod City, Negros Occidental', 'Car Accident', 'Rommel Adricula', '4332449');
+(52, '01/24/2019 12:00 PM', 'Balboa St., Bacolod City, Negros Occidental', 'Car Accident', 'Rommel Adricula', '4332449'),
+(53, '01/27/2019 10:18 PM', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', 'Car Accident', 'Kurt Dela Torre', '4332449');
 
 -- --------------------------------------------------------
 
@@ -299,7 +300,8 @@ INSERT INTO `dispatch` (`dispatch_id`, `service_no`, `date_time_call`, `ambulanc
 (85, 'EMS-0055', 'January 18, 2019 1:42 pm', 'Samaritan 3', 'Major Trauma', 'Mandalagan, Negros Occidental, Philippines', 'Motor Accident', '3', '2131', '2321', 'Elmer Haro', 'None', 'No', '1:42 pm', 'January 18, 2019 1:42 pm', 'Jan', '2019', '10.6855122', '122.97475120000001'),
 (86, 'EMS-0057', '01/18/2019 1:55 PM', 'Samaritan 1', 'Respiratory Distress', 'North Highway', 'NA', '7', '2131', '3121', 'Alvin Mananquil', '', 'Yes', '1:54 pm', 'January 18, 2019 1:54 pm', 'Jan', '2019', '', ''),
 (87, 'EMS-0056', 'January 18, 2019 3:36 pm', 'Samaritan 3', 'Head Injury', 'Alijis', 'NA', '1', '12413', '66544', 'Alvin Mananquil', 'None', 'No', '3:36 pm', 'January 18, 2019 3:36 pm', 'Jan', '2019', '', ''),
-(88, 'EMT20190088', 'January 24, 2019 12:03 pm', 'Samaritan 1', 'Hypertension', 'Balboa St., Bacolod City, Negros Occidental', '1', '1', '1', 'Alvin Mananquil', 'Alkaid Lamig', 'None', 'No', '12:03 pm', 'January 24, 2019 12:03 pm', 'Jan', '2019', '10.6815761', '122.96972600000004');
+(88, 'EMT20190088', 'January 24, 2019 12:03 pm', 'Samaritan 1', 'Hypertension', 'Balboa St., Bacolod City, Negros Occidental', '1', '1', '1', 'Alvin Mananquil', 'Alkaid Lamig', 'None', 'No', '12:03 pm', 'January 24, 2019 12:03 pm', 'Jan', '2019', '10.6815761', '122.96972600000004'),
+(89, 'EMT20190089', 'January 27, 2019 10:19 pm', 'Samaritan 1', 'Bleeding/Hemorrhage', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '1', '1', '1', 'Alkaid Lamig', 'Arianne Torres', 'None', 'No', '10:19 pm', 'January 27, 2019 10:19 pm', 'Jan', '2019', '10.5988223', '122.92171229999997');
 
 -- --------------------------------------------------------
 
@@ -328,7 +330,7 @@ INSERT INTO `driver` (`driver_id`, `driver_name`, `age`, `gender`, `contact_numb
 (3, 'Peter Sacayle', '21', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Booked'),
 (4, 'Elmer Haro', '40', 'Male', '4332449 local 181', 'Sum-ag Bacolod City', '9:00 AM - 9:00 PM', 'Unbook'),
 (5, 'Alvin Mananquil', '40', 'Male', '4332449', 'Bacolod City', '9:00 PM - 9:00 AM', 'Unbook'),
-(6, 'Arianne Torres', '27', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Unbook');
+(6, 'Arianne Torres', '27', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Booked');
 
 -- --------------------------------------------------------
 
@@ -505,7 +507,8 @@ INSERT INTO `medical_supply_request` (`medical_supply_request_id`, `medical_supp
 (14, 'Sample', '3', 'December 8, 2018 10:33 pm', 'Pending', 'Dec', '2018', 'December 29, 2018 6:41 pm', 184),
 (15, 'Alcohol', '0', 'December 30, 2018 5:46 pm', 'Pending', 'Dec', '2018', 'Pending', 183),
 (16, 'Alcohol', '0', 'January 6, 2019 3:46 pm', 'Pending', 'Jan', '2019', 'Pending', 183),
-(17, 'Cotton', '20', 'January 24, 2019 11:31 am', 'Pending', 'Jan', '2019', 'Pending', 183);
+(17, 'Cotton', '20', 'January 24, 2019 11:31 am', 'Pending', 'Jan', '2019', 'Pending', 183),
+(18, 'Alcohol', '10', 'January 28, 2019 11:22 pm', 'Pending', 'Jan', '2019', 'Pending', 183);
 
 -- --------------------------------------------------------
 
@@ -557,7 +560,7 @@ CREATE TABLE `medical_supply_stocks_emt` (
 --
 
 INSERT INTO `medical_supply_stocks_emt` (`stock_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`) VALUES
-(1, 'Alcohol', 'First Aid', 'Supplier A', 33, 'Reorder'),
+(1, 'Alcohol', 'First Aid', 'Supplier A', 10, 'Reorder'),
 (2, 'Cotton', 'First Aid', 'Supplier A', 13, 'Reorder'),
 (3, 'Betadine', 'First Aid', 'Supplier B', 206, 'Reorder'),
 (5, 'Gloves', 'First Aid', 'Supplier A', 110, 'Reorder'),
@@ -855,7 +858,7 @@ CREATE TABLE `request_transport` (
 --
 
 INSERT INTO `request_transport` (`request_transport_id`, `date_time`, `requesting_party`, `contact_no`, `patient_name`, `address`, `age`, `gender`, `medical_history`, `special_considerations`, `froma`, `toa`, `fromb`, `gcs`, `bp`, `rr`, `pr`, `sat`, `requesting_approval`, `approval`, `date_created`, `month`, `year`) VALUES
-(5, '09/03/2018 6:51 PM', 'Party YUI', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', 'September 17, 2018', 'Sep', '2018'),
+(5, '09/03/2018 6:51 PM', 'Party YUI', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', 'September 17, 2018', 'Jan', '2019'),
 (6, '09/03/2018 6:52 PM', 'Party E', '1234', 'Patient H', 'Margarita Street', '28', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '12', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'September 17, 2018', 'Sep', '2018'),
 (7, '09/01/2018 1:32 PM', 'Party GGGFFF', '4332449', 'Pedro Colmenares', 'Andalucia Street', '28', 'Male', 'None', 'Chest Tube Drainage', 'Bacolod City', 'Bacolod City', 'Bacolod City', '10', '10', '10', '10', '10', 'Doctor A', 'Doctor B', 'September 17, 2018', 'Sep', '2018'),
 (8, '09/01/2018 2:11 PM', 'Party G', '4332449', 'Patient DFG', 'Bugnay Rd. Villamonte', '20', 'Male', 'None', 'Chest Tube Drainage', '12', '12', '12', '12', '12', '121', '12', '12', 'Dr. Delatorre', 'Dr. Delatorre', 'September 17, 2018', 'Sep', '2018'),
@@ -872,7 +875,8 @@ INSERT INTO `request_transport` (`request_transport_id`, `date_time`, `requestin
 (19, '12/01/2018 7:50 PM', 'Party RTY', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '120/80', '120', '120', '12', 'Alkaid Lamig', 'Peter Sacayle', 'December 1, 2018', 'Dec', '2018'),
 (20, '12/01/2018 8:03 PM', 'LKJH', '4332449', 'Peter Sacayle', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/70', '', '', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
 (21, '12/01/2018 8:05 PM', 'Party ABC', '4332449', 'Alkaid Lamig', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '20', '120/70', '120', '120', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'December 1, 2018', 'Dec', '2018'),
-(22, '12/01/2018 8:08 PM', 'Party JHG', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '200', '200', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018');
+(22, '12/01/2018 8:08 PM', 'Party JHG', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '200', '200', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
+(23, 'January 29, 2019 - 12:20 am', 'Party STG', '4332449', 'Alkaid Lamig', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '12', '12', '12', 'Kurt Dela Torre', 'Kurt Dela Torre', 'January 29, 2019', 'Jan', '2019');
 
 -- --------------------------------------------------------
 
@@ -898,10 +902,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `complete_name`, `contact_no`, `home_address`, `username`, `password`, `user_role`, `status`, `date_created`, `time_created`) VALUES
-(182, 'Kurt Dela Torre', '4332449', 'Sum-ag Bacolod City', 'kurt', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja5948a0b701a40b762d5a1311cc171a0607734ea', 'Administrator', 1, 'September 28, 2018', '11:50 pm'),
+(182, 'Kurt Dela Torre', '4332449', 'Mansilingan, Bacolod City', 'kurt', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja5948a0b701a40b762d5a1311cc171a0607734ea', 'Administrator', 1, 'September 28, 2018', '11:50 pm'),
 (183, 'Peter Sacayle', '4332449', 'Villamonte, Bacolod City', 'peter', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj60b1cfb0ae85b40c40e85ee2e0da328b638ba643', 'EMT', 1, 'September 28, 2018', '11:51 pm'),
 (184, 'Alkaid Lamig', '4332449', 'Mansilingan, Bacolod City', 'alkaid', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj71c12f2610b2b0f61eb92eaeca53ece710c141e4', 'EMT', 1, 'September 28, 2018', '11:51 pm'),
-(186, 'juan dela cruz', '4332449', 'Lizares Avenue, Bacolod City', 'juan', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj2a5c0ba4cb7dcb073059250118e118971f35b5e4', 'EMT', 0, 'October 14, 2018', '5:35 pm'),
+(186, 'juan dela cruz', '4332449', 'Lizares Avenue, Bacolod City', 'juan23', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj2a5c0ba4cb7dcb073059250118e118971f35b5e4', 'EMT', 0, 'October 14, 2018', '5:35 pm'),
 (197, 'Sample User', '4332449', 'Bacolod City', 'sample', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj12dea96fec20593566ab75692c9949596833adc9', 'EMT', 1, 'December 13, 2018', '10:30 pm'),
 (199, 'Test', '4332448', 'Bacolod City', 'test', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagja94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'EMT', 1, 'December 13, 2018', '10:50 pm'),
 (202, 'Alvin Mananquil', '4332449', 'Bacolod City', 'alvinmis', 'STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagje33b6e9704fd2ada4484495347b2bb1d6b8ad389', 'EMT', 1, 'December 21, 2018', '2:32 pm');
@@ -1278,7 +1282,31 @@ INSERT INTO `users_activity_log` (`log_id`, `user_id`, `action`, `date_time`) VA
 (371, 183, 'Used 2 Cotton', 'January 24, 2019 - 10:52 pm'),
 (372, 183, 'Used 1 Betadine', 'January 24, 2019 - 10:58 pm'),
 (373, 183, 'Used 1 Gloves', 'January 24, 2019 - 11:01 pm'),
-(374, 183, 'Ended Dispatchment Driver', 'January 24, 2019 - 11:07 pm');
+(374, 183, 'Ended Dispatchment Driver', 'January 24, 2019 - 11:07 pm'),
+(375, 183, 'Added New Call Log', 'January 27, 2019 - 10:18 pm'),
+(376, 183, 'Added New Dispatch', 'January 27, 2019 - 10:19 pm'),
+(377, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:28 pm'),
+(378, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:31 pm'),
+(379, 182, 'Updated account of ', 'January 27, 2019 - 10:33 pm'),
+(380, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:35 pm'),
+(381, 0, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:35 pm'),
+(382, 0, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:36 pm'),
+(383, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:51 pm'),
+(384, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:55 pm'),
+(385, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:56 pm'),
+(386, 182, 'Updated account of Peter Sacayles', 'January 27, 2019 - 10:56 pm'),
+(387, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 10:58 pm'),
+(388, 182, 'Updated account of juan dela cruzs', 'January 27, 2019 - 11:00 pm'),
+(389, 182, 'Updated account of juan dela cruzs', 'January 27, 2019 - 11:01 pm'),
+(390, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 11:02 pm'),
+(391, 182, 'Updated account of Alkaid Lamigs', 'January 27, 2019 - 11:04 pm'),
+(392, 182, 'Updated account of juan dela cruz', 'January 27, 2019 - 11:05 pm'),
+(393, 182, 'Updated account of Peter Sacayle', 'January 27, 2019 - 11:06 pm'),
+(394, 182, 'Updated account of Alkaid Lamig', 'January 27, 2019 - 11:07 pm'),
+(395, 182, 'Updated account of Peter Sacayle', 'January 27, 2019 - 11:08 pm'),
+(396, 182, 'Updated account of Peter Sacayle', 'January 27, 2019 - 11:09 pm'),
+(397, 183, 'Requested 10 Alcohol', 'January 28, 2019 - 11:22 pm'),
+(398, 183, 'Added New Request of Transport', 'January 29, 2019 - 12:20 am');
 
 -- --------------------------------------------------------
 
@@ -1527,7 +1555,7 @@ ALTER TABLE `assessment`
 -- AUTO_INCREMENT for table `call_logs`
 --
 ALTER TABLE `call_logs`
-  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `db_backup`
 --
@@ -1537,7 +1565,7 @@ ALTER TABLE `db_backup`
 -- AUTO_INCREMENT for table `dispatch`
 --
 ALTER TABLE `dispatch`
-  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
 -- AUTO_INCREMENT for table `driver`
 --
@@ -1557,7 +1585,7 @@ ALTER TABLE `items_used`
 -- AUTO_INCREMENT for table `medical_supply_request`
 --
 ALTER TABLE `medical_supply_request`
-  MODIFY `medical_supply_request_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `medical_supply_request_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `medical_supply_stocks`
 --
@@ -1592,7 +1620,7 @@ ALTER TABLE `refusal_treatment`
 -- AUTO_INCREMENT for table `request_transport`
 --
 ALTER TABLE `request_transport`
-  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -1602,7 +1630,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_activity_log`
 --
 ALTER TABLE `users_activity_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=399;
 --
 -- AUTO_INCREMENT for table `vital_signs`
 --

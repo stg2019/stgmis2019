@@ -27,7 +27,7 @@
                                 {
                                     $service_no = "EMT" . $year . "00" .$service_no;
                                 }
-                                else if ($service_no > 100) {
+                                else if ($service_no >= 100) {
                                     $service_no = "EMT" . $year . "0" .$service_no;
                                 }
 
