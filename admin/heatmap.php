@@ -16,10 +16,17 @@
             background-color: #dff9fb; 
             position:absolute;
             top:545px;
-            left:1250px;
+            left:1390px;
             cursor: move;
         }
-
+        #heatmapchart {
+            z-index:100; 
+            background-color: #dff9fb; 
+            position:absolute;
+            top:545px;
+            left:1100px;
+            cursor: move;
+        }
         #radius-label, #opacity-label, #max-label {
             margin-top: 10px;
         }
@@ -34,6 +41,7 @@
         #max-slider .ui-slider-handle {
             cursor:pointer;
         }
+
     </style>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
@@ -48,6 +56,9 @@
     <script src="../assets/js/papaparse.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&libraries=visualization"></script>
     <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../assets/js/jquery.canvasjs.min.js"></script>
+    <?php require '../assets/js/loadchart/heatmap/dispatchyearly.php'?>
     <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 
@@ -145,6 +156,7 @@
 
 
             $( "#info" ).draggable();
+            $( "#heatmapchart" ).draggable();
 
             $( "#radius-slider" ).slider({
                 orientation: "horizontal",
@@ -206,12 +218,12 @@
                     </thead>
                     <tbody>
                         <?php
-                        require '../require/dbconnection.php';
-                        $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
-                        $fetch1 = $query1->fetch_array();
-                        $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
-                        while($fetch = $query->fetch_array()){
-                            $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
+    require '../require/dbconnection.php';
+    $query1 = $conn->query("SELECT count(*) as perdispatch FROM `dispatch`") or die(mysqli_error());
+    $fetch1 = $query1->fetch_array();
+    $query = $conn->query("SELECT dispatched_for, count(*) as count FROM `dispatch` group by dispatched_for order by count DESC") or die(mysqli_error());
+    while($fetch = $query->fetch_array()){
+        $perdispatch = ($fetch['count']/$fetch1['perdispatch']) * 100;
                         ?>     
                         <tr>
                             <td><?php echo $fetch['dispatched_for']?></td>
@@ -219,7 +231,7 @@
                         </tr>
 
                         <?php
-                        }
+    }
 
                         ?>
                     </tbody>
@@ -233,6 +245,16 @@
                 <div id="opacity-label">opacity: 0.5</div>
                 <div id="opacity-slider"></div> <br>
                 <div><a href="exportcsv.php">Download CSV</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="heatmapchart">
+        <div class="map-float-table width-sm hidden-xs p-15">
+            <h5 class="m-t-0"><span class="text-danger m-r-5">Graphical Reports for Dispatchment</span> </h5>
+            <div data-scrollbar="true" class="height-md">
+                <div id="chartContainer1" style="width: 100%; height: 300px"></div>
+                <div id="chartContainer2" style="width: 100%; height: 300px"></div>
+                <div id="chartContainer3" style="width: 100%; height: 300px"></div>
             </div>
         </div>
     </div>

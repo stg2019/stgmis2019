@@ -1,5 +1,5 @@
 <div class="patient reporttype">
-    <h4 class="text text-danger">Patients List for the Year <?php echo $_GET['year']?> - <?php echo $fetch['total']?> patients</h4>
+    <h4 class="text text-danger">Patients List for the Year <?php echo $year?> - <?php echo $fetch['total']?> patients</h4>
     <table id="emttable" class="table table-bordered table-condensed nowrap" width="100%">
         <thead >
             <tr  class="warning">

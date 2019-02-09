@@ -69,6 +69,7 @@ $(document).ready(function(){
             }
         });
     });
+
 });
 
 // show ambulance EMT

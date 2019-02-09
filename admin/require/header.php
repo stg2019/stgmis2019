@@ -21,11 +21,60 @@
                     <?php
                     date_default_timezone_set('Asia/Manila');
                     $date_today = date('F j, Y');
+                    $query2 = $conn->query("SELECT COUNT(*) as total FROM `medical_supply_stocks` WHERE `running_balance` <= 15") or die(mysqli_error());
+                    $fetch2 = $query2->fetch_array();
+
+                    if ($fetch2['total'] <= 15) {
+                        echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
+                    }
+                    else if ($fetch2['total'] > 15) {
+                        // do nothing
+                    }
+                    ?>
+                    <i class="fa fa-medkit"></i>
+                </a>
+                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                    <li class="dropdown-header">Medical Supplies (<?php echo $fetch2['total']?>)</li>
+                    <?php 
+    $query3 = $conn->query("SELECT * FROM `medical_supply_stocks` where `running_balance` <= '15' limit 5") or die(mysqli_error());
+                        while($fetch3 = $query3->fetch_array()){
+                    ?>
+
+                    <li class="media">
+                        <a href="inventory.php">
+                            <div class="media-left"><i class="fa fa-map-marker media-object bg-red"></i></div>
+                            <div class="media-body">
+                                <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
+                                <p>Running balance: <?php echo $fetch3['running_balance']?></p>
+                                <div class="text-muted f-s-11">Supplier: <?php echo $fetch3['supplier']?></div>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                        }
+
+                    ?>
+                    <li class="dropdown-footer text-center">
+                        <a href="inventory.php">View more</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                    <?php
+                    date_default_timezone_set('Asia/Manila');
+                    $date_today = date('F j, Y');
                     $query2 = $conn->query("SELECT COUNT(*) as total FROM `request_transport` WHERE `date_created` = '$date_today'") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
+                    if ($fetch2['total'] >= 1) {
+                        echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
+                    }
+                    else if ($fetch2['total'] <=0 ) {
+                        // do nothing
+                    }
                     ?>
                     <i class="fa fa-map-marker"></i>
-                    <span class="label"><?php echo $fetch2['total']?></span>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
                     <li class="dropdown-header">Request for Transport (<?php echo $fetch2['total']?>)</li>
@@ -49,7 +98,7 @@
 
                     ?>
                     <li class="dropdown-footer text-center">
-                        <a href="javascript:;">View more</a>
+                        <a href="requesttransportrecord.php">View more</a>
                     </li>
                 </ul>
             </li>
@@ -57,25 +106,28 @@
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <?php
-
-                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch`") or die(mysqli_error());
+                    date_default_timezone_set('Asia/Manila');
+                    $date_today=date("F j, Y");
+                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` where `date_created` = '$date_today'") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
 
-
-
-                    //echo $timestamp. '<br>';
-                    //echo $new_date_format;
+                    if ($fetch2['total'] >= 1) {
+                        echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
+                    }
+                    else if ($fetch2['total'] <=0 ) {
+                        // do nothing
+                    }
                     ?>
                     <i class="fa fa-ambulance"></i>
-                    <span class="label"><?php echo $fetch2['total']?></span>
+
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Dispatchment (<?php echo $fetch2['total']?>)</li>
+                    <li class="dropdown-header">Dispatchment Today (<?php echo $fetch2['total']?>)</li>
                     <?php 
     $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){
                             date_default_timezone_set("Asia/Manila");     
-                            $date_created = $fetch3['date_created'];
+                            $date_created = $fetch3['date_time_call'];
                             $timestamp = strtotime($date_created);
                             $new_date_format = date('Y-m-d g:i:s a', $timestamp);
                     ?>

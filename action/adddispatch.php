@@ -16,7 +16,7 @@ if(isset($_POST['add'])){
     $driver = $_POST['driver'];
     $care_in_progress = $_POST['care_in_progress'];
     $mass_casualty = $_POST['mass_casualty'];
-    $date_created=date("F j, Y g:i a");
+    $date_created=date("F j, Y");
     $month = date("M");
     $year = date("Y");
     $lat = $_POST['lat'];
