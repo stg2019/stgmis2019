@@ -42,7 +42,7 @@ require 'require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Dispatch</h4>
                             </div>
                             <div class="panel-body">
                                 <div id="assessmentlistTable"></div>

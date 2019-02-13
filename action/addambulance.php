@@ -1,5 +1,8 @@
 <?php
 require '../require/logincheck.php';
+
+// ang tanan na gna pang type sa form ka ambulance gna insert sa database. Meaning ka post isave ang gn type ka user sa amu na nga field.
+// basta dollar sign meaning declare variables lang na sa.
 if(isset($_POST['add'])){
     $plate_no = $_POST['plate_no'];
     $vehicle_name = $_POST['vehicle_name'];

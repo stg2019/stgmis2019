@@ -35,7 +35,7 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="dispatchment.php">Dispatchment</a></li>
+                    <li><a href="dispatchment.php">Dispatch</a></li>
                     <li class="active">Dispachment Overview</li>
                 </ol>
                 <h1 class="page-header"><a href="#addrefusal" class="btn btn-sm btn-success" data-toggle="modal">New Refusal</a></h1>

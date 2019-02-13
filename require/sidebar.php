@@ -32,7 +32,7 @@
                     <span>Transactions</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="dispatchment.php">Dispatchment</a></li>
+                    <li><a href="dispatchment.php">Dispatch</a></li>
                 </ul>
             </li>
             

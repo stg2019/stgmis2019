@@ -1,4 +1,4 @@
-<!-- Annual Dispatchment-->
+<!-- Annual Dispatch-->
 <?php
 $year = date('Y');
 if(isset($_GET['year']))
@@ -41,7 +41,7 @@ json_encode($data_points2);
 ?>
 
 
-<!-- Top Location of Dispatchment -->
+<!-- Top Location of Dispatch -->
 <?php
 $year = date('Y');
 if(isset($_GET['year']))

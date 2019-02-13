@@ -52,7 +52,7 @@ $(document).ready(function(){
                     success: function(){
                         $('.adddispatchment').modal('hide');
                         $('#alert').slideDown();
-                        $('#alerttext').html('<span class="fa fa-check"></span> Dispatchment Added Successfully!');
+                        $('#alerttext').html('<span class="fa fa-check"></span> Dispatch Added Successfully!');
                         setTimeout(function() {
                             $('#alert').fadeOut('slow');
                         }, 1500);

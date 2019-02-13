@@ -35,7 +35,7 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="dispatchment.php">Dispatchment</a></li>
+                    <li><a href="dispatchment.php">Dispatch</a></li>
                     <li class="active">Patient Assessment</li>
                 </ol>
                 <h1 class="page-header hidden-print">Patient Assessment</h1>
@@ -135,7 +135,7 @@ require 'require/logincheck.php';
                                 <ul id="myTab" class="nav nav-tabs pull-right">
                                     <li class="active"><a href="#home" data-toggle="tab"><span class="hidden-xs">Patients</span></a></li>
                                     <li><a href="#profile" data-toggle="tab"><span class="hidden-xs">Medical Supplies Used</span></a></li>
-                                    <li><a href="#end" data-toggle="tab"><span class="hidden-xs">End Dispatchment</span></a></li>
+                                    <li><a href="#end" data-toggle="tab"><span class="hidden-xs">End Dispatch</span></a></li>
                                 </ul>
                                 <h4 class="panel-title">Service No : <?php echo $fetch['service_no']?></h4>
                             </div>
@@ -212,7 +212,7 @@ require 'require/logincheck.php';
                                             $date_time=date("g:i a");
                                             ?>
                                             <div id="alerts" class="alert alert-success" style="display:none;">
-                                                <center><span id="alerttexts"><?php echo "Dispatchment Ended Successfully at $date_time"?></span></center>
+                                                <center><span id="alerttexts"><?php echo "Dispatch Ended Successfully at $date_time"?></span></center>
                                             </div>
                                         </center>
                                         <h5>Are you sure you want to end this dispatchment? This will update the status of Ambulance and Driver to</h5> <h5 class="text text-success">AVAILABLE on the next dispatchment.</h5>

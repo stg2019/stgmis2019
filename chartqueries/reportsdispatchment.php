@@ -1,4 +1,4 @@
-<!-- Quarterly Dispatchment -->
+<!-- Quarterly Dispatch -->
 <?php
 $year = date('Y');
 if(isset($_GET['year']))

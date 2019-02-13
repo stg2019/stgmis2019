@@ -98,9 +98,9 @@ require '../require/logincheck.php';
                                 Select Report Type:
                                 <select class="form-control selectpicker input-sm" data-style="btn-primary" id="select-report" name="filterbutton">
                                     <option value="monthly" selected="selected" disabled="disabled">Select Report</option>
-                                    <option value="colmonth">Monthly Dispatchment</option>
-                                    <option value="colquarter">Quarterly Dispatchment</option>
-                                    <option value="colyearly">Yearly Dispatchment</option>
+                                    <option value="colmonth">Monthly Dispatch</option>
+                                    <option value="colquarter">Quarterly Dispatch</option>
+                                    <option value="colyearly">Yearly Dispatch</option>
                                     <option value="colemergency">Emergency Cases</option>
                                     <option value="pieambulance">Most Used Ambulance</option>
                                     <option value="piedriver">Drivers</option>

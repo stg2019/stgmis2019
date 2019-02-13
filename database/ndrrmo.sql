@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2019 at 04:58 PM
+-- Generation Time: Feb 13, 2019 at 05:09 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -39,7 +39,7 @@ CREATE TABLE `ambulance` (
 
 INSERT INTO `ambulance` (`ambulance_id`, `plate_no`, `vehicle_name`, `status`) VALUES
 (1, 'WRT210', 'Samaritan 1', 'Booked'),
-(2, 'FYT291', 'Samaritan 2', 'Unbook'),
+(2, 'FYT291', 'Samaritan 2', 'Booked'),
 (3, 'WMQ130', 'Samaritan 3', 'Unbook'),
 (4, 'EQL297', 'Samaritan 4', 'Unbook'),
 (5, 'WYV881', 'Ford', 'Unbook');
@@ -105,7 +105,10 @@ INSERT INTO `assessment` (`assessment_id`, `chief_complaints`, `subjective_asses
 (37, 'NA', 'NA', 'NA', '2', 'No Treatment Required ', 'Walked to ambulance              ', 57),
 (38, 'NA', 'NA', 'NA', '3', 'Treated / transport to facility ', 'Moved to ambulance on stretcher/backboard              ', 59),
 (39, 'NA', 'NA', 'NA', '2', 'Treated / transport to facility ', 'Moved to ambulance on stretcher/backboard              ', 61),
-(40, 'NA', 'NA', 'NA', '3', 'No Treatment Required ', 'Moved to ambulance on stretcher/backboard              ', 66);
+(40, 'NA', 'NA', 'NA', '3', 'No Treatment Required ', 'Moved to ambulance on stretcher/backboard              ', 66),
+(41, 'NA', 'NA', 'NA', '2', 'Treated / transport to facility ', 'Walked to ambulance              ', 81),
+(42, 'NA', 'NA', 'NA', '3', 'Treated / transport to facility ', 'Moved to ambulance on stretcher/backboard              ', 82),
+(43, 'NA', 'NA', 'NA', '2', 'Treated / transport to facility ', 'Walked to ambulance              ', 96);
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,21 @@ INSERT INTO `call_logs` (`call_id`, `date_time_call`, `complete_address`, `emerg
 (50, '01/18/2019 1:51 PM', 'North Highway', 'Multiple Vehicle Accident with mass casualty', 'Will Cortez', '034-2192'),
 (51, '01/18/2019 3:34 PM', 'Alijis', 'NA', 'Carlo Reyes', '0123981209'),
 (52, '01/24/2019 12:00 PM', 'Balboa St., Bacolod City, Negros Occidental', 'Car Accident', 'Rommel Adricula', '4332449'),
-(53, '01/27/2019 10:18 PM', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', 'Car Accident', 'Kurt Dela Torre', '4332449');
+(53, '01/27/2019 10:18 PM', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', 'Car Accident', 'Kurt Dela Torre', '4332449'),
+(54, '02/05/2019 2:23 PM', 'Airport Subdivion ', 'NA', 'Mike Enriquez', '0929120192'),
+(55, '02/05/2019 2:39 PM', 'Mansilingan', 'Animal Bite', 'Ramon Torres', '0992192112'),
+(56, '02/05/2019 2:51 PM', 'Banago', 'Injured by gun shot\n', 'Marrisse Divinagracia', '09212901291'),
+(57, '02/05/2019 3:03 PM', 'Lizares Extension', 'Hit and Run', 'Nick Reyes', '0129102102'),
+(58, '02/05/2019 3:11 PM', 'Brgy Bata', 'Suicide Attempt', 'Ralph Solidarios', '0912912121'),
+(59, '02/05/2019 3:17 PM', 'Homesite', 'NA', 'Wayne Rooney', '902919212'),
+(60, '02/05/2019 3:21 PM', 'Alijis Highway', 'Multiple car collision', 'Ryan Silva', '090291029'),
+(61, '02/05/2019 3:49 PM', 'New Goverment Center', 'Ant Bite', 'Jose Janeil', '0920120902'),
+(62, '02/05/2019 4:03 PM', 'Eroreco', 'NA', 'Janeil Alcano', '090291029'),
+(63, '02/05/2019 4:13 PM', 'Araneta Street', 'NA', 'Michael Pamilar', '099292232'),
+(65, '02/05/2019 6:57 PM', 'Villa Angela', 'NA', 'Mark Cajaro', '09129239311'),
+(66, '02/12/2019 9:07 PM', 'Mandalagan, Negros Occidental, Philippines', 'Animal Bites', 'Jason Solidarios', '09129102910'),
+(67, '02/12/2019 9:15 PM', 'Alijis Road, Mansilingan, Negros Occidental, Philippines', 'Multiple Accident', 'Juan Solidarios', '0912910291'),
+(68, '02/12/2019 9:54 PM', 'Lizares Street, Brgy 16, Negros Occidental, Philippines', 'Gun shot', 'Kim Yanson', '0912919202');
 
 -- --------------------------------------------------------
 
@@ -293,15 +310,28 @@ INSERT INTO `dispatch` (`dispatch_id`, `service_no`, `date_time_call`, `ambulanc
 (78, 'EMS-0048', 'January 18, 2019 12:31 pm', 'Samaritan 4', 'Hazardous materials', 'Tangub', 'Hazard', '2', '09019', '90192', 'Alvin Mananquil', 'Medical Practicioner / First Aider', 'No', '12:31 pm', 'January 18, 2019 12:31 pm', 'Jun', '2019', '', ''),
 (79, 'EMS-0049', 'January 18, 2019 12:42 pm', 'Samaritan 1', 'Nausea/Vomiting', 'Punta-taytay', 'NA', '1', '09101', '21901', 'Arianne Torres', 'Medical Practicioner / First Aider', 'No', '12:42 pm', 'January 18, 2019 12:42 pm', 'Jun', '2019', '', ''),
 (80, 'EMS-0050', 'January 18, 2019 12:46 pm', 'Samaritan 4', 'Increased Body Temperature', 'Brgy. Granada', 'NA', '1', '09090', '2231', 'Elmer Haro', 'Medical Practicioner / First Aider', 'No', '12:46 pm', 'January 18, 2019 12:46 pm', 'Jun', '2019', '', ''),
-(81, 'EMS-0051', 'January 18, 2019 12:51 pm', 'Samaritan 4', 'Bleeding/Hemorrhage', 'Lizares Street', 'NA', '1', '23135', '23211', 'Kurt Dela Torre', 'None', 'Yes', '12:51 pm', 'January 18, 2019 12:51 pm', 'Jan', '2019', '', ''),
-(82, 'EMS-0052', 'January 18, 2019 1:12 pm', 'Samaritan 1', 'Substance Abuse', 'Banago ', 'Substance Abuse', '1', '9019', '2189', 'Alvin Mananquil', 'None', 'No', '1:12 pm', 'January 18, 2019 1:12 pm', 'Jan', '2019', '', ''),
-(83, 'EMS-0053', 'January 18, 2019 1:25 pm', 'Ford', 'Unconscious/Unresponsive', 'Eroreco', 'NA', '1', '89218', '21311', 'Kurt Dela Torre', '', 'No', '1:25 pm', 'January 18, 2019 1:25 pm', 'Jan', '2019', '', ''),
-(84, 'EMS-0054', 'January 18, 2019 1:33 pm', 'Ford', 'Unconscious/Unresponsive', 'Libertad', 'Head injury', '1', '3121', '3124', 'Kurt Dela Torre', '', 'No', '1:33 pm', 'January 18, 2019 1:33 pm', 'Jan', '2019', '', ''),
-(85, 'EMS-0055', 'January 18, 2019 1:42 pm', 'Samaritan 3', 'Major Trauma', 'Mandalagan, Negros Occidental, Philippines', 'Motor Accident', '3', '2131', '2321', 'Elmer Haro', 'None', 'No', '1:42 pm', 'January 18, 2019 1:42 pm', 'Jan', '2019', '10.6855122', '122.97475120000001'),
-(86, 'EMS-0057', '01/18/2019 1:55 PM', 'Samaritan 1', 'Respiratory Distress', 'North Highway', 'NA', '7', '2131', '3121', 'Alvin Mananquil', '', 'Yes', '1:54 pm', 'January 18, 2019 1:54 pm', 'Jan', '2019', '', ''),
-(87, 'EMS-0056', 'January 18, 2019 3:36 pm', 'Samaritan 3', 'Head Injury', 'Alijis', 'NA', '1', '12413', '66544', 'Alvin Mananquil', 'None', 'No', '3:36 pm', 'January 18, 2019 3:36 pm', 'Jan', '2019', '', ''),
-(88, 'EMT20190088', 'January 24, 2019 12:03 pm', 'Samaritan 1', 'Hypertension', 'Balboa St., Bacolod City, Negros Occidental', '1', '1', '1', 'Alvin Mananquil', 'Alkaid Lamig', 'None', 'No', '12:03 pm', 'January 24, 2019 12:03 pm', 'Jan', '2019', '10.6815761', '122.96972600000004'),
-(89, 'EMT20190089', 'January 27, 2019 10:19 pm', 'Samaritan 1', 'Bleeding/Hemorrhage', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '1', '1', '1', 'Alkaid Lamig', 'Arianne Torres', 'None', 'No', '10:19 pm', 'January 27, 2019 10:19 pm', 'Jan', '2019', '10.5988223', '122.92171229999997');
+(81, 'EMS-0051', 'January 18, 2019 12:51 pm', 'Samaritan 4', 'Bleeding/Hemorrhage', 'Lizares Street', 'NA', '1', '23135', '23211', 'Kurt Dela Torre', 'None', 'Yes', '12:51 pm', 'January 18, 2019 12:51 pm', 'Jul', '2019', '', ''),
+(82, 'EMS-0052', 'January 18, 2019 1:12 pm', 'Samaritan 1', 'Substance Abuse', 'Banago ', 'Substance Abuse', '1', '9019', '2189', 'Alvin Mananquil', 'None', 'No', '1:12 pm', 'January 18, 2019 1:12 pm', 'Jul', '2019', '', ''),
+(83, 'EMS-0053', 'January 18, 2019 1:25 pm', 'Ford', 'Unconscious/Unresponsive', 'Eroreco', 'NA', '1', '89218', '21311', 'Kurt Dela Torre', '', 'No', '1:25 pm', 'January 18, 2019 1:25 pm', 'Jul', '2019', '', ''),
+(84, 'EMS-0054', 'January 18, 2019 1:33 pm', 'Ford', 'Unconscious/Unresponsive', 'Libertad', 'Head injury', '1', '3121', '3124', 'Kurt Dela Torre', '', 'No', '1:33 pm', 'January 18, 2019 1:33 pm', 'Jul', '2019', '', ''),
+(85, 'EMS-0055', 'January 18, 2019 1:42 pm', 'Samaritan 3', 'Major Trauma', 'Mandalagan, Negros Occidental, Philippines', 'Motor Accident', '3', '2131', '2321', 'Elmer Haro', 'None', 'No', '1:42 pm', 'January 18, 2019 1:42 pm', 'Jun', '2019', '10.6855122', '122.97475120000001'),
+(86, 'EMS-0057', '01/18/2019 1:55 PM', 'Samaritan 1', 'Respiratory Distress', 'North Highway', 'NA', '7', '2131', '3121', 'Alvin Mananquil', '', 'Yes', '1:54 pm', 'January 18, 2019 1:54 pm', 'Jun', '2019', '', ''),
+(87, 'EMS-0056', 'January 18, 2019 3:36 pm', 'Samaritan 3', 'Head Injury', 'Alijis', 'NA', '1', '12413', '66544', 'Alvin Mananquil', 'None', 'No', '3:36 pm', 'January 18, 2019 3:36 pm', 'Jun', '2019', '', ''),
+(88, 'EMT20190088', 'January 24, 2019 12:03 pm', 'Samaritan 1', 'Hypertension', 'Balboa St., Bacolod City, Negros Occidental', '1', '1', '1', 'Alvin Mananquil', 'Alkaid Lamig', 'None', 'No', '12:03 pm', 'January 24, 2019 12:03 pm', 'Apr', '2019', '10.6815761', '122.96972600000004'),
+(89, 'EMT20190089', 'January 27, 2019 10:19 pm', 'Samaritan 1', 'Bleeding/Hemorrhage', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '1', '1', '1', 'Alkaid Lamig', 'Arianne Torres', 'None', 'No', '10:19 pm', 'January 27, 2019 10:19 pm', 'Apr', '2019', '10.5988223', '122.92171229999997'),
+(90, 'EMT20190090', 'February 5, 2019 2:25 pm', 'Samaritan 3', 'Hypertension', 'Airport Subdivion ', 'Vehicle Accident', '1', '09091', '19291', 'Elmer Haro', 'None', 'No', '2:25 pm', 'February 5, 2019 2:25 pm', 'Aug', '2019', '', ''),
+(91, 'EMT20190091', 'February 5, 2019 2:40 pm', 'Samaritan 4', 'Animal Bites/Sting', 'Mansilingan', 'NA', '2', '09012', '9921', 'Kurt Dela Torre', '', 'No', '2:40 pm', 'February 5, 2019 2:40 pm', 'Aug', '2019', '', ''),
+(92, 'EMT20190092', 'February 5, 2019 2:55 pm', 'Samaritan 2', 'Bleeding/Hemorrhage', 'Banago', 'NA', '1', '9201', '1212', 'Alkaid Lamig', '', 'No', '2:55 pm', 'February 5, 2019 2:55 pm', 'Aug', '2019', '', ''),
+(93, 'EMT20190093', 'February 5, 2019 3:06 pm', 'Samaritan 1', 'Trauma Penetrating', 'Lizares Extension', 'NA', '1', '12921', '121221', 'Alvin Mananquil', 'None', 'No', '3:06 pm', 'February 5, 2019 3:06 pm', 'Aug', '2019', '', ''),
+(94, 'EMT20190094', 'February 5, 2019 3:13 pm', 'Ford', 'Bleeding/Hemorrhage', 'Brgy Bata', 'NA', '1', '9121', '8928', 'Elmer Haro', 'None', 'No', '3:13 pm', 'February 5, 2019 3:13 pm', 'Aug', '2019', '', ''),
+(95, 'EMT20190095', 'February 5, 2019 3:18 pm', 'Samaritan 2', 'Cardiac Related', 'Homesite', 'Cardiac Related', '1', '8982', '8982', 'Arianne Torres', 'None', 'No', '3:18 pm', 'February 5, 2019 3:18 pm', 'Sep', '2019', '', ''),
+(96, 'EMT20190096', 'February 5, 2019 3:22 pm', 'Samaritan 3', 'Major Trauma', 'Alijis Highway', 'NA', '4', '8918', '1222', 'Alkaid Lamig', '', 'No', '3:22 pm', 'February 5, 2019 3:22 pm', 'Sep', '2019', '', ''),
+(97, 'EMT20190097', 'February 5, 2019 3:51 pm', 'Samaritan 1', 'Animal Bites/Sting', 'New Goverment Center', 'NA', '2', '9029', '2121', 'Elmer Haro', 'None', 'No', '3:51 pm', 'February 5, 2019 3:51 pm', 'Sep', '2019', '', ''),
+(98, 'EMT20190098', 'February 5, 2019 4:05 pm', 'Samaritan 3', 'Seizure', 'Eroreco', 'Concussion', '1', '98192', '12', 'Arianne Torres', 'None', 'No', '4:05 pm', 'February 5, 2019 4:05 pm', 'Sep', '2019', '', ''),
+(99, 'EMT20190099', 'February 5, 2019 4:16 pm', 'Samaritan 1', 'Poisoning', 'Araneta Street', 'Food Poison', '3', '2892', '2323', 'Kurt Dela Torre', '', 'No', '4:16 pm', 'February 5, 2019 4:16 pm', 'Feb', '2019', '14.62393', '121.01537899999994'),
+(100, 'EMT20190100', 'February 12, 2019 9:09 pm', 'Samaritan 1', 'Animal Bites/Sting', 'Mandalagan, Negros Occidental, Philippines', 'Animal Bites', '1', '09121', '19029', 'Alvin Mananquil', 'None', 'No', '9:09 pm', 'February 12, 2019 9:09 pm', 'Feb', '2019', '', ''),
+(101, 'EMT20190101', 'February 12, 2019 9:23 pm', 'Samaritan 1', 'Major Trauma', 'Alijis Road, Mansilingan, Negros Occidental, Philippines', 'NA', '4', '09291', '1929', 'Kurt Dela Torre', '', 'No', '9:23 pm', 'February 12, 2019 9:23 pm', 'Feb', '2019', '10.6412338', '122.94679840000003'),
+(102, 'EMT20190102', 'February 12, 2019 9:59 pm', 'Samaritan 4', 'Bleeding/Hemorrhage', 'Lizares Street, Brgy 16, Negros Occidental, Philippines', 'Gun Shot', '1', '099201', '1212', 'Elmer Haro', 'None', 'No', '9:59 pm', 'February 12, 2019 9:59 pm', '', '2019', '10.6596407', '122.94616700000006');
 
 -- --------------------------------------------------------
 
@@ -325,7 +355,7 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`driver_id`, `driver_name`, `age`, `gender`, `contact_number`, `home_address`, `duty_hours`, `status`) VALUES
-(1, 'Kurt Dela Torre', '21', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Unbook'),
+(1, 'Kurt Dela Torre', '21', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Booked'),
 (2, 'Alkaid Lamig', '21', 'Male', '4332449', 'Bacolod City', '9:00 PM - 9:00 AM', 'Unbook'),
 (3, 'Peter Sacayle', '21', 'Male', '4332449', 'Bacolod City', '9:00 AM - 9:00 PM', 'Booked'),
 (4, 'Elmer Haro', '40', 'Male', '4332449 local 181', 'Sum-ag Bacolod City', '9:00 AM - 9:00 PM', 'Unbook'),
@@ -428,7 +458,29 @@ INSERT INTO `glassgow_coma_scale` (`glassgow_coma_scale_id`, `time`, `eye`, `ver
 (74, '2:20 pm', 3, 2, 3, 76),
 (75, '2:21 pm', 3, 3, 5, 77),
 (76, '2:22 pm', 3, 2, 5, 78),
-(77, '2:36 pm', 3, 3, 3, 79);
+(77, '2:36 pm', 3, 3, 3, 79),
+(78, '2:35 pm', 3, 3, 5, 80),
+(79, '2:44 pm', 2, 3, 5, 81),
+(80, '2:58 pm', 3, 3, 3, 82),
+(81, '3:08 pm', 3, 2, 5, 83),
+(82, '3:15 pm', 1, 1, 1, 84),
+(83, '3:20 pm', 3, 3, 5, 85),
+(84, '3:24 pm', 3, 3, 3, 86),
+(85, '3:35 pm', 3, 3, 5, 87),
+(86, '3:38 pm', 2, 3, 3, 88),
+(87, '3:39 pm', 2, 3, 2, 89),
+(88, '3:55 pm', 2, 3, 1, 90),
+(89, '3:56 pm', 2, 4, 3, 91),
+(90, '4:11 pm', 2, 4, 3, 92),
+(91, '4:19 pm', 3, 2, 5, 93),
+(92, '4:21 pm', 2, 4, 2, 94),
+(93, '4:23 pm', 3, 3, 5, 95),
+(94, '9:13 pm', 2, 4, 3, 96),
+(95, '9:31 pm', 3, 3, 5, 97),
+(96, '9:35 pm', 3, 3, 5, 98),
+(97, '9:36 pm', 3, 2, 5, 99),
+(98, '9:37 pm', 2, 4, 3, 100),
+(99, '10:02 pm', 3, 2, 4, 101);
 
 -- --------------------------------------------------------
 
@@ -480,6 +532,7 @@ CREATE TABLE `medical_supply_request` (
   `medical_supply_request_id` int(10) NOT NULL,
   `medical_supply_name` varchar(100) NOT NULL,
   `requested_quantity` varchar(10) NOT NULL,
+  `to_approved_quantity` varchar(20) NOT NULL,
   `date_requested` varchar(50) NOT NULL,
   `status` varchar(20) NOT NULL,
   `month` varchar(20) NOT NULL,
@@ -492,23 +545,20 @@ CREATE TABLE `medical_supply_request` (
 -- Dumping data for table `medical_supply_request`
 --
 
-INSERT INTO `medical_supply_request` (`medical_supply_request_id`, `medical_supply_name`, `requested_quantity`, `date_requested`, `status`, `month`, `year`, `date_approved`, `user_id`) VALUES
-(1, 'Sample', '100', 'October 14, 2018 8:44 pm', 'Approved', 'Oct', '2018', 'October 21, 2018 10:07 pm', 183),
-(2, 'Cotton', '20', 'October 14, 2018 8:55 pm', 'Approved', 'Oct', '2018', 'November 2, 2018 4:02 pm', 183),
-(4, 'Cotton', '20', 'October 14, 2018 8:56 pm', 'Approved', 'Oct', '2018', 'November 2, 2018 4:05 pm', 183),
-(5, 'Betadine', '200', 'October 19, 2018 7:48 pm', 'Approved', 'Oct', '2018', 'December 1, 2018 7:42 pm', 183),
-(6, 'Test', '100', 'October 19, 2018 8:27 pm', 'Approved', 'Oct', '2018', '', 183),
-(7, 'Test', '20', 'October 21, 2018 9:09 pm', 'Approved', 'Oct', '2018', 'October 21, 2018 9:12 pm', 183),
-(8, 'Sample', '100', 'November 1, 2018 6:17 pm', 'Approved', 'Nov', '2018', 'November 2, 2018 3:39 pm', 183),
-(9, 'Sample', '50', 'December 1, 2018 7:35 pm', 'Approved', 'Dec', '2018', 'December 1, 2018 7:37 pm', 183),
-(10, 'Alcohol', '10', 'December 3, 2018 11:24 pm', 'Approved', 'Dec', '2018', 'December 3, 2018 11:25 pm', 183),
-(11, 'Cotton', '15', 'December 3, 2018 11:27 pm', 'Approved', 'Dec', '2018', 'December 3, 2018 11:27 pm', 183),
-(13, 'Sample', '10', 'December 8, 2018 10:32 pm', 'Approved', 'Dec', '2018', 'December 29, 2018 5:58 pm', 183),
-(14, 'Sample', '3', 'December 8, 2018 10:33 pm', 'Pending', 'Dec', '2018', 'December 29, 2018 6:41 pm', 184),
-(15, 'Alcohol', '0', 'December 30, 2018 5:46 pm', 'Pending', 'Dec', '2018', 'Pending', 183),
-(16, 'Alcohol', '0', 'January 6, 2019 3:46 pm', 'Pending', 'Jan', '2019', 'Pending', 183),
-(17, 'Cotton', '20', 'January 24, 2019 11:31 am', 'Pending', 'Jan', '2019', 'Pending', 183),
-(18, 'Alcohol', '10', 'January 28, 2019 11:22 pm', 'Pending', 'Jan', '2019', 'Pending', 183);
+INSERT INTO `medical_supply_request` (`medical_supply_request_id`, `medical_supply_name`, `requested_quantity`, `to_approved_quantity`, `date_requested`, `status`, `month`, `year`, `date_approved`, `user_id`) VALUES
+(1, 'Alcohol 70% solution, 500 ml', '100', '0', 'October 14, 2018 8:44 pm', 'Approved', 'Oct', '2018', 'October 21, 2018 10:07 pm', 183),
+(2, 'Antiseptic Wound Spray', '20', '0', 'October 14, 2018 8:55 pm', 'Approved', 'Oct', '2018', 'November 2, 2018 4:02 pm', 183),
+(4, 'Cotton Balls', '20', '0', 'October 14, 2018 8:56 pm', 'Approved', 'Oct', '2018', 'November 2, 2018 4:05 pm', 183),
+(5, 'Disinfectant Liquid 			', '200', '0', 'October 19, 2018 7:48 pm', 'Approved', 'Oct', '2018', 'December 1, 2018 7:42 pm', 183),
+(6, 'Face Mask, Disposable			', '100', '0', 'October 19, 2018 8:27 pm', 'Approved', 'Oct', '2018', '', 183),
+(7, 'Non- Rebreather Mask Child			', '20', '0', 'October 21, 2018 9:09 pm', 'Approved', 'Oct', '2018', 'October 21, 2018 9:12 pm', 183),
+(8, 'Providone Iodine			', '100', '0', 'November 1, 2018 6:17 pm', 'Approved', 'Nov', '2018', 'November 2, 2018 3:39 pm', 183),
+(9, 'Alcohol 70% solution, 500 ml			', '50', '0', 'December 1, 2018 7:35 pm', 'Approved', 'Dec', '2018', 'December 1, 2018 7:37 pm', 183),
+(10, 'Antiseptic Wound Spray', '10', '0', 'December 3, 2018 11:24 pm', 'Approved', 'Dec', '2018', 'December 3, 2018 11:25 pm', 183),
+(11, 'Cotton Balls', '15', '0', 'December 3, 2018 11:27 pm', 'Approved', 'Dec', '2018', 'December 3, 2018 11:27 pm', 183),
+(13, 'Disinfectant Liquid', '10', '0', 'December 8, 2018 10:32 pm', 'Approved', 'Dec', '2018', 'December 29, 2018 5:58 pm', 183),
+(18, 'Face Mask, Disposable			', '10', '0', 'January 28, 2019 11:22 pm', 'Approved', 'Jan', '2019', 'February 13, 2019 11:37 pm', 183),
+(19, 'Non- Rebreather Mask Child			', '20', '0', 'February 13, 2019 11:48 pm', 'Approved', 'Feb', '2019', 'February 13, 2019 11:48 pm', 183);
 
 -- --------------------------------------------------------
 
@@ -520,8 +570,8 @@ CREATE TABLE `medical_supply_stocks` (
   `stock_id` int(10) NOT NULL,
   `admin_id` int(10) NOT NULL,
   `medical_supply_name` varchar(100) NOT NULL,
-  `medical_supply_description` varchar(100) NOT NULL,
-  `supplier` varchar(100) NOT NULL,
+  `item_code` varchar(100) NOT NULL,
+  `unit_of_issue` varchar(100) NOT NULL,
   `running_balance` int(10) NOT NULL,
   `status` varchar(20) NOT NULL,
   `date_created` varchar(50) NOT NULL
@@ -531,14 +581,14 @@ CREATE TABLE `medical_supply_stocks` (
 -- Dumping data for table `medical_supply_stocks`
 --
 
-INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`, `date_created`) VALUES
-(1, 136, 'Alcohol', 'EMS', 'Savemore', 28, 'Reorder', 'September 23, 2018'),
-(2, 136, 'Cotton', 'EMS', 'Libra', 28, 'Reorder', 'September 23, 2018'),
-(3, 136, 'Betadine', 'EMS', 'PureGold', 100, 'Reorder', 'September 23, 2018'),
-(4, 136, 'Gloves', 'EMS', 'SM', 200, 'Reorder', 'September 23, 2018'),
-(5, 136, 'Sample', 'EMS', 'Sample', 98, 'Reorder', 'September 23, 2018'),
-(6, 136, 'Syringe', 'EMS', 'Avon', 365, 'Reorder', 'September 25, 2018'),
-(7, 182, 'Band Aid', 'EMS', 'Watsons', 100, 'Reorder', 'December 8, 2018');
+INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_name`, `item_code`, `unit_of_issue`, `running_balance`, `status`, `date_created`) VALUES
+(1, 136, 'Cotton Balls', 'GGG777', 'pack', 16, 'Reorder', 'September 23, 2018'),
+(2, 136, 'Face Mask, Disposable			', 'DDD444', 'box', 28, 'Reorder', 'September 23, 2018'),
+(3, 136, 'Non- Rebreather Mask Child			', 'EEE555', 'pcs', 80, 'Reorder', 'September 23, 2018'),
+(4, 136, 'Alcohol 70% solution, 500 ml', 'CCC333', 'bottles', 200, 'Reorder', 'September 23, 2018'),
+(5, 136, 'Providone Iodine			', 'BBB222', 'gallons', 98, 'Reorder', 'September 23, 2018'),
+(6, 136, 'Antiseptic Wound  Spray			', 'AAA111', 'bot/lit', 365, 'Reorder', 'September 25, 2018'),
+(7, 182, 'Disinfectant Liquid 			', 'FFF666', 'gallons', 100, 'Reorder', 'December 8, 2018');
 
 -- --------------------------------------------------------
 
@@ -549,8 +599,8 @@ INSERT INTO `medical_supply_stocks` (`stock_id`, `admin_id`, `medical_supply_nam
 CREATE TABLE `medical_supply_stocks_emt` (
   `stock_id` int(10) NOT NULL,
   `medical_supply_name` varchar(100) NOT NULL,
-  `medical_supply_description` varchar(100) NOT NULL,
-  `supplier` varchar(100) NOT NULL,
+  `item_code` varchar(100) NOT NULL,
+  `unit_of_issue` varchar(100) NOT NULL,
   `running_balance` int(10) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -559,12 +609,12 @@ CREATE TABLE `medical_supply_stocks_emt` (
 -- Dumping data for table `medical_supply_stocks_emt`
 --
 
-INSERT INTO `medical_supply_stocks_emt` (`stock_id`, `medical_supply_name`, `medical_supply_description`, `supplier`, `running_balance`, `status`) VALUES
-(1, 'Alcohol', 'First Aid', 'Supplier A', 10, 'Reorder'),
-(2, 'Cotton', 'First Aid', 'Supplier A', 13, 'Reorder'),
-(3, 'Betadine', 'First Aid', 'Supplier B', 206, 'Reorder'),
-(5, 'Gloves', 'First Aid', 'Supplier A', 110, 'Reorder'),
-(6, 'Syringe', 'First Aid', 'Supplier B', 400, 'Reorder');
+INSERT INTO `medical_supply_stocks_emt` (`stock_id`, `medical_supply_name`, `item_code`, `unit_of_issue`, `running_balance`, `status`) VALUES
+(1, 'Providone Iodine			', 'BBB222', 'gallons', 22, 'Reorder'),
+(2, 'Non- Rebreather Mask Child			', 'EEE555', 'pcs', 33, 'Reorder'),
+(3, 'Face Mask, Disposable			', 'DDD444', 'box', 206, 'Reorder'),
+(5, 'Disinfectant Liquid 			', 'FFF666', 'gallons', 110, 'Reorder'),
+(6, 'Cotton Balls', 'GGG777', 'pack', 400, 'Reorder');
 
 -- --------------------------------------------------------
 
@@ -617,7 +667,10 @@ INSERT INTO `pain_assessment` (`pain_assessment_id`, `onset`, `pain`, `quality`,
 (28, 'NA', 'NA', 'NA', 'NA', '6', 57),
 (29, 'NA', 'Severe', 'NA', 'NA', '7', 59),
 (30, 'NA', 'NA', 'NA', 'NA', '7', 61),
-(31, 'NA', 'NA', 'NA', 'NA', '6', 66);
+(31, 'NA', 'NA', 'NA', 'NA', '6', 66),
+(32, 'NA', 'NA', 'NA', 'NA', '6', 81),
+(33, 'NA', 'NA', 'NA', 'NA', '5', 82),
+(34, 'NA', 'NA', 'NA', 'NA', '5', 96);
 
 -- --------------------------------------------------------
 
@@ -680,7 +733,10 @@ INSERT INTO `past_medical_history` (`past_med_his_id`, `allergy`, `medications`,
 (37, 'None', 'None', 'None', 'None', 'None', 'Extrication Required', 57),
 (38, 'None', 'None', 'None', 'None', 'None', 'Extrication Required', 59),
 (39, 'NA', 'NA', 'NA', 'NA', 'NA', 'Extrication Required', 61),
-(40, 'NA', 'None', 'NA', 'NA', 'None', 'Extrication Required', 66);
+(40, 'NA', 'None', 'NA', 'NA', 'None', 'Extrication Required', 66),
+(41, 'None', 'None', 'None', 'None', 'None', 'Extrication Required', 81),
+(42, 'None', 'None', 'None', 'None', 'None', 'Extrication Required', 82),
+(43, 'None', 'None', 'None', 'None', 'None', 'Extrication Required', 96);
 
 -- --------------------------------------------------------
 
@@ -785,7 +841,29 @@ INSERT INTO `patient` (`patient_id`, `patient_name`, `age`, `gender`, `date_of_b
 (76, 'Renz Cui', '23', '', '07/01/1996', 'None', 'San Carlos City', 'NA', 'NA', 'None', '86', 'Unassessed'),
 (77, 'Michael Yu', '22', 'Male', '07/12/1995', 'None', 'San Carlos City', 'No', 'NA', 'None', '86', 'Unassessed'),
 (78, 'Raina Reyes', '25', 'Female', '01/23/1995', 'None', 'Cebu City', 'No', 'NA', 'None', '86', 'Unassessed'),
-(79, 'Charles Santillan', '35', 'Male', '01/03/1985', 'None', 'Hinigaran', 'no', 'None', 'None', '81', 'Unassessed');
+(79, 'Charles Santillan', '35', 'Male', '01/03/1985', 'None', 'Hinigaran', 'no', 'None', 'None', '81', 'Unassessed'),
+(80, 'Ramon Garcia', '33', '', '07/15/1985', 'NA', 'Airport Subdivision', 'None', 'None', 'None', '90', 'Unassessed'),
+(81, 'Justin Puato', '21', '', '08/17/1997', '092102912', 'UNO-R Ville Mansilingan', 'NA', 'NA', 'None', '91', 'Assessed'),
+(82, 'Gielou Martinez', '22', '', '01/19/1997', 'None', 'Banago', 'NA', 'NA', 'None', '92', 'Assessed'),
+(83, 'Joshua Decolongon', '21', '', '01/10/1998', '01292931', 'None', 'None', 'None', 'None', '93', 'Unassessed'),
+(84, 'Mark De Asis', '33', '', '05/16/1985', 'None', 'Bata', 'None', 'None', 'None', '94', 'Unassessed'),
+(85, 'Christiano Ramires', '29', '', '09/19/1989', 'None', 'Homesite', 'None', 'None', 'None', '95', 'Unassessed'),
+(86, 'Vince De Guzman', '22', '', '02/13/1996', 'None', 'Sum Ag', 'NA', 'NA', 'None', '96', 'Unassessed'),
+(87, 'Raphael Calvo', '23', '', '09/12/1995', 'None', 'Bago City', 'None', 'None', 'None', '96', 'Unassessed'),
+(88, 'Ian Ramos', '22', '', '09/24/1996', 'None', 'Mansilingan', 'Na', 'NA', 'None', '96', 'Unassessed'),
+(89, 'Myk John', '24', '', '08/22/1994', 'None', 'Bata', 'NA', 'NA', 'None', '96', 'Unassessed'),
+(90, 'Lionel Neymar', '22', '', '09/02/1996', 'None', 'City Heights', 'No', 'NA', 'None', '97', 'Unassessed'),
+(91, 'Ngolo Kante', '24', '', '09/12/1994', 'None', 'Mansilingan', 'None', 'None', 'None', '97', 'Unassessed'),
+(92, 'Mark Sarno', '25', '', '06/16/1993', 'None', 'Libertad', 'None', 'None', 'None', '98', 'Unassessed'),
+(93, 'Janeil Alcano', '20', '', '11/20/1998', 'None', 'NA', 'NA', 'NA', 'None', '99', 'Unassessed'),
+(94, 'Ryan Jaudines', '23', '', '08/26/1995', 'None', 'Bago City', 'None', 'None', 'None', '99', 'Unassessed'),
+(95, 'Dyniel Cats', '24', '', '12/17/1994', 'None', 'Escalante City', 'None', 'None', 'None', '99', 'Unassessed'),
+(96, 'Kennard Dominguez', '25', '', '10/27/1993', 'None', 'Murcia', 'No', 'NA', 'None', '100', 'Assessed'),
+(97, 'John Rey  Dito-on', '0', '', '02/12/2019', 'None', 'NA', 'No', 'NA', 'None', '101', 'Unassessed'),
+(98, 'Stephen Daddy', '24', '', '06/19/1994', 'None', 'NA', 'No', 'NA', 'None', '101', 'Unassessed'),
+(99, 'John Carl ', '24', '', '06/02/1994', 'None', 'NA', 'NO', 'NA', 'None', '101', 'Unassessed'),
+(100, 'David Garcia', '23', '', '04/06/1995', 'None', 'NA', 'NO', 'NA', 'None', '101', 'Unassessed'),
+(101, 'Michael Reyes ', '25', '', '09/18/1993', 'None', 'None', 'No', 'NA', 'None', '102', 'Unassessed');
 
 -- --------------------------------------------------------
 
@@ -819,7 +897,14 @@ INSERT INTO `refusal_treatment` (`refusal_treatment_id`, `signed`, `witness1`, `
 (8, 'Kyan Ricabo', 'Janiel Alcano', '', '09/30/2018 12:03 AM', '', 'None', 'Kurt Dela Torre', 'Sep', '2018'),
 (9, 'Michael Yu', 'Jose Ricardo', '', '10/19/2018 6:41 PM', '', 'None', 'Alkaid Lamig', 'Oct', '2018'),
 (10, 'Chelzar De Asis', 'Jaya Delos Reyes', '', '12/06/2018 7:11 PM', '', 'Kurt Dela Torre', 'Alvin Mananquil', 'Dec', '2018'),
-(11, 'Kim Tabanda', 'Kurt Dela Torre', 'Alkaid Lamig', '01/06/2018 12:00 AM', '', 'None', 'Peter Sacayle', 'Jan', '2019');
+(11, 'Kim Tabanda', 'Kurt Dela Torre', 'Alkaid Lamig', '01/06/2018 12:00 AM', '', 'None', 'Peter Sacayle', 'Jan', '2019'),
+(12, 'Sweet Manhuyod', 'Jason Dominguez', 'NA', '02/05/2019 1:45 PM', '', 'NA', 'Alkaid Lamig', 'Feb', '2019'),
+(13, 'Christian Rodriguez', 'Joseph Alcano', 'NA', '02/05/2019 1:47 PM', 'NA', 'Na', 'Peter Sacayle', 'Feb', '2019'),
+(14, 'Stephen Yanson', 'Kurt Dela Torre', 'Brian Mallo', '02/05/2019 1:47 PM', 'NA', 'NA', 'Alkaid Lamig', 'Feb', '2019'),
+(15, 'Kenneth Cayetano', 'Clark Canlog', 'Justin Puato', '02/05/2019 1:47 PM', 'NA', 'NA', 'Peter Sacayle', 'Feb', '2019'),
+(16, 'Carlo Santillan', 'Mark Jagonoy', 'NA', '02/05/2019 1:47 PM', 'NA', 'NA', 'Peter Sacayle', 'Feb', '2019'),
+(17, 'Dawn Jaudines', 'Michael Callejas', 'Joey Franco', '02/05/2019', 'NA', 'NA', 'NA', 'Feb', '2019'),
+(18, 'Ramon Garcia', 'Jacob Delos Reyes', 'NA', '02/05/2019', 'NA', 'NA', 'Alkaid Llamig', 'Feb', '2019');
 
 -- --------------------------------------------------------
 
@@ -858,25 +943,26 @@ CREATE TABLE `request_transport` (
 --
 
 INSERT INTO `request_transport` (`request_transport_id`, `date_time`, `requesting_party`, `contact_no`, `patient_name`, `address`, `age`, `gender`, `medical_history`, `special_considerations`, `froma`, `toa`, `fromb`, `gcs`, `bp`, `rr`, `pr`, `sat`, `requesting_approval`, `approval`, `date_created`, `month`, `year`) VALUES
-(5, '09/03/2018 6:51 PM', 'Party YUI', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', 'September 17, 2018', 'Jan', '2019'),
-(6, '09/03/2018 6:52 PM', 'Party E', '1234', 'Patient H', 'Margarita Street', '28', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '12', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'September 17, 2018', 'Sep', '2018'),
-(7, '09/01/2018 1:32 PM', 'Party GGGFFF', '4332449', 'Pedro Colmenares', 'Andalucia Street', '28', 'Male', 'None', 'Chest Tube Drainage', 'Bacolod City', 'Bacolod City', 'Bacolod City', '10', '10', '10', '10', '10', 'Doctor A', 'Doctor B', 'September 17, 2018', 'Sep', '2018'),
-(8, '09/01/2018 2:11 PM', 'Party G', '4332449', 'Patient DFG', 'Bugnay Rd. Villamonte', '20', 'Male', 'None', 'Chest Tube Drainage', '12', '12', '12', '12', '12', '121', '12', '12', 'Dr. Delatorre', 'Dr. Delatorre', 'September 17, 2018', 'Sep', '2018'),
-(9, '09/02/2018 10:55 AM', 'Three Propis', '433-2449', 'Juan Dela Cruz', 'Lizares Avenue, Bacolod City', '28', 'Male', 'None', '', 'Lizares Avenue, Bacolod City', 'Margarita St., Bacolod City', 'Lizares Avenue, Bacolod City', '12', '12', '12', '12', '12', 'Alson John Bayon-on', 'Carl Betio', 'September 17, 2018', 'Sep', '2018'),
-(10, '09/02/2018 8:22 PM', 'Party ZXC', '433-2449', 'Pedro Dela Cruz', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 17, 2018', 'Sep', '2018'),
-(11, '09/03/2018 7:08 PM', 'Party RTY', '433-2449', 'Patient DFG', 'Felisa, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Colostomy', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Alvin', 'Alvin', 'September 17, 2018', 'Sep', '2018'),
-(12, '09/03/2018 10:20 PM', 'Party Party', '4332449', 'Patient CVB', 'Burgos St, Bacolod City, Negros Occidental, Philippines', '12', 'Male', '12', '02', '12', '12', '12', '12', '12', '12', '12', '12', '12', '12', 'September 17, 2018', 'Sep', '2018'),
-(13, '09/17/2018 10:50 AM', 'Safetech Guardians', '433-2449', 'Peter Sacayle', 'Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Chest Tube Drainage', 'Sum-ag', 'Lizares', 'Lizares', '12', '12', '12', '12', '12', 'Test', 'Test', 'September 17, 2018', 'Sep', '2018'),
-(14, '09/17/2018 10:56 AM', 'CIT', '4332449', 'Alkaid Lamig', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '21', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
-(15, '09/17/2018 11:01 AM', 'CBA', '4332449', 'Kurt Dela Torre', 'Molave St, Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
-(16, '09/19/2018 11:55 PM', 'Party CVVB', '4332449', 'Alkaid Lamig', 'Prk. Fiesta Homes Sum-ag Bacolod City', '21', 'Male', 'None', 'Chest Tube Drainage', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 19, 2018', 'Sep', '2018'),
-(17, '10/19/2018 11:03 AM', 'Party QWEASD', '4332449', 'Alkaid Lamig', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018'),
-(18, '10/19/2018 6:22 PM', 'Party STG', '4332449', 'Alkaid Lamig', 'Margarita Street', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '21', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018'),
-(19, '12/01/2018 7:50 PM', 'Party RTY', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '120/80', '120', '120', '12', 'Alkaid Lamig', 'Peter Sacayle', 'December 1, 2018', 'Dec', '2018'),
-(20, '12/01/2018 8:03 PM', 'LKJH', '4332449', 'Peter Sacayle', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/70', '', '', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
-(21, '12/01/2018 8:05 PM', 'Party ABC', '4332449', 'Alkaid Lamig', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '20', '120/70', '120', '120', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'December 1, 2018', 'Dec', '2018'),
-(22, '12/01/2018 8:08 PM', 'Party JHG', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '200', '200', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
-(23, 'January 29, 2019 - 12:20 am', 'Party STG', '4332449', 'Alkaid Lamig', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '12', '12', '12', 'Kurt Dela Torre', 'Kurt Dela Torre', 'January 29, 2019', 'Jan', '2019');
+(5, '09/03/2018 6:51 PM', 'Elmer Haro', '4332449', 'Pedro Araneta', 'fortune town bacolod city', '29', 'Male', 'geqjhwg', 'Chest Tube Drainage', 'eqweq', 'qweqw', 'weqweqw', 'eqweqw', 'eqweq', 'qeweq', 'qewq', 'qweqw', 'eqweqw', 'eqweqw', 'September 17, 2018', 'Jan', '2019'),
+(6, '09/03/2018 6:52 PM', 'Michael Callejas', '1234', 'Alkaid Lamig', 'Margarita Street', '28', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '12', '12', '12', '12', 'Kurt Dela Torre', 'Alkaid Lamig', 'September 17, 2018', 'Sep', '2018'),
+(7, '09/01/2018 1:32 PM', 'Dexter Famoso', '4332449', 'Alvin Mananquil', 'Andalucia Street', '28', 'Male', 'None', 'Chest Tube Drainage', 'Bacolod City', 'Bacolod City', 'Bacolod City', '10', '10', '10', '10', '10', 'Doctor A', 'Doctor B', 'September 17, 2018', 'Sep', '2018'),
+(8, '09/01/2018 2:11 PM', 'Joey Franco', '4332449', 'Michael Callejas', 'Bugnay Rd. Villamonte', '20', 'Male', 'None', 'Chest Tube Drainage', '12', '12', '12', '12', '12', '121', '12', '12', 'Dr. Delatorre', 'Dr. Delatorre', 'September 17, 2018', 'Sep', '2018'),
+(9, '09/02/2018 10:55 AM', 'Dennzel Cuachon', '433-2449', 'Dyniel Cataluna', 'Lizares Avenue, Bacolod City', '28', 'Male', 'None', '', 'Lizares Avenue, Bacolod City', 'Margarita St., Bacolod City', 'Lizares Avenue, Bacolod City', '12', '12', '12', '12', '12', 'Alson John Bayon-on', 'Carl Betio', 'September 17, 2018', 'Sep', '2018'),
+(10, '09/02/2018 8:22 PM', 'Kevin Lamela', '433-2449', 'Dennzel Cuachon', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', 'Balboa St, Bacolod City, Negros Occidental, Philippines', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 17, 2018', 'Sep', '2018'),
+(11, '09/03/2018 7:08 PM', 'Peter Sacayle', '433-2449', 'Brian Mallo', 'Felisa, Bacolod City, Negros Occidental, Philippines', '20', 'Male', 'None', 'Colostomy', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Alvin', 'Alvin', 'September 17, 2018', 'Sep', '2018'),
+(12, '09/03/2018 10:20 PM', 'Brian Mallo', '4332449', 'Kim Tabanda', 'Burgos St, Bacolod City, Negros Occidental, Philippines', '12', 'Male', '12', '02', '12', '12', '12', '12', '12', '12', '12', '12', '12', '12', 'September 17, 2018', 'Sep', '2018'),
+(13, '09/17/2018 10:50 AM', 'Kim Tabanda', '433-2449', 'Peter Sacayle', 'Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Chest Tube Drainage', 'Sum-ag', 'Lizares', 'Lizares', '12', '12', '12', '12', '12', 'Test', 'Test', 'September 17, 2018', 'Sep', '2018'),
+(14, '09/17/2018 10:56 AM', 'Rogy Acosta', '4332449', 'Janeil Alcano', 'San Juan Street, Sum-ag, Negros Occidental, Philippines', '21', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
+(15, '09/17/2018 11:01 AM', 'Ariane Torres', '4332449', 'Stephen Yanson', 'Molave St, Sum-ag, Negros Occidental, Philippines', '20', 'Male', 'None', 'Catheter', 'Sum-ag', 'Lizares', 'Lizares', '20', '20', '20', '20', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'September 17, 2018', 'Sep', '2018'),
+(16, '09/19/2018 11:55 PM', 'Rommel Adricula', '4332449', 'Kevin Lamela', 'Prk. Fiesta Homes Sum-ag Bacolod City', '21', 'Male', 'None', 'Chest Tube Drainage', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Peter Sacayle', 'September 19, 2018', 'Sep', '2018'),
+(17, '10/19/2018 11:03 AM', 'Raymund Sabay', '4332449', 'Dexter Famoso', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '12', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018'),
+(18, '10/19/2018 6:22 PM', 'Erul Ubas', '4332449', 'Joshua Tueres', 'Margarita Street', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '21', '12', '12', '12', 'Peter Sacayle', 'Kurt Dela Torre', 'October 19, 2018', 'Oct', '2018'),
+(19, '12/01/2018 7:50 PM', 'Mark Jagonoy', '4332449', 'Erul John Ubas ', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'Catheter', 'Test', 'Test', 'Test', '12', '120/80', '120', '120', '12', 'Alkaid Lamig', 'Peter Sacayle', 'December 1, 2018', 'Dec', '2018'),
+(20, '12/01/2018 8:03 PM', 'Brix Nessia', '4332449', 'Mark Sombilla', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/70', '', '', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
+(21, '12/01/2018 8:05 PM', 'Philip Uriarte', '4332449', 'Alkaid Lamig', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '20', '120/70', '120', '120', '20', 'Kurt Dela Torre', 'Kurt Dela Torre', 'December 1, 2018', 'Dec', '2018'),
+(22, '12/01/2018 8:08 PM', 'Janeil Alcano', '4332449', 'Kurt Dela Torre', 'Lizares Avenue, Bacolod City', '21', 'Male', 'None', 'NGT', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '200', '200', '12', 'Alkaid Lamig', 'Alkaid Lamig', 'December 1, 2018', 'Dec', '2018'),
+(23, 'January 29, 2019 - 12:20 am', 'Kim Tabanda', '4332449', 'Alkaid Lamig', 'Sum-ag Bacolod City', '21', 'Male', 'None', 'Catheter', 'Bacolod City', 'Bacolod City', 'Bacolod City', '12', '120/80', '12', '12', '12', 'Kurt Dela Torre', 'Kurt Dela Torre', 'January 29, 2019', 'Jan', '2019'),
+(24, 'February 13, 2019 - 12:33 am', 'Mikko Cortez', '0912910291', 'Carlos Solidarios', 'Country Homes Alijis', '21', 'Male', 'None', 'Others', 'Country Homes', 'BAMC', 'NA', 'NA', '120/80', 'NA', 'NA', 'NA', 'NA', 'NA', 'February 13, 2019', 'Feb', '2019');
 
 -- --------------------------------------------------------
 
@@ -1306,7 +1392,134 @@ INSERT INTO `users_activity_log` (`log_id`, `user_id`, `action`, `date_time`) VA
 (395, 182, 'Updated account of Peter Sacayle', 'January 27, 2019 - 11:08 pm'),
 (396, 182, 'Updated account of Peter Sacayle', 'January 27, 2019 - 11:09 pm'),
 (397, 183, 'Requested 10 Alcohol', 'January 28, 2019 - 11:22 pm'),
-(398, 183, 'Added New Request of Transport', 'January 29, 2019 - 12:20 am');
+(398, 183, 'Added New Request of Transport', 'January 29, 2019 - 12:20 am'),
+(399, 184, 'Added New Refusal for Treatment of Sweet Manhuyod', 'February 5, 2019 - 1:46 pm'),
+(400, 184, 'Edited Refusal for Treatment Record', 'February 5, 2019 - 1:47 pm'),
+(401, 184, 'Added New Refusal for Treatment of Christian Rodriguez', 'February 5, 2019 - 1:49 pm'),
+(402, 184, 'Added New Refusal for Treatment of Stephen Yanson', 'February 5, 2019 - 1:50 pm'),
+(403, 184, 'Added New Refusal for Treatment of Kenneth Cayetano', 'February 5, 2019 - 1:52 pm'),
+(404, 184, 'Added New Refusal for Treatment of Carlo Santillan', 'February 5, 2019 - 1:54 pm'),
+(405, 184, 'Added New Refusal for Treatment of Dawn Jaudines', 'February 5, 2019 - 1:56 pm'),
+(406, 184, 'Added New Call Log', 'February 5, 2019 - 2:24 pm'),
+(407, 184, 'Added New Dispatch', 'February 5, 2019 - 2:25 pm'),
+(408, 184, 'Added New Patient', 'February 5, 2019 - 2:26 pm'),
+(409, 184, 'Added Vital Signs', 'February 5, 2019 - 2:35 pm'),
+(410, 184, 'Added Glassgow Scale', 'February 5, 2019 - 2:35 pm'),
+(411, 184, 'Added New Refusal for Treatment of Ramon Garcia', 'February 5, 2019 - 2:37 pm'),
+(412, 184, 'Added New Call Log', 'February 5, 2019 - 2:39 pm'),
+(413, 184, 'Added New Dispatch', 'February 5, 2019 - 2:40 pm'),
+(414, 184, 'Added New Patient', 'February 5, 2019 - 2:41 pm'),
+(415, 0, 'Added Patient Assessment', 'February 5, 2019 - 2:43 pm'),
+(416, 184, 'Added Vital Signs', 'February 5, 2019 - 2:44 pm'),
+(417, 184, 'Added Glassgow Scale', 'February 5, 2019 - 2:44 pm'),
+(418, 184, 'Added New Call Log', 'February 5, 2019 - 2:54 pm'),
+(419, 184, 'Added New Dispatch', 'February 5, 2019 - 2:55 pm'),
+(420, 184, 'Added New Patient', 'February 5, 2019 - 2:56 pm'),
+(421, 0, 'Added Patient Assessment', 'February 5, 2019 - 2:57 pm'),
+(422, 184, 'Added Vital Signs', 'February 5, 2019 - 2:58 pm'),
+(423, 184, 'Added Glassgow Scale', 'February 5, 2019 - 2:58 pm'),
+(424, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 2:59 pm'),
+(425, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 2:59 pm'),
+(426, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 2:59 pm'),
+(427, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 2:59 pm'),
+(428, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:00 pm'),
+(429, 184, 'Added New Call Log', 'February 5, 2019 - 3:05 pm'),
+(430, 184, 'Added New Dispatch', 'February 5, 2019 - 3:06 pm'),
+(431, 184, 'Added New Patient', 'February 5, 2019 - 3:07 pm'),
+(432, 184, 'Added Vital Signs', 'February 5, 2019 - 3:08 pm'),
+(433, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:08 pm'),
+(434, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:08 pm'),
+(435, 184, 'Added New Call Log', 'February 5, 2019 - 3:12 pm'),
+(436, 184, 'Added New Dispatch', 'February 5, 2019 - 3:13 pm'),
+(437, 184, 'Added New Patient', 'February 5, 2019 - 3:14 pm'),
+(438, 184, 'Added Vital Signs', 'February 5, 2019 - 3:15 pm'),
+(439, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:15 pm'),
+(440, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:15 pm'),
+(441, 184, 'Added New Call Log', 'February 5, 2019 - 3:17 pm'),
+(442, 184, 'Added New Dispatch', 'February 5, 2019 - 3:18 pm'),
+(443, 184, 'Added New Patient', 'February 5, 2019 - 3:19 pm'),
+(444, 184, 'Added Vital Signs', 'February 5, 2019 - 3:20 pm'),
+(445, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:20 pm'),
+(446, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:20 pm'),
+(447, 184, 'Added New Call Log', 'February 5, 2019 - 3:21 pm'),
+(448, 184, 'Added New Dispatch', 'February 5, 2019 - 3:22 pm'),
+(449, 184, 'Added New Patient', 'February 5, 2019 - 3:23 pm'),
+(450, 184, 'Added Vital Signs', 'February 5, 2019 - 3:24 pm'),
+(451, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:24 pm'),
+(452, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:26 pm'),
+(453, 184, 'Added New Patient', 'February 5, 2019 - 3:35 pm'),
+(454, 184, 'Added Vital Signs', 'February 5, 2019 - 3:35 pm'),
+(455, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:35 pm'),
+(456, 184, 'Added New Patient', 'February 5, 2019 - 3:36 pm'),
+(457, 184, 'Added New Patient', 'February 5, 2019 - 3:37 pm'),
+(458, 184, 'Added Vital Signs', 'February 5, 2019 - 3:37 pm'),
+(459, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:38 pm'),
+(460, 184, 'Added Vital Signs', 'February 5, 2019 - 3:38 pm'),
+(461, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:39 pm'),
+(462, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:39 pm'),
+(463, 184, 'Added New Call Log', 'February 5, 2019 - 3:50 pm'),
+(464, 184, 'Added New Dispatch', 'February 5, 2019 - 3:51 pm'),
+(465, 184, 'Added New Patient', 'February 5, 2019 - 3:53 pm'),
+(466, 184, 'Added New Patient', 'February 5, 2019 - 3:54 pm'),
+(467, 184, 'Added Vital Signs', 'February 5, 2019 - 3:55 pm'),
+(468, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:55 pm'),
+(469, 184, 'Added Vital Signs', 'February 5, 2019 - 3:56 pm'),
+(470, 184, 'Added Glassgow Scale', 'February 5, 2019 - 3:56 pm'),
+(471, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 3:57 pm'),
+(472, 184, 'Added New Call Log', 'February 5, 2019 - 4:04 pm'),
+(473, 184, 'Added New Dispatch', 'February 5, 2019 - 4:05 pm'),
+(474, 184, 'Added New Patient', 'February 5, 2019 - 4:07 pm'),
+(475, 184, 'Added Vital Signs', 'February 5, 2019 - 4:11 pm'),
+(476, 184, 'Added Glassgow Scale', 'February 5, 2019 - 4:11 pm'),
+(477, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 4:12 pm'),
+(478, 184, 'Added New Call Log', 'February 5, 2019 - 4:15 pm'),
+(479, 184, 'Added New Dispatch', 'February 5, 2019 - 4:16 pm'),
+(480, 184, 'Added New Patient', 'February 5, 2019 - 4:17 pm'),
+(481, 184, 'Added Vital Signs', 'February 5, 2019 - 4:19 pm'),
+(482, 184, 'Added Glassgow Scale', 'February 5, 2019 - 4:19 pm'),
+(483, 184, 'Added New Patient', 'February 5, 2019 - 4:20 pm'),
+(484, 184, 'Added Vital Signs', 'February 5, 2019 - 4:21 pm'),
+(485, 184, 'Added Glassgow Scale', 'February 5, 2019 - 4:21 pm'),
+(486, 184, 'Added New Patient', 'February 5, 2019 - 4:22 pm'),
+(487, 184, 'Added Vital Signs', 'February 5, 2019 - 4:23 pm'),
+(488, 184, 'Added Glassgow Scale', 'February 5, 2019 - 4:23 pm'),
+(489, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 4:23 pm'),
+(490, 184, 'Ended Dispatchment Driver', 'February 5, 2019 - 4:23 pm'),
+(491, 184, 'Added New Call Log', 'February 5, 2019 - 4:30 pm'),
+(492, 184, 'Added New Dispatch', 'February 5, 2019 - 4:31 pm'),
+(493, 184, 'Added New Call Log', 'February 5, 2019 - 6:58 pm'),
+(494, 184, 'Added New Call Log', 'February 12, 2019 - 9:09 pm'),
+(495, 184, 'Added New Dispatch', 'February 12, 2019 - 9:09 pm'),
+(496, 184, 'Added New Patient', 'February 12, 2019 - 9:11 pm'),
+(497, 0, 'Added Patient Assessment', 'February 12, 2019 - 9:12 pm'),
+(498, 184, 'Added Vital Signs', 'February 12, 2019 - 9:13 pm'),
+(499, 184, 'Added Glassgow Scale', 'February 12, 2019 - 9:13 pm'),
+(500, 184, 'Ended Dispatchment Driver', 'February 12, 2019 - 9:13 pm'),
+(501, 184, 'Added New Call Log', 'February 12, 2019 - 9:16 pm'),
+(502, 184, 'Added New Dispatch', 'February 12, 2019 - 9:23 pm'),
+(503, 184, 'Added New Patient', 'February 12, 2019 - 9:31 pm'),
+(504, 184, 'Added Vital Signs', 'February 12, 2019 - 9:31 pm'),
+(505, 184, 'Added Glassgow Scale', 'February 12, 2019 - 9:31 pm'),
+(506, 184, 'Added New Patient', 'February 12, 2019 - 9:32 pm'),
+(507, 184, 'Added New Patient', 'February 12, 2019 - 9:33 pm'),
+(508, 184, 'Added New Patient', 'February 12, 2019 - 9:34 pm'),
+(509, 184, 'Added Vital Signs', 'February 12, 2019 - 9:35 pm'),
+(510, 184, 'Added Glassgow Scale', 'February 12, 2019 - 9:35 pm'),
+(511, 184, 'Added Vital Signs', 'February 12, 2019 - 9:36 pm'),
+(512, 184, 'Added Glassgow Scale', 'February 12, 2019 - 9:36 pm'),
+(513, 184, 'Added Vital Signs', 'February 12, 2019 - 9:37 pm'),
+(514, 184, 'Added Glassgow Scale', 'February 12, 2019 - 9:37 pm'),
+(515, 184, 'Added New Call Log', 'February 12, 2019 - 9:56 pm'),
+(516, 184, 'Added New Dispatch', 'February 12, 2019 - 9:59 pm'),
+(517, 184, 'Added New Patient', 'February 12, 2019 - 10:01 pm'),
+(518, 184, 'Added Vital Signs', 'February 12, 2019 - 10:02 pm'),
+(519, 184, 'Added Glassgow Scale', 'February 12, 2019 - 10:02 pm'),
+(520, 184, 'Ended Dispatchment Driver', 'February 12, 2019 - 10:02 pm'),
+(521, 183, 'Added New Request of Transport', 'February 13, 2019 - 12:33 am'),
+(522, 182, 'Approved Request 5 Alcohol', 'February 13, 2019 - 11:22 pm'),
+(523, 182, 'Approved Request 7 Alcohol', 'February 13, 2019 - 11:37 pm'),
+(524, 183, 'Requested 20 Non- Rebreather Mask Child			', 'February 13, 2019 - 11:48 pm'),
+(525, 182, 'Approved Request 20 Non- Rebreather Mask Child			', 'February 13, 2019 - 11:48 pm');
 
 -- --------------------------------------------------------
 
@@ -1417,7 +1630,29 @@ INSERT INTO `vital_signs` (`vital_signs_id`, `time`, `loc`, `bp`, `sa`, `pr`, `r
 (81, '2:20 pm', 'Voice', '120/80', '99', '87', '61', '36', 'None', 'Sluggish - L', 'Warm', '76'),
 (82, '2:21 pm', 'Voice', '120/80', '92', '89', '63', '37', 'None', 'Normal - R', 'Warm', '77'),
 (83, '2:22 pm', 'Pain', '120/80', '94', '84', '59', '38', 'None', 'Normal - L', 'Dry', '78'),
-(84, '2:35 pm', 'Pain', '120/80', '95', '85', '64', '35', 'None', 'No Response - L', 'Warm', '79');
+(84, '2:35 pm', 'Pain', '120/80', '95', '85', '64', '35', 'None', 'No Response - L', 'Warm', '79'),
+(85, '2:35 pm', 'Pain', '180/12', '97', '81', '88', '38.5', 'NA', 'Sluggish - L', 'Pale', '80'),
+(86, '2:44 pm', 'Voice', '120/80', '97', '73', '72', '36.9', 'None', 'Dilated - R', 'Warm', '81'),
+(87, '2:58 pm', 'Pain', '180/30', '96', '69', '53', '37.8', 'NA', 'Normal - L', 'Warm', '82'),
+(88, '3:08 pm', 'Pain', '180/25', '98', '64', '113', '36.5', 'None', 'Dilated - R', 'Warm', '83'),
+(89, '3:15 pm', 'Unresponsive', '120/80', '97', '75', '63', '36.7', 'None', 'No Response - R', 'Warm', '84'),
+(90, '3:20 pm', 'Pain', '120/80', '98', '73', '67', '36.4', 'None', 'Dilated - R', 'Jaundiced', '85'),
+(91, '3:24 pm', 'Pain', '180/20', '97', '77', '57', '36.', 'None', 'Normal - L', 'Warm', '86'),
+(92, '3:35 pm', 'Pain', '180/20', '97', '95', '60', '36.5', 'NA', 'Sluggish - L', 'Warm', '87'),
+(93, '3:37 pm', 'Voice', '180/20', '98', '67', '98', '35.', 'None', 'Normal - R', 'Pale', '88'),
+(94, '3:38 pm', 'Pain', '180/30', '97', '122', '60', '35.', 'None', 'No Response - L', 'Warm', '89'),
+(95, '3:55 pm', 'Pain', '180/20', '98', '49', '89', '35.', 'None', 'Sluggish - R', 'Warm', '90'),
+(96, '3:56 pm', 'Pain', '180/30', '98', '60', '125', '36.7', 'None', 'Constricted - R', 'Warm', '91'),
+(97, '4:11 pm', 'Unresponsive', '120/80', '97', '77', '60', '37.7', 'None', 'Normal - L', 'Warm', '92'),
+(98, '4:19 pm', 'Pain', '180/20', '98', '73', '121', '37.', 'None', 'Dilated - R', 'Warm', '93'),
+(99, '4:21 pm', 'Voice', '180/20', '98', '65', '95', '36.5', ' None', 'Dilated - L', 'Pale', '94'),
+(100, '4:23 pm', 'Voice', '180/20', '98', '70', '127', '37.8', 'None', 'Normal - L', 'Warm', '95'),
+(101, '9:13 pm', 'Voice', '120/80', '97', '77', '61', '36.8', 'None', 'Dilated - R', 'Pale', '96'),
+(102, '9:31 pm', 'Pain', '120/80', '98', '79', '105', '37.9', 'None', 'Dilated - R', 'Warm', '97'),
+(103, '9:35 pm', 'Pain', '120/80', '98', '64', '90', '36.9', 'None', 'Dilated - L', 'Warm', '98'),
+(104, '9:36 pm', 'Pain', '120/80', '99', '89', '68', '37.5', 'None', 'Constricted - L', 'Dry', '99'),
+(105, '9:37 pm', 'Voice', '120/80', '98', '60', '97', '35.', 'None', 'Constricted - R', 'Flushed', '100'),
+(106, '10:02 pm', 'Pain', '120/80', '99', '79', '99', '37.8', 'NA', 'No Response - R', 'Warm', '101');
 
 --
 -- Indexes for dumped tables
@@ -1550,12 +1785,12 @@ ALTER TABLE `ambulance`
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `call_logs`
 --
 ALTER TABLE `call_logs`
-  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `call_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `db_backup`
 --
@@ -1565,7 +1800,7 @@ ALTER TABLE `db_backup`
 -- AUTO_INCREMENT for table `dispatch`
 --
 ALTER TABLE `dispatch`
-  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `dispatch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `driver`
 --
@@ -1575,7 +1810,7 @@ ALTER TABLE `driver`
 -- AUTO_INCREMENT for table `glassgow_coma_scale`
 --
 ALTER TABLE `glassgow_coma_scale`
-  MODIFY `glassgow_coma_scale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `glassgow_coma_scale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `items_used`
 --
@@ -1585,7 +1820,7 @@ ALTER TABLE `items_used`
 -- AUTO_INCREMENT for table `medical_supply_request`
 --
 ALTER TABLE `medical_supply_request`
-  MODIFY `medical_supply_request_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `medical_supply_request_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `medical_supply_stocks`
 --
@@ -1600,27 +1835,27 @@ ALTER TABLE `medical_supply_stocks_emt`
 -- AUTO_INCREMENT for table `pain_assessment`
 --
 ALTER TABLE `pain_assessment`
-  MODIFY `pain_assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `pain_assessment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `past_medical_history`
 --
 ALTER TABLE `past_medical_history`
-  MODIFY `past_med_his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `past_med_his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patient_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `patient_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT for table `refusal_treatment`
 --
 ALTER TABLE `refusal_treatment`
-  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `refusal_treatment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `request_transport`
 --
 ALTER TABLE `request_transport`
-  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `request_transport_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -1630,12 +1865,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_activity_log`
 --
 ALTER TABLE `users_activity_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=399;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=526;
 --
 -- AUTO_INCREMENT for table `vital_signs`
 --
 ALTER TABLE `vital_signs`
-  MODIFY `vital_signs_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `vital_signs_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

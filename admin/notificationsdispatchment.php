@@ -29,7 +29,7 @@ require '../require/logincheck.php';
             <?php require 'require/header.php'?>		
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content content-full-width">
-                <h1 class="page-header">All Dispatchment</h1>
+                <h1 class="page-header">All Dispatch</h1>
                 <div class="vertical-box">
                     <div class="vertical-box-column">
                         <div class="wrapper bg-silver-lighter">
@@ -112,7 +112,7 @@ require '../require/logincheck.php';
                                     <i class="fa fa-chevron-right"></i>
                                 </button>
                             </div>
-                            <span class="label label-inverse f-s-12">Total Dispatchment : <?php echo $fetch4['total']?></span>
+                            <span class="label label-inverse f-s-12">Total Dispatch : <?php echo $fetch4['total']?></span>
                         </div>
                     </div>
                 </div>

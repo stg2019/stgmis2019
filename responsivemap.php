@@ -230,7 +230,7 @@
 						    <span>Transactions</span>
 						</a>
 						<ul class="sub-menu">
-							<li><a href="#">Dispatchment</a></li>
+							<li><a href="#">Dispatch</a></li>
 							<li><a href="#">Assessment</a></li>
 							<li><a href="#">Request for Transport</a></li>
 							<li><a href="#">Refusal of Treatment</a></li>

@@ -13,7 +13,6 @@
             <?php
             require '../require/dbconnection.php';
             require '../chartqueries/reportsdispatchment.php'; ?>
-
             <tr>
                 <td><?php echo $q1['total']?></td>
                 <td><?php echo $q2['total']?></td>

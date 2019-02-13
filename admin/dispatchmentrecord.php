@@ -34,9 +34,9 @@ require '../require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="#">Master File</a></li>
-                    <li class="active">Dispatchment Record</li>
+                    <li class="active">Dispatch Record</li>
                 </ol>
-                <h1 class="page-header">Dispatchment</h1>
+                <h1 class="page-header">Dispatch</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -44,7 +44,7 @@ require '../require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-primary" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Dispatch</h4>
                             </div>
                             <div class="panel-body">
                                 <table id="data-table" class="table table-hover table-condensed" width="100%">

@@ -18,7 +18,7 @@
             colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -29,7 +29,7 @@
             },
             subtitles:[
                 {
-                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                    text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -66,8 +66,8 @@
                 { 
                     type: "column", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     //    markerType: "cross",
                     // color: "#0173c4",
                     dataPoints: [ 

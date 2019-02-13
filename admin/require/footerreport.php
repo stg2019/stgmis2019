@@ -11,7 +11,7 @@ $find = $query->fetch_array();
 $query = $conn->query("SELECT count(*) as total FROM `dispatch` where `year` = '$year'") or die(mysqli_error());
 $fetch = $query->fetch_array();
 ?>
-<h4>Total Dispatchment for the Year <?php echo $year. ' : ' .$fetch['total']?></h4> <hr>
+<h4>Total Dispatch for the Year <?php echo $year. ' : ' .$fetch['total']?></h4> <hr>
 <small>Approved By:</small>
 <h3><?php echo $find['complete_name']?></h3>
 <small>BDRRMO Administrator</small>

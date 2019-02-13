@@ -8,7 +8,7 @@
                         <center><span id="checkfield"></span></center>
                     </div>
                 </center>
-                <h4 class="modal-title">New Dispatchment</h4>
+                <h4 class="modal-title">New Dispatch</h4>
             </div>
             <div class="modal-body">
                 <form id="dispatchform">

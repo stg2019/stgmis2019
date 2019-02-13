@@ -8,6 +8,7 @@ if(isset($_POST['show'])){
         <tr>
             <th>Medical Supply Name</th>
             <th>Requested Quantity</th>
+            <th>Approved Quantity</th>
             <th>Requested By</th>
             <th>Date Requested</th>
             <th>Date Approved</th>
@@ -21,6 +22,7 @@ if(isset($_POST['show'])){
         <tr>
             <td><?php echo $fetch['medical_supply_name']?></td>
             <td><?php echo $fetch['requested_quantity']?></td>
+            <td><?php echo $fetch['requested_quantity'] - $fetch['to_approved_quantity']?></td>
             <td><?php echo $fetch['complete_name']?></td>
             <td><?php echo $fetch['date_requested']?></td>
             <td><?php echo $fetch['date_approved']?></td>

@@ -139,7 +139,7 @@ require '../require/logincheck.php';
                         <div class="col-md-4 monthly quarterly yearly reporttype">
                             <div class="panel panel-primary" data-sortable-id="index-5">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title">Top Dispatchment Location</h4>
+                                    <h4 class="panel-title">Top Dispatch Location</h4>
                                 </div>
 
                                 <div class="panel-body">
@@ -159,7 +159,7 @@ require '../require/logincheck.php';
                                             <li class="media media-sm">
                                                 <div class="media-body">
                                                     <h5 class="media-heading"><?php echo $f4['call_location']?></h5>
-                                                    <p>Total Dispatchment : <?php echo $f4['total']?></p>
+                                                    <p>Total Dispatch : <?php echo $f4['total']?></p>
                                                 </div>
                                             </li>
                                             <?php

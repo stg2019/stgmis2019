@@ -20,7 +20,7 @@
             animationEnabled: true,
             animationDuration: 1000,
 
-            exportFileName: "Monthly Dispatchment Count - BDRRMO", 
+            exportFileName: "Monthly Dispatch Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -31,7 +31,7 @@
             },
             subtitles:[
                 {
-                    text: "Monthly Dispatchment Count - Year <?php echo $year?>"
+                    text: "Monthly Dispatch Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -60,7 +60,7 @@
                 labelFontColor: "black",
             },
             axisY: { 
-                title: "Total Dispatchment", 
+                title: "Total Dispatch", 
                 includeZero: false,
                 labelFontColor: "black",
             }, 
@@ -68,8 +68,8 @@
                 { 
                     type: "column", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     indexLabel: "{y}",
                     dataPoints: [ 
                         { label: "January", y: <?php echo $fjan['total']?> },
@@ -95,7 +95,7 @@
             panEnabled: true,
             animationEnabled: true,
             animationDuration: 1000,
-            exportFileName: "Quarterly Dispatchment Count - BDRRMO", 
+            exportFileName: "Quarterly Dispatch Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -106,7 +106,7 @@
             },
             subtitles:[
                 {
-                    text: "Quarterly Dispatchment Count - Year <?php echo $year?>"
+                    text: "Quarterly Dispatch Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -135,7 +135,7 @@
                 labelFontColor: "black",
             },
             axisY: { 
-                title: "Total Dispatchment", 
+                title: "Total Dispatch", 
                 includeZero: false,
                 labelFontColor: "black",
             }, 
@@ -143,8 +143,8 @@
                 { 
                     type: "column", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     //    markerType: "cross",
                     // color: "#0173c4",
                     dataPoints: [ 
@@ -164,7 +164,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+            exportFileName: "Yearly Dispatch Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -175,7 +175,7 @@
             },
             subtitles:[
                 {
-                    text: "Yearly Dispatchment Count <?php echo $year?>"
+                    text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {
@@ -276,7 +276,7 @@
                 animationEnabled: true,
                 colorSet: "customColorSet",
                 animationDuration: 1000,
-                exportFileName: "Top Dispatchment Location Cases - BDRRMO", 
+                exportFileName: "Top Dispatch Location Cases - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -287,7 +287,7 @@
                 },
                 subtitles:[
                 {
-                text: "Top Dispatchment Location Cases <?php echo $year?>"
+                text: "Top Dispatch Location Cases <?php echo $year?>"
                 }
             ],
             legend: {

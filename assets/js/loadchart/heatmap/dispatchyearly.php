@@ -20,7 +20,7 @@
             animationDuration: 1000,
             colorSet: "customColorSet",
             backgroundColor: "transparent",
-            exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+            exportFileName: "Yearly Dispatch Count - BDRRMO", 
             exportEnabled: false,
             toolTip: {
                 shared: true  
@@ -32,7 +32,7 @@
             },
             subtitles:[
                 {
-                    text: "Yearly Dispatchment Count",
+                    text: "Yearly Dispatch Count",
                     fontColor: "#fff"
                 }
             ],
@@ -136,7 +136,7 @@
                 colorSet: "customColorSet",
                 animationDuration: 1000,
                 backgroundColor: "transparent",
-                exportFileName: "Top Dispatchment Location Cases - BDRRMO", 
+                exportFileName: "Top Dispatch Location Cases - BDRRMO", 
                 exportEnabled: false,
                 toolTip: {
                 shared: true  
@@ -148,7 +148,7 @@
                 },
                 subtitles:[
                 {
-                text: "Top Dispatchment Location Cases ",
+                text: "Top Dispatch Location Cases ",
                 fontColor: '#fff'
                 }
             ],

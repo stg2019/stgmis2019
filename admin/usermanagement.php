@@ -60,7 +60,7 @@ function getstatus($status){
                         <div class="col-md-12">
                             <div class="panel panel-primary" >
                                 <div class="panel-heading ">
-                                    <h4 class="panel-title">List of Dispatchment</h4>
+                                    <h4 class="panel-title">List of Dispatch</h4>
                                 </div>
                                 <div class="panel-body">
                                     <table id="data-table" class="table table-hover table-condensed" width="100%">

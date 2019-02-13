@@ -94,7 +94,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Quarterly Dispatchment Count - BDRRMO", 
+            exportFileName: "Quarterly Dispatch Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -105,7 +105,7 @@
             },
             subtitles:[
                 {
-                    text: "Quarterly Dispatchment Count - Year <?php echo $year?>"
+                    text: "Quarterly Dispatch Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -134,7 +134,7 @@
                 labelFontColor: "black",
             },
             axisY: { 
-                title: "Total Dispatchment", 
+                title: "Total Dispatch", 
                 includeZero: false,
                 labelFontColor: "black",
             }, 

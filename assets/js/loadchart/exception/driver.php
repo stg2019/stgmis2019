@@ -29,7 +29,7 @@
             },
             subtitles:[
                 {
-                    text: "Number of Dispatchment per Driver <?php echo $year?>"
+                    text: "Number of Dispatch per Driver <?php echo $year?>"
                 }
             ],
             legend: {

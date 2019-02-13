@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="masterambulance.php">Ambulance</a></li>
                         <li><a href="mastercalllog.php">Call Log Record</a></li>
-                        <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
+                        <li><a href="masterdispatchment.php">Dispatch Record</a></li>
                         <li><a href="masterdriver.php">Drivers</a></li>
                         <li><a href="masterpatient.php">Patient Record</a></li>
                         <!-- <li><a href="masterrefusaltreatment.php">Refusal of Treatment Record</a></li> -->
@@ -35,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="calllogs.php">Call Logs</a></li>
-                        <li><a href="dispatchment.php">Dispatchment</a></li>
+                        <li><a href="dispatchment.php">Dispatch</a></li>
                         <li><a href="assessmentlist.php">Assessment</a></li>
                         <li><a href="refusaltreatment.php">Refusal of Treatment</a></li>
                         <li><a href="requesttransport.php">Request of Transport</a></li>
@@ -63,10 +63,10 @@
                     $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `medical_supply_stocks_emt` where `running_balance` <= 15") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
 
-                    if ($fetch2['total'] <= 15) {
+                    if ($fetch2['total'] >= 1) {
                         echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
                     }
-                    else if ($fetch2['total'] >15 ) {
+                    else if ($fetch2['total'] <=0 ) {
                         // do nothing
                     }
                     ?>
@@ -85,7 +85,7 @@
                             <div class="media-left"><i class="fa fa-exclamation-triangle media-object bg-red"></i></div>
                             <div class="media-body">
                                 <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
-                                <p>Supplier: <?php echo $fetch3['supplier']?></p>
+                                <p>Item Code: <?php echo $fetch3['item_code']?></p>
                                 <div class="text-muted f-s-11">Running Balance: <?php echo $fetch3['running_balance']?></div>
                             </div>
                         </a>
@@ -99,53 +99,53 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
-                    <?php
+            <!--<li class="dropdown">
+<a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+<?php
 
-                    $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `medical_supply_request` where `status` = 'Approved'") or die(mysqli_error());
-                    $fetch2 = $query2->fetch_array();
+$query2 = $conn->query("SELECT *, COUNT(*) as total FROM `medical_supply_request` where `status` = 'Approved' order by medical_supply_request_id DESC") or die(mysqli_error());
+$fetch2 = $query2->fetch_array();
 
-                    if ($fetch2['total'] >= 1) {
-                        echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
-                    }
-                    else if ($fetch2['total'] <=0 ) {
-                        // do nothing
-                    }
-                    ?>
-                    <i class="fa fa-medkit"></i>
+if ($fetch2['total'] >= 1) {
+    echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
+}
+else if ($fetch2['total'] <=0 ) {
+    // do nothing
+}
+?>
+<i class="fa fa-medkit"></i>
 
-                </a>
-                <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Approved Requested Supplies (<?php echo $fetch2['total']?>)</li>
-                    <?php 
+</a>
+<ul class="dropdown-menu media-list pull-right animated fadeInDown">
+<li class="dropdown-header">Approved Requested Supplies (<?php echo $fetch2['total']?>)</li>
+<?php 
     $query3 = $conn->query("SELECT * FROM `medical_supply_request` where `status` = 'Approved' order by `medical_supply_request_id` DESC limit 5") or die(mysqli_error());
-                        while($fetch3 = $query3->fetch_array()){
-                            date_default_timezone_set("Asia/Manila");     
-                            $date_approved = $fetch3['date_approved'];
-                            $timestamp = strtotime($date_approved);
-                            $new_date_format = date('Y-m-d g:i:s a', $timestamp);
-                    ?>
+while($fetch3 = $query3->fetch_array()){
+    date_default_timezone_set("Asia/Manila");     
+    $date_approved = $fetch3['date_approved'];
+    $timestamp = strtotime($date_approved);
+    $new_date_format = date('Y-m-d g:i:s a', $timestamp);
+?>
 
-                    <li class="media">
-                        <a href="javascript:;">
-                            <div class="media-left"><i class="fa fa-medkit media-object bg-green"></i></div>
-                            <div class="media-body">
-                                <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
-                                <p>Requested Quantity: <?php echo $fetch3['requested_quantity']?></p>
-                                <div class="text-muted f-s-11"><?php echo time_ago_in_php($new_date_format);?></div>
-                            </div>
-                        </a>
-                    </li>
-                    <?php
-                        }
+<li class="media">
+<a href="javascript:;">
+<div class="media-left"><i class="fa fa-medkit media-object bg-green"></i></div>
+<div class="media-body">
+<h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
+<p>Requested Quantity: <?php echo $fetch3['requested_quantity']?></p>
+<div class="text-muted f-s-11"><?php echo time_ago_in_php($new_date_format);?></div>
+</div>
+</a>
+</li>
+<?php
+}
 
-                    ?>
-                    <li class="dropdown-footer text-center">
-                        <a href="inventory.php">View Inventory</a>
-                    </li>
-                </ul>
-            </li>
+?>
+<li class="dropdown-footer text-center">
+<a href="inventory.php">View Inventory</a>
+</li>
+</ul>
+</li> -->
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <?php
@@ -165,7 +165,7 @@
                     <i class="fa fa-ambulance"></i>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Dispatchment (<?php echo $fetch2['total']?>)</li>
+                    <li class="dropdown-header">Dispatch (<?php echo $fetch2['total']?>)</li>
                     <?php 
     $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){

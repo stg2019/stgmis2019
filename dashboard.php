@@ -65,7 +65,7 @@ require 'require/logincheck.php';
                             <div class="stats-icon"><i class="fa fa-mail-forward"></i></div>
                             <div class="stats-info">
                                 <h4>Master File</h4>
-                                <p>Dispatchment</p>	
+                                <p>Dispatch</p>	
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ require 'require/logincheck.php';
                             <div class="stats-icon"><i class="fa fa-plus"></i></div>
                             <div class="stats-info">
                                 <h4>Transactions</h4>
-                                <p>Dispatchment</p>	
+                                <p>Dispatch</p>	
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@ require 'require/logincheck.php';
                                     $fetch = $query->fetch_array();
                         ?>
                         <div class="email-content">
-                            <h5>Recent Dispatchment & Street Traffic Condition in Bacolod City - <span class="text text-primary"><b>Destination : <?php echo $fetch['call_location']?></b></span></h5>
+                            <h5>Recent Dispatch & Street Traffic Condition in Bacolod City - <span class="text text-primary"><b>Destination : <?php echo $fetch['call_location']?></b></span></h5>
                             <div class="panel-body">
                                 <div id="map-canvas"></div>
                                 <br>
@@ -211,7 +211,7 @@ require 'require/logincheck.php';
         </div>
     <div id="info">
         <div class="map-float-table width-sm hidden-xs p-15">
-            <h5 class="m-t-0"><span class="text-danger m-r-5">Dispatchment Details</span> </h5>
+            <h5 class="m-t-0"><span class="text-danger m-r-5">Dispatch Details</span> </h5>
             <div data-scrollbar="true" class="height-md">
                 <table class="table table-inverse">
                     <tbody>

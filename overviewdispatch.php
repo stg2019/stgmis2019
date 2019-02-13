@@ -34,11 +34,11 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="#">Master File</a></li>
-                    <li><a href="masterdispatchment.php">Dispatchment Record</a></li>
-                    <li class="active">Dispatchment Overview</li>
+                    <li><a href="masterdispatchment.php">Dispatch Record</a></li>
+                    <li class="active">Dispatch Overview</li>
                 </ol>
                 <h1 class="page-header">               
-                    Dispatchment Overview
+                    Dispatch Overview
                     <a href="masterdispatchment.php" class="btn btn-sm btn-white ">Back</a>
                 </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">

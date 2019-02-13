@@ -67,7 +67,7 @@ require '../require/logincheck.php';
                                             <li class="media media-sm">
                                                 <div class="media-body">
                                                     <h5 class="media-heading"><?php echo $fetch['medical_supply_name']?></h5>
-                                                    <p>Supplier : <?php echo $fetch['supplier']?></p>
+                                                    <p>Unit of Issue : <?php echo $fetch['unit_of_issue']?></p>
                                                     <p>
                                                         <?php if ($fetch['running_balance']<=15)echo "<span class='badge badge-danger animated infinite pulse'>Current Balance :  ".$fetch['running_balance']."</span>";
             if ($fetch['running_balance']>=16)echo "<span class='badge badge-info'>Current Balance :  ".$fetch['running_balance']."</span>"

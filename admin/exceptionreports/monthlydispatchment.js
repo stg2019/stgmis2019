@@ -28,7 +28,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     },
     subtitles:[
         {
-            text: "Dispatchment for the Current Year"
+            text: "Dispatch for the Current Year"
         }
     ],
     legend: {
@@ -57,15 +57,15 @@ var chart = new CanvasJS.Chart("chartContainer", {
         labelFontColor: "black",
     },
     axisY: { 
-        title: "Total Dispatchment", 
+        title: "Total Dispatch", 
         includeZero: false,
         labelFontColor: "black",
     }, 
     data: [{
         type: "pie",
         showInLegend: false,
-        legend: "Total Dispatchment",
-        name: "Total Dispatchment",
+        legend: "Total Dispatch",
+        name: "Total Dispatch",
         dataPoints: month
     }
           ]

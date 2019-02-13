@@ -38,12 +38,12 @@ require 'require/logincheck.php';
                 </ol>
 
 
-                <h1 class="page-header">Dispatchment Record</h1>
+                <h1 class="page-header">Dispatch Record</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Dispatch</h4>
                             </div>
                             <div class="panel-body">
                                 <table id="data-table" class="table table-hover table-condensed" width="100%">

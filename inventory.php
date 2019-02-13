@@ -49,8 +49,8 @@ require 'require/logincheck.php';
                         <div class="panel panel-info panel-with-tabs" data-sortable-id="ui-widget-9">
                             <div class="panel-heading">
                                 <ul id="myTab" class="nav nav-tabs pull-right">
-                                    <li class="active"><a href="#request" data-toggle="tab"><span class="hidden-xs">Medical Supplies Request</span></a></li>
-                                    <li><a href="#current" data-toggle="tab"><span class="hidden-xs">Current Inventory</span></a></li>
+                                    <li class="active"><a href="#request" data-toggle="tab"><span class="hidden-xs">Current Inventory</span></a></li>
+                                    <li><a href="#current" data-toggle="tab"><span class="hidden-xs">Medical Supplies Request</span></a></li>
                                     <li><a href="#used" data-toggle="tab"><span class="hidden-xs">Medical Supplies Used</span></a></li>
                                 </ul>
                                 <h4 class="panel-title">Inventory</h4>
@@ -58,12 +58,12 @@ require 'require/logincheck.php';
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="request">
                                     <div class="panel-body">
-                                        <div id="requestTable"></div>
+                                        <div id="inventoryTable"></div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="current">
                                     <div class="panel-body">
-                                        <div id="inventoryTable"></div>
+                                       <div id="requestTable"></div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="used">

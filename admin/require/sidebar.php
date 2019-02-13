@@ -24,7 +24,7 @@
                     <span>Master File</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="dispatchmentrecord.php">Dispatchment Record</a></li>
+                    <li><a href="dispatchmentrecord.php">Dispatch Record</a></li>
                     <li><a href="patientrecord.php">Patient Record</a></li>
                     <li><a href="refusaltreatmentrecord.php">Refusal for Treatment Record</a></li>
                     <li><a href="requesttransportrecord.php">Request for Transport Record</a></li>
@@ -61,7 +61,7 @@
                     <span>Reports</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="reportdispatchment.php">Dispatchment Report</a></li>
+                    <li><a href="reportdispatchment.php">Dispatch Report</a></li>
                     <li><a href="reportassessment.php">Assessment Report</a></li>
                     <li><a href="reportrequesttransport.php">Request for Transport Report</a></li>
                     <li><a href="reportrefusaltreatment.php">Refusal of Treatment Report</a></li>

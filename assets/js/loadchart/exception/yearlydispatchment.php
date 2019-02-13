@@ -18,7 +18,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+            exportFileName: "Yearly Dispatch Count - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -29,7 +29,7 @@
             },
             subtitles:[
                 {
-                    text: "Yearly Dispatchment Count <?php echo $year?>"
+                    text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {
@@ -72,7 +72,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Yearly Dispatch Count - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -83,7 +83,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {
@@ -126,7 +126,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Yearly Dispatch Count - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -137,7 +137,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {
@@ -180,7 +180,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Yearly Dispatch Count - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -191,7 +191,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {
@@ -233,7 +233,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Yearly Dispatchment Count - BDRRMO", 
+                exportFileName: "Yearly Dispatch Count - BDRRMO", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -244,7 +244,7 @@
                 },
                 subtitles:[
                 {
-                text: "Yearly Dispatchment Count <?php echo $year?>"
+                text: "Yearly Dispatch Count <?php echo $year?>"
                 }
             ],
             legend: {

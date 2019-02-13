@@ -37,7 +37,7 @@ require 'require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="dispatchment.php">Dispatchment</a></li>
+                    <li><a href="dispatchment.php">Dispatch</a></li>
                     <li class="active">Patient Assessment</li>
                 </ol>
                 <h1 class="page-header">        

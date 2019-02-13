@@ -76,7 +76,7 @@ require '../require/logincheck.php';
                                 <div class="form-group row m-b-15">
                                     <label class="col-md-4 col-form-label">Requested Quantity</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="requested_quantity" value="<?php echo $fetch['requested_quantity']; ?>" id="urequested_quantity<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
+                                        <input type="text" name="requested_quantity" value="<?php echo $fetch['to_approved_quantity']; ?>" id="urequested_quantity<?php echo $fetch['medical_supply_request_id']; ?>" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group row m-b-15">

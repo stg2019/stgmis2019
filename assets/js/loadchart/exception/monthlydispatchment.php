@@ -19,7 +19,7 @@
             colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -30,7 +30,7 @@
             },
             subtitles:[
                 {
-                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                    text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -67,8 +67,8 @@
                 { 
                     type: "column", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     indexLabel: "{y}",
                     //    markerType: "cross",
                     // color: "#0173c4",
@@ -97,7 +97,7 @@
             colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -108,7 +108,7 @@
             },
             subtitles:[
                 {
-                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                    text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -145,8 +145,8 @@
                 { 
                     type: "bar", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     indexLabel: "{y}",
                     //    markerType: "cross",
                     // color: "#0173c4",
@@ -175,7 +175,7 @@
             colorSet: "customColorSet",
             animationEnabled: true,
             animationDuration: 1000,
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -186,7 +186,7 @@
             },
             subtitles:[
                 {
-                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                    text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -223,8 +223,8 @@
                 { 
                     type: "line", 
                     showInLegend: true, 
-                    legendText: "Number of Dispatchment",
-                    name: "Number of Dispatchment",
+                    legendText: "Number of Dispatch",
+                    name: "Number of Dispatch",
                     indexLabel: "{y}",
                     //    markerType: "cross",
                     // color: "#0173c4",
@@ -264,7 +264,7 @@
             },
             subtitles:[
                 {
-                    text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                    text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {
@@ -306,7 +306,7 @@
                 animationEnabled: true,
                 animationDuration: 1000,
                 colorSet: "customColorSet",
-                exportFileName: "Dispatchment Monthly Count - Year <?php echo $year?>", 
+                exportFileName: "Dispatch Monthly Count - Year <?php echo $year?>", 
                 exportEnabled: true,
                 toolTip: {
                 shared: true  
@@ -317,7 +317,7 @@
                 },
                 subtitles:[
                 {
-                text: "Dispatchment Monthly Count - Year <?php echo $year?>"
+                text: "Dispatch Monthly Count - Year <?php echo $year?>"
                 }
             ],
             legend: {

@@ -24,10 +24,10 @@
                     $query2 = $conn->query("SELECT COUNT(*) as total FROM `medical_supply_stocks` WHERE `running_balance` <= 15") or die(mysqli_error());
                     $fetch2 = $query2->fetch_array();
 
-                    if ($fetch2['total'] <= 15) {
+                    if ($fetch2['total'] >= 1) {
                         echo "<span class='label animated infinite pulse'>$fetch2[total]</span>";
                     }
-                    else if ($fetch2['total'] > 15) {
+                    else if ($fetch2['total'] <=0) {
                         // do nothing
                     }
                     ?>
@@ -46,7 +46,7 @@
                             <div class="media-body">
                                 <h6 class="media-heading"><?php echo $fetch3['medical_supply_name']?></h6>
                                 <p>Running balance: <?php echo $fetch3['running_balance']?></p>
-                                <div class="text-muted f-s-11">Supplier: <?php echo $fetch3['supplier']?></div>
+                                <div class="text-muted f-s-11">Item Code: <?php echo $fetch3['item_code']?></div>
                             </div>
                         </a>
                     </li>
@@ -77,7 +77,7 @@
                     <i class="fa fa-map-marker"></i>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Request for Transport (<?php echo $fetch2['total']?>)</li>
+                    <li class="dropdown-header">Request for Transport Today (<?php echo $fetch2['total']?>)</li>
                     <?php 
     $query3 = $conn->query("SELECT * FROM `request_transport` where `date_created` = '$date_today' limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){
@@ -122,7 +122,7 @@
 
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Dispatchment Today (<?php echo $fetch2['total']?>)</li>
+                    <li class="dropdown-header">Dispatch Today (<?php echo $fetch2['total']?>)</li>
                     <?php 
     $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){

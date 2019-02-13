@@ -55,7 +55,7 @@ require 'require/logincheck.php';
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li class="active">Dispachment</li>
                 </ol>
-                <h1 class="page-header"><a href="#adddispatchment" class="btn btn-sm btn-success" data-toggle="modal">New Dispatchment</a></h1>
+                <h1 class="page-header"><a href="#adddispatchment" class="btn btn-sm btn-success" data-toggle="modal">New Dispatch</a></h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>
@@ -63,7 +63,7 @@ require 'require/logincheck.php';
                     <div class="col-md-12">
                         <div class="panel panel-info" >
                             <div class="panel-heading ">
-                                <h4 class="panel-title">List of Dispatchment</h4>
+                                <h4 class="panel-title">List of Dispatch</h4>
                             </div>
                             <div class="panel-body">
                                 <div id="dispatchTable"></div>

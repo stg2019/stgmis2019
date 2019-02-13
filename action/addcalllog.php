@@ -1,5 +1,10 @@
 <?php
 require '../require/logincheck.php';
+
+// ang tanan na gna pang type sa form ka calllogs gna insert sa database. Meaning ka post isave ang gn type ka user sa amu na nga field.
+// basta dollar sign meaning declare variables lang na sa.
+// after ma post ang mga fields nga gn typan, ma query dayun nga insert to 'call_logs' nga table.
+
 if(isset($_POST['add'])){
     $date_time_call = $_POST['date_time_call'];
     $complete_address = $_POST['complete_address'];

@@ -250,7 +250,7 @@
     </div>
     <div id="heatmapchart">
         <div class="map-float-table width-sm hidden-xs p-15">
-            <h5 class="m-t-0"><span class="text-danger m-r-5">Graphical Reports for Dispatchment</span> </h5>
+            <h5 class="m-t-0"><span class="text-danger m-r-5">Graphical Reports for Dispatch</span> </h5>
             <div data-scrollbar="true" class="height-md">
                 <div id="chartContainer1" style="width: 100%; height: 300px"></div>
                 <div id="chartContainer2" style="width: 100%; height: 300px"></div>

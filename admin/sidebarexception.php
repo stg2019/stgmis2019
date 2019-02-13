@@ -6,13 +6,13 @@
         </div>
         <div class="list-group">
             <a href="exceptionreports.php" class="list-group-item text-ellipsis">
-                Monthly Dispatchment
+                Monthly Dispatch
             </a> 
             <a href="exceptionquarter.php" class="list-group-item text-ellipsis">
-                Quarter Dispatchment
+                Quarter Dispatch
             </a>
             <a href="exceptionyearly.php" class="list-group-item text-ellipsis">
-                Annual Dispatchment
+                Annual Dispatch
             </a>
             <a href="exceptioncases.php" class="list-group-item text-ellipsis">
                 Emergency Cases

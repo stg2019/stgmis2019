@@ -41,7 +41,7 @@ require 'require/logincheck.php';
 
 
                 <h1 class="page-header"><a href="#addcall" class="btn btn-sm btn-success" data-toggle="modal">New Call Log</a>
-                    <a href="dispatchment.php" class="btn btn-sm btn-primary">Go to Dispatchment</a>
+                    <a href="dispatchment.php" class="btn btn-sm btn-primary">Go to Dispatch</a>
                 </h1>
                 <div id="alert" class="alert alert-success" style="display:none;">
                     <center><span id="alerttext"></span></center>

@@ -1,4 +1,11 @@
 <?php
+
+// ang tanan na gna pang type sa form ka assessment gna insert sa database. Meaning ka post isave ang gn type ka user sa amu na nga field.
+// basta dollar sign meaning declare variables lang na sa.
+// after ma post ang mga fields nga gn typan, ma query dayun nga insert to 'kun sa diin man nga table isave'.
+
+
+
 if(isset($_POST['add'])){
     $patient_id = $_POST['patient_id'];
 

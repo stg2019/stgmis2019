@@ -79,7 +79,7 @@ $fetch = $query->fetch_array();
 <div class="widget widget-stats bg-gradient-light-blue" onclick="location.href='dispatchmentrecord.php';"style="cursor:pointer;">
 <div class="stats-icon"><i class="fa fa-ambulance"></i></div>
 <div class="stats-info">
-<h4>Dispatchment this Year</h4>
+<h4>Dispatch this Year</h4>
 <p><?php echo $fetch['total']?></p>	
 </div>
 </div>
@@ -142,7 +142,7 @@ $fetch = $query->fetch_array();
                             ?>
                             <div class="stats-icon"><i class="fa fa-ambulance"></i></div>
                             <div class="stats-info">
-                                <h4>TOTAL DISPATCHMENT</h4>
+                                <h4>TOTAL DISPATCH</h4>
                                 <p><?php echo $fetch['total']?></p>	
                             </div>
                             <div class="stats-link">
@@ -194,7 +194,7 @@ $fetch = $query->fetch_array();
                                 $query = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 1") or die(mysqli_error());
                                 $fetch = $query->fetch_array();
                                 ?>
-                                <h4 class="panel-title">Recent Dispatchment & Street Traffic Condition in Bacolod City - Destination: <?php echo $fetch['call_location']?> in <span id="output"></span></h4>
+                                <h4 class="panel-title">Recent Dispatch & Street Traffic Condition in Bacolod City - Destination: <?php echo $fetch['call_location']?> in <span id="output"></span></h4>
                             </div>
                             <div class="panel-body">
 

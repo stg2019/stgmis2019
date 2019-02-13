@@ -1,5 +1,10 @@
 <?php
 require '../require/logincheck.php';
+
+// ang tanan na gna pang type sa form ka dispatch gna insert sa database. Meaning ka post isave ang gn type ka user sa amu na nga field.
+// basta dollar sign meaning declare variables lang na sa.
+// after ma post ang mga fields nga gn typan, ma query dayun nga insert to 'dispatch' nga table.
+
 if(isset($_POST['add'])){
     date_default_timezone_set('Asia/Manila');
     $enroute=date("g:i a");
@@ -33,8 +38,11 @@ if(isset($_POST['add'])){
 
     $conn->query("UPDATE `driver` SET `status` = 'Booked' WHERE `driver_name` = '$driver'") or die(mysqli_error());
 
+    //meaning ka query ni after ma tapos ang save dispatch, gna update ang status ka ambulance to Booked, meaning indi na pwede magamit ang ambulance nga amu na kay na booked na 
+    // sa particular nga dispatch
     $conn->query("UPDATE `ambulance` SET `status` = 'Booked' WHERE `vehicle_name` = '$ambulance'") or die(mysqli_error());
 
+    // ang ari nga query para sa users activity log, para ma track kun anu gn ubra ka user.
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Dispatch','$date_time')") or die(mysqli_error());
     $conn->close();
 }

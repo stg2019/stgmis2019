@@ -15,18 +15,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label >Item Code</label>
+                                <input type="text" class="form-control input-sm" id="item_code" name="item_code" placeholder="Enter Item Code" required/>
+                            </div>
+                            <div class="form-group">
                                 <input type="hidden" id="admin_id" name="admin_id" value="<?php echo $find['user_id']?>"/>
-                                <label >Medical Supply Name</label>
+                                <label >Medical Supply Name / Description</label>
                                 <input type="text" class="form-control input-sm" id="medical_supply_name" name="medical_supply_name" placeholder="Enter Medical Supply Name" required/>
                             </div>
                             <div class="form-group">
-                                <label >Medical Supply Description</label>
-                                <textarea class="form-control" rows="2" id="medical_supply_description" name="medical_supply_description"></textarea>
+                                <label >Unit of Issue</label>
+                                <input type="text" class="form-control input-sm" id="unit_of_issue" name="unit_of_issue" placeholder="Enter Unit of Issue" required/>
                             </div>
-                            <div class="form-group">
-                                <label >Name of Supplier</label>
-                                <input type="text" class="form-control input-sm" id="supplier" name="supplier" placeholder="Enter Name of Supplier" required/>
-                            </div>
+
                         </div>
                     </div>
                 </form>

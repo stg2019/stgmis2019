@@ -42,10 +42,10 @@ require '../require/logincheck.php';
             <div id="content" class="content">
                 <ol class="breadcrumb pull-right">
                     <li><a href="#">Master File</a></li>
-                    <li><a href="#">Dispatchment Record</a></li>
-                    <li class="active">Dispatchment Overview</li>
+                    <li><a href="#">Dispatch Record</a></li>
+                    <li class="active">Dispatch Overview</li>
                 </ol>
-                <h1 class="page-header">Dispatchment Overview</h1>
+                <h1 class="page-header">Dispatch Overview</h1>
                 <div id="alert" class="alert alert-info" style="display:none;">
                     <center><span id="alerttext"></span></center>
                 </div>

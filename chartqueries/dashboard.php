@@ -1,4 +1,4 @@
-<!-- Monthly Dispatchment -->
+<!-- Monthly Dispatch -->
 <?php
 $year = date('Y');
 if(isset($_GET['year']))
@@ -7,6 +7,7 @@ if(isset($_GET['year']))
 }
 
 
+// meaning ni gna count ang dispatch for every month 
 require 'require/dbconnection.php';
 $qjan = $conn->query("SELECT COUNT(*) as total FROM `dispatch` WHERE `month` = 'Jan' && `year` = '$year'") or die(mysqli_error());
 $fjan = $qjan->fetch_array();
@@ -38,6 +39,7 @@ $total = $total->fetch_array();
 
 <!-- Admin Medical Supplies Balance -->
 <?php
+// meaning ni nga query gna group per medical_supply_name kag tapos gna count ang every remaining balance nila.
 $res = $conn->query("SELECT * FROM `medical_supply_stocks` GROUP BY medical_supply_name") or die(mysqli_error());
 $data_points = array();
 while($result = $res->fetch_array()){
@@ -48,17 +50,21 @@ while($result = $res->fetch_array()){
     $point = array('label' => $R, 'y' => $FR);
     array_push($data_points, $point);
 }
+// gna store as json type para gamiton later sa chart.
 json_encode($data_points);
 ?>
 
 
 <!-- Top 5 Emergency Cases -->
 <?php
+// meaning ni kun anu gn pili ka user sa dropdown ka year amu na nga data ipa gwa
 $year = date('Y');
 if(isset($_GET['year']))
 {
     $year=$_GET['year'];
 }
+
+// meaning ni nga query gna group per dispatched_for kag tapos gna count ang every record nila
 $res2 = $conn->query("SELECT * FROM `dispatch` GROUP BY dispatched_for") or die(mysqli_error());
 $data_points2 = array();
 while($result2 = $res2->fetch_array()){
@@ -72,7 +78,7 @@ while($result2 = $res2->fetch_array()){
 json_encode($data_points2);
 ?>
 
-<!-- Annual Dispatchment-->
+<!-- Annual Dispatch-->
 <?php
 $year = date('Y');
 if(isset($_GET['year']))

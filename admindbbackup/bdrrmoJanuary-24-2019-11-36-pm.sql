@@ -598,7 +598,7 @@ CREATE TABLE `patient` (
 
 INSERT INTO patient VALUES("1","Janiel Alcano","20","Male","08/08/2000","4332449","Bacolod City","NA","NA","Allergies","1","Assessed"); 
 INSERT INTO patient VALUES("2","Kyan Ricabo","21","Male","08/16/2018","4332449","Bacolod City","NA","NA","DNR","1","Assessed"); 
-INSERT INTO patient VALUES("3","Dyniel Keith Cataluña","20","Male","08/16/2000","4332449","Bacolod City","NA","NA","Allergies","2","Assessed"); 
+INSERT INTO patient VALUES("3","Dyniel Keith Cataluï¿½a","20","Male","08/16/2000","4332449","Bacolod City","NA","NA","Allergies","2","Assessed"); 
 INSERT INTO patient VALUES("4","Michael Callejas","21","Male","08/14/2018","4332449","Bacolod City","NA","NA","Organ Donor","2","Assessed"); 
 INSERT INTO patient VALUES("5","Sweet Manhuyod","50","Male","08/08/2018","4332449","Bacolod City","NA","NA","Allergies","2","Assessed"); 
 INSERT INTO patient VALUES("6","Erul John Ubas","21","Male","08/08/2018","4332449","Bacolod City","NA","NA","None","2","Unassessed"); 
@@ -1139,13 +1139,13 @@ INSERT INTO users_activity_log VALUES("364","182","Approved Request 2 Sample","J
 INSERT INTO users_activity_log VALUES("365","182","Approved Request 3 Alcohol","January 24, 2019 - 12:38 pm"); 
 INSERT INTO users_activity_log VALUES("366","182","Approved Request 5 Alcohol","January 24, 2019 - 12:43 pm"); 
 INSERT INTO users_activity_log VALUES("367","183","Added New Dispatch","January 24, 2019 - 1:37 pm"); 
-INSERT INTO users_activity_log VALUES("368","183","Ended Dispatchment Driver","January 24, 2019 - 1:44 pm"); 
-INSERT INTO users_activity_log VALUES("369","183","Ended Dispatchment Driver","January 24, 2019 - 1:45 pm"); 
+INSERT INTO users_activity_log VALUES("368","183","Ended Dispatch Driver","January 24, 2019 - 1:44 pm"); 
+INSERT INTO users_activity_log VALUES("369","183","Ended Dispatch Driver","January 24, 2019 - 1:45 pm"); 
 INSERT INTO users_activity_log VALUES("370","183","Used 2 Alcohol","January 24, 2019 - 10:50 pm"); 
 INSERT INTO users_activity_log VALUES("371","183","Used 2 Cotton","January 24, 2019 - 10:52 pm"); 
 INSERT INTO users_activity_log VALUES("372","183","Used 1 Betadine","January 24, 2019 - 10:58 pm"); 
 INSERT INTO users_activity_log VALUES("373","183","Used 1 Gloves","January 24, 2019 - 11:01 pm"); 
-INSERT INTO users_activity_log VALUES("374","183","Ended Dispatchment Driver","January 24, 2019 - 11:07 pm"); 
+INSERT INTO users_activity_log VALUES("374","183","Ended Dispatch Driver","January 24, 2019 - 11:07 pm"); 
 
 
 

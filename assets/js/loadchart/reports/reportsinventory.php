@@ -19,7 +19,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  
@@ -148,7 +148,7 @@
             animationEnabled: true,
             animationDuration: 1000,
             colorSet: "customColorSet",
-            exportFileName: "Monthly Dispatchment - BDRRMO", 
+            exportFileName: "Monthly Dispatch - BDRRMO", 
             exportEnabled: true,
             toolTip: {
                 shared: true  

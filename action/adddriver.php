@@ -1,5 +1,10 @@
 <?php
 require '../require/logincheck.php';
+
+// ang tanan na gna pang type sa form ka driver gna insert sa database. Meaning ka post isave ang gn type ka user sa amu na nga field.
+// basta dollar sign meaning declare variables lang na sa.
+// after ma post ang mga fields nga gn typan, ma query dayun nga insert to 'driver' nga table.
+
 if(isset($_POST['add'])){
     $driver_name = $_POST['driver_name'];
     $age = $_POST['age'];

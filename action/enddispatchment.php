@@ -17,7 +17,7 @@ if(isset($_POST['add'])){
 
     $conn->query("UPDATE `ambulance` SET `status` = 'Unbook' WHERE `vehicle_name` = '$ambulance'") or die(mysqli_error());
 
-    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Ended Dispatchment Driver','$date_time')") or die(mysqli_error());
+    $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Ended Dispatch Driver','$date_time')") or die(mysqli_error());
     $conn->close();
 }
 ?>
