@@ -2,7 +2,8 @@
 <?php
 require '../require/logincheck.php';
 if(isset($_POST['add'])){
-    $date_time = $_POST['date_time'];
+    $date_time_cal = $_POST['date_time'];
+    $newDate = date("Y-m-d", strtotime($date_time_cal));
     $requesting_party = $_POST['requesting_party'];
     $contact_no = $_POST['contact_no'];
     $patient_name = $_POST['patient_name'];
@@ -33,7 +34,7 @@ if(isset($_POST['add'])){
 
     require '../require/dbconnection.php';
 
-    $conn->query("INSERT INTO `request_transport` VALUES('', '$date_time', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rer', '$per', '$sat', '$requesting_approval', '$approval', '$date_created', '$month', '$year')") or die(mysqli_error());
+    $conn->query("INSERT INTO `request_transport` VALUES('', '$newDate', '$requesting_party', '$contact_no', '$patient_name', '$address', '$age', '$gender', '$medical_history', '$special_considerations', '$froma', '$toa', '$fromb', '$gcs', '$bp', '$rer', '$per', '$sat', '$requesting_approval', '$approval', 'Pending', '$date_created', '$month', '$year')") or die(mysqli_error());
 
     $conn->query("INSERT INTO `users_activity_log` VALUES('', '$user_id', 'Added New Request of Transport','$date_time')") or die(mysqli_error());
     $conn->close();

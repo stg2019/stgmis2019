@@ -26,7 +26,7 @@
                 <ul class="sub-menu">
                     <li><a href="dispatchmentrecord.php">Dispatch Record</a></li>
                     <li><a href="patientrecord.php">Patient Record</a></li>
-                    <li><a href="refusaltreatmentrecord.php">Refusal for Treatment Record</a></li>
+                    <li><a href="refusaltreatmentrecord.php">Refusal of Treatment Record</a></li>
                     <li><a href="requesttransportrecord.php">Request for Transport Record</a></li>
                 </ul>
             </li>
@@ -52,6 +52,7 @@
                 <ul class="sub-menu">
                     <li><a href="inventory.php">Inventory</a></li>
                     <li><a href="medicalsuppliesrequest.php">Medical Supplies Request</a></li>
+                    <li><a href="requesttransportapproval.php">Request for Transport</a></li>
                 </ul>
             </li>
             <li class="has-sub">

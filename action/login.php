@@ -291,7 +291,7 @@ if(ISSET($_POST['login'])){
     $salt = "STG3Wim4UAAAAAIX3525VGdasGfWty2w2N67dagj";
     $pass = $salt.$pass;
 
-    
+
     $query = $conn->query("SELECT * FROM `users` WHERE BINARY `username` = '$user' && BINARY `password` = '$pass' && `status` = 1") or die(mysqli_error());
     $fetch = $query->fetch_array();
     $valid = $query->num_rows;

@@ -23,17 +23,24 @@ require '../require/logincheck.php';
         <link href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
         <link href="../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
         <script src="../assets/plugins/pace/pace.min.js"></script>
+        <link href="../assets/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" media='print' />
+        <link href="../assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
         <script src="../assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+        <script src="../assets/plugins/fullcalendar/lib/moment.min.js"></script>
+        <script src="../assets/plugins/fullcalendar/fullcalendar.min.js"></script>
         <script src="../assets/js/jquery.canvasjs.min.js"></script>
         <?php require '../assets/js/loadchart/dashboard/dashboardgraphs.php'?>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdesR37nt3_QOaZ6JrWvsf_LfjQM5QdH4&callback=initMap"></script>
         <script src="../assets/js/geocodetimekilometers.js"></script>
+        <script src="../functions/loadcalendar.js"></script>
         <style>
             #map-canvas {
                 height: 500px;
                 width: 100%;
             }
         </style>
+  
     </head>
     <body>
         <div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -42,71 +49,12 @@ require '../require/logincheck.php';
             <?php require 'require/sidebar.php'?>
             <div id="content" class="content">
                 <h1 class="page-header">Dashboard</h1>
-                <!--
-<div class="row">
-<div class="col-md-12">
-<div class="col-md-3">
-<?php 
-    $query = $conn->query("SELECT count(*) as total FROM `users`") or die(mysqli_error());
-        $fetch = $query->fetch_array();
-?>
-<div class="widget widget-stats bg-gradient-primary" onclick="location.href='emtaccount.php';"style="cursor:pointer;">
-<div class="stats-icon"><i class="fa fa-group"></i></div>
-<div class="stats-info">
-<h4>Total Users</h4>
-<p><?php echo $fetch['total']?></p>	
-</div>
-</div>
-</div>
-<div class="col-md-3">
-<?php 
-    $query = $conn->query("SELECT count(*) as total FROM `patient`") or die(mysqli_error());
-$fetch = $query->fetch_array();
-?>
-<div class="widget widget-stats bg-gradient-pink" onclick="location.href='patientrecord.php';"style="cursor:pointer;">
-<div class="stats-icon"><i class="fa fa-male"></i></div>
-<div class="stats-info">
-<h4>Patients Registered this Year</h4>
-<p><?php echo $fetch['total']?></p>	
-</div>
-</div>
-</div>
-<div class="col-md-3">
-<?php 
-    $query = $conn->query("SELECT count(*) as total FROM `dispatch`") or die(mysqli_error());
-$fetch = $query->fetch_array();
-?>
-<div class="widget widget-stats bg-gradient-light-blue" onclick="location.href='dispatchmentrecord.php';"style="cursor:pointer;">
-<div class="stats-icon"><i class="fa fa-ambulance"></i></div>
-<div class="stats-info">
-<h4>Dispatch this Year</h4>
-<p><?php echo $fetch['total']?></p>	
-</div>
-</div>
-</div>
-<div class="col-md-3">
-<?php 
-    $year = date('Y');
-$query = $conn->query("SELECT count(*) as total FROM `request_transport` where `year` = '$year'") or die(mysqli_error());
-$fetch = $query->fetch_array();
-?>
-<div class="widget widget-stats bg-gradient-primary" onclick="location.href='requesttransportrecord.php';"style="cursor:pointer;">
-<div class="stats-icon"><i class="fa fa-map-marker"></i></div>
-<div class="stats-info">
-<h4>Request for Transport this Year</h4>
-<p><?php echo $fetch['total']?></p>	
-</div>
-</div>
-</div>
-</div>
-</div>
--->
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="widget widget-stats bg-green">
                             <?php 
     $query = $conn->query("SELECT count(*) as total FROM `users`") or die(mysqli_error());
-$fetch = $query->fetch_array();
+        $fetch = $query->fetch_array();
                             ?>
                             <div class="stats-icon"><i class="fa fa-group"></i></div>
                             <div class="stats-info">
@@ -185,7 +133,7 @@ $fetch = $query->fetch_array();
                         </div>
                     </div>
                 </div>
-<br>
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-primary" >
@@ -256,15 +204,19 @@ $fetch = $query->fetch_array();
                 <div class="height-sm" data-scrollbar="true">
                     <ul class="media-list media-list-with-divider media-messaging">
                         <?php
-                        $query = $conn->query("SELECT * FROM `request_transport` order by request_transport_id DESC limit 10") or die(mysqli_error());
+                        $query = $conn->query("SELECT * FROM `request_transport` order by date_time DESC") or die(mysqli_error());
                         while($fetch = $query->fetch_array()){
                         ?>
                         <li class="media media-sm">
                             <div class="media-body">
                                 <h5 class="media-heading"><?php echo $fetch['address']?></h5>
-                                <p>Date and Time : <?php echo $fetch['date_time']?></p>
+                                <?php
+                            $newDate = date("F j, Y", strtotime($fetch['date_time']));
+                                ?>
+                                <p>Patient Name : <?php echo $fetch['patient_name']?></p>
+                                <p>Date of Transport : <?php echo $newDate?></p>
                                 <p>
-                                    Requesting Party : <?php echo $fetch['requesting_party']?>
+                                    Address : <?php echo $fetch['address']?>
                                 </p>
                             </div>
                         </li>
@@ -320,17 +272,29 @@ $fetch = $query->fetch_array();
 
     </div>
 </div>
-
-
-
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="email-content">
+            <h4>Request for Transport Schedule</h4>
+            <div class="panel-body">
+                <div id="calendar" class="vertical-box-column p-15 calendar"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
 <?php require '../require/sidepanel.php'?>
 <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 </div>
+
 <script type="text/javascript" src="../functions/shownotifications.js"></script>
 <script src="../assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-<script src="../assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../assets/plugins/jquery-cookie/jquery.cookie.js"></script>
@@ -348,6 +312,7 @@ $fetch = $query->fetch_array();
 <script>
     $(document).ready(function() {
         App.init();
+        Calendar.init();
     });
 </script>
 <script>

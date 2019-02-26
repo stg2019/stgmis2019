@@ -15,8 +15,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <label >Date and Time</label>
-                                <div class="input-group date" id="datetimepicker1">
+                                <label >Date of Request for Transport</label>
+                                <div class="input-group date" id="datepicker-autoClose">
                                     <input type="text" id="date_time" name="date_time_call" class="form-control input-sm" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>

@@ -21,7 +21,12 @@ require 'require/logincheck.php';
         <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
         <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
         <link href="assets/css/custom.css" rel="stylesheet"/>
+        <link href="assets/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" media='print' />
+        <link href="assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
         <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+        <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+        <script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
+        <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
         <script src="weather.js"></script>
         <script src="assets/js/jquery.canvasjs.min.js"></script>
         <script src="assets/plugins/pace/pace.min.js"></script>
@@ -29,6 +34,8 @@ require 'require/logincheck.php';
         <script src="assets/js/geocodetimekilometers.js"></script>
         <?php require 'assets/js/loadchart/dashboard/emtdashboardgraphs.php'?>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+        <script src="assets/js/geocodetimekilometers.js"></script>
+        <script src="functions/loadcalendaremt.js"></script>
         <style>
             #map-canvas {
                 height: 500px;
@@ -269,6 +276,16 @@ require 'require/logincheck.php';
 
 </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="email-content">
+            <h4>Request for Transport Schedule</h4>
+            <div class="panel-body">
+                <div id="calendar" class="vertical-box-column p-15 calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -277,7 +294,6 @@ require 'require/logincheck.php';
 <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 </div>
 <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
@@ -299,6 +315,7 @@ require 'require/logincheck.php';
         App.init();
         Dashboard.init();
         MapVector.init();
+        Calendar.init();
     });
 </script>
 <script>

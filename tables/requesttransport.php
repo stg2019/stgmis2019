@@ -5,7 +5,7 @@ if(isset($_POST['show'])){
 <table id="requesttransporttable" class="table table-hover table-condensed nowrap" width="100%">
     <thead>
         <tr>
-            <th>Date and Time</th>
+            <th>Date of Request for Transport</th>
             <th>Requesting Party</th>
             <th>Contact Number</th>
             <th>Patient Name</th>

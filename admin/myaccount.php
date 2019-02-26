@@ -82,14 +82,14 @@ require '../require/logincheck.php';
                                             </div>
                                         </div>
                                         <!--
-                                        <div class="form-group row m-b-15">
-                                            <label class="col-md-2 col-form-label">Old Password</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="passwordold" name="passwordold"placeholder="Retype Old Password"/>
-                                                <div id="pword_response"></div>
-                                            </div>
-                                        </div> 
-                                        -->
+<div class="form-group row m-b-15">
+<label class="col-md-2 col-form-label">Old Password</label>
+<div class="col-md-8">
+<input type="text" class="form-control" id="passwordold" name="passwordold"placeholder="Retype Old Password"/>
+<div id="pword_response"></div>
+</div>
+</div> 
+-->
                                         <hr>
                                         <button type = "button" id="savechanges" class = "btn btn-sm btn-info update_account">Save Changes</button>
                                         <a href="dispatchment.php" class="btn btn-sm btn-white">Back</a>

@@ -149,7 +149,6 @@ while($fetch3 = $query3->fetch_array()){
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <?php
-
                     date_default_timezone_set('Asia/Manila');
                     $date_today=date("F j, Y");
                     $query2 = $conn->query("SELECT *, COUNT(*) as total FROM `dispatch` where `date_created` = '$date_today'") or die(mysqli_error());
@@ -166,14 +165,15 @@ while($fetch3 = $query3->fetch_array()){
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
                     <li class="dropdown-header">Dispatch (<?php echo $fetch2['total']?>)</li>
-                    <?php 
+                  <?php 
     $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){
                             date_default_timezone_set("Asia/Manila");     
-                            $date_created = $fetch3['date_created'];
+                            $date_created = $fetch3['date_time_call'];
                             $timestamp = strtotime($date_created);
                             $new_date_format = date('Y-m-d g:i:s a', $timestamp);
                     ?>
+
 
                     <li class="media">
                         <a href="javascript:;">

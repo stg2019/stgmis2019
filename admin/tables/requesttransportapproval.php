@@ -2,10 +2,10 @@
 require '../require/dbconnection.php';
 if(isset($_POST['show'])){
 ?>
-<table id="requesttransporttable" class="table table-hover table-condensed nowrap" width="100%">
+<table id="requesttransporttable" class="table table-hover table-condensed" width="100%">
     <thead>
         <tr>
-            <th>Date of Request for Transport</th>
+            <th>Date and Time</th>
             <th>Requesting Party</th>
             <th>Contact Number</th>
             <th>Patient Name</th>
@@ -15,7 +15,7 @@ if(isset($_POST['show'])){
     </thead>
     <tbody>
         <?php
-    $query = $conn->query("select * from `request_transport`") or die(mysqli_error());
+    $query = $conn->query("select * from `request_transport` where status = 'Pending'") or die(mysqli_error());
     while($fetch = $query->fetch_array()){
         ?>                                      
         <tr>
@@ -25,7 +25,7 @@ if(isset($_POST['show'])){
             <td><?php echo $fetch['patient_name']?></td>
             <td><?php echo $fetch['address']?></td>
             <td>
-                <a href="viewrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-white">View</a>
+                <button type = "button" class = "btn btn-sm btn-primary approve_request" value="<?php echo $fetch['request_transport_id']; ?>">Approve</button>
             </td>
         </tr>
         <?php
