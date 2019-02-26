@@ -276,10 +276,11 @@ require 'require/logincheck.php';
 
 </div>
 </div>
+<br>
 <div class="row">
     <div class="col-md-12">
         <div class="email-content">
-            <h4>Request for Transport Schedule</h4>
+            <h4>Request for Transport Schedule <a href="requesttransport.php" class="btn btn-success pull-right">See Detailed</a></h4>
             <div class="panel-body">
                 <div id="calendar" class="vertical-box-column p-15 calendar"></div>
             </div>

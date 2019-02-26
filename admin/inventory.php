@@ -74,7 +74,7 @@ require '../require/logincheck.php';
                                                     <th>Quantity Used</th>
                                                     <th>Dispatch</th>
                                                     <th>Location</th>
-                                                    <th>Date</th>
+                                                    <th>Date Used</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

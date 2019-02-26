@@ -164,7 +164,7 @@ while($fetch3 = $query3->fetch_array()){
                     <i class="fa fa-ambulance"></i>
                 </a>
                 <ul class="dropdown-menu media-list pull-right animated fadeInDown">
-                    <li class="dropdown-header">Dispatch (<?php echo $fetch2['total']?>)</li>
+                    <li class="dropdown-header">Dispatch Today(<?php echo $fetch2['total']?>)</li>
                   <?php 
     $query3 = $conn->query("SELECT * FROM `dispatch` order by `dispatch_id` DESC limit 5") or die(mysqli_error());
                         while($fetch3 = $query3->fetch_array()){

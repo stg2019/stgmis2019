@@ -51,25 +51,24 @@ require '../require/logincheck.php';
                                 <table id="data-table" class="table table-hover table-condensed" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Date and Time</th>
+                                            <th>Date of Request for Transport</th>
                                             <th>Requesting Party</th>
-                                            <th>Contact Number</th>
                                             <th>Patient Name</th>
-                                            <th>Address</th>
+                                            <th>Contact Number</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-    $query = $conn->query("select * from `request_transport`") or die(mysqli_error());
+    $query = $conn->query("select * from `request_transport` order by request_transport_id DESC") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
+                $newDate = date("F j, Y", strtotime($fetch['date_time']));
                                         ?>                                      
                                         <tr>
-                                            <td><?php echo $fetch['date_time']?></td>
+                                            <td><?php echo $newDate?></td>
                                             <td><?php echo $fetch['requesting_party']?></td>
-                                            <td><?php echo $fetch['contact_no']?></td>
                                             <td><?php echo $fetch['patient_name']?></td>
-                                            <td><?php echo $fetch['address']?></td>
+                                            <td><?php echo $fetch['contact_no']?></td>
                                             <td>
                                                 <a href="masterrequesttransport.php?request_transport_id=<?php echo $fetch['request_transport_id']?>" class="btn btn-sm btn-primary">Overview</a>
                                             </td>

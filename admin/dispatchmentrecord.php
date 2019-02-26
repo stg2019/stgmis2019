@@ -62,10 +62,11 @@ require '../require/logincheck.php';
                                         <?php
     $query = $conn->query("select * from `dispatch`") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
+                $newDate = date("F j, Y - g:i a", strtotime($fetch['date_time_call']));
                                         ?>                                      
                                         <tr>
                                             <td><?php echo $fetch['service_no']?></td>
-                                            <td><?php echo $fetch['date_time_call']?></td>
+                                            <td><?php echo $newDate?></td>
                                             <td><?php echo $fetch['dispatched_for']?></td>
                                             <td><?php echo $fetch['driver']?></td>
                                             <td><?php echo $fetch['call_location']?></td>

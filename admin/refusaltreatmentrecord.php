@@ -63,9 +63,10 @@ require '../require/logincheck.php';
                                         <?php
     $query = $conn->query("select * from `refusal_treatment`") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
+                $newDate = date("F j, Y - g:i a", strtotime($fetch['date_incident']));
                                         ?>                                      
                                         <tr>
-                                            <td><?php echo $fetch['date_incident']?></td>
+                                            <td><?php echo $newDate?></td>
                                             <td><?php echo $fetch['signed']?></td>
                                             <td><?php echo $fetch['witness1']?></td>
                                             <td><?php echo $fetch['witness2']?></td>

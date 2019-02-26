@@ -17,9 +17,10 @@ if(isset($_POST['show'])){
         <?php
     $query = $conn->query("select * from `request_transport` where status = 'Pending'") or die(mysqli_error());
     while($fetch = $query->fetch_array()){
+        $newDate = date("F j, Y", strtotime($fetch['date_time']));
         ?>                                      
         <tr>
-            <td><?php echo $fetch['date_time']?></td>
+            <td><?php echo $newDate?></td>
             <td><?php echo $fetch['requesting_party']?></td>
             <td><?php echo $fetch['contact_no']?></td>
             <td><?php echo $fetch['patient_name']?></td>
